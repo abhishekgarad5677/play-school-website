@@ -1,9 +1,5 @@
 import { useState } from "react";
-// import { Dialog, DialogPanel } from "@headlessui/react";
-// import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-// import { MdArrowOutward } from "react-icons/md";
-// import logo from '../../public/company_logo.png'
-
+import logo from '../../public/playSchool-logo.png'
 
 const Navbar = () => {
 
@@ -17,19 +13,17 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <header className="sticky inset-x-0 top-10 z-50 bg-white">
+        <header className="sticky top-7 z-50 bg-white mx-10 rounded-[20px]">
 
             {/* routes navbar */}
-            <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 border-b-2 border-[#E0DEF7]">
+            <nav aria-label="Global" className="flex items-center justify-between p-4">
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5 flex items-center gap-1">
-                        <span className="sr-only">Your Company</span>
                         <img
                             alt=""
-                            src={''}
-                            className="h-8 w-auto"
+                            src={logo}
+                            className="h-[62] w-[184]"
                         />
-                        <span className="text-[#100A55] font-bold text-[20px]">Estatery</span>
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -42,20 +36,21 @@ const Navbar = () => {
                         {/* <Bars3Icon aria-hidden="true" className="size-6" /> */}
                     </button>
                 </div>
-                <div className="hidden lg:flex lg:gap-x-12">
+                <div className="hidden lg:flex lg:gap-x-20">
                     {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-base font-semibold text-gray-900">
+                        <a key={item.name} href={item.href} className="text-[14px] font-400  bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
                             {item.name}
                         </a>
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
-                    <button className="border-2 border-solid border-[#7065F0] bg-[#7065F0] text-[#fff] px-4 py-2 font-bold text-base rounded-md">
-                        Signup
+                    <button className="border-[3px] rounded-[10px] text-[14px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[10px] cursor-pointer">
+                        <span className="text-[14px] font-400 bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">Signup</span>
                     </button>
-                    <button className="border-2 border-solid border-[#E0DEF7] px-4 py-2 font-bold text-base rounded-md">
+                    <button className="px-[44px] py-[10px] text-[14px] text-white rounded-[10px] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] border-none cursor-pointer">
                         Login
                     </button>
+
                 </div>
             </nav>
 

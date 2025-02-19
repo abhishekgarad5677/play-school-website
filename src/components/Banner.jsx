@@ -4,10 +4,12 @@ import BannerRight from '../../public/banner-right.png'
 import LockerRoom from '../../public/locker-room.png'
 import TapuTeam from '../../public/tapu-team.png'
 import BookShelf from '../../public/book-shelf.png'
+import Navbar from './Navbar'
 
 const Banner = () => {
     return (
-        <div className='h-[110vh]'>
+        <div className='h-[120vh] bg-[#0095ff] pt-6'>
+            <Navbar />
             <img className='absolute top-0 left-0 h-[290px]' src={BannerLeft} alt="" />
             <img className='absolute top-0 right-0' src={BannerRight} alt="" />
             <img className='absolute top-100 right-0' src={BookShelf} alt="" />

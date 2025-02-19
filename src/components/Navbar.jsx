@@ -13,7 +13,8 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <header className="sticky top-7 z-50 bg-white mx-10 rounded-[20px]">
+        // <header className="sticky top-7 z-50 bg-white mx-10 rounded-[20px]">
+        <header className="bg-white mx-10 rounded-[20px] z-[100]">
 
             {/* routes navbar */}
             <nav aria-label="Global" className="flex items-center justify-between p-4">

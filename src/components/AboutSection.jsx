@@ -1,49 +1,106 @@
-import AboutBanner from '../../public/about-img.png'
+import { motion, useScroll, useTransform } from "framer-motion";
+import AboutBanner from "../../public/about-img.png";
+import { useRef } from "react";
+
+
+// Animation Variants
+const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+};
+
+const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut", delay: 0.5 } },
+};
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay = 0) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, delay, ease: "easeOut" },
+    }),
+};
+
+// Floating Animation for Image
+const floatingAnimation = {
+    y: [-5, 5, -5],
+    transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+};
 
 const AboutSection = () => {
-    return (
-        <section className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_180%),url('/background-cover.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-24 px-6">
-            <div className="max-w-7xl mx-auto grid md:grid-cols-[40%_60%] gap-12 items-center">
-                <div>
-                    <img src={AboutBanner} alt="" />
-                </div>
-                <div>
-                    <h4 className='font-400 text-[34px] text-[#fff] leading-[41.14px] mb-10'>
-                        What is TMKOC Playschool
-                    </h4>
-                    <div>
-                        <div className='flex justify-start align-center gap-6 mb-6'>
-                            <div className='h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t from-[#0066FF] to-[#00CAFF] rounded-[12px]'>
-                                <span className='font-400 text-white text-[24px]'>1</span>
-                            </div>
-                            <div>
-                                <p className='font-400 text-[20px] leading-[24.2px] text-[#fff] uppercase'>Fun & Interactive Learning </p>
-                                <p className='font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font'>Engaging games that make education exciting</p>
-                            </div>
-                        </div>
-                        <div className='flex justify-start align-center gap-6 mb-6'>
-                            <div className='h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t from-[#FFBC0C] to-[#FFF25F] rounded-[12px]'>
-                                <span className='font-400 text-white text-[24px]'>2</span>
-                            </div>
-                            <div>
-                                <p className='font-400 text-[20px] leading-[24.2px] text-[#fff] uppercase'>Learn with TMKOC Characters </p>
-                                <p className='font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font'>Explore alphabets, numbers, colors, and music <br /> with your favorites.</p>
-                            </div>
-                        </div>
-                        <div className='flex justify-start align-center gap-6 mb-6'>
-                            <div className='h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t from-[#D4002F] to-[#FF5177] rounded-[12px]'>
-                                <span className='font-400 text-white text-[24px]'>3</span>
-                            </div>
-                            <div>
-                                <p className='font-400 text-[20px] leading-[24.2px] text-[#fff] uppercase'>Safe & Engaging</p>
-                                <p className='font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font'>A child-friendly environment designed for playful <br /> learning.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
 
-export default AboutSection;   
+    const aboutRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: aboutRef, offset: ["start end", "end start"] });
+
+    // Parallax effect for AboutSection entry
+    const textY = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
+    const imageY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
+
+    return (
+        <motion.section
+            ref={aboutRef}
+            initial="hidden"
+            whileInView="visible"  // ✅ Trigger animations when in view
+            viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
+            className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-28 px-6"
+            // className="bg-[url('../../public/section/about-bg.png')] h-full bg-cover bg-center bg-no-repeat px-6"
+        >
+            <div className="max-w-7xl mx-auto grid md:grid-cols-[40%_60%] gap-12 items-center">
+                {/* Left Image with Floating Effect */}
+                <motion.div variants={fadeInLeft}>
+                    <motion.img
+                        src={AboutBanner}
+                        alt="About Banner"
+                        className="mx-auto"
+                        animate={floatingAnimation}
+                    />
+                </motion.div>
+
+                {/* Right Content Section */}
+                <motion.div variants={fadeInRight}>
+                    <motion.h4
+                        variants={fadeUp}
+                        custom={0.3}
+                        className="font-400 text-[34px] text-[#fff] leading-[41.14px] mb-10"
+                    >
+                        What is TMKOC Playschool
+                    </motion.h4>
+
+                    {/* Features List */}
+                    <div>
+                        {[
+                            { number: 1, title: "Fun & Interactive Learning", desc: "Engaging games that make education exciting", colors: "from-[#0066FF] to-[#00CAFF]" },
+                            { number: 2, title: "Learn with TMKOC Characters", desc: "Explore alphabets, numbers, colors, and music with your favorites.", colors: "from-[#FFBC0C] to-[#FFF25F]" },
+                            { number: 3, title: "Safe & Engaging", desc: "A child-friendly environment designed for playful learning.", colors: "from-[#D4002F] to-[#FF5177]" },
+                            { number: 4, title: "Creative Exploration", desc: "Encourage kids to express their imagination through fun activities.", colors: "from-[#FF8000] to-[#FFB266]" }, // 🟠 Orange Gradient
+                            { number: 5, title: "Interactive Storytelling", desc: "Discover stories and adventures that make learning more fun!", colors: "from-[#FF66B2] to-[#FF99CC]" }, // 🌸 Pink Gradient
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeUp}
+                                custom={index * 0.4}
+                                className="flex justify-start items-center gap-6 mb-6"
+                            >
+                                <div className={`h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}>
+                                    <span className="font-400 text-white text-[24px]">{item.number}</span>
+                                </div>
+                                <div>
+                                    <p className="font-400 text-[20px] leading-[24.2px] text-[#fff] uppercase">
+                                        {item.title}
+                                    </p>
+                                    <p className="font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font">
+                                        {item.desc}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+            </div>
+        </motion.section>
+    );
+};
+
+export default AboutSection;

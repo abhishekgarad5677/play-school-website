@@ -1,5 +1,7 @@
 import { useState } from "react";
-import logo from '../../public/playSchool-logo.png'
+import logo from '../../public/playSchool-logo.png';
+import { motion } from "framer-motion";
+
 
 const Navbar = () => {
 
@@ -14,7 +16,12 @@ const Navbar = () => {
 
     return (
         // <header className="sticky top-7 z-50 bg-white mx-10 rounded-[20px]">
-        <header className="bg-white mx-10 rounded-[20px] z-[100]">
+        <motion.header
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="bg-white mx-10 rounded-[20px] z-[100]"
+        >
 
             {/* routes navbar */}
             <nav aria-label="Global" className="flex items-center justify-between p-4">
@@ -39,16 +46,16 @@ const Navbar = () => {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-20">
                     {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-[14px] font-400  bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+                        <a key={item.name} href={item.href} className="text-[17px] font-[600]  bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
                             {item.name}
                         </a>
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
-                    <button className="border-[3px] rounded-[10px] text-[14px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[10px] cursor-pointer">
-                        <span className="text-[14px] font-400 bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">Signup</span>
+                    <button className="border-[3px] rounded-[10px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[8px] cursor-pointer">
+                        <span className="text-[16px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">Signup</span>
                     </button>
-                    <button className="px-[44px] py-[10px] text-[14px] text-white rounded-[10px] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] border-none cursor-pointer">
+                    <button className="px-[44px] py-[8px] font-[500] text-[16px] text-white rounded-[10px] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] border-none cursor-pointer">
                         Login
                     </button>
 
@@ -101,7 +108,7 @@ const Navbar = () => {
                     </div>
                 </DialogPanel>
             </Dialog> */}
-        </header>
+        </motion.header>
     )
 }
 

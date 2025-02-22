@@ -5,7 +5,7 @@ import { IoCallOutline } from 'react-icons/io5';
 
 const ContactSection = () => {
     return (
-        <div className="bg-[#57da4d] py-26">
+        <div className="bg-[#57da4d] pt-26 pb-12">
             <h4 className="text-[34px] font-[400] text-[#fff] leading-[41.14px] text-center mb-14">
                 Get In Touch With Us Now
             </h4>
@@ -39,7 +39,7 @@ const ContactSection = () => {
                             <textarea className="w-full h-full border border-gray-300 text-gray-300 text-sm rounded-[12px] p-2.5" placeholder='Message'></textarea>
                         </div>
                     </div>
-                    <button className='w-[100%] bg-gradient-to-t from-[#0EB401] to-[#3BFF2C] p-4 rounded-[100px] text-white text-[24px] leading-[29.04px] font-400 cursor-pointer'>
+                    <button className='w-[100%]  bg-gradient-to-t from-[#0EB401] to-[#3BFF2C] p-4 rounded-[100px] text-white text-[24px] leading-[29.04px] font-400 cursor-pointer'>
                         Send
                     </button>
                 </div>

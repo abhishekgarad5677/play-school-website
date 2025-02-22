@@ -1,23 +1,98 @@
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import BannerLeft from "../../public/banner-left.png";
+import BannerRight from "../../public/banner-right.png";
+import LockerRoom from "../../public/locker-room.png";
+import TapuTeam from "../../public/tapu-team.png";
+import BookShelf from "../../public/book-shelf.png";
+import Navbar from "./Navbar";
+import sonuAni from '../../public/animation-gif/SonuAnimation_Loop.gif'
+import TapuAni from '../../public/animation-gif/TapuCheerAnimation.gif'
+import offer1 from '../../public/animation-gif/Variation1.0.gif'
+import offer2 from '../../public/animation-gif/Variation2.0.gif'
+import offer3 from '../../public/animation-gif/Variation3.0.gif'
+import offer4 from '../../public/animation-gif/Variation4.0.gif'
+import offer5 from '../../public/animation-gif/Variation5.0.gif'
 
-import BannerLeft from '../../public/banner-left.png'
-import BannerRight from '../../public/banner-right.png'
-import LockerRoom from '../../public/locker-room.png'
-import TapuTeam from '../../public/tapu-team.png'
-import BookShelf from '../../public/book-shelf.png'
-import Navbar from './Navbar'
+// Counter Animation with Delay Trigger
+const Counter = ({ from, to, duration, start }) => {
+    const [count, setCount] = useState(from);
+
+    useEffect(() => {
+        if (!start) return; // ✅ Only start when `start` is true
+
+        let startTime;
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+            setCount(Math.round(progress * (to - from) + from));
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }, [start, from, to, duration]); // ✅ `start` triggers animation
+
+    return (<>{count}</>);
+};
+
+// Floating & 3D Tilt Image Component
+const FloatingImage = ({ src, className, delay }) => {
+    const imageVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
+        // floating: {
+        //     y: [-20, 3, -20], // Smooth Up & Down Floating Effect
+        //     transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+        // },
+        hover: {
+            rotateX: [-5, 5, 0], // Tilt on X-Axis
+            rotateY: [5, -5, 0], // Tilt on Y-Axis
+            transition: { duration: 0.5, ease: "easeInOut" },
+        },
+    };
+
+    return (
+        <motion.img
+            initial="hidden"
+            animate={["visible", "floating"]} // Runs both fade-in and floating animation
+            whileHover="hover"
+            variants={imageVariants}
+            className={`${className} pointer-events-none`}
+            src={src}
+            alt=""
+        />
+    );
+};
 
 const Banner = () => {
+
+    const [startCounter, setStartCounter] = useState(false);
+
     return (
-        <div className='h-[120vh] bg-[#0095ff] pt-6'>
+        <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-5 relative overflow-hidden">
             <Navbar />
-            <img className='absolute top-0 left-0 h-[290px]' src={BannerLeft} alt="" />
-            <img className='absolute top-0 right-0' src={BannerRight} alt="" />
-            <img className='absolute top-100 right-0' src={BookShelf} alt="" />
-            <img className='absolute top-65 left-0' src={LockerRoom} alt="" />
-            <img className='absolute top-110 left-1/2 transform -translate-x-1/2' src={TapuTeam} alt="" />
-            <div className="absolute top-35 left-1/2 transform -translate-x-1/2 text-center w-[70%]">
-                <p className="flex flex-wrap justify-center items-center gap-2 leading-[1.2] mb-6">
-                    <span className="text-[70px] bg-gradient-to-r from-[#D4002F] to-[#FF5177] bg-clip-text text-transparent">1000+</span>
+
+            {/* Floating Images (Left & Right) */}
+            <FloatingImage src={BannerLeft} className="absolute top-0 left-0 h-[290px]" delay={1} />
+            <FloatingImage src={BannerRight} className="absolute top-0 right-0 h-[290px]" delay={1} />
+
+            <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.6 } } }}
+                className="absolute top-100 right-0" src={BookShelf} alt="" />
+
+            <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.8 } } }}
+                className="absolute top-65 left-0" src={LockerRoom} alt="" />
+
+            {/* <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1 } } }}
+                className="absolute top-110 left-1/2 transform -translate-x-1/2" src={TapuTeam} alt="" /> */}
+
+            {/* Text & CTA Section */}
+            <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.2 } } }}
+                className="text-center mx-auto mt-10 w-[70%]"
+            >
+                {/* <p className="flex flex-wrap justify-center items-center gap-2 leading-[1.2] mb-6 font-light"> */}
+                <p className="flex flex-wrap justify-center items-center gap-2 leading-[1.2] mb-6 font-[500]">
+                    <motion.span className="text-[38px] text-[#FFF25F] bg-clip-text">
+                        1000+
+                    </motion.span>
                     <span className="text-[38px] text-[#fff]">Games in</span>
                     <span className="text-[38px] text-[#FFF25F]">Multiple Languages</span>
                     <span className="text-[38px] text-[#fff]">and</span> <br />
@@ -25,20 +100,90 @@ const Banner = () => {
                     <span className="text-[38px] text-[#fff]">at Your Fingertips!</span>
                 </p>
 
-                <p className="text-[24px] font-[400] text-[#fff]">Introductory Offer</p>
-                <p className="text-[54px] font-[400] text-[#fff]">₹499 only</p>
-                <p className='text-[22px] text-[#ed1443] mb-3'><s>₹999</s> 50% off</p>
+                <motion.p initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.6 } } }}
+                    className="text-[24px] text-[#fff] font-[500] mb-4"
+                >
+                    Introductory Offer
+                </motion.p>
 
-                <button className="relative px-[44px] py-[20px] text-[#fff] text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer">
+                {/* <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 1.8 } } }}
+                    className="text-center" src={offer1} alt="" /> */}
+                {/* <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.8 } } }}
+                    className="flex justify-center my-6"
+                > */}
+                    {/* <img src={offer1} alt="" /> */}
+                    {/* <img src={offer2} alt="" /> */}
+                    {/* <img src={offer3} alt="" /> */}
+                    {/* <img src={offer4} alt="" /> */}
+                    {/* <img src={offer5} alt="" /> */}
+                {/* </motion.div> */}
+
+                <motion.div className="w-fit mx-auto relative" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.8 } } }}>
+                    <p 
+                        className="font-[500] py-5"
+                    >
+                        <span className="text-[58px] text-white fredoka-font">₹</span>
+                        <span className="text-[58px] text-white"><s>999</s></span>
+                        <span className="text-[58px] text-white">/-</span>
+
+                    </p>
+                    <span className="absolute text-[38px] font-[600] top-[-5%] right-[23%] fredoka-font text-red-500">499/-</span>
+                </motion.div>
+
+                {/* <motion.p
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0, y: 50 },
+                        visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.8, delay: 1.8 },
+                        },
+                    }}
+                    onAnimationComplete={() => setTimeout(() => setStartCounter(true), 1000)} // ✅ Start counter after animation
+                    className="text-[54px] font-[400] bg-gradient-to-r from-[#D4002F] to-[#FF5177] bg-clip-text text-transparent"
+                >
+                    ₹<Counter from={999} to={499} duration={3} start={startCounter} />/- only
+                </motion.p> */}
+
+                {/* <motion.p initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.8 } } }}
+                    className="text-[54px] font-[400] bg-gradient-to-r from-[#D4002F] to-[#FF5177] bg-clip-text text-transparent"
+                >
+                    ₹<Counter from={999} to={499} duration={3} />/-only
+
+                </motion.p> */}
+
+                {/* <motion.p initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 2 } } }}
+                    className="text-[22px] text-[#fff] mb-3"
+                >
+                    <s>₹999</s> 50% off
+                </motion.p> */}
+
+                {/* Animated Button */}
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                    initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 2.5 } } }}
+                    className="relative px-[44px] py-[20px] text-[#fff] text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer font-[600]"
+                >
                     <span>Pre - Register Now</span>
                     <div className="absolute inset-0 p-[4px] rounded-[8px] bg-gradient-to-t from-[#BA6F19] to-[#FFC41F] -z-10">
                         <div className="h-full w-full bg-[#FFC41F] rounded-[6px]"></div>
                     </div>
-                </button>
+                </motion.button>
+            </motion.div>
+            <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.2 } } }}
+                className="flex justify-center gap-80 items-center h-full z-[100]"
+            >
+                {/* <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1 } } }}
+                    className=" h-80 w-45" src={TapuAni} alt="" />
 
-            </div>
+                <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1 } } }}
+                    className="h-70 w-55 mb-2" src={sonuAni} alt="" /> */}
+                <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1 } } }}
+                    className="z-[100]" src={TapuTeam} alt="" />
+            </motion.div>
         </div>
-    )
-}
+    );
+};
 
 export default Banner;

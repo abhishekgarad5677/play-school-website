@@ -2,7 +2,7 @@ import FooterBg from '../../public/footer-bg2.png'
 
 const FooterSection = () => {
     return (
-        <div className="bg-[#57da4d]">
+        <div className="bg-[#57da4d] py-10">
             {/* <div className="w-[90%] mx-auto">
 
             </div> */}

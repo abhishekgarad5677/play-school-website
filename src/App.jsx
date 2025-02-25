@@ -2,6 +2,7 @@ import './App.css'
 import DefaultLayout from './pages/DefaultLayout'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundCancellation from './pages/RefundCancellation'
+import Register from './pages/Register'
 import TermsCondition from './pages/TermsCondition'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         {/* <TermsCondition /> */}
         {/* <RefundCancellation /> */}
         {/* <PrivacyPolicy /> */}
+        {/* <Register /> */}
       </div>
     </>
   )

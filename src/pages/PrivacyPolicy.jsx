@@ -28,6 +28,50 @@ const PrivacyPolicy = () => {
             ],
             col4: 'Encrypted'
         },
+        {
+            col1: [
+                {
+                    sction1: 'Creation and setting up of account, help you log in and to provide access to and deliver our Services',
+                }
+            ]
+            ,
+            col2: [
+                {
+                    sction1: 'Phone number, User ID (which is automatically assigned on registration), gender, profile picture and any other information that the User chooses to share in the ‘Profile’ section of the Services (“Account Data”)'
+                }
+            ],
+            col3: [
+                {
+                    section1: 'Processing is necessary for performance of a contract with the user (i.e., creation of an account) and take steps prior to entering a contract with Users. Without this information, we will not be able to provide Services which the Users have requested.',
+                    section2: 'It is in our legitimate interest to verify your identity or conduct appropriate checks for fraud prevention and detection before authenticating you and granting you access to the Services.',
+                    section3: 'Where required by applicable laws we will obtain your consent. Processing is necessary for compliance with our legal obligations.',
+                    section4: 'Encrypted'
+                }
+            ],
+            col4: 'Encrypted'
+        },
+        {
+            col1: [
+                {
+                    sction1: 'Creation and setting up of account, help you log in and to provide access to and deliver our Services',
+                }
+            ]
+            ,
+            col2: [
+                {
+                    sction1: 'Phone number, User ID (which is automatically assigned on registration), gender, profile picture and any other information that the User chooses to share in the ‘Profile’ section of the Services (“Account Data”)'
+                }
+            ],
+            col3: [
+                {
+                    section1: 'Processing is necessary for performance of a contract with the user (i.e., creation of an account) and take steps prior to entering a contract with Users. Without this information, we will not be able to provide Services which the Users have requested.',
+                    section2: 'It is in our legitimate interest to verify your identity or conduct appropriate checks for fraud prevention and detection before authenticating you and granting you access to the Services.',
+                    section3: 'Where required by applicable laws we will obtain your consent. Processing is necessary for compliance with our legal obligations.',
+                    section4: 'Encrypted'
+                }
+            ],
+            col4: 'Encrypted'
+        },
     ]
 
     return (

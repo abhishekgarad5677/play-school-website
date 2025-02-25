@@ -16,7 +16,7 @@ const DefaultLayout = () => {
             <CurriculumSection />
             <SubscriptionSection />
             <ContactSection />
-            <FooterSection />
+            {/* <FooterSection /> */}
         </div>
     )
 }

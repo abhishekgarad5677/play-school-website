@@ -50,8 +50,8 @@ const CurriculumSection = () => {
 
     return (
         <div>
-            <section className="bg-[#4ecd45] py-24 px-2">
-                <h4 className="text-[34px] font-[400] text-[#fff] leading-[41.14px] text-center mb-12">
+            <section className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-28">
+                <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
                     Curriculum of TMKOC Playschool
                 </h4>
                 <Swiper

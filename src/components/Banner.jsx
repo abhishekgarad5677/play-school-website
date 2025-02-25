@@ -163,9 +163,9 @@ const Banner = () => {
                 {/* Animated Button */}
                 <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                     initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 2.5 } } }}
-                    className="relative px-[44px] py-[20px] text-[#fff] text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer font-[600]"
+                    className="relative px-[52px] py-[20px] text-[#fff] text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer font-[600]"
                 >
-                    <span>Pre - Register Now</span>
+                    <span>Enroll Now</span>
                     <div className="absolute inset-0 p-[4px] rounded-[8px] bg-gradient-to-t from-[#BA6F19] to-[#FFC41F] -z-10">
                         <div className="h-full w-full bg-[#FFC41F] rounded-[6px]"></div>
                     </div>

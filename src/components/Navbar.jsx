@@ -30,7 +30,7 @@ const Navbar = () => {
                         <img
                             alt=""
                             src={logo}
-                            className="h-[62] w-[184]"
+                            className="h-[75px]"
                         />
                     </a>
                 </div>

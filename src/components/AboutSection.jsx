@@ -45,7 +45,7 @@ const AboutSection = () => {
             whileInView="visible"  // ✅ Trigger animations when in view
             viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
             className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-28 px-6"
-            // className="bg-[url('../../public/section/about-bg.png')] h-full bg-cover bg-center bg-no-repeat px-6"
+        // className="bg-[url('../../public/section/about-bg.png')] h-full bg-cover bg-center bg-no-repeat px-6"
         >
             <div className="max-w-7xl mx-auto grid md:grid-cols-[40%_60%] gap-12 items-center">
                 {/* Left Image with Floating Effect */}
@@ -63,7 +63,7 @@ const AboutSection = () => {
                     <motion.h4
                         variants={fadeUp}
                         custom={0.3}
-                        className="font-400 text-[34px] text-[#fff] leading-[41.14px] mb-10"
+                        className="font-400 text-[36px] font-[500] text-[#fff] leading-[41.14px] mb-8"
                     >
                         What is TMKOC Playschool
                     </motion.h4>
@@ -84,10 +84,10 @@ const AboutSection = () => {
                                 className="flex justify-start items-center gap-6 mb-6"
                             >
                                 <div className={`h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}>
-                                    <span className="font-400 text-white text-[24px]">{item.number}</span>
+                                    <span className="font-[500] text-white text-[26px]">{item.number}</span>
                                 </div>
                                 <div>
-                                    <p className="font-400 text-[20px] leading-[24.2px] text-[#fff] uppercase">
+                                    <p className="font-400 text-[22px] font-[500] leading-[24.2px] text-[#fff] uppercase">
                                         {item.title}
                                     </p>
                                     <p className="font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font">

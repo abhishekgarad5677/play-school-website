@@ -1,26 +1,54 @@
+import { useNavigate } from "react-router-dom";
 
 const FooterSection = () => {
-    return (
-        <div className="bg-transparent">
-            <div className='bg-[url(../../public/footer-bg2.png)] bg-cover bg-center bg-no-repeat w-full h-75 relative z-10'>
-                <div className='absolute left-1/2 transform -translate-x-1/2 top-10 w-[60%]'>
-                    <div className="grid grid-cols-11 gap-4 border-y-1 border-white py-3 mb-10">
-                        <div className="border-r-1 border-white text-white font-[500] text-[16px] text-left">Home</div>
-                        <div className="border-r-1 border-white text-white font-[500] text-[16px] col-span-2 text-center">About</div>
-                        <div className="border-r-1 border-white text-white font-[500] text-[16px] col-span-3  text-center ">Terms & Conditions</div>
-                        <div className="border-r-1 border-white text-white font-[500] text-[16px] col-span-2 text-center ">Privacy Policy</div>
-                        <div className="text-white font-[500] text-[16px] col-span-3 text-right">Refund & Cancellation policy</div>
-                    </div>
-                    <h4 className="text-[20px] font-[500] text-[#fff] text-center mb-4">
-                        Copyright © 2025 TMKOC Playschool. All Rights Reserved.
-                    </h4>
-                    <h4 className="text-[16px] font-[500] text-[#fff] leading-[19.36px] text-center">
-                        Powered by Neela Mediatech Private Limited
-                    </h4>
-                </div>
+  const navigate = useNavigate();
+
+  return (
+    <div className="bg-transparent">
+      <div className="bg-[url(../../public/footer-bg2.png)] bg-cover bg-center bg-no-repeat w-full h-75 relative z-10">
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-10 w-[60%]">
+          <div className="grid grid-cols-11 gap-4 border-y-1 border-white py-3 mb-10">
+            <div
+              onClick={() => navigate("/")}
+              className="cursor-pointer border-r-1 border-white text-white font-[500] text-[16px] text-left"
+            >
+              Home
             </div>
+            <div
+              onClick={() => navigate("/")}
+              className="cursor-pointer border-r-1 border-white text-white font-[500] text-[16px] col-span-2 text-center"
+            >
+              About
+            </div>
+            <div
+              onClick={() => navigate("/terms-condition")}
+              className="cursor-pointer border-r-1 border-white text-white font-[500] text-[16px] col-span-3  text-center "
+            >
+              Terms & Conditions
+            </div>
+            <div
+              onClick={() => navigate("/privacy-policy")}
+              className="cursor-pointer border-r-1 border-white text-white font-[500] text-[16px] col-span-2 text-center "
+            >
+              Privacy Policy
+            </div>
+            <div
+              onClick={() => navigate("/refund-cancellation")}
+              className="cursor-pointer text-white font-[500] text-[16px] col-span-3 text-right"
+            >
+              Refund & Cancellation policy
+            </div>
+          </div>
+          <h4 className="text-[20px] font-[500] text-[#fff] text-center mb-4">
+            Copyright © 2025 TMKOC Playschool. All Rights Reserved.
+          </h4>
+          <h4 className="text-[16px] font-[500] text-[#fff] leading-[19.36px] text-center">
+            Powered by Neela Mediatech Private Limited
+          </h4>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default FooterSection;

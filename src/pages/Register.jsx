@@ -4,6 +4,8 @@ import bg2 from '../../public/register/bg2.png'
 import formLogo from '../../public/register/formlogo.png'
 import TapuTeam from "../../public/tapu-team.png";
 import logo from '../../public/playSchool-logo.png';
+import { Link } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Register = () => {
 
@@ -20,7 +22,11 @@ const Register = () => {
                 </div>
 
                 {/* Right Side - Content Section */}
-                <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className="w-full h-full flex flex-col justify-center items-center relative">
+                    <Link to={'/'} className="absolute flex items-center gap-0 top-5 left-0 text-[#0066FF] font-[600] text-[20px]">
+                        <IoIosArrowBack />
+                        Back
+                    </Link>
                     <div className="flex flex-col gap-4 text-center w-full max-w-sm mb-10">
                         <img className="w-65 h-55 mx-auto" src={formLogo} alt="" />
                         <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">

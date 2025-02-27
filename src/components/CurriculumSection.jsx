@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,7 +9,7 @@ import card3 from '../../public/curriculum/cirr-card-3.png';
 import card4 from '../../public/curriculum/cirr-card-4.png';
 import card5 from '../../public/curriculum/cirr-card-5.png';
 
-const CurriculumSection = () => {
+const CurriculumSection = forwardRef((props, ref) => {
 
     const slides = [
         {
@@ -49,7 +50,7 @@ const CurriculumSection = () => {
     ];
 
     return (
-        <div>
+        <div ref={ref}>
             <section className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-28">
                 <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
                     Curriculum of TMKOC Playschool
@@ -91,6 +92,6 @@ const CurriculumSection = () => {
             </section>
         </div>
     )
-}
+})
 
 export default CurriculumSection;

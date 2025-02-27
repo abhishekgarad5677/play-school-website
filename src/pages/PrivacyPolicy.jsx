@@ -1,9 +1,14 @@
 
+import { useEffect } from "react";
 import FooterSection from "../components/FooterSection";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 
 const PrivacyPolicy = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const tableData = [
         {
@@ -477,7 +482,9 @@ const PrivacyPolicy = () => {
                     </div>
                 </div>
             </div>
-            <FooterSection />
+            <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
+                <FooterSection />
+            </div>
         </div>
     )
 }

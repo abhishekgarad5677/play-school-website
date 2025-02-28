@@ -70,7 +70,7 @@ const Banner = ({ scrollToRef, refs }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-5 relative overflow-hidden">
+    <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply lg:pt-5 relative overflow-hidden">
       <Navbar scrollToRef={scrollToRef} refs={refs} />
 
       {/* Floating Images (Left & Right) */}
@@ -132,7 +132,7 @@ const Banner = ({ scrollToRef, refs }) => {
             transition: { duration: 0.8, delay: 1.2 },
           },
         }}
-        className="text-center mx-auto lg:mt-10 lg:w-[70%]"
+        className="text-center mx-auto lg:mt-10 w-[97%] lg:w-[70%]"
       >
         {/* <p className="flex flex-wrap justify-center items-center gap-2 leading-[1.2] mb-6 font-light"> */}
         {/* <p className="flex text-[28px] lg:text-[38px] flex-wrap justify-center items-center gap-1 lg:gap-2 leading-[1.2] mb-3 lg:mb-6 font-[500]">
@@ -144,23 +144,23 @@ const Banner = ({ scrollToRef, refs }) => {
           <span className="text-[#fff]">and</span>
           <span className="text-[#FFF25F]">Progress Reports</span>
           <span className="text-[#fff]">at Your Fingertips!</span>
-        </p> */}
-        <p className="flex text-[28px] lg:text-[38px] text-white flex-wrap justify-center items-center gap-1 lg:gap-2 leading-[1.2] mb-3 lg:mb-6 font-[500]">
-          {/* <motion.span className="text-[#FFF25F] bg-clip-text">
-            1000+
-          </motion.span> */}
+          </p> */}
+
+        <p className="space-x-2 text-[28px] lg:text-[38px] text-white flex-wrap justify-center items-center gap-1 lg:gap-2 leading-[1.1] lg:leading-[1.2] font-[500]">
           <span className="text-[#fff]">Learn</span>
           <span className="text-[#fff]">with</span>
-          <span className="text-[#ff]">love —</span>
+          <span className="text-[#ff]">love</span>
+        </p>
+        <p className="text-[28px] lg:text-[38px] text-white leading-[1.1] lg:leading-[1.2] mb-3 lg:mb-6 font-[500] w-full break-words whitespace-normal">
           <span className="text-[#FFF25F]">1000+</span>
-          <span className="text-[#fff]">gamified</span>
-          <span className="text-[#fff]">lessons,</span>
-          <span className="text-[#FFF25F]">multilingual</span>
-          <span className="text-[#fff]">fun,</span>
-          <span className="text-[#fff]">and</span>
-          <span className="text-[#fff]">smart</span>
-          <span className="text-[#FFF25F]">performance</span>
-          <span className="text-[#FFF25F]">tracking!</span>
+          <span className="text-[#fff]"> gamified</span>
+          <span className="text-[#fff]"> lessons,</span>
+          <span className="text-[#FFF25F]"> multilingual</span>
+          <span className="text-[#fff]"> fun,</span>
+          <span className="text-[#fff]"> and</span>
+          <span className="text-[#fff]"> smart</span>
+          <span className="text-[#FFF25F]"> performance</span>
+          <span className="text-[#FFF25F]"> tracking!</span>
         </p>
 
         <motion.p
@@ -192,7 +192,7 @@ const Banner = ({ scrollToRef, refs }) => {
         {/* </motion.div> */}
 
         <motion.div
-          className="w-fit mx-auto pt-2 lg:pt-7 lg:pb-5 relative"
+          className="w-fit mx-auto pt-4 lg:pt-7 lg:pb-5 relative"
           initial="hidden"
           animate="visible"
           variants={{
@@ -220,7 +220,7 @@ const Banner = ({ scrollToRef, refs }) => {
             <span className=" text-white">499</span>
             <span className=" text-white">/-</span>
           </p>
-          <span className="flex absolute text-[58px] font-[600] top-[10%] right-[14%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
+          <span className="flex  absolute text-[42px] lg:text-[58px] font-[600] top-[-30%] right-[0%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
             ₹ <s>999</s> /-
           </span>
         </motion.div>
@@ -270,7 +270,7 @@ const Banner = ({ scrollToRef, refs }) => {
               transition: { duration: 0.8, delay: 2 },
             },
           }}
-          className="relative px-[35px] py-[16px] lg:px-[52px] lg:py-[20px] text-[#fff] rtext-[16px] lg:text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer font-[600]"
+          className="relative px-[30px] py-[14px] lg:px-[52px] lg:py-[20px] text-[#fff] text-[18px] lg:text-[20px] font-400 rounded-[8px] bg-[#FFC41F] z-10 cursor-pointer font-[600]"
         >
           <span>Enroll Now</span>
           <div className="absolute inset-0 p-[4px] rounded-[8px] bg-gradient-to-t from-[#BA6F19] to-[#FFC41F] -z-10">

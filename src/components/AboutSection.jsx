@@ -46,10 +46,10 @@ const AboutSection = forwardRef((props, ref) => {
       initial="hidden"
       whileInView="visible" // ✅ Trigger animations when in view
       viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
-      className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-10 lg:py-28 px-6"
+      className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
       // className="bg-[url('../../public/section/about-bg.png')] h-full bg-cover bg-center bg-no-repeat px-6"
     >
-      <div className="max-w-5xl mx-auto grid md:grid-cols-[40%_60%] gap-12 items-center">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[40%_60%] gap-6 lg:gap-12 items-center">
         {/* Left Image with Floating Effect */}
         <motion.div variants={fadeInLeft}>
           <motion.img
@@ -65,7 +65,7 @@ const AboutSection = forwardRef((props, ref) => {
           <motion.h4
             variants={fadeUp}
             custom={0.3}
-            className="font-400 text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] mb-4 lg:mb-8"
+            className="font-400 text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] mb-1 lg:mb-8"
           >
             What is TMKOC Playschool
           </motion.h4>

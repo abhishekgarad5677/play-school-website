@@ -36,23 +36,31 @@ const UspSection = () => {
   ];
 
   return (
-    <div className="relative bg-[radial-gradient(circle,#FF85E9_10%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-28">
-      <img className="absolute left-0 top-[-100px]" src={topLeft} alt="" />
-      <img className="absolute right-0 top-[-100px]" src={topRigth} alt="" />
+    <div className="relative bg-[radial-gradient(circle,#FF85E9_10%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28">
       <img
-        className="absolute z-10  left-0 bottom-[0px] w-[338px]"
+        className="absolute left-0 top-[-6%] lg:top-[-100px] w-[25%] lg:w-auto"
+        src={topLeft}
+        alt=""
+      />
+      <img
+        className="absolute right-0 top-[-6%] lg:top-[-100px] w-[25%] lg:w-auto"
+        src={topRigth}
+        alt=""
+      />
+      <img
+        className="absolute z-10  left-0 bottom-[0px] w-[40%] lg:w-[338px]"
         src={bottomLeft}
         alt=""
       />
       <img
-        className="absolute z-10 right-0 bottom-[0px] w-[338px]"
+        className="absolute z-10 right-0 bottom-[0px] w-[40%] lg:w-[338px]"
         src={bottomRigth}
         alt=""
       />
-      <h4 className="text-[36px] font-[500] text-[#fff] leading-[41.14px] text-center">
+      <h4 className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] text-center mb-1 lg:mb-0">
         Why TMKOC Playschool
       </h4>
-      <p className="text-[18px] font-[400] text-[#fff] leading-[44px] text-center fredoka-font mb-10">
+      <p className="lg:text-[20px] leading-[22px] text-[18px] font-[400] text-[#fff] lg:leading-[44px] text-center fredoka-font mb-10">
         Where Fun Meets Learning! Join TMKOC characters on an exciting journey
         through alphabets, numbers, music & more.
       </p>
@@ -106,7 +114,7 @@ const UspSection = () => {
                     </div>
                 </div>
             </div> */}
-      <div className="grid grid-cols-4 gap-5 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5 max-w-7xl mx-4 lg:mx-auto">
         {data?.map((card, index) => (
           <div
             key={index}
@@ -115,13 +123,13 @@ const UspSection = () => {
                         transform transition-all duration-300 hover:scale-105 
                         hover:brightness-110 hover:shadow-[0_6px_15px_rgba(0,0,0,0.35)]`}
           >
-            <img className="w-[200px] h-[200px]" src={card.img} alt="" />
+            <img className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]" src={card.img} alt="" />
             <div>
-              <p className="text-[22px] font-[500] text-[#fff] leading-[26.62px] text-center mb-2">
+              <p className="text-[14px] lg:text-[22px] font-[500] text-[#fff] leading-[16px] lg:leading-[26.62px] text-center mb-2 lg:mb-1">
                 {card.title}
               </p>
               <p
-                className="text-[16px] font-[400] text-[#fff] leading-[28px] fredoka-font text-center"
+                className="text-[12px] font-[400] text-[#fff] leading-[16px] lg:leading-[28px] fredoka-font text-center"
                 dangerouslySetInnerHTML={{ __html: card.desc }}
               ></p>
             </div>

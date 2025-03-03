@@ -125,11 +125,11 @@ const UspSection = () => {
           >
             <img className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]" src={card.img} alt="" />
             <div>
-              <p className="text-[14px] lg:text-[22px] font-[500] text-[#fff] leading-[16px] lg:leading-[26.62px] text-center mb-2 lg:mb-1">
+              <p className="text-[14px] lg:text-[20px] font-[500] text-[#fff] leading-[16px] lg:leading-[26.62px] text-center mb-2 lg:mb-1">
                 {card.title}
               </p>
               <p
-                className="text-[12px] font-[400] text-[#fff] leading-[16px] lg:leading-[28px] fredoka-font text-center"
+                className="text-[12px] lg:text-[14px] font-[400] text-[#fff] leading-[16px] lg:leading-[24px] fredoka-font text-center"
                 dangerouslySetInnerHTML={{ __html: card.desc }}
               ></p>
             </div>

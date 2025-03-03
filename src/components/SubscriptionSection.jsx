@@ -167,7 +167,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
                 </span>
               </th>
               <th className="p-4 border border-gray-300 border-t-0">
-                <button className="bg-[#C3E8FF] mb-3 text-[#019FFF] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
+                <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
                   Basic
                 </button>
                 <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
@@ -233,7 +233,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               <td className="p-4 border-none rounded-bl-3xl border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                 Option to add another child with custom reporting
               </td>
-              <td className="p-4 border border-gray-300 text-green-600">
+              <td className="p-4 border border-gray-300 text-green-600 border-b-0">
                 <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
                   <FaCheck className="text-white text-[12px]" />
                 </div>
@@ -247,7 +247,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
             <tr>
               <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
               <td className="p-4 borde-none">
-                <button className="w-full cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#00CAFF_1%,#0066FF_120%)] text-white px-4 py-2 rounded-3xl">
+                <button className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl">
                   Apply Now
                 </button>
               </td>

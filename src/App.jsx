@@ -4,7 +4,7 @@ import './App.css'
 import DefaultLayout from './pages/DefaultLayout'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundCancellation from './pages/RefundCancellation'
-import Register from './pages/Register'
+import Register from './pages/register/RegisterMain'
 import TermsCondition from './pages/TermsCondition'
 
 function App() {

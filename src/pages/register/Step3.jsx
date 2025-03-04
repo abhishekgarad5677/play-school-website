@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
 import formLogo from "../../../public/register/formlogo.png";
 
-const Step3 = () => {
+const Step3 = ({ setCurrentStep }) => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -40,6 +38,10 @@ const Step3 = () => {
     const cityData = await response.json();
     setCities(cityData.data || []);
   };
+
+  const handleSubmit = () => {
+    setCurrentStep(3);
+  }
 
   return (
     <div>
@@ -146,11 +148,10 @@ const Step3 = () => {
             </select>
           </div>
         </div>
-
-        <button className="w-full py-3 my-4 text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all">
-          Register
-        </button>
       </form>
+      <button onClick={handleSubmit} className="w-full py-3 my-4 cursor-pointer text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all">
+        Register
+      </button>
     </div>
   );
 };

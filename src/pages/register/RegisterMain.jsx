@@ -6,12 +6,22 @@ import logo from "../../../public/playSchool-logo.png";
 import StepperForm from "./StepperForm";
 
 const RegisterMain = () => {
-
-
   return (
-    <div className="h-full p-10">
-      <div className="grid grid-cols-2 gap-4 h-full rounded-3xl p-6">
-        <div className="relative w-full h-full rounded-3xl overflow-hidden bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
+    <div className="h-full p-2 lg:p-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full rounded-3xl p-2 lg:p-6">
+        {/* for mobile */}
+        <div className="relative w-full lg:hidden h-full rounded-3xl overflow-hidden bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply p-4">
+          <img className="absolute left-0 top-0 w-full" src={bg1} alt="" />
+          <img className="absolute left-0 top-22 w-full" src={bg2} alt="" />
+          <img
+            className="h-[80px]"
+            src={logo}
+            alt=""
+          />
+        </div>
+
+        {/* for desktop */}
+        <div className="relative hidden lg:block w-full h-full rounded-3xl overflow-hidden bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
           <img className="absolute left-0 top-0 w-full" src={bg1} alt="" />
           <img className="absolute left-0 top-22 w-full" src={bg2} alt="" />
           <img

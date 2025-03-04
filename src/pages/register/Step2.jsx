@@ -52,8 +52,9 @@ const Step2 = ({ setCurrentStep }) => {
           <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             OTP Verification
           </p>
-          <p className="text-[18px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
-            Enter the OTP sent to +91 0987654321
+          <p className="text-[18px] font-[400] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+            Enter the OTP sent to{" "}
+            <span className="font-[600]">+91 0987654321</span>
           </p>
         </div>
       </div>
@@ -73,7 +74,12 @@ const Step2 = ({ setCurrentStep }) => {
         ))}
       </div>
 
-      <p className="text-center bg-gradient-to-r font-[600] from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">{timer}s</p>
+      <p className="text-center bg-gradient-to-r font-[600] from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent mb-2">
+        {timer}s
+      </p>
+      <p className="text-center bg-gradient-to-r font-[400] from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+        Didn’t receive OTP? <span className="font-[600]">Resend OTP</span>
+      </p>
 
       <button
         onClick={() => onVerify(otp.join(""))}

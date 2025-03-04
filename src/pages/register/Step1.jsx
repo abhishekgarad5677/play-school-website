@@ -3,11 +3,14 @@ import { IoIosArrowBack, IoMdCall } from "react-icons/io";
 import { Link } from "react-router-dom";
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import { IoCallOutline } from "react-icons/io5";
+import useGeoLocation from "../../utils/useGeoLocation";
 
 const Step1 = ({ setCurrentStep }) => {
   const getOtp = () => {
     setCurrentStep(1);
   };
+
+  // const { city, lat, lon, locationData } = useGeoLocation();
 
   return (
     <div>
@@ -24,13 +27,13 @@ const Step1 = ({ setCurrentStep }) => {
       </div>
 
       <form className="space-y-1 text-center mx-auto">
+        {/* <select className="mt-1 w-full px-4 py-2 border border-[#ccc] rounded-md text-[#484848] focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="">Select Country</option>
+        </select> */}
         <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <IoMdCall className="size-5 text-[#4646]" />
-          </div>
           <input
             type="tel"
-            className="border border-gray-300 text-gray-600 text-md rounded-[12px] block w-full ps-10 p-2.5"
+            className="border border-gray-300 text-gray-600 text-md rounded-[12px] block w-full p-2.5"
             placeholder="Enter your number"
             required
           />
@@ -49,5 +52,3 @@ const Step1 = ({ setCurrentStep }) => {
 };
 
 export default Step1;
-
-

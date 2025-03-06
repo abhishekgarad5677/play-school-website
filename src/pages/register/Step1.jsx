@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import { IoCallOutline } from "react-icons/io5";
 import useGeoLocation from "../../utils/useGeoLocation";
+import { CountryList } from "../../utils/CountryList";
 
 const Step1 = ({ setCurrentStep }) => {
   const getOtp = () => {
     setCurrentStep(1);
   };
 
-  // const { city, lat, lon, locationData } = useGeoLocation();
+  // const { city, lat, lon, locationData } = useGeoLocation(); 
 
   return (
     <div>
@@ -30,7 +31,14 @@ const Step1 = ({ setCurrentStep }) => {
         {/* <select className="mt-1 w-full px-4 py-2 border border-[#ccc] rounded-md text-[#484848] focus:outline-none focus:ring-2 focus:ring-blue-400">
           <option value="">Select Country</option>
         </select> */}
-        <div className="relative">
+        <div className="relative flex">
+          <select name="" className="rounded-[12px] border border-gray-300 text-gray-600 text-sm mr-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5   dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            {CountryList?.map((country, index) => (
+              <option key={index} value={country.code} selected={country.code === "IN"}>
+               +{country.phone } {country.code}
+              </option>
+            ))}
+          </select>
           <input
             type="tel"
             className="border border-gray-300 text-gray-600 text-md rounded-[12px] block w-full p-2.5"

@@ -41,7 +41,7 @@ const Step3 = ({ setCurrentStep }) => {
 
   const handleSubmit = () => {
     setCurrentStep(3);
-  }
+  };
 
   return (
     <div>
@@ -149,7 +149,10 @@ const Step3 = ({ setCurrentStep }) => {
           </div>
         </div>
       </form>
-      <button onClick={handleSubmit} className="w-full py-3 my-4 cursor-pointer text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all">
+      <button
+        onClick={handleSubmit}
+        className="w-full py-3 my-4 cursor-pointer text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all"
+      >
         Register
       </button>
     </div>

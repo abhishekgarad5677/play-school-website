@@ -123,7 +123,11 @@ const UspSection = () => {
                         transform transition-all duration-300 hover:scale-105 
                         hover:brightness-110 hover:shadow-[0_6px_15px_rgba(0,0,0,0.35)]`}
           >
-            <img className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]" src={card.img} alt="" />
+            <img
+              className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]"
+              src={card.img}
+              alt=""
+            />
             <div>
               <p className="text-[14px] lg:text-[20px] font-[500] text-[#fff] leading-[16px] lg:leading-[26.62px] text-center mb-2 lg:mb-1">
                 {card.title}

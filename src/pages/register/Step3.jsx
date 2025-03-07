@@ -45,15 +45,19 @@ const Step3 = ({ setCurrentStep }) => {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 text-center w-full mb-10">
-        <img className="w-65 h-55 mx-auto" src={formLogo} alt="" />
-        <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+      <div className="flex flex-col gap-4 text-center w-full mb-4 lg:mb-10">
+        <img
+          className="w-50 h-45 lg:w-65 lg:h-55 mx-auto"
+          src={formLogo}
+          alt=""
+        />
+        <p className="text-[28px] lg:text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
           Enter Parent Details
         </p>
       </div>
 
       <form className="space-y-6 w-full">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <label className="text-sm font-medium text-[#484848]">
               Enter First Name
@@ -76,7 +80,7 @@ const Step3 = ({ setCurrentStep }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <label className="text-sm font-medium text-[#484848]">
               Enter Phone Number
@@ -99,7 +103,7 @@ const Step3 = ({ setCurrentStep }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
           <div className="flex flex-col">
             <label className="text-sm font-medium text-[#484848]">
               Country

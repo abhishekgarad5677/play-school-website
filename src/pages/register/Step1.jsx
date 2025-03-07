@@ -11,17 +11,21 @@ const Step1 = ({ setCurrentStep }) => {
     setCurrentStep(1);
   };
 
-  // const { city, lat, lon, locationData } = useGeoLocation(); 
+  // const { city, lat, lon, locationData } = useGeoLocation();
 
   return (
     <div>
-      <div className="flex flex-col gap-2 text-center w-full mb-10">
-        <img className="w-45 h-55 mx-auto" src={phoneVerify} alt="" />
+      <div className="flex flex-col gap-2 text-center w-full mb-6 lg:mb-10">
+        <img
+          className="w-35 h-45 lg:w-45 lg:h-55 mx-auto"
+          src={phoneVerify}
+          alt=""
+        />
         <div>
-          <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+          <p className="text-[28px] lg:text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             Enter your phone number
           </p>
-          <p className="text-[18px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+          <p className="text-[16px] lg:text-[18px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             We will send you the 4 digit verification code
           </p>
         </div>
@@ -32,10 +36,17 @@ const Step1 = ({ setCurrentStep }) => {
           <option value="">Select Country</option>
         </select> */}
         <div className="relative flex">
-          <select name="" className="rounded-[12px] border border-gray-300 text-gray-600 text-sm mr-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5   dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select
+            name=""
+            className="rounded-[12px] border border-gray-300 text-gray-600 text-sm mr-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
             {CountryList?.map((country, index) => (
-              <option key={index} value={country.code} selected={country.code === "IN"}>
-               +{country.phone } {country.code}
+              <option
+                key={index}
+                value={country.code}
+                selected={country.code === "IN"}
+              >
+                +{country.phone} {country.code}
               </option>
             ))}
           </select>

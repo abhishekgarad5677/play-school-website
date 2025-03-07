@@ -1,10 +1,32 @@
+import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import CheckoutButton from "../../utils/CheckoutButton";
 
 const Step4 = ({ setCurrentStep }) => {
   const handleSubmit = () => {
     setCurrentStep(4);
   };
+
+  const [plans, setPlans] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
+      {
+        method: "POST", // Specify POST method
+        headers: {
+          "Content-Type": "application/json", // Ensure proper header for JSON payload
+        },
+        body: JSON.stringify({}), // Include any required request body if necessary
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => setPlans(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
+  console.log(plans);
 
   return (
     <div className="h-130">
@@ -17,16 +39,32 @@ const Step4 = ({ setCurrentStep }) => {
                   Features
                 </span>
               </th>
-              <th className="p-4 border border-gray-300">
-                <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
-                  Basic
-                </button>
-                <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                  ₹1099/yr
-                </p>
-                <p className="text-[20px] font-[700] text-[#484848]">₹599/yr</p>
-              </th>
-              <th className="p-4 border border-gray-300  rounded-tr-3xl">
+              {plans?.map((plan, index) => {
+                if (plan?.isLive == false) {
+                  return (
+                    <th className="p-4 border border-gray-300">
+                      {/* need to change this from backend */}
+                      {plan.id == 30 ? (
+                        <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
+                          Basic
+                        </button>
+                      ) : (
+                        <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
+                          Pro
+                        </button>
+                      )}
+                      {/* need to change this from backend */}
+                      <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
+                        ₹1099/yr
+                      </p>
+                      <p className="text-[20px] font-[700] text-[#484848]">
+                        ₹{plan?.amount / 100}/yr
+                      </p>
+                    </th>
+                  );
+                }
+              })}
+              {/* <th className="p-4 border border-gray-300  rounded-tr-3xl">
                 <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
                   Pro
                 </button>
@@ -34,7 +72,7 @@ const Step4 = ({ setCurrentStep }) => {
                   ₹1499/yr
                 </p>
                 <p className="text-[20px] font-[700] text-[#484848]">₹999/yr</p>
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -125,12 +163,7 @@ const Step4 = ({ setCurrentStep }) => {
           </tbody>
         </table>
       </div>
-      <button
-        onClick={handleSubmit}
-        className="w-full py-3 cursor-pointer my-4 text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all"
-      >
-        Next
-      </button>
+      <CheckoutButton />
     </div>
   );
 };

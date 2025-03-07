@@ -63,7 +63,7 @@ export default function StepperForm() {
         ))}
       </ol> */}
 
-      <div className="w-full" data-hs-stepper="">
+      <div className="w-full">
         {/* Stepper Nav */}
         <ul className="relative w-full flex flex-row gap-x-2">
           {steps.map((step, index) => (
@@ -117,7 +117,7 @@ export default function StepperForm() {
       </div>
 
       {/* Step Content */}
-      <div className="p-4 pb-0 mt-4">
+      <div className="p-2 lg:p-4 pb-0 mt-4">
         {currentStep === 0 && <Step1 setCurrentStep={setCurrentStep} />}
         {currentStep === 1 && <Step2 setCurrentStep={setCurrentStep} />}
         {currentStep === 2 && <Step3 setCurrentStep={setCurrentStep} />}

@@ -46,13 +46,17 @@ const Step2 = ({ setCurrentStep }) => {
 
   return (
     <div>
-      <div className="flex flex-col gap-2 text-center w-full mb-10">
-        <img className="w-45 h-55 mx-auto" src={phoneVerify} alt="" />
+      <div className="flex flex-col gap-2 text-center w-full mb-6 lg:mb-10">
+        <img
+          className="w-35 h-45 lg:w-45 lg:h-55 mx-auto"
+          src={phoneVerify}
+          alt=""
+        />
         <div>
-          <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+          <p className="text-[28px] lg:text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             OTP Verification
           </p>
-          <p className="text-[18px] font-[400] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+          <p className="text-[16px] lg:text-[18px] font-[400] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             Enter the OTP sent to{" "}
             <span className="font-[600]">+91 0987654321</span>
           </p>

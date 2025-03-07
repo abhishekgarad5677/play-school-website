@@ -50,7 +50,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
       <img className="absolute left-0 top-0" src={TopLeft} alt="" />
       <img className="absolute right-0 top-0" src={TopRight} alt="" />
       <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
-        TMKOC Playschool subscription plans
+        TMKOC Playschool Subscription Plans
       </h4>
       {/* <div className="mx-auto flex justify-center align-center gap-3">
         <div className=" border-none rounded-[18px] bg-white p-3 shadow-[0_4px_10px_rgba(0,0,0,0.25)]">

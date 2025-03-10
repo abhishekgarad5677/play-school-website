@@ -9,6 +9,7 @@ import Step5 from "./Step5";
 
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [userNumber, setUseeNumber] = useState();
 
   const steps = [
     "Enter Phone Number",
@@ -17,7 +18,6 @@ export default function StepperForm() {
     "Payment",
     "Child Information",
   ];
-
   return (
     <div className="w-full">
       <Link
@@ -118,9 +118,18 @@ export default function StepperForm() {
 
       {/* Step Content */}
       <div className="p-2 lg:p-4 pb-0 mt-4">
-        {currentStep === 0 && <Step1 setCurrentStep={setCurrentStep} />}
-        {currentStep === 1 && <Step2 setCurrentStep={setCurrentStep} />}
-        {currentStep === 2 && <Step3 setCurrentStep={setCurrentStep} />}
+        {currentStep === 0 && (
+          <Step1
+            setCurrentStep={setCurrentStep}
+            setUseeNumber={setUseeNumber}
+          />
+        )}
+        {currentStep === 1 && (
+          <Step2 setCurrentStep={setCurrentStep} userNumber={userNumber} />
+        )}
+        {currentStep === 2 && (
+          <Step3 setCurrentStep={setCurrentStep} userNumber={userNumber} />
+        )}
         {currentStep === 3 && <Step4 setCurrentStep={setCurrentStep} />}
         {currentStep === 4 && <Step5 />}
       </div>

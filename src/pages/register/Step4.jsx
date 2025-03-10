@@ -42,7 +42,7 @@ const Step4 = ({ setCurrentStep }) => {
               {plans?.map((plan, index) => {
                 if (plan?.isLive == false) {
                   return (
-                    <th className="p-4 border border-gray-300">
+                    <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}
                       {plan.id == 30 ? (
                         <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">

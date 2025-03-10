@@ -8,6 +8,7 @@ import card2 from "../../public/curriculum/cirr-card-2.png";
 import card3 from "../../public/curriculum/cirr-card-3.png";
 import card4 from "../../public/curriculum/cirr-card-4.png";
 import card5 from "../../public/curriculum/cirr-card-5.png";
+import card6 from "../../public/curriculum/cirr-card-6.png";
 
 const CurriculumSection = forwardRef((props, ref) => {
   const slides = [

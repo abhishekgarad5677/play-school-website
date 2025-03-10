@@ -36,9 +36,6 @@ const CheckoutButton = () => {
         subscriptionId = data?.data?.sub_id;
         console.log("Subscription ID:", data);
       }
-      // if (!subscriptionId) {
-      //   throw new Error("Subscription ID is missing");
-      // }
 
       // Step 2: Open Razorpay Checkout
       const options = {
@@ -46,38 +43,49 @@ const CheckoutButton = () => {
         subscription_id: subscriptionId, // Pass the subscriptionId here
         image:
           "https://www.tmkocstore.com/cdn/shop/files/Final_With_logo.svg?v=1739367557&width=190",
-        name: "Your Company",
+        name: "Play School",
         currency: "INR",
         handler: async function (response) {
           try {
-            console.log(response);
+            console.log("Payment Response:", response);
 
-            // Create FormData for verification API
-            const verificationFormData = new FormData();
-            verificationFormData.append(
-              "PaymentId",
-              response?.razorpay_payment_id
-            );
-            // verificationFormData.append("SubscriptionId", subscriptionId); // ✅ Use the stored subscriptionId
-            verificationFormData.append("SubscriptionId", response?.razorpay_subscription_id); // ✅ Use the stored subscriptionId
-            verificationFormData.append("Status", true);
+            // Wait for 10 seconds before calling the verification API
+            setTimeout(async () => {
+              try {
+                // Create FormData for verification API
+                const verificationFormData = new FormData();
+                verificationFormData.append(
+                  "PaymentId",
+                  response?.razorpay_payment_id
+                );
+                verificationFormData.append(
+                  "SubscriptionId",
+                  response?.razorpay_subscription_id
+                );
+                verificationFormData.append("Status", true);
 
-            // Make API call to verify payment
-            const verifyResponse = await axios.post(
-              "https://api-playschool.tmkocplayschool.com/api/Razorpay/verifypayment",
-              verificationFormData,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "multipart/form-data",
-                },
+                // Make API call to verify payment
+                const verifyResponse = await axios.post(
+                  "https://api-playschool.tmkocplayschool.com/api/Razorpay/verifypayment",
+                  verificationFormData,
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                      "Content-Type": "multipart/form-data",
+                    },
+                  }
+                );
+
+                console.log("Verification Response:", verifyResponse.data);
+                alert("Payment verified successfully!");
+              } catch (error) {
+                console.error("Payment Verification Error:", error);
+                alert("Payment verification failed! Please try again.");
               }
-            );
-
-            console.log("Verification Response:", verifyResponse.data);
+            }, 10000); // 10-second delay (10000ms)
           } catch (error) {
-            console.error("Payment Verification Error:", error);
-            alert("Payment verification failed!");
+            console.error("Payment Handler Error:", error);
+            alert("Something went wrong during payment processing!");
           }
         },
         prefill: {

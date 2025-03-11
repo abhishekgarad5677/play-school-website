@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import CheckoutButton from "../../utils/CheckoutButton";
 
-const Step4 = ({ setCurrentStep }) => {
+const Step4 = ({ setCurrentStep, userNumber }) => {
   const handleSubmit = () => {
     setCurrentStep(4);
   };
@@ -28,6 +28,14 @@ const Step4 = ({ setCurrentStep }) => {
 
   console.log(plans);
 
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [error, setError] = useState("");
+
+  const handleSelect = (plan) => {
+    setSelectedPlan(plan);
+    setError(""); // Clear error when a plan is selected
+  };
+
   return (
     <div className="h-130">
       <div className="overflow-x-auto">
@@ -44,7 +52,7 @@ const Step4 = ({ setCurrentStep }) => {
                   return (
                     <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}
-                      {plan.id == 30 ? (
+                      {plan?.planFeature == 1 ? (
                         <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
                           Basic
                         </button>
@@ -55,10 +63,10 @@ const Step4 = ({ setCurrentStep }) => {
                       )}
                       {/* need to change this from backend */}
                       <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                        ₹1099/yr
+                        ₹{plan?.amount / 100}/yr
                       </p>
                       <p className="text-[20px] font-[700] text-[#484848]">
-                        ₹{plan?.amount / 100}/yr
+                        ₹{plan?.discountedAmount / 100}/yr
                       </p>
                     </th>
                   );
@@ -135,35 +143,42 @@ const Step4 = ({ setCurrentStep }) => {
             </tr>
             <tr>
               <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
-              <td className="p-4 border-none">
-                <label className="w-full cursor-pointer block">
-                  <input
-                    type="radio"
-                    name="applyOption"
-                    className="hidden peer"
-                  />
-                  <div className="w-full font-[500] text-center peer-checked:scale-105 peer-checked:ring-2 peer-checked:ring-green-500 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl">
-                    Apply
-                  </div>
-                </label>
-              </td>
-              <td className="p-4 border-none">
-                <label className="w-full cursor-pointer block">
-                  <input
-                    type="radio"
-                    name="applyOption"
-                    className="hidden peer"
-                  />
-                  <div className="w-full text-center peer-checked:scale-105 peer-checked:ring-2 peer-checked:ring-[#AA008B] transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl">
-                    Apply
-                  </div>
-                </label>
-              </td>
+              {plans?.map((plan, index) => (
+                <td key={index} className="p-4 border-none">
+                  {plan?.isLive === false && (
+                    <label className="w-full cursor-pointer block">
+                      <input
+                        type="radio"
+                        name="applyOption"
+                        className="hidden peer"
+                        onChange={() => handleSelect(plan)}
+                      />
+                      <div
+                        className={`w-full font-[500] text-center peer-checked:scale-105 peer-checked:ring-2 transition-all px-4 py-2 rounded-3xl ${
+                          plan?.planFeature == 1
+                            ? "peer-checked:ring-green-500 bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white"
+                            : "peer-checked:ring-[#AA008B] bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white"
+                        }`}
+                      >
+                        Apply
+                      </div>
+                    </label>
+                  )}
+                </td>
+              ))}
             </tr>
           </tbody>
         </table>
       </div>
-      <CheckoutButton />
+      {error && (
+        <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+      )}
+      <CheckoutButton
+        selectedPlan={selectedPlan}
+        setError={setError}
+        setCurrentStep={setCurrentStep}
+        userNumber={userNumber}
+      />
     </div>
   );
 };

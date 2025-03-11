@@ -3,49 +3,321 @@ import { forwardRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import card1 from "../../public/curriculum/cirr-card-1.png";
-import card2 from "../../public/curriculum/cirr-card-2.png";
-import card3 from "../../public/curriculum/cirr-card-3.png";
-import card4 from "../../public/curriculum/cirr-card-4.png";
-import card5 from "../../public/curriculum/cirr-card-5.png";
-import card6 from "../../public/curriculum/cirr-card-6.png";
+
+import card1 from "../../public/curriculum/FirstWord.png";
+import card2 from "../../public/curriculum/BabyPhone.png";
+import card3 from "../../public/curriculum/AnimalWorld.png";
+import card4 from "../../public/curriculum/MemoryMatchUp.png";
+import card5 from "../../public/curriculum/Phonics.png";
+import card6 from "../../public/curriculum/PuzzleParade.png";
+import card7 from "../../public/curriculum/Alphabets.png";
+import card8 from "../../public/curriculum/CodeCamp.png";
+import card9 from "../../public/curriculum/BalloonBurst.png";
+import card10 from "../../public/curriculum/BrainGames.png";
+import card11 from "../../public/curriculum/Numbers.png";
+import card12 from "../../public/curriculum/LinkIt.png";
+import card13 from "../../public/curriculum/Maze.png";
+import card14 from "../../public/curriculum/MeasureMagic.png";
+import card15 from "../../public/curriculum/MusicMania.png";
+import card16 from "../../public/curriculum/ShapeSafari.png";
+import card17 from "../../public/curriculum/PaintParade.png";
+import card18 from "../../public/curriculum/PeekABoo.png";
+import card19 from "../../public/curriculum/Reflection.png";
+import card20 from "../../public/curriculum/SingAlong.png";
+import card21 from "../../public/curriculum/Slide&Solve.png";
+import card22 from "../../public/curriculum/SortItOut.png";
+import card23 from "../../public/curriculum/SoundSafari.png";
+import card24 from "../../public/curriculum/DoodleDash.png";
+import card25 from "../../public/curriculum/DotToDotDelight.png";
+import card26 from "../../public/curriculum/FamilyTree.png";
+import card27 from "../../public/curriculum/FindThemAll.png";
+import card28 from "../../public/curriculum/Fruit&VeggieFun.png";
+import card29 from "../../public/curriculum/Geography.png";
+import card30 from "../../public/curriculum/Grammar.png";
+import card31 from "../../public/curriculum/Identity.png";
+import card32 from "../../public/curriculum/Sports.png";
+import card33 from "../../public/curriculum/SpotThe.png";
+import card34 from "../../public/curriculum/TimeTelling.png";
+import card35 from "../../public/curriculum/TraceTime.png";
+import card36 from "../../public/curriculum/TreasureBox.png";
+import card37 from "../../public/curriculum/VehicleObstacle.png";
+import card38 from "../../public/curriculum/VroomVroom.png";
+import card39 from "../../public/curriculum/WordMagic.png";
 
 const CurriculumSection = forwardRef((props, ref) => {
   const slides = [
     {
       id: 1,
-      text: "Numerics",
-      details: "learning",
+      text: "FirstWord",
       imgSrc: card1,
-      bgColorInfo: "#4C3898",
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
     },
     {
       id: 2,
-      text: "Music instruments",
-      details: "learning",
+      text: "BabyPhone",
       imgSrc: card2,
-      bgColorInfo: "#BF2667",
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
     },
     {
       id: 3,
-      text: "fruits & vegetables",
-      details: "learning",
+      text: "AnimalWorld",
       imgSrc: card3,
-      bgColorInfo: "#F7C62C",
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
     },
     {
       id: 4,
-      text: "coloring",
-      details: "learning",
+      text: "MemoryMatchUp",
       imgSrc: card4,
-      bgColorInfo: "#44CD5A",
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
     },
     {
       id: 5,
-      text: "animals",
-      details: "learning",
+      text: "Phonics",
       imgSrc: card5,
-      bgColorInfo: "#34D1E8",
+      textCol: "#18DADF",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 6,
+      text: "PuzzleParade",
+      imgSrc: card6,
+      textCol: "#4CD017",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 7,
+      text: "Alphabets",
+      imgSrc: card7,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 8,
+      text: "CodeCamp",
+      imgSrc: card8,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 9,
+      text: "BalloonBurst",
+      imgSrc: card9,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 10,
+      text: "BrainGames",
+      imgSrc: card10,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 11,
+      text: "Numbers",
+      imgSrc: card11,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 12,
+      text: "LinkIt",
+      imgSrc: card12,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 13,
+      text: "Maze",
+      imgSrc: card13,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 14,
+      text: "MeasureMagic",
+      imgSrc: card14,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 15,
+      text: "MusicMania",
+      imgSrc: card15,
+      textCol: "#18DADF",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 16,
+      text: "ShapeSafari",
+      imgSrc: card16,
+      textCol: "#18DADF",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 17,
+      text: "PaintParade",
+      imgSrc: card17,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 18,
+      text: "PeekABoo",
+      imgSrc: card18,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 19,
+      text: "Reflection",
+      imgSrc: card19,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 20,
+      text: "SingAlong",
+      imgSrc: card20,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 21,
+      text: "Slide&Solve",
+      imgSrc: card21,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 22,
+      text: "SortItOut",
+      imgSrc: card22,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 23,
+      text: "SoundSafari",
+      imgSrc: card23,
+      textCol: "#18DADF",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 24,
+      text: "DoodleDash",
+      imgSrc: card24,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 25,
+      text: "DotToDotDelight",
+      imgSrc: card25,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 26,
+      text: "FamilyTree",
+      imgSrc: card26,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 27,
+      text: "FindThemAll",
+      imgSrc: card27,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 28,
+      text: "Fruit&VeggieFun",
+      imgSrc: card28,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 29,
+      text: "Geography",
+      imgSrc: card29,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 30,
+      text: "Grammar",
+      imgSrc: card30,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 31,
+      text: "Identity",
+      imgSrc: card31,
+      textCol: "#003EA2",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 32,
+      text: "Sports",
+      imgSrc: card32,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 33,
+      text: "SpotThe",
+      imgSrc: card33,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 34,
+      text: "TimeTelling",
+      imgSrc: card34,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 35,
+      text: "TraceTime",
+      imgSrc: card35,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 36,
+      text: "TreasureBox",
+      imgSrc: card36,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 37,
+      text: "VehicleObstacle",
+      imgSrc: card37,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 38,
+      text: "VroomVroom",
+      imgSrc: card38,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 39,
+      text: "WordMagic",
+      imgSrc: card39,
+      textCol: "#18DADF",
+      bgColorInfo: "#fff",
     },
   ];
 
@@ -58,40 +330,41 @@ const CurriculumSection = forwardRef((props, ref) => {
         <Swiper
           modules={[Autoplay]}
           spaceBetween={20}
-          slidesPerView={4.5} // Default (for desktops)
+          slidesPerView={6} // Default (for desktops)
           speed={5000} // Smooth animation speed
-        //   autoplay={{
-        //     delay: 0, // No pauses, keeps moving
-        //     disableOnInteraction: false, // Keeps autoplay running
-        //   }}
-          freeMode={true} // Non-snapping scrolling
-          loop={true} // Enables looping
-          loopAdditionalSlides={4} // Ensures smooth looping
+          autoplay={{
+            delay: 0, // Keeps moving continuously
+            disableOnInteraction: false, // Prevents stopping on touch/swipe
+            pauseOnMouseEnter: false, // Prevents stopping on hover
+          }}
+          freeMode={true} // Ensures non-snapping scrolling
+          loop={true} // Enables infinite scrolling
+          loopAdditionalSlides={40} // Preloads extra slides to make looping seamless
           breakpoints={{
             320: { slidesPerView: 1.5, spaceBetween: 10 }, // Mobile (small phones)
             480: { slidesPerView: 2, spaceBetween: 12 }, // Slightly larger screens
             640: { slidesPerView: 2.5, spaceBetween: 15 }, // Tablets
             768: { slidesPerView: 3.5, spaceBetween: 18 }, // Small laptops
-            1024: { slidesPerView: 4.5, spaceBetween: 20 }, // Desktops
+            1024: { slidesPerView: 6, spaceBetween: 20 }, // Desktops
           }}
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
               <div
-                className="flex justify-center flex-col items-center gap-4 border-none rounded-[20px] pt-4 px-1 pb-6 shadow-lg mb-3"
+                className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-3"
                 style={{ backgroundColor: slide.bgColorInfo }}
               >
                 <img
-                  className="w-[95%] h-[240px] lg:h-[265px] rounded-[12px]"
+                  className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
                   src={slide.imgSrc}
-                  alt=""
+                  alt={slide.text}
                 />
                 <div>
-                  <p className="text-[16px] lg:text-[24px] font-medium text-white text-center uppercase">
+                  <p
+                    className="text-[16px] lg:text-[20px] font-medium text-center uppercase"
+                    style={{ color: slide.textCol }}
+                  >
                     {slide.text}
-                  </p>
-                  <p className="text-[14px] lg:text-[20px] font-medium text-white text-center uppercase">
-                    {slide.details}
                   </p>
                 </div>
               </div>

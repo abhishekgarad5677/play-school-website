@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import LeftGroup from "../../public/subscription/subs-left.png";
 import RightGroup from "../../public/subscription/subs-right.png";
 import TopLeft from "../../public/subscription/top-left.png";
@@ -9,6 +9,7 @@ import card3 from "../../public/subscription/sub-card3.png";
 import card4 from "../../public/subscription/sub-card4.png";
 import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 const SubscriptionSection = forwardRef((props, ref) => {
   const data = [
@@ -35,6 +36,26 @@ const SubscriptionSection = forwardRef((props, ref) => {
       gradient: "bg-[radial-gradient(circle,#00CAFF_0%,#0066FF_120%)]",
     },
   ];
+
+  const navigate = useNavigate();
+
+  const [plans, setPlans] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
+      {
+        method: "POST", // Specify POST method
+        headers: {
+          "Content-Type": "application/json", // Ensure proper header for JSON payload
+        },
+        body: JSON.stringify({}), // Include any required request body if necessary
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => setPlans(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
   return (
     <div
@@ -166,7 +187,32 @@ const SubscriptionSection = forwardRef((props, ref) => {
                   Features
                 </span>
               </th>
-              <th className="p-4 border border-gray-300 border-t-0">
+              {plans?.map((plan, index) => {
+                if (plan?.isLive == false) {
+                  return (
+                    <th key={index} className="p-4 border border-gray-300">
+                      {/* need to change this from backend */}
+                      {plan?.planFeature == 1 ? (
+                        <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
+                          Basic
+                        </button>
+                      ) : (
+                        <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
+                          Pro
+                        </button>
+                      )}
+                      {/* need to change this from backend */}
+                      <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
+                        ₹{plan?.amount / 100}/yr
+                      </p>
+                      <p className="text-[20px] font-[700] text-[#484848]">
+                        ₹{plan?.discountedAmount / 100}/yr
+                      </p>
+                    </th>
+                  );
+                }
+              })}
+              {/* <th className="p-4 border border-gray-300 border-t-0">
                 <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
                   Basic
                 </button>
@@ -183,7 +229,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
                   ₹1499/yr
                 </p>
                 <p className="text-[20px] font-[700] text-[#484848]">₹999/yr</p>
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>
@@ -247,12 +293,18 @@ const SubscriptionSection = forwardRef((props, ref) => {
             <tr>
               <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
               <td className="p-4 borde-none">
-                <button className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl">
+                <button
+                  onClick={() => navigate("/register")}
+                  className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
+                >
                   Apply Now
                 </button>
               </td>
               <td className="p-4 borde-none">
-                <button className="w-full cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl">
+                <button
+                  onClick={() => navigate("/register")}
+                  className="w-full cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl"
+                >
                   Apply Now
                 </button>
               </td>

@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import logo from "../../public/playSchool-logo.png";
+// import TopLeft from "../../public/subscription/top-left.png";
+// import TopRight from "../../public/subscription/top-right.png";
+import LeftGroup from "../../public/subscription/subs-left.png";
+import RightGroup from "../../public/subscription/subs-right.png";
+import bottomLeft from "../../public/usp/bottom-left.png";
+import bottomRigth from "../../public/usp/bottom-right.png";
+import topLeft from "../../public/usp/top-left.png";
+import topRigth from "../../public/usp/top-right.png";
 
 const PasswordModal = ({ onUnlock }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    const CORRECT_PASSWORD = "tmkoc123@"; // Change this
+    const CORRECT_PASSWORD = "tmkoc123@";
     if (password === CORRECT_PASSWORD) {
       onUnlock(true); // Unlock access
       localStorage.setItem("authenticated", "true"); // Store authentication
@@ -16,8 +24,35 @@ const PasswordModal = ({ onUnlock }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center gap-10 justify-center bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
-      <img alt="" src={logo} className="h-[100px] lg:h-[100px]" />
+    <div className="fixed inset-0 flex flex-col items-center gap-10 justify-start pt-20 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
+      <img alt="" src={logo} className="h-[00px] lg:h-[150px]" />
+      {/* <img className="absolute top-[-1px] left-0" src={TopLeft} alt="" />
+      <img className="absolute top-[-1px] right-0" src={TopRight} alt="" /> */}
+      <img className="absolute top-70 left-[-20px]" src={LeftGroup} alt="" />
+      <img className="absolute top-80 right-20" src={RightGroup} alt="" />
+
+      <img
+        className="absolute left-0 top-[50px] lg:top-[1px] w-[25%] lg:w-auto"
+        src={topLeft}
+        alt=""
+      />
+      <img
+        className="absolute right-0 top-[-6%] lg:top-[1px] w-[25%] lg:w-auto"
+        src={topRigth}
+        alt=""
+      />
+
+      <img
+        className="absolute z-10  left-0 bottom-[0px] w-[40%] lg:w-[338px]"
+        src={bottomLeft}
+        alt=""
+      />
+      <img
+        className="absolute z-10 right-0 bottom-[0px] w-[40%] lg:w-[338px]"
+        src={bottomRigth}
+        alt=""
+      />
+
       <h2 className="text-5xl font-semibold text-red-600 text-center mb-4">
         Coming soon...
       </h2>

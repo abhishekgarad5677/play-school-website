@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import formLogo from "../../../public/register/formlogo.png";
 import useApi from "../../utils/api";
 import { form } from "framer-motion/client";
+import Cookies from "js-cookie";
+
 
 const Step3 = ({ setCurrentStep, userNumber }) => {
   const [countries, setCountries] = useState([]);
@@ -85,8 +87,12 @@ const Step3 = ({ setCurrentStep, userNumber }) => {
 
   useEffect(() => {
     if (resData) {
-      console.log(resData);
-      setCurrentStep(3);
+      if (resData?.status === true) {
+        const token = resData?.data?.token;
+        Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
+        console.log("Token saved in cookies:", token);
+        setCurrentStep(3);
+      }
     }
   }, [resData]);
 

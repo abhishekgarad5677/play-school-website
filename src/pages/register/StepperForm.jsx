@@ -130,7 +130,7 @@ export default function StepperForm() {
         {currentStep === 2 && (
           <Step3 setCurrentStep={setCurrentStep} userNumber={userNumber} />
         )}
-        {currentStep === 3 && <Step4 setCurrentStep={setCurrentStep} />}
+        {currentStep === 3 && <Step4 setCurrentStep={setCurrentStep} userNumber={userNumber} />}
         {currentStep === 4 && <Step5 />}
       </div>
     </div>

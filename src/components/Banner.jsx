@@ -220,8 +220,15 @@ const Banner = ({ scrollToRef, refs }) => {
             <span className=" text-white">599</span>
             <span className=" text-white">/-</span>
           </p>
-          <span className="flex  absolute text-[42px] lg:text-[58px] font-[600] top-[-30%] right-[0%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
+          {/* <span className="flex  absolute text-[42px] lg:text-[58px] font-[600] top-[-30%] right-[0%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
             ₹ <s>1099</s> /-
+          </span> */}
+          <span className="flex absolute text-[42px] lg:text-[58px] font-[600] top-[-30%] right-[0%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
+            {/* ₹{" "} */}
+            <span className="relative text-red-500 before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-[90%] before:h-[5px] before:bg-white before:rotate-[13deg] before:origin-center">
+            ₹1099/-
+            </span>{" "}
+            {/* /- */}
           </span>
         </motion.div>
 

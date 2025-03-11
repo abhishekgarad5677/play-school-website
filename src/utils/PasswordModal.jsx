@@ -24,7 +24,7 @@ const PasswordModal = ({ onUnlock }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center gap-10 justify-start pt-20 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
+    <div className="fixed inset-0 flex flex-col items-center gap-10 justify-start pt-16 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
       <img alt="" src={logo} className="h-[00px] lg:h-[150px]" />
       {/* <img className="absolute top-[-1px] left-0" src={TopLeft} alt="" />
       <img className="absolute top-[-1px] right-0" src={TopRight} alt="" /> */}

@@ -8,6 +8,7 @@ import Register from "./pages/register/RegisterMain";
 import TermsCondition from "./pages/TermsCondition";
 import Profile from "./pages/Profile";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<DefaultLayout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-cancellation" element={<RefundCancellation />} />

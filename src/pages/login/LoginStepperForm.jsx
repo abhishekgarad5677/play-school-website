@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
+// import Step1 from "./Step1";
+// import Step2 from "./Step2";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-import Step4 from "./Step4";
-import Step5 from "./Step5";
 
-export default function StepperForm() {
+export default function LoginStepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [userNumber, setUseeNumber] = useState();
 
   const steps = [
     "Enter Phone Number",
     "OTP Verification",
-    "Parent Information",
-    "Payment",
-    "Child Information",
   ];
   return (
     <div className="w-full">
@@ -82,7 +76,7 @@ export default function StepperForm() {
 
       {/* Step Content */}
       <div className="p-2 lg:p-4 pb-0 mt-4">
-        {currentStep === 0 && (
+        {/* {currentStep === 0 && (
           <Step1
             setCurrentStep={setCurrentStep}
             setUseeNumber={setUseeNumber}
@@ -90,14 +84,7 @@ export default function StepperForm() {
         )}
         {currentStep === 1 && (
           <Step2 setCurrentStep={setCurrentStep} userNumber={userNumber} />
-        )}
-        {currentStep === 2 && (
-          <Step3 setCurrentStep={setCurrentStep} userNumber={userNumber} />
-        )}
-        {currentStep === 3 && (
-          <Step4 setCurrentStep={setCurrentStep} userNumber={userNumber} />
-        )}
-        {currentStep === 4 && <Step5 />}
+        )} */}
       </div>
     </div>
   );

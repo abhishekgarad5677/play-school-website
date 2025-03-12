@@ -16,9 +16,9 @@ const Profile = () => {
   return (
     <div className="">
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] pt-5 pb-40 relative">
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-45 w-[85%] mx-auto">
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-15 w-[85%] mx-auto">
         {/* Parent Details */}
         <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-2xl relative">
           <img

@@ -143,9 +143,10 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
             </tr>
             <tr>
               <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
-              {plans?.map((plan, index) => (
-                <td key={index} className="p-4 border-none">
-                  {plan?.isLive === false && (
+              {plans
+                ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                .map((plan, index) => (
+                  <td key={index} className="p-4 border-none">
                     <label className="w-full cursor-pointer block">
                       <input
                         type="radio"
@@ -163,9 +164,8 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                         Apply
                       </div>
                     </label>
-                  )}
-                </td>
-              ))}
+                  </td>
+                ))}
             </tr>
           </tbody>
         </table>

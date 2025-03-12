@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
+import footerImg from "../../public/footer-bg2.png";
 
 const FooterSection = () => {
   const navigate = useNavigate();
 
   return (
     <div className="bg-transparent">
-      <div className="bg-[url(../../public/footer-bg2.png)] bg-cover bg-center bg-no-repeat w-full h-75 relative z-10">
+      <div
+        className="bg-cover bg-center bg-no-repeat w-full h-75 relative z-10"
+        style={{ backgroundImage: `url(${footerImg})` }}
+      >
         <div className="absolute left-1/2 transform -translate-x-1/2 top-10 w-[60%]">
           <div className="grid grid-cols-11 gap-4 border-y-1 border-white py-3 mb-10">
             <div

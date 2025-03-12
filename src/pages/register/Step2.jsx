@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import Spinner Icon
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import useApi from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const Step2 = ({ setCurrentStep, userNumber }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(30);
   const inputRefs = useRef([]);
+  const navigate = useNavigate();
 
   const { data, loading, error, makeRequest } = useApi(); // useApi hook manages loading
 
@@ -70,13 +72,21 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
   // **Automatically handle API response when `data` updates**
   useEffect(() => {
     console.log(data);
-    if (data && data.isRegistered === false) {
+    if (data && data?.isRegistered === false) {
       setCurrentStep(2);
-    } else if (data && data.isSubscribed === false) {
+    } else if (data && data?.isSubscribed === false) {
       setCurrentStep(3);
       console.log("User not registered");
-
-      // setCurrentStep(2);
+    } else if (data && data?.isChildAdded === false) {
+      setCurrentStep(4);
+      console.log("User not registered");
+    } else if (
+      data?.isRegistered === true &&
+      data?.isSubscribed === true &&
+      data?.isChildAdded === true
+    ) {
+      // make api call for the use to login
+      navigate("/profile");
     }
   }, [data]);
 

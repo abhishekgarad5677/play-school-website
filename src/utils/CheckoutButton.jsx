@@ -57,7 +57,7 @@ const CheckoutButton = ({
         subscription_id: subscriptionId, // Pass the subscriptionId here
         image: logo,
         name: "Play School",
-        currency: "INR",
+        // currency: "INR",
         handler: async function (response) {
           try {
             console.log("Payment Response:", response);

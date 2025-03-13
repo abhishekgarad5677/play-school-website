@@ -3,26 +3,60 @@ import ContactBanner from "../../public/contact/contact-banner.png";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
 import FooterSection from "./FooterSection";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1, ease: "easeOut", delay: 0.5 },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-28">
-      <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
-        {/* Get In Touch With Us Now */} Contact Us
-      </h4>
+    <motion.div
+      initial="hidden"
+      whileInView="visible" // ✅ Trigger animations when in view
+      viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
+      className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-28"
+    >
+      <motion.div variants={fadeUp} custom={0.3}>
+        <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
+          {/* Get In Touch With Us Now */} Contact Us
+        </h4>
+      </motion.div>
       <div className="max-w-7xl mx-auto mb-10 px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Image Section */}
-          <div className="text-center relative hidden md:block">
-            <img
+          <motion.div
+            variants={fadeInLeft}
+            className="text-center relative hidden md:block"
+          >
+            <motion.img
               className="h-[330px] w-auto absolute md:static top-[-50px] md:top-[-130px]"
               src={ContactBanner}
               alt=""
             />
-          </div>
+          </motion.div>
 
           {/* Form Section */}
-          <div className="md:col-span-2">
+          <motion.div variants={fadeInRight} className="md:col-span-2">
             <div className="gap-4 bg-white rounded-[20px] p-7 w-full shadow-md">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 {/* Left Side Inputs */}
@@ -76,12 +110,14 @@ const ContactSection = () => {
                 Send
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <FooterSection />
-    </div>
+      <motion.div variants={fadeUp} custom={0.3}>
+        <FooterSection />
+      </motion.div>
+    </motion.div>
   );
 };
 

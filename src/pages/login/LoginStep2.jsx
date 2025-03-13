@@ -3,8 +3,9 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import Spinner Ic
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import useApi from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const Step2 = ({ setCurrentStep, userNumber }) => {
+const LoginStep2 = ({ setCurrentStep, userNumber }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState(30);
   const inputRefs = useRef([]);
@@ -51,8 +52,8 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
     const formData = new FormData();
     formData.append("PhoneNumber", userNumber);
 
-    const response = await makeRequest(
-      "https://api-playschool.tmkocplayschool.com/api/Auth/user/isregistereduser",
+    await makeRequest(
+      "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
       "POST",
       formData,
       {
@@ -72,21 +73,10 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
   // **Automatically handle API response when `data` updates**
   useEffect(() => {
     console.log(data);
-    if (data && data?.isRegistered === false) {
-      setCurrentStep(2);
-    } else if (data && data?.isSubscribed === false) {
-      setCurrentStep(3);
-      console.log("User not registered");
-    } else if (data && data?.isChildAdded === false) {
-      setCurrentStep(4);
-      console.log("User not registered");
-    } else if (
-      data?.isRegistered === true &&
-      data?.isSubscribed === true &&
-      data?.isChildAdded === true
-    ) {
-      // make api call for the use to login
-      // navigate("/profile");
+    if (data && data?.status === true) {
+      const token = data?.data?.token;
+      Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
+      navigate("/profile");
     }
   }, [data]);
 
@@ -157,4 +147,4 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
   );
 };
 
-export default Step2;
+export default LoginStep2;

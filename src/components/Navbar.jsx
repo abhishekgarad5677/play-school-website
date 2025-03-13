@@ -37,11 +37,7 @@ const Navbar = ({ scrollToRef, refs }) => {
             <img alt="" src={logo} className="h-[75px]" />
           </Link> */}
           <Link to={"/"} className="-m-1.5 p-1.5 flex items-center gap-1">
-            <img
-              alt=""
-              src={logo}
-              className="h-[50px] lg:h-[75px]"
-            />
+            <img alt="" src={logo} className="h-[50px] lg:h-[75px]" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -74,7 +70,10 @@ const Navbar = ({ scrollToRef, refs }) => {
               Signup
             </span>
           </button>
-          <button className="px-[44px] py-[8px] font-[500] text-[16px] text-white rounded-[10px] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] border-none cursor-pointer">
+          <button
+            onClick={() => navigate("/login")}
+            className="px-[44px] py-[8px] font-[500] text-[16px] text-white rounded-[10px] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] border-none cursor-pointer"
+          >
             Login
           </button>
         </div>

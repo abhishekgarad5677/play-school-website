@@ -59,7 +59,7 @@ const Step5 = () => {
 
   useEffect(() => {
     console.log(childData);
-    if (childData?.status === false) {
+    if (childData?.status === true) {
       navigate("/profile");
     }
   }, [childData]);

@@ -43,6 +43,7 @@ import card36 from "../../public/curriculum/TreasureBox.png";
 import card37 from "../../public/curriculum/VehicleObstacle.png";
 import card38 from "../../public/curriculum/VroomVroom.png";
 import card39 from "../../public/curriculum/WordMagic.png";
+import { motion } from "framer-motion";
 
 const CurriculumSection = forwardRef((props, ref) => {
   const slides = [
@@ -167,7 +168,7 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 18,
-      text: "Peek ABoo",
+      text: "Peek A Boo",
       imgSrc: card18,
       textCol: "#7C00DB",
       bgColorInfo: "#fff",
@@ -236,17 +237,17 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
-      id: 28,
-      text: "Fruit & VeggieFun",
-      imgSrc: card28,
-      textCol: "#DB9300",
-      bgColorInfo: "#fff",
-    },
-    {
       id: 29,
       text: "Geography",
       imgSrc: card29,
       textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 28,
+      text: "Fruit & VeggieFun",
+      imgSrc: card28,
+      textCol: "#DB9300",
       bgColorInfo: "#fff",
     },
     {
@@ -264,13 +265,6 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
-      id: 32,
-      text: "Sports",
-      imgSrc: card32,
-      textCol: "#7C00DB",
-      bgColorInfo: "#fff",
-    },
-    {
       id: 33,
       text: "Spot The",
       imgSrc: card33,
@@ -278,16 +272,16 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
-      id: 34,
-      text: "Time Telling",
-      imgSrc: card34,
-      textCol: "#DB9300",
+      id: 32,
+      text: "Sports",
+      imgSrc: card32,
+      textCol: "#7C00DB",
       bgColorInfo: "#fff",
     },
     {
-      id: 35,
-      text: "Trace Time",
-      imgSrc: card35,
+      id: 34,
+      text: "Time Telling",
+      imgSrc: card34,
       textCol: "#DB9300",
       bgColorInfo: "#fff",
     },
@@ -299,9 +293,9 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
-      id: 37,
-      text: "Vehicle Obstacle",
-      imgSrc: card37,
+      id: 35,
+      text: "Trace Time",
+      imgSrc: card35,
       textCol: "#DB9300",
       bgColorInfo: "#fff",
     },
@@ -313,6 +307,13 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
+      id: 37,
+      text: "Vehicle Obstacle",
+      imgSrc: card37,
+      textCol: "#DB9300",
+      bgColorInfo: "#fff",
+    },
+    {
       id: 39,
       text: "Word Magic",
       imgSrc: card39,
@@ -321,38 +322,159 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
   ];
 
+  const slide1 = slides.slice(0, Math.ceil(slides.length / 2));
+  const slide2 = slides.slice(Math.ceil(slides.length / 2));
+
   return (
-    <div ref={ref}>
-      <section className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28">
-        <h4 className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[30px] lg:leading-[41.14px] text-center mb-8 lg:mb-10 mx-2 lg:mx-auto">
+    // <div ref={ref}>
+    //   <section className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28">
+    //     <h4 className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[30px] lg:leading-[41.14px] text-center mb-8 lg:mb-10 mx-2 lg:mx-auto">
+    //       Curriculum of TMKOC Playschool
+    //     </h4>
+    //     <Swiper
+    //       modules={[Autoplay]}
+    //       spaceBetween={20}
+    //       slidesPerView={6} // Default (for desktops)
+    //       speed={5000} // Smooth animation speed
+    //       autoplay={{
+    //         delay: 0, // Keeps moving continuously
+    //         disableOnInteraction: false, // Prevents stopping on touch/swipe
+    //         pauseOnMouseEnter: false, // Prevents stopping on hover
+    //       }}
+    //       freeMode={true} // Ensures non-snapping scrolling
+    //       loop={true} // Enables infinite scrolling
+    //       loopAdditionalSlides={40} // Preloads extra slides to make looping seamless
+    //       breakpoints={{
+    //         320: { slidesPerView: 1.5, spaceBetween: 10 }, // Mobile (small phones)
+    //         480: { slidesPerView: 2, spaceBetween: 12 }, // Slightly larger screens
+    //         640: { slidesPerView: 2.5, spaceBetween: 15 }, // Tablets
+    //         768: { slidesPerView: 3.5, spaceBetween: 18 }, // Small laptops
+    //         1024: { slidesPerView: 6, spaceBetween: 20 }, // Desktops
+    //       }}
+    //     >
+    //       {slides.map((slide, index) => (
+    //         <SwiperSlide key={index}>
+    //           <div
+    //             className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-3"
+    //             style={{ backgroundColor: slide.bgColorInfo }}
+    //           >
+    //             <img
+    //               className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
+    //               src={slide.imgSrc}
+    //               alt={slide.text}
+    //             />
+    //             <div>
+    //               <p
+    //                 className="text-[16px] lg:text-[20px] font-medium text-center uppercase"
+    //                 style={{ color: slide.textCol }}
+    //               >
+    //                 {slide.text}
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </SwiperSlide>
+    //       ))}
+    //     </Swiper>
+    //     <Swiper
+    //       modules={[Autoplay]}
+    //       spaceBetween={20}
+    //       slidesPerView={6} // Default (for desktops)
+    //       speed={5000} // Smooth animation speed
+    //       autoplay={{
+    //         delay: 0, // Keeps moving continuously
+    //         disableOnInteraction: false, // Prevents stopping on touch/swipe
+    //         pauseOnMouseEnter: false, // Prevents stopping on hover
+    //       }}
+    //       freeMode={true} // Ensures non-snapping scrolling
+    //       loop={true} // Enables infinite scrolling
+    //       loopAdditionalSlides={40} // Preloads extra slides to make looping seamless
+    //       breakpoints={{
+    //         320: { slidesPerView: 1.5, spaceBetween: 10 }, // Mobile (small phones)
+    //         480: { slidesPerView: 2, spaceBetween: 12 }, // Slightly larger screens
+    //         640: { slidesPerView: 2.5, spaceBetween: 15 }, // Tablets
+    //         768: { slidesPerView: 3.5, spaceBetween: 18 }, // Small laptops
+    //         1024: { slidesPerView: 6, spaceBetween: 20 }, // Desktops
+    //       }}
+    //     >
+    //       {slides.map((slide, index) => (
+    //         <SwiperSlide key={index}>
+    //           <div
+    //             className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-3"
+    //             style={{ backgroundColor: slide.bgColorInfo }}
+    //           >
+    //             <img
+    //               className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
+    //               src={slide.imgSrc}
+    //               alt={slide.text}
+    //             />
+    //             <div>
+    //               <p
+    //                 className="text-[16px] lg:text-[20px] font-medium text-center uppercase"
+    //                 style={{ color: slide.textCol }}
+    //               >
+    //                 {slide.text}
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </SwiperSlide>
+    //       ))}
+    //     </Swiper>
+    //   </section>
+    // </div>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      ref={ref}
+      // initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.section
+        className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28"
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <motion.h4
+          className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[30px] lg:leading-[41.14px] text-center mb-8 lg:mb-10 mx-2 lg:mx-auto"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           Curriculum of TMKOC Playschool
-        </h4>
+        </motion.h4>
+
+        {/* Top Swiper */}
         <Swiper
           modules={[Autoplay]}
           spaceBetween={20}
-          slidesPerView={6} // Default (for desktops)
-          speed={5000} // Smooth animation speed
+          slidesPerView={6}
+          speed={5000}
           autoplay={{
-            delay: 0, // Keeps moving continuously
-            disableOnInteraction: false, // Prevents stopping on touch/swipe
-            pauseOnMouseEnter: false, // Prevents stopping on hover
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
           }}
-          freeMode={true} // Ensures non-snapping scrolling
-          loop={true} // Enables infinite scrolling
-          loopAdditionalSlides={40} // Preloads extra slides to make looping seamless
+          freeMode={true}
+          loop={true}
+          // loopAdditionalSlides={40}
           breakpoints={{
-            320: { slidesPerView: 1.5, spaceBetween: 10 }, // Mobile (small phones)
-            480: { slidesPerView: 2, spaceBetween: 12 }, // Slightly larger screens
-            640: { slidesPerView: 2.5, spaceBetween: 15 }, // Tablets
-            768: { slidesPerView: 3.5, spaceBetween: 18 }, // Small laptops
-            1024: { slidesPerView: 6, spaceBetween: 20 }, // Desktops
+            320: { slidesPerView: 1.5, spaceBetween: 10 },
+            480: { slidesPerView: 2, spaceBetween: 12 },
+            640: { slidesPerView: 2.5, spaceBetween: 15 },
+            768: { slidesPerView: 3.5, spaceBetween: 18 },
+            1024: { slidesPerView: 6, spaceBetween: 20 },
           }}
         >
-          {slides.map((slide, index) => (
+          {slide1.map((slide, index) => (
             <SwiperSlide key={index}>
               <div
-                className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-3"
+                className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-6"
                 style={{ backgroundColor: slide.bgColorInfo }}
+                // initial={{ opacity: 0, scale: 0.9 }}
+                // whileInView={{ opacity: 1, scale: 1 }}
+                // transition={{ duration: 0.5, ease: "easeOut" }}
+                // viewport={{ once: true }}
               >
                 <img
                   className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
@@ -371,8 +493,59 @@ const CurriculumSection = forwardRef((props, ref) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </section>
-    </div>
+
+        {/* Bottom Swiper (Reverse Direction) */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={20}
+          slidesPerView={6}
+          speed={5000}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            reverseDirection: true, // Moves in the opposite direction
+          }}
+          freeMode={true}
+          loop={true}
+          // loopAdditionalSlides={40}
+          breakpoints={{
+            320: { slidesPerView: 1.5, spaceBetween: 10 },
+            480: { slidesPerView: 2, spaceBetween: 12 },
+            640: { slidesPerView: 2.5, spaceBetween: 15 },
+            768: { slidesPerView: 3.5, spaceBetween: 18 },
+            1024: { slidesPerView: 6, spaceBetween: 20 },
+          }}
+        >
+          {slide2.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="flex justify-center flex-col items-center gap-2 border-none rounded-[20px] pt-4 px-1 pb-4 shadow-lg mb-3"
+                style={{ backgroundColor: slide.bgColorInfo }}
+                // initial={{ opacity: 0, scale: 0.9 }}
+                // whileInView={{ opacity: 1, scale: 1 }}
+                // transition={{ duration: 0.5, ease: "easeOut" }}
+                // viewport={{ once: true }}
+              >
+                <img
+                  className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
+                  src={slide.imgSrc}
+                  alt={slide.text}
+                />
+                <div>
+                  <p
+                    className="text-[16px] lg:text-[20px] font-medium text-center uppercase"
+                    style={{ color: slide.textCol }}
+                  >
+                    {slide.text}
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </motion.section>
+    </motion.div>
   );
 });
 

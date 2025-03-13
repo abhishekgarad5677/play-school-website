@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 // import Step2 from "./Step2";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import LoginStep1 from "./LoginStep1";
+import LoginStep2 from "./LoginStep2";
 
 export default function LoginStepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [userNumber, setUseeNumber] = useState();
+  const [userNumber, setUserNumber] = useState();
 
-  const steps = [
-    "Enter Phone Number",
-    "OTP Verification",
-  ];
+  const steps = ["Enter Phone Number", "OTP Verification"];
   return (
     <div className="w-full">
       <Link
@@ -23,7 +22,7 @@ export default function LoginStepperForm() {
 
       <div className="w-full">
         {/* Stepper Nav */}
-        <ul className="relative w-full flex flex-row gap-x-2">
+        {/* <ul className="relative w-full flex flex-row gap-x-2">
           {steps.map((step, index) => (
             <li
               key={index}
@@ -61,30 +60,27 @@ export default function LoginStepperForm() {
                     index + 1
                   )}
                 </span>
-                {/* <span className="ms-2 text-sm font-medium text-gray-800">
-                  {step}
-                </span> */}
               </span>
               {index !== steps.length - 1 && (
                 <div className="w-full h-px flex-1 bg-gray-200"></div>
               )}
             </li>
           ))}
-        </ul>
+        </ul> */}
         {/* End Stepper Nav */}
       </div>
 
       {/* Step Content */}
       <div className="p-2 lg:p-4 pb-0 mt-4">
-        {/* {currentStep === 0 && (
-          <Step1
+        {currentStep === 0 && (
+          <LoginStep1
             setCurrentStep={setCurrentStep}
-            setUseeNumber={setUseeNumber}
+            setUserNumber={setUserNumber}
           />
         )}
         {currentStep === 1 && (
-          <Step2 setCurrentStep={setCurrentStep} userNumber={userNumber} />
-        )} */}
+          <LoginStep2 setCurrentStep={setCurrentStep} userNumber={userNumber} />
+        )}
       </div>
     </div>
   );

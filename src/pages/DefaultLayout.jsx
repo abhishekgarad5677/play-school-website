@@ -8,6 +8,7 @@ import SubscriptionSection from "../components/SubscriptionSection";
 import UspSection from "../components/UspSection";
 import { useLocation } from "react-router-dom";
 
+
 const DefaultLayout = () => {
   const location = useLocation(); // ✅ Get location state
 

@@ -11,82 +11,52 @@ import avgBg from "../../public/profile/avg-bg.png";
 import scoreBg from "../../public/profile/score-bg.png";
 import { TbDeviceMobileCheck } from "react-icons/tb";
 import { MdError } from "react-icons/md";
+import useApi from "../utils/api";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const Profile = () => {
+  const { data, makeRequest } = useApi();
+  const [userData, setUserData] = useState(null);
+  const [userFirstName, setUserFirstName] = useState("");
+
+  useEffect(() => {
+    const token = Cookies.get("authToken"); // Retrieve token from cookies
+
+    if (token) {
+      makeRequest(
+        "https://api-playschool.tmkocplayschool.com/api/Auth/user/profile",
+        "POST",
+        null,
+        {
+          Authorization: `Bearer ${token}`, // Send token in headers
+        }
+      );
+    }
+  }, [makeRequest]);
+
+  useEffect(() => {
+    if (data?.status === true) {
+      setUserData(data?.data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (userData !== null) {
+      setUserFirstName(userData[1].split(" "));
+    }
+  }, [userData]);
+
+  console.log(userData);
+
   return (
     <div className="">
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] pt-5 pb-40 relative">
         {/* <Navbar /> */}
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2 top-15 w-[85%] mx-auto">
-        {/* Parent Details */}
-        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-2xl relative">
-          <img
-            src={parentsProfile}
-            alt="Parent Avatar"
-            className="w-30 h-30 rounded-full"
-          />
-          <h2 className="text-[28px] font-[600] mt-2 text-[#484848]">
-            Parent Details
-          </h2>
-          <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
-          <div className="grid grid-cols-3 text-center gap-4 w-full mt-4 px-6">
-            <div className="flex items-center flex-col gap-3 border-r-1 border-[#D9D9D9]">
-              <img src={call} alt="Parent Avatar" className="w-6 h-6" />
-              <p className="text-[#484848] text-[18px]">Contact Number</p>
-              <p className="text-[#484848] font-[500] text-[22px]">
-                +91 0987654321
-              </p>
-            </div>
-            <div className="flex items-center flex-col gap-3 border-r-1 border-[#D9D9D9]">
-              <img src={firstName} alt="Parent Avatar" className="w-6 h-6" />
-              <p className="text-[#484848] text-[18px]">First Name</p>
-              <p className="text-[#484848] font-[500] text-[22px]">Jethalal</p>
-            </div>
-            <div className="flex items-center flex-col gap-3 ">
-              <img src={lastName} alt="Parent Avatar" className="w-6 h-6" />
-              <p className="text-[#484848] text-[18px]">Last Name</p>
-              <p className="text-[#484848] font-[500] text-[22px]">Gada</p>
-            </div>
-
-            <button className="text-red-500 font-[500] text-[18px] absolute right-6 top-6 flex items-center">
-              <IoIosLogOut className="mr-1" /> Logout
-            </button>
-          </div>
-        </div>
-
-        {/* Subscription Details */}
-        <div className="mt-6 p-8 bg-white shadow-lg rounded-2xl">
-          <h3 className="text-[26px] font-[600] text-[#484848]">
-            My Subscription
-          </h3>
-          <div className="flex justify-between items-center my-4">
-            <p className="text-[#484848] text-[22px] font-[500]">Basic Plan</p>
-            <p className="bg-[radial-gradient(circle,#0EB401_5%,#82F479_200%)] text-[18px] text-white py-1 px-6 rounded-lg">
-              Active
-            </p>
-          </div>
-          <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
-          <p className="text-[#484848] text-[22px] font-[500] mb-4">
-            Plan Details
-          </p>
-          <div className="flex justify-start items-center gap-3 mb-8">
-            <p className="text-blue-500 text-[22px] flex items-center gap-2 font-[500] border-r-1 border-[#D9D9D9] pr-4">
-              <TbDeviceMobileCheck size={28} />
-              Started: 04 - 02 - 2025
-            </p>
-            <p className="text-red-500 text-[22px] flex font-[500] items-center gap-2">
-              <MdError size={28} />
-              Expires: 04 - 02 - 2026
-            </p>
-          </div>
-          <button className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#0EB401_1%,#82F479_180%)] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[600] cursor-pointer">
-            Upgrade Now
-          </button>
-        </div>
-
         {/* Child Details */}
-        <div className="mt-6 p-8 bg-white shadow-lg rounded-2xl">
+        <div className="my-6 p-8 bg-white shadow-lg rounded-2xl">
           <div className="flex flex-col items-center">
             <img
               src={parentsProfile}
@@ -119,7 +89,9 @@ const Profile = () => {
               <span className="absolute top-5 left-10 text-[22px]">
                 Average Score
               </span>
-              <p className="absolute bottom-5 left-10 text-[120px] font-[500]">91</p>
+              <p className="absolute bottom-5 left-10 text-[120px] font-[500]">
+                91
+              </p>
             </div>
             <div className="rounded-lg text-center text-white font-semibold text-lg relative">
               <img
@@ -128,7 +100,9 @@ const Profile = () => {
                 className="w-full h-auto"
               />
               <span className="absolute top-5 left-10 text-[22px]">Rank</span>
-              <p className="absolute bottom-5 left-10 text-[120px] font-[500]">02</p>
+              <p className="absolute bottom-5 left-10 text-[120px] font-[500]">
+                02
+              </p>
             </div>
             <div className="p-4 shadow-md rounded-2xl">
               <h4 className="text-[16px] text-[#484848]">
@@ -162,7 +136,74 @@ const Profile = () => {
 
           {/* Add More Kids */}
         </div>
+        {/* Parent Details */}
+        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-2xl relative">
+          <img
+            src={parentsProfile}
+            alt="Parent Avatar"
+            className="w-30 h-30 rounded-full"
+          />
+          <h2 className="text-[28px] font-[600] mt-2 text-[#484848]">
+            Parent Details
+          </h2>
+          <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
+          <div className="grid grid-cols-3 text-center gap-4 w-full mt-4 px-6">
+            <div className="flex items-center flex-col gap-3 border-r-1 border-[#D9D9D9]">
+              <img src={call} alt="Parent Avatar" className="w-6 h-6" />
+              <p className="text-[#484848] text-[18px]">Contact Number</p>
+              <p className="text-[#484848] font-[500] text-[22px]">
+                +91 {(userData !== null && userData[0]) || ""}
+              </p>
+            </div>
+            <div className="flex items-center flex-col gap-3 border-r-1 border-[#D9D9D9]">
+              <img src={firstName} alt="Parent Avatar" className="w-6 h-6" />
+              <p className="text-[#484848] text-[18px]">First Name</p>
+              <p className="text-[#484848] font-[500] text-[22px]">
+                {userFirstName[0] || ""}
+              </p>
+            </div>
+            <div className="flex items-center flex-col gap-3 ">
+              <img src={lastName} alt="Parent Avatar" className="w-6 h-6" />
+              <p className="text-[#484848] text-[18px]">Last Name</p>
+              <p className="text-[#484848] font-[500] text-[22px]">
+                {userFirstName[1] || ""}
+              </p>
+            </div>
 
+            <button className="text-red-500 font-[500] text-[18px] absolute right-6 top-6 flex items-center">
+              <IoIosLogOut className="mr-1" /> Logout
+            </button>
+          </div>
+        </div>
+        {/* Subscription Details */}
+        <div className="mt-6 p-8 bg-white shadow-lg rounded-2xl">
+          <h3 className="text-[26px] font-[600] text-[#484848]">
+            My Subscription
+          </h3>
+          <div className="flex justify-between items-center my-4">
+            <p className="text-[#484848] text-[22px] font-[500]">Basic Plan</p>
+            <p className="bg-[radial-gradient(circle,#0EB401_5%,#82F479_200%)] text-[18px] text-white py-1 px-6 rounded-lg">
+              Active
+            </p>
+          </div>
+          <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
+          <p className="text-[#484848] text-[22px] font-[500] mb-4">
+            Plan Details
+          </p>
+          <div className="flex justify-start items-center gap-3 mb-8">
+            <p className="text-blue-500 text-[22px] flex items-center gap-2 font-[500] border-r-1 border-[#D9D9D9] pr-4">
+              <TbDeviceMobileCheck size={28} />
+              Started: 04 - 02 - 2025
+            </p>
+            <p className="text-red-500 text-[22px] flex font-[500] items-center gap-2">
+              <MdError size={28} />
+              Expires: 04 - 02 - 2026
+            </p>
+          </div>
+          <button className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#0EB401_1%,#82F479_180%)] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[600] cursor-pointer">
+            Upgrade Now
+          </button>
+        </div>
         {/* footer */}
         <footer className="text-center text-[#D2D2D2] my-8 text-[50px] font-semibold">
           Learn . Grow . Achieve

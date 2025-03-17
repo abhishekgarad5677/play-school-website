@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import { CountryList } from "../../utils/CountryList";
+import Cookies from "js-cookie";
 
 const Step1 = ({ setCurrentStep, setUseeNumber }) => {
   const [selectedCountry, setSelectedCountry] = useState("IN"); // Default country
@@ -42,6 +43,10 @@ const Step1 = ({ setCurrentStep, setUseeNumber }) => {
     setCurrentStep(1); // Move to the next step
     setUseeNumber(data.phoneNumber);
   };
+
+  // const token = Cookies.get("authToken");
+  // Cookies.remove("authToken");
+  // console.log(token);
 
   return (
     <div>

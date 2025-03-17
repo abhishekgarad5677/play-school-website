@@ -3,6 +3,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import Spinner Ic
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import useApi from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Step2 = ({ setCurrentStep, userNumber }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -11,6 +12,8 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
   const navigate = useNavigate();
 
   const { data, loading, error, makeRequest } = useApi(); // useApi hook manages loading
+
+  const { data: loginData, makeRequest: login } = useApi(); // login user
 
   useEffect(() => {
     if (timer > 0) {
@@ -69,24 +72,105 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
     }
   }, [error]);
 
+  // const loginUser = async () => {
+  //   const formData = new FormData();
+  //   formData.append("PhoneNumber", userNumber);
+
+  //   login(
+  //     "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
+  //     "POST",
+  //     formData,
+  //     {
+  //       "Content-Type": "multipart/form-data",
+  //     }
+  //   );
+  // };
+
+  // useEffect(() => {
+  //   console.log(loginData);
+  //   if (loginData && loginData?.status === true) {
+  //     const token = loginData?.data?.token;
+  //     Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
+  //   }
+  // }, [loginData]);
+
+  // // **Automatically handle API response when `data` updates**
+  // useEffect(() => {
+  //   console.log(data);
+  //   if (data && data?.isRegistered === false) {
+  //     setCurrentStep(2);
+  //   } else if (data && data?.isSubscribed === false) {
+  //     loginUser();
+  //     setCurrentStep(3);
+  //     console.log("User not registered");
+  //   } else if (data && data?.isChildAdded === false) {
+  //     loginUser();
+  //     setCurrentStep(4);
+  //     console.log("User not registered");
+  //   } else if (
+  //     data?.isRegistered === true &&
+  //     data?.isSubscribed === true &&
+  //     data?.isChildAdded === true
+  //   ) {
+  //     // make api call for the use to login
+  //     loginUser();
+  //     navigate("/profile");
+  //   }
+  // }, [data]);
+
+  const loginUser = async () => {
+    const formData = new FormData();
+    formData.append("PhoneNumber", userNumber);
+
+    const response = await login(
+      "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
+      "POST",
+      formData,
+      {
+        "Content-Type": "multipart/form-data",
+      }
+    );
+
+    if (response?.status === true) {
+      const token = response?.data?.token;
+      Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
+      return token;
+    }
+    return null;
+  };
+
   // **Automatically handle API response when `data` updates**
   useEffect(() => {
-    console.log(data);
-    if (data && data?.isRegistered === false) {
-      setCurrentStep(2);
-    } else if (data && data?.isSubscribed === false) {
-      setCurrentStep(3);
-      console.log("User not registered");
-    } else if (data && data?.isChildAdded === false) {
-      setCurrentStep(4);
-      console.log("User not registered");
-    } else if (
-      data?.isRegistered === true &&
-      data?.isSubscribed === true &&
-      data?.isChildAdded === true
-    ) {
-      // make api call for the use to login
-      // navigate("/profile");
+    const handleLoginAndProceed = async () => {
+      console.log(data);
+      if (data && data?.isRegistered === false) {
+        setCurrentStep(2);
+      } else if (data && data?.isSubscribed === false) {
+        const token = await loginUser();
+        if (token) {
+          setCurrentStep(3);
+          console.log("User not registered");
+        }
+      } else if (data && data?.isChildAdded === false) {
+        const token = await loginUser();
+        if (token) {
+          setCurrentStep(4);
+          console.log("User not registered");
+        }
+      } else if (
+        data?.isRegistered === true &&
+        data?.isSubscribed === true &&
+        data?.isChildAdded === true
+      ) {
+        const token = await loginUser();
+        if (token) {
+          navigate("/profile");
+        }
+      }
+    };
+
+    if (data) {
+      handleLoginAndProceed();
     }
   }, [data]);
 

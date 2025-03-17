@@ -21,6 +21,8 @@ import Cookies from "js-cookie";
 import { div } from "framer-motion/client";
 import { ChildDetails } from "../components/ChildDetails";
 import { AddChild } from "../components/AddChild";
+import { use } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { data, makeRequest } = useApi();
@@ -56,7 +58,7 @@ const Profile = () => {
     }
   }, [userData]);
 
-  console.log(userData);
+  // console.log(userData);
 
   // Upgrade child plan
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,6 +81,13 @@ const Profile = () => {
   };
   const closeAddChildModal = () => {
     setIsModalAddChildOpen(false);
+  };
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    Cookies.remove("authToken");
+    navigate("/");
   };
 
   return (
@@ -211,7 +220,10 @@ const Profile = () => {
             )}
           </div>
 
-          <button className="text-red-500 font-[500] text-[18px] absolute right-6 top-6 flex items-center">
+          <button
+            onClick={handleLogout}
+            className="text-red-500 cursor-pointer font-[500] text-[18px] absolute right-6 top-6 flex items-center"
+          >
             <IoIosLogOut className="mr-1" /> Logout
           </button>
         </div>

@@ -9,7 +9,7 @@ import logo from "../../public/playSchool-logo.png";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return <></>;
 
   const token = Cookies.get("authToken");
 

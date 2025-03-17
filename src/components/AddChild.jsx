@@ -1,5 +1,28 @@
+import { useEffect } from "react";
+import useApi from "../utils/api";
+import Cookies from "js-cookie";
+
 export const AddChild = ({ isOpen, closeModal }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return <></>;
+
+  const { data, loading, error, makeRequest } = useApi();
+
+  // Fetch countries with useApi hook
+  useEffect(() => {
+    const token = Cookies.get("authToken"); // Retrieve token from cookies
+    if (token) {
+      makeRequest(
+        "https://api-playschool.tmkocplayschool.com/api/Razorpay/getaddchildplans",
+        "POST",
+        null,
+        {
+          Authorization: `Bearer ${token}`, // Send token in headers
+        }
+      );
+    }
+  }, [makeRequest]);
+
+  console.log();
 
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-hidden">
@@ -34,6 +57,108 @@ export const AddChild = ({ isOpen, closeModal }) => {
               </svg>
               <span className="sr-only">Close modal</span>
             </button>
+          </div>
+          {/* Modal body */}
+          <div className="p-4">
+            {/* {showPlans && ( */}
+            {/* <table className="w-full md:w-max mx-auto border-collapse border-transparent ">
+              <thead>
+                <tr className="bg-white border-transparent ">
+                  <th className="p-4 border-none border-gray-300 text-center rounded-tl-3xl  min-w-[200px] max-w-[330px]">
+                    <span className="bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+                      Features
+                    </span>
+                  </th>
+                  {plans?.map((plan, index) => {
+                    return (
+                      <th
+                        key={index}
+                        className="p-4 border border-gray-300 border-none  text-center rounded-tr-3xl"
+                      >
+                        <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
+                          Pro
+                        </button>
+                        <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
+                          ₹{plan?.amount / 100}/yr
+                        </p>
+                        <p className="text-[20px] font-[700] text-[#484848]">
+                          ₹{plan?.discountedAmount / 100}/yr
+                        </p>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-white">
+                  <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+                    All Key Features
+                  </td>
+                  <td className="p-4 border border-gray-300 text-center">
+                    <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                      <FaCheck className="text-white text-[12px]" />
+                    </div>
+                  </td>
+                </tr>
+                <tr className="bg-white">
+                  <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+                    Parental Access to Kids Performance Report (Updated Daily)
+                  </td>
+                  <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
+                    Upto 50 Free Views
+                  </td>
+                </tr>
+                <tr className="bg-white">
+                  <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+                    Global Ranking Report of the Kid across Games & Subjects
+                  </td>
+                  <td className="p-4 border border-gray-300 ">
+                    <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                      <FaCheck className="text-white text-[12px] font-extrabold" />
+                    </div>
+                  </td>
+                </tr>
+                <tr className="bg-white">
+                  <td className="p-4 border-none rounded-bl-3xl border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+                    Option to add another child with custom reporting
+                  </td>
+                  <td className="p-4 border-none rounded-br-3xl  border-gray-300 text-green-600 border-b-0">
+                    <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                      <FaCheck className="text-white text-[12px]" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
+
+                  {plans
+                    ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                    .map((plan, index) => (
+                      <td key={index} className="p-4 border-none">
+                        <button
+                          onClick={() => handlePayment(plan)}
+                          disabled={loading} // Disable button while loading
+                          className={`w-full cursor-pointer text-white text-[20px] px-4 py-2 font-[500] rounded-full shadow-lg hover:opacity-90 transition-all ${
+                            loading
+                              ? "bg-gray-400 cursor-not-allowed" // Show disabled style
+                              : "bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+                          }`}
+                        >
+                          {loading ? (
+                            <span className="flex items-center justify-center">
+                              <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 mr-2" />{" "}
+                              Processing...
+                            </span>
+                          ) : (
+                            "Pay Now"
+                          )}
+                        </button>
+                      </td>
+                    ))}
+                </tr>
+              </tbody>
+            </table> */}
+            {/* )} */}
           </div>
         </div>
       </div>

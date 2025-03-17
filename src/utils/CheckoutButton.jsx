@@ -13,6 +13,7 @@ const CheckoutButton = ({
 }) => {
   const [loading, setLoading] = useState(false); // State for loader and disabling button
   const token = Cookies.get("authToken");
+  console.log(token);
 
   const handlePayment = async () => {
     if (!selectedPlan) {
@@ -25,8 +26,6 @@ const CheckoutButton = ({
       setLoading(true);
 
       // Step 1: Create order on the server
-      // const token =
-      //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiODY1Mjc0NzA1MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjA2Y2MxNjExLTdiYjYtNDhlNy1hN2JiLTUwZjAxMzAxMTlkNCIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.oq5IIs1lGF-7eQOUR1vrFc6B4abYqR0fAi-XIC6yk44";
 
       const formData = new FormData();
       formData.append("planId", selectedPlan?.id);

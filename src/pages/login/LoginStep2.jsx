@@ -4,6 +4,7 @@ import phoneVerify from "../../../public/register/phoneVerify.png";
 import useApi from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
 
 const LoginStep2 = ({ setCurrentStep, userNumber }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -12,6 +13,12 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
   const navigate = useNavigate();
 
   const { data, loading, error, makeRequest } = useApi(); // useApi hook manages loading
+  const {
+    data: userData,
+    loading: loadingUserData,
+    error: userError,
+    makeRequest: verifyUser,
+  } = useApi(); // check is user registered
 
   useEffect(() => {
     if (timer > 0) {
@@ -52,8 +59,8 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
     const formData = new FormData();
     formData.append("PhoneNumber", userNumber);
 
-    await makeRequest(
-      "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
+    await verifyUser(
+      "https://api-playschool.tmkocplayschool.com/api/Auth/user/isregistereduser",
       "POST",
       formData,
       {
@@ -70,6 +77,36 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
     }
   }, [error]);
 
+  useEffect(() => {
+    if (
+      (userData && userData?.isRegistered === false) ||
+      (userData && userData?.isSubscribed === false) ||
+      (userData && userData?.isChildAdded === false)
+    ) {
+      toast.error("User not registered");
+      setTimeout(() => {
+        navigate("/register");
+      }, 1000);
+    } else if (
+      userData?.isRegistered === true &&
+      userData?.isSubscribed === true &&
+      userData?.isChildAdded === true
+    ) {
+      // make api call for the use to login
+      const formData = new FormData();
+      formData.append("PhoneNumber", userNumber);
+
+      makeRequest(
+        "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
+        "POST",
+        formData,
+        {
+          "Content-Type": "multipart/form-data",
+        }
+      );
+    }
+  }, [userData]);
+
   // **Automatically handle API response when `data` updates**
   useEffect(() => {
     console.log(data);
@@ -82,6 +119,7 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
 
   return (
     <div>
+      <ToastContainer />
       <div className="flex flex-col gap-2 text-center w-full mb-6 lg:mb-10">
         <img
           className="w-35 h-45 lg:w-45 lg:h-55 mx-auto"

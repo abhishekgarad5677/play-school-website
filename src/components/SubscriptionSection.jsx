@@ -54,9 +54,11 @@ const SubscriptionSection = forwardRef((props, ref) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setPlans(data))
+      .then((data) => setPlans(data?.data[0]))
       .catch((error) => console.error("Error:", error));
   }, []);
+
+  console.log(plans);
 
   return (
     <motion.div
@@ -154,10 +156,11 @@ const SubscriptionSection = forwardRef((props, ref) => {
               </th>
               {plans?.map((plan, index) => {
                 if (plan?.isLive == false) {
+                  <>{console.log(plan?.planFeature)}</>;
                   return (
                     <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}
-                      {plan?.planFeature == 1 ? (
+                      {plan?.planFeature === 1 ? (
                         <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
                           Basic
                         </button>

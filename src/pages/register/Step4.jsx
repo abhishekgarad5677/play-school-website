@@ -22,7 +22,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setPlans(data))
+      .then((data) => setPlans(data?.data[0]))
       .catch((error) => console.error("Error:", error));
   }, []);
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import bg1 from "../../../public/register/bg1.png";
-import bg11 from '../../../public/register/bg1.png'
+import bg11 from "../../../public/register/bg1.png";
 import bg2 from "../../../public/register/bg2.png";
 import TapuTeam from "../../../public/tapu-team.png";
 import logo from "../../../public/playSchool-logo.png";
@@ -33,7 +33,8 @@ const Login = () => {
             alt=""
           />
         </div>
-        <div className="w-full h-full flex flex-col justify-center items-center">
+        <div className="w-full h-full flex flex-col justify-center items-center sticky top-0">
+         
           <LoginStepperForm />
         </div>
       </div>

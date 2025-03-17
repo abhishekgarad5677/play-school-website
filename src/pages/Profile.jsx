@@ -7,6 +7,10 @@ import firstName from "../../public/profile/first-name.png";
 import lastName from "../../public/profile/last-name.png";
 import oneKid from "../../public/profile/one-kid.png";
 import twoKid from "../../public/profile/two-kid.png";
+import goli from "../../public/profile/goli.png";
+import sonu from "../../public/profile/sonu.png";
+import addCildIon from "../../public/profile/add-child-icon.png";
+import childCard from "../../public/profile/child-card.png";
 import avgBg from "../../public/profile/avg-bg.png";
 import scoreBg from "../../public/profile/score-bg.png";
 import { TbDeviceMobileCheck } from "react-icons/tb";
@@ -14,11 +18,15 @@ import { MdError } from "react-icons/md";
 import useApi from "../utils/api";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { div } from "framer-motion/client";
+import { ChildDetails } from "../components/ChildDetails";
+import { AddChild } from "../components/AddChild";
 
 const Profile = () => {
   const { data, makeRequest } = useApi();
   const [userData, setUserData] = useState(null);
   const [userFirstName, setUserFirstName] = useState("");
+  const [childDetails, setChildDetails] = useState([]);
 
   useEffect(() => {
     const token = Cookies.get("authToken"); // Retrieve token from cookies
@@ -44,22 +52,52 @@ const Profile = () => {
   useEffect(() => {
     if (userData !== null) {
       setUserFirstName(userData[1].split(" "));
+      setChildDetails(userData[2]);
     }
   }, [userData]);
 
   console.log(userData);
 
+  // Upgrade child plan
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
+
+  const openModal = (data) => {
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Add child modal
+  const [isModalAddChildOpen, setIsModalAddChildOpen] = useState(false);
+
+  const openAddChildModal = () => {
+    setIsModalAddChildOpen(true);
+  };
+  const closeAddChildModal = () => {
+    setIsModalAddChildOpen(false);
+  };
+
   return (
     <div className="">
+      <ChildDetails
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        modalData={modalData}
+      />
+      <AddChild isOpen={isModalAddChildOpen} closeModal={closeAddChildModal} />
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] pt-5 pb-40 relative">
         {/* <Navbar /> */}
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2 top-15 w-[85%] mx-auto">
         {/* Child Details */}
-        <div className="my-6 p-8 bg-white shadow-lg rounded-2xl">
+        <div className="my-6 p-8 bg-white shadow-lg rounded-2xl relative">
           <div className="flex flex-col items-center">
             <img
-              src={parentsProfile}
+              src={twoKid}
               alt="Parent Avatar"
               className="w-30 h-30 rounded-full"
             />
@@ -69,7 +107,7 @@ const Profile = () => {
           </div>
           <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
 
-          <div className="flex items-center space-x-3 mt-4">
+          {/* <div className="flex items-center space-x-3 mt-4">
             <div className="w-18 h-18 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] text-white flex items-center justify-center rounded-full text-[28px] font-[600]">
               TG
             </div>
@@ -81,9 +119,9 @@ const Profile = () => {
                 Join Date: 05 - 03 - 2025
               </p>
             </div>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-3 gap-4 mt-4">
+          {/* <div className="grid grid-cols-3 gap-4 mt-4">
             <div className="rounded-lg text-center text-white font-semibold text-lg relative">
               <img src={avgBg} alt="Parent Avatar" className="w-full h-auto" />
               <span className="absolute top-5 left-10 text-[22px]">
@@ -132,12 +170,53 @@ const Profile = () => {
             <button className="w-full text-[20px] font-[500] bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] text-white py-4 rounded-4xl hover:bg-blue-600">
               Pay ₹499.00
             </button>
+          </div> */}
+
+          <div className="flex items-center justify-center space-x-4 mt-4">
+            {childDetails?.map((ele, index) => {
+              if (ele?.gender === "boy") {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => openModal(ele)}
+                    className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%),url('../../public/profile/child-card.png')]"
+                  >
+                    <img className="w-30 h-30" src={goli} alt="" />
+                    <p className="text-[28px] font-[500]">{ele?.name}</p>
+                  </div>
+                );
+              } else {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => openModal(ele)}
+                    className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%),url('../../public/profile/child-card.png')]"
+                  >
+                    <img className="w-30 h-30" src={sonu} alt="" />
+                    <p className="text-[28px] font-[500]">{ele?.name}</p>
+                  </div>
+                );
+              }
+            })}
+
+            {childDetails.length < 3 && (
+              <div
+                // key={index}
+                onClick={openAddChildModal}
+                className="p-4 space-y-2 cursor-pointer h-full text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/profile/child-card.png')]"
+              >
+                <img className="w-30 h-30" src={addCildIon} />
+                <p className="text-[28px] font-[500]">Add Child</p>
+              </div>
+            )}
           </div>
 
-          {/* Add More Kids */}
+          <button className="text-red-500 font-[500] text-[18px] absolute right-6 top-6 flex items-center">
+            <IoIosLogOut className="mr-1" /> Logout
+          </button>
         </div>
         {/* Parent Details */}
-        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-2xl relative">
+        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-2xl">
           <img
             src={parentsProfile}
             alt="Parent Avatar"
@@ -169,14 +248,10 @@ const Profile = () => {
                 {userFirstName[1] || ""}
               </p>
             </div>
-
-            <button className="text-red-500 font-[500] text-[18px] absolute right-6 top-6 flex items-center">
-              <IoIosLogOut className="mr-1" /> Logout
-            </button>
           </div>
         </div>
         {/* Subscription Details */}
-        <div className="mt-6 p-8 bg-white shadow-lg rounded-2xl">
+        {/* <div className="mt-6 p-8 bg-white shadow-lg rounded-2xl">
           <h3 className="text-[26px] font-[600] text-[#484848]">
             My Subscription
           </h3>
@@ -203,7 +278,7 @@ const Profile = () => {
           <button className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#0EB401_1%,#82F479_180%)] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[600] cursor-pointer">
             Upgrade Now
           </button>
-        </div>
+        </div> */}
         {/* footer */}
         <footer className="text-center text-[#D2D2D2] my-8 text-[50px] font-semibold">
           Learn . Grow . Achieve

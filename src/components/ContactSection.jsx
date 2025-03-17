@@ -43,7 +43,7 @@ const ContactSection = () => {
         </h4>
       </motion.div>
       <div className="max-w-7xl mx-auto mb-10 px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Image Section */}
           <motion.div
             variants={fadeInLeft}
@@ -57,14 +57,14 @@ const ContactSection = () => {
           </motion.div>
 
           {/* Form Section */}
-          <motion.div variants={fadeInRight} className="md:col-span-1">
+          <motion.div variants={fadeInRight} className="md:col-span-2">
             <div className="gap-4 bg-[#FF85E9] rounded-[20px] p-7 w-full shadow-md">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 {/* Left Side Inputs */}
                 <div className="flex flex-col justify-evenly gap-5">
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <LuUser className="size-5 text-gray-300" />
+                      <LuUser className="size-5 text-white" />
                     </div>
                     <input
                       type="text"
@@ -75,7 +75,7 @@ const ContactSection = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <HiOutlineMail className="size-5 text-gray-300" />
+                      <HiOutlineMail className="size-5 text-white" />
                     </div>
                     <input
                       type="email"
@@ -86,7 +86,7 @@ const ContactSection = () => {
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <IoCallOutline className="size-5 text-gray-300" />
+                      <IoCallOutline className="size-5 text-white" />
                     </div>
                     <input
                       type="tel"
@@ -107,9 +107,9 @@ const ContactSection = () => {
               </div>
 
               {/* Submit Button */}
-              {/* <button className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[600] cursor-pointer">
+              <button className="w-full hover:opacity-90 transition-all bg-[#AA008B] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[500] cursor-pointer">
                 Send
-              </button> */}
+              </button>
             </div>
           </motion.div>
         </div>

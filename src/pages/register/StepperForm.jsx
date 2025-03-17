@@ -78,7 +78,7 @@ export default function StepperForm() {
           ))}
         </ul>
         {/* End Stepper Nav */}
-      </div>
+      </div> 
 
       {/* Step Content */}
       <div className="p-2 lg:p-4 pb-0 mt-4">

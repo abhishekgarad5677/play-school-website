@@ -41,7 +41,8 @@ const UspSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative bg-[radial-gradient(circle,#FF85E9_10%,#AA008B_110%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28"
+      // className="relative bg-[radial-gradient(circle,#FF85E9_10%,#AA008B_110%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28"
+      className="relative bg-[radial-gradient(circle,#fecb22_2%,#fc8c05_190%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28"
     >
       {/* Left side images animation */}
       <motion.img

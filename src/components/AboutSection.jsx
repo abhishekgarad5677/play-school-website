@@ -46,8 +46,9 @@ const AboutSection = forwardRef((props, ref) => {
       initial="hidden"
       whileInView="visible" // ✅ Trigger animations when in view
       viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
-      className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
-      // className="bg-[url('../../public/section/about-bg.png')] h-full bg-cover bg-center bg-no-repeat px-6"
+      // className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
+      // className="bg-[radial-gradient(circle,#fecb22_2%,#fc8c05_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
+      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-[40%_60%] gap-6 lg:gap-12 items-center">
         {/* Left Image with Floating Effect */}
@@ -71,7 +72,7 @@ const AboutSection = forwardRef((props, ref) => {
           </motion.h4>
 
           {/* Features List */}
-          {/* <div>
+          <div>
             {[
               {
                 number: 1,
@@ -127,8 +128,8 @@ const AboutSection = forwardRef((props, ref) => {
                 </div>
               </motion.div>
             ))}
-          </div> */}
-          <p className="font-500 text-[16px] lg:text-[20px] leading-[22px] lg:leading-[25px] text-[#fff] fredoka-font">
+          </div>
+          {/* <p className="font-500 text-[16px] lg:text-[20px] leading-[22px] lg:leading-[25px] text-[#fff] fredoka-font">
             TMKOC Playschool is a gamified education app with 1000+ interactive
             lessons covering Physics, Mathematics, Life Skills, and more, all in
             multiple languages to make learning fun. <br /> With smart
@@ -136,7 +137,7 @@ const AboutSection = forwardRef((props, ref) => {
             monitor their child's progress while they build essential skills.
             Unlock a world of playful learning and watch your child grow with
             confidence!
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </motion.section>

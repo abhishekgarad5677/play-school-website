@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
@@ -10,6 +10,11 @@ import Step5 from "./Step5";
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [userNumber, setUseeNumber] = useState();
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/profile");
+  };
 
   const steps = [
     "Enter Phone Number",
@@ -78,7 +83,7 @@ export default function StepperForm() {
           ))}
         </ul>
         {/* End Stepper Nav */}
-      </div> 
+      </div>
 
       {/* Step Content */}
       <div className="p-2 lg:p-4 pb-0 mt-4">
@@ -97,7 +102,7 @@ export default function StepperForm() {
         {currentStep === 3 && (
           <Step4 setCurrentStep={setCurrentStep} userNumber={userNumber} />
         )}
-        {currentStep === 4 && <Step5 />}
+        {currentStep === 4 && <Step5 navigate={handleNavigate} />}
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ const Profile = () => {
   const [userFirstName, setUserFirstName] = useState("");
   const [childDetails, setChildDetails] = useState([]);
 
-  useEffect(() => {
+  const fetchUserData = () => {
     const token = Cookies.get("authToken"); // Retrieve token from cookies
 
     if (token) {
@@ -43,6 +43,10 @@ const Profile = () => {
         }
       );
     }
+  };
+
+  useEffect(() => {
+    fetchUserData();
   }, [makeRequest]);
 
   useEffect(() => {
@@ -96,8 +100,13 @@ const Profile = () => {
         isOpen={isModalOpen}
         closeModal={closeModal}
         modalData={modalData}
+        fetchUserData={fetchUserData}
       />
-      <AddChild isOpen={isModalAddChildOpen} closeModal={closeAddChildModal} />
+      <AddChild
+        isOpen={isModalAddChildOpen}
+        closeModal={closeAddChildModal}
+        fetchUserData={fetchUserData}
+      />
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)] pt-5 pb-40 relative">
         {/* <Navbar /> */}
       </div>
@@ -199,7 +208,7 @@ const Profile = () => {
                   <div
                     key={index}
                     onClick={() => openModal(ele)}
-                    className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%),url('../../public/profile/child-card.png')]"
+                    className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#82F479_6%,#0EB401_120%),url('../../public/profile/child-card.png')]"
                   >
                     <img className="w-30 h-30" src={sonu} alt="" />
                     <p className="text-[28px] font-[500]">{ele?.name}</p>
@@ -208,7 +217,7 @@ const Profile = () => {
               }
             })}
 
-            {childDetails.length < 3 && (
+            {childDetails.length < 2 && (
               <div
                 // key={index}
                 onClick={openAddChildModal}

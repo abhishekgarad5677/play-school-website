@@ -84,9 +84,9 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
       (userData && userData?.isChildAdded === false)
     ) {
       toast.error("User not registered");
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
+      // setTimeout(() => {
+      //   navigate("/register");
+      // }, 1000);
     } else if (
       userData?.isRegistered === true &&
       userData?.isSubscribed === true &&

@@ -4,12 +4,13 @@ import formLogo from "../../../public/register/formlogo.png";
 import useApi from "../../utils/api";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const Step5 = () => {
+const Step5 = ({ navigate }) => {
   const { data, makeRequest } = useApi();
   const { data: childData, makeRequest: addChild } = useApi();
   const [ageGroup, setAgeGroup] = useState([]);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // State for loader and disabling button
 
   const token = Cookies.get("authToken");
 
@@ -39,6 +40,7 @@ const Step5 = () => {
   }, [data]);
 
   const onSubmit = (data) => {
+    setLoading(true);
     console.log("Form Submitted Successfully", data);
     const formData = new FormData();
     formData.append("ChildName", data?.childName);
@@ -60,7 +62,8 @@ const Step5 = () => {
   useEffect(() => {
     console.log(childData);
     if (childData?.status === true) {
-      navigate("/profile");
+      setLoading(false);
+      navigate();
     }
   }, [childData]);
 
@@ -166,11 +169,27 @@ const Step5 = () => {
         </div>
 
         {/* Submit Button */}
+        {/* <button className="w-full py-3 my-4 cursor-pointer text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all">
+          Register
+        </button> */}
+
         <button
           type="submit"
-          className="w-full py-3 my-4 cursor-pointer text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all"
+          disabled={loading} // Disable button while loading
+          className={`w-full py-3 cursor-pointer my-4 text-white text-[20px] font-semibold rounded-full shadow-lg hover:opacity-90 transition-all ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed" // Show disabled style
+              : "bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+          }`}
         >
-          Register
+          {loading ? (
+            <span className="flex items-center justify-center">
+              <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 mr-2" />
+              Processing...
+            </span>
+          ) : (
+            "Register"
+          )}
         </button>
       </form>
     </div>

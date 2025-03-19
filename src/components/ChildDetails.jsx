@@ -7,8 +7,15 @@ import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import logo from "../../public/playSchool-logo.png";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import avgBg from "../../public/profile/avg-bg.png";
+import scoreBg from "../../public/profile/score-bg.png";
 
-export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
+export const ChildDetails = ({
+  isOpen,
+  closeModal,
+  modalData,
+  fetchUserData,
+}) => {
   if (!isOpen) return <></>;
 
   const token = Cookies.get("authToken");
@@ -131,6 +138,7 @@ export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
                 );
 
                 console.log("Verification Response:", verifyResponse.data);
+                closeModal();
                 if (verifyResponse?.data?.status) {
                   // setCurrentStep(4);
                 }
@@ -162,6 +170,7 @@ export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
       alert("Payment failed! Please try again.");
     } finally {
       setLoading(false);
+      fetchUserData();
     }
   };
 
@@ -207,43 +216,74 @@ export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
           {/* Modal body */}
           <div className="p-4 md:p-5">
             {!showPlans && (
-              <div className="p-8 bg-white shadow-lg rounded-2xl">
-                <h3 className="text-[26px] font-[600] text-[#484848]">
-                  My Subscription
-                </h3>
-                <div className="flex justify-between items-center my-4">
-                  <p className="text-[#484848] text-[22px] font-[500]">
-                    {modalData?.plan} Plan
+              <>
+                <div className="grid grid-cols-2 gap-1 mb-4">
+                  <div className="rounded-lg text-center text-white font-semibold text-lg relative">
+                    <img
+                      src={avgBg}
+                      alt="Parent Avatar"
+                      className="w-full h-auto"
+                    />
+                    <span className="absolute top-5 left-10 text-[22px]">
+                      Average Score
+                    </span>
+                    <p className="absolute -bottom-5 left-10 text-[120px] font-[500]">
+                      0
+                    </p>
+                  </div>
+                  <div className="rounded-lg text-center text-white font-semibold text-lg relative">
+                    <img
+                      src={scoreBg}
+                      alt="Parent Avatar"
+                      className="w-full h-auto"
+                    />
+                    <span className="absolute top-5 left-10 text-[22px]">
+                      Rank
+                    </span>
+                    <p className="absolute -bottom-5 left-10 text-[120px] font-[500]">
+                      0
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-8 bg-white shadow-lg rounded-2xl">
+                  <h3 className="text-[26px] font-[600] text-[#484848]">
+                    My Subscription
+                  </h3>
+                  <div className="flex justify-between items-center my-4">
+                    <p className="text-[#484848] text-[22px] font-[500]">
+                      {modalData?.plan} Plan
+                    </p>
+                    {modalData?.isActive ? (
+                      <p className="bg-[radial-gradient(circle,#0EB401_5%,#82F479_200%)] text-[18px] text-white py-1 px-6 rounded-lg">
+                        Active
+                      </p>
+                    ) : (
+                      <p className="bg-red-600 text-[18px] text-white py-1 px-6 rounded-lg">
+                        Inactive
+                      </p>
+                    )}
+                  </div>
+                  <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
+                  <p className="text-[#484848] text-[22px] font-[500] mb-4">
+                    Plan Details
                   </p>
-                  {modalData?.isActive ? (
-                    <p className="bg-[radial-gradient(circle,#0EB401_5%,#82F479_200%)] text-[18px] text-white py-1 px-6 rounded-lg">
-                      Active
+                  <div className="flex justify-start items-center gap-3 mb-8">
+                    <p className="text-red-500 text-[22px] flex font-[500] items-center gap-2">
+                      <MdError size={28} />
+                      Expires: {formatDate(modalData?.planExpiry)}
                     </p>
-                  ) : (
-                    <p className="bg-red-600 text-[18px] text-white py-1 px-6 rounded-lg">
-                      Inactive
-                    </p>
+                  </div>
+                  {modalData?.plan === "Basic" && (
+                    <button
+                      onClick={getPlans}
+                      className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#0EB401_1%,#82F479_180%)] p-3 rounded-[100px] text-white text-[20px] md:text-[22px] font-[600] cursor-pointer"
+                    >
+                      Upgrade Now
+                    </button>
                   )}
                 </div>
-                <div className="border-t-[1px] w-full border-[#D9D9D9] my-5"></div>
-                <p className="text-[#484848] text-[22px] font-[500] mb-4">
-                  Plan Details
-                </p>
-                <div className="flex justify-start items-center gap-3 mb-8">
-                  <p className="text-red-500 text-[22px] flex font-[500] items-center gap-2">
-                    <MdError size={28} />
-                    Expires: {formatDate(modalData?.planExpiry)}
-                  </p>
-                </div>
-                {modalData?.plan === "Basic" && (
-                  <button
-                    onClick={getPlans}
-                    className="w-full hover:opacity-90 transition-all bg-[radial-gradient(circle,#0EB401_1%,#82F479_180%)] p-3 rounded-[100px] text-white text-[20px] md:text-[22px] font-[600] cursor-pointer"
-                  >
-                    Upgrade Now
-                  </button>
-                )}
-              </div>
+              </>
             )}
             {showPlans && (
               <table className="w-full md:w-max mx-auto border-collapse border-transparent ">
@@ -263,11 +303,8 @@ export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
                           <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
                             Pro
                           </button>
-                          <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                            ₹{plan?.amount / 100}/yr
-                          </p>
                           <p className="text-[20px] font-[700] text-[#484848]">
-                            ₹{plan?.discountedAmount / 100}/yr
+                            ₹{plan?.upfrountAmount / 100}/yr
                           </p>
                         </th>
                       );
@@ -320,19 +357,6 @@ export const ChildDetails = ({ isOpen, closeModal, modalData }) => {
                       ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
                       .map((plan, index) => (
                         <td key={index} className="p-4 border-none">
-                          {/* <label className="w-full cursor-pointer block">
-                            <input
-                              type="radio"
-                              name="applyOption"
-                              className="hidden peer"
-                              onChange={() => handlePayment(plan)}
-                            />
-                            <div
-                              className={`w-full font-[500] text-center peer-checked:scale-105 peer-checked:ring-2 transition-all px-4 py-2 rounded-3xl peer-checked:ring-[#AA008B] bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white`}
-                            >
-                              Buy Now
-                            </div>
-                          </label> */}
                           <button
                             onClick={() => handlePayment(plan)}
                             disabled={loading} // Disable button while loading

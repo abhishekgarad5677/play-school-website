@@ -7,7 +7,7 @@ import FooterSection from "../components/FooterSection";
 import SubscriptionSection from "../components/SubscriptionSection";
 import UspSection from "../components/UspSection";
 import { useLocation } from "react-router-dom";
-
+import GameSection from "../components/GameSection";
 
 const DefaultLayout = () => {
   const location = useLocation(); // ✅ Get location state
@@ -55,6 +55,7 @@ const DefaultLayout = () => {
       <UspSection />
       <CurriculumSection ref={curriculumRef} />
       <SubscriptionSection ref={pricingRef} />
+      <GameSection />
       <ContactSection />
     </div>
   );

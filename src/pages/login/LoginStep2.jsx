@@ -112,6 +112,8 @@ const LoginStep2 = ({ setCurrentStep, userNumber }) => {
     console.log(data);
     if (data && data?.status === true) {
       const token = data?.data?.token;
+      console.log(token);
+
       Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
       navigate("/profile");
     }

@@ -58,39 +58,39 @@ const ContactSection = () => {
 
           {/* Form Section */}
           <motion.div variants={fadeInRight} className="md:col-span-2">
-            <div className="gap-4 bg-[#FF85E9] rounded-[20px] p-7 w-full shadow-md">
+            <div className="gap-4 bg-[#fff] rounded-[20px] p-7 w-full shadow-md">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 {/* Left Side Inputs */}
                 <div className="flex flex-col justify-evenly gap-5">
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <LuUser className="size-5 text-white" />
+                      <LuUser className="size-5 text-[#464646]" />
                     </div>
                     <input
                       type="text"
-                      className="border placeholder:font-[400] border-white text-white text-md rounded-[12px] block w-full ps-10 p-2.5"
+                      className="border placeholder:font-[400] border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Name"
                       required
                     />
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <HiOutlineMail className="size-5 text-white" />
+                      <HiOutlineMail className="size-5 text-[#464646]" />
                     </div>
                     <input
                       type="email"
-                      className="border border-white text-white text-md rounded-[12px] block w-full ps-10 p-2.5"
+                      className="border border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Email"
                       required
                     />
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <IoCallOutline className="size-5 text-white" />
+                      <IoCallOutline className="size-5 text-[#464646]" />
                     </div>
                     <input
                       type="tel"
-                      className="border border-white text-white text-md rounded-[12px] block w-full ps-10 p-2.5"
+                      className="border border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Phone Number"
                       required
                     />
@@ -100,7 +100,7 @@ const ContactSection = () => {
                 {/* Right Side (Textarea) */}
                 <div>
                   <textarea
-                    className="w-full h-full border border-white text-white text-md rounded-[12px] p-2.5 resize-none"
+                className="w-full h-full border border-[#464646] text-[#464646] text-md rounded-[12px] p-2.5 resize-none"
                     placeholder="Message"
                   ></textarea>
                 </div>

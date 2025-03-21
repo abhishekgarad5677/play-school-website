@@ -174,9 +174,24 @@ const Banner = ({ scrollToRef, refs }) => {
               transition: { duration: 0.8, delay: 1.6 },
             },
           }}
-          className="text-[24px] text-[#fff] font-[500] mb-3 lg:mb-4"
+          className="text-[24px] text-[#fff] font-[500]"
         >
           Early Bird Offer
+        </motion.p>
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, delay: 1.6 },
+            },
+          }}
+          className="text-[14px] text-[#fff] font-[500] mb-6 lg:mb-8"
+        >
+          Valid till : <span className="text-[#FFF25F]">30-05-2025</span>
         </motion.p>
 
         {/* <motion.img initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 1.8 } } }}

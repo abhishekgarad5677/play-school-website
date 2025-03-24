@@ -1,11 +1,11 @@
 import { LuUser } from "react-icons/lu";
 import ContactBanner from "../../public/contact/contact-banner.png";
 import { HiOutlineMail } from "react-icons/hi";
-import { IoCallOutline } from "react-icons/io5";
+import { IoCallOutline, IoLogoWhatsapp } from "react-icons/io5";
 import FooterSection from "./FooterSection";
 import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md";
-import { FaInstagram, FaPhoneAlt, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaPhoneAlt, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiLogoInstagramAlt } from "react-icons/bi";
 
@@ -93,6 +93,7 @@ const ContactSection = () => {
             <div className="flex flex-start items-start text-white gap-6">
               <BiLogoInstagramAlt size={40} />
               <FaYoutube size={42} />
+              <FaWhatsapp  size={38} />
             </div>
           </motion.div>
 

@@ -62,6 +62,14 @@ const Navbar = ({ scrollToRef, refs }) => {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+          {/* <button
+            onClick={() => navigate("/payment")}
+            className="border-[3px] rounded-[10px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[8px] cursor-pointer"
+          >
+            <span className="text-[16px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+              Pay Now
+            </span>
+          </button> */}
           <button
             onClick={() => navigate("/register")}
             className="border-[3px] rounded-[10px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[8px] cursor-pointer"

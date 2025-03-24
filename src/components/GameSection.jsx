@@ -29,7 +29,7 @@ const GameSection = () => {
           </p>
         </div>
         <div>
-          <img className="w-full" src={banner} alt="" srcset="" />
+          <img className="w-full" src={banner} alt="" />
         </div>
         <div>
           {/* <div class="grid grid-cols-5 text-center mb-8 mx-10 text-white">
@@ -49,7 +49,7 @@ const GameSection = () => {
             start the learning adventure! 🚀
           </p>
           <p className="mb-4 text-white">Download Now On:</p>
-          <div class="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-2 gap-12">
             <img className="h-18 w-full" src={playLogo} alt="" />
             <img className="h-18 w-full" src={appLogo} alt="" />
           </div>

@@ -76,34 +76,34 @@ const AboutSection = forwardRef((props, ref) => {
             {[
               {
                 number: 1,
-                title: "Fun & Interactive Learning",
-                desc: "Engaging games that make education exciting",
+                title: "Gamified Learning Experience",
+                desc: "Explore 1000+ interactive lessons across subjects like Physics, Mathematics, and Life Skills in a fun and engaging way.",
                 colors: "from-[#0066FF] to-[#00CAFF]",
               },
               {
                 number: 2,
                 title: "Learn with TMKOC Characters",
-                desc: "Explore alphabets, numbers, colors, and music with your favorites.",
+                desc: "Join your favorite TMKOC characters on an exciting journey to discover alphabets, numbers, colors, and music.",
                 colors: "from-[#FFBC0C] to-[#FFF25F]",
               },
               {
                 number: 3,
-                title: "Safe & Engaging",
-                desc: "A child-friendly environment designed for playful learning.",
+                title: "Smart Performance Tracking",
+                desc: "Monitor progress effortlessly with real-time insights and a global ranking system designed to encourage growth.",
                 colors: "from-[#D4002F] to-[#FF5177]",
               },
               {
                 number: 4,
-                title: "Creative Exploration",
-                desc: "Encourage kids to express their imagination through fun activities.",
+                title: "Multi-Language Support",
+                desc: "Access lessons in multiple languages, making learning more inclusive and accessible for every child.",
                 colors: "from-[#FF8000] to-[#FFB266]",
-              }, // 🟠 Orange Gradient
+              },
               {
                 number: 5,
                 title: "Interactive Storytelling",
-                desc: "Discover stories and adventures that make learning more fun!",
+                desc: "Immerse in captivating stories and adventures that bring lessons to life, sparking curiosity and creativity.",
                 colors: "from-[#FF66B2] to-[#FF99CC]",
-              }, // 🌸 Pink Gradient
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -112,7 +112,7 @@ const AboutSection = forwardRef((props, ref) => {
                 className="flex justify-start items-center gap-6 mb-6"
               >
                 <div
-                  className={`h-[54px] w-[54px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}
+                  className={`h-[60px] w-[100px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}
                 >
                   <span className="font-[500] text-white text-[26px]">
                     {item.number}

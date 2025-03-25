@@ -217,7 +217,7 @@ const Profile = () => {
               }
             })}
 
-            {childDetails.length < 2 && (
+            {childDetails.length < 3 && (
               <div
                 // key={index}
                 onClick={openAddChildModal}

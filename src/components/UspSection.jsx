@@ -92,7 +92,7 @@ const UspSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] text-center mb-1 lg:mb-0"
+        className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[40px] lg:leading-[41.14px] text-center mb-1 lg:mb-0"
       >
         Why TMKOC Playschool
       </motion.h4>
@@ -102,7 +102,7 @@ const UspSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="lg:text-[20px] leading-[22px] text-[18px] font-[400] text-[#fff] lg:leading-[44px] text-center fredoka-font mb-10"
+        className="lg:text-[20px] leading-[18px] text-[18px] mx-2 font-[400] text-[#fff] lg:leading-[44px] text-center fredoka-font mb-6 lg:mb-10"
       >
         Where Fun Meets Learning! Join TMKOC characters on an exciting journey
         through alphabets, numbers, music & more.

@@ -48,7 +48,7 @@ const AboutSection = forwardRef((props, ref) => {
       viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
       // className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
       // className="bg-[radial-gradient(circle,#fecb22_2%,#fc8c05_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
-      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
+      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-6 lg:py-20 px-6"
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-[40%_60%] gap-6 lg:gap-12 items-center">
         {/* Left Image with Floating Effect */}
@@ -66,7 +66,7 @@ const AboutSection = forwardRef((props, ref) => {
           <motion.h4
             variants={fadeUp}
             custom={0.3}
-            className="font-400 text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] mb-1 lg:mb-8"
+            className="font-400 text-[28px] text-center lg:text-left lg:text-[36px] font-[500] text-[#fff] leading-[41.14px] mb-4 lg:mb-8"
           >
             What is TMKOC Playschool
           </motion.h4>
@@ -109,20 +109,20 @@ const AboutSection = forwardRef((props, ref) => {
                 key={index}
                 variants={fadeUp}
                 custom={index * 0.4}
-                className="flex justify-start items-center gap-6 mb-6"
+                className="flex justify-start items-center gap-4 lg:gap-6 mb-6"
               >
                 <div
-                  className={`h-[60px] w-[100px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}
+                  className={`w-[130px] h-[60px] lg:h-[60px]  lg:w-[100px] flex justify-center items-center bg-gradient-to-t ${item.colors} rounded-[12px]`}
                 >
-                  <span className="font-[500] text-white text-[26px]">
+                  <span className="font-[500] text-white text-[22px] lg:text-[26px]">
                     {item.number}
                   </span>
                 </div>
                 <div>
-                  <p className="font-400 text-[22px] font-[500] leading-[24.2px] text-[#fff] uppercase">
+                  <p className="text-[18px] lg:text-[22px] font-[500] mb-1 leading-[24.2px] text-[#fff] uppercase">
                     {item.title}
                   </p>
-                  <p className="font-500 text-[18px] leading-[21.78px] text-[#fff] fredoka-font">
+                  <p className="font-500 text-[14px] lg:text-[18px] leading-[16px] lg:leading-[21.78px] text-[#fff] fredoka-font">
                     {item.desc}
                   </p>
                 </div>

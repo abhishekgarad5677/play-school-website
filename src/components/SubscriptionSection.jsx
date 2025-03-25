@@ -58,8 +58,6 @@ const SubscriptionSection = forwardRef((props, ref) => {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  console.log(plans);
-
   return (
     <motion.div
       ref={ref}
@@ -73,7 +71,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         viewport={{ once: true }}
-        className="absolute left-[-100px] bottom-15"
+        className="absolute left-[-100px] bottom-15 hidden lg:block"
         src={LeftGroup}
         alt=""
       />
@@ -82,7 +80,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         viewport={{ once: true }}
-        className="absolute right-0 bottom-15"
+        className="absolute right-0 bottom-15 hidden lg:block"
         src={RightGroup}
         alt=""
       />
@@ -91,7 +89,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         viewport={{ once: true }}
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-0 w-[40%] lg:w-auto"
         src={TopLeft}
         alt=""
       />
@@ -101,7 +99,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         viewport={{ once: true }}
-        className="absolute right-0 top-0"
+        className="absolute right-0 top-0 w-[40%] lg:w-auto"
         src={TopRight}
         alt=""
       />
@@ -114,7 +112,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
       {/* <img className="absolute left-0 top-0" src={TopLeft} alt="" /> */}
       {/* <img className="absolute right-0 top-0" src={TopRight} alt="" /> */}
 
-      <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-10">
+      <h4 className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[34px] lg:leading-[41.14px] text-center mb-10">
         TMKOC Playschool Subscription Plans
       </h4>
 
@@ -132,7 +130,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
                 hover:brightness-110 hover:shadow-[0_6px_15px_rgba(0,0,0,0.35)]`}
           >
             <img
-              className="w-[34px] h-[43px] lg:w-[40px] lg:h-[40px]"
+              className="w-[44px] h-[43px] lg:w-[40px] lg:h-[40px]"
               src={card.img}
               alt=""
             />
@@ -156,7 +154,6 @@ const SubscriptionSection = forwardRef((props, ref) => {
               </th>
               {plans?.map((plan, index) => {
                 if (plan?.isLive == false) {
-                  <>{console.log(plan?.planFeature)}</>;
                   return (
                     <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}

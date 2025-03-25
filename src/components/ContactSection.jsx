@@ -8,6 +8,10 @@ import { MdEmail } from "react-icons/md";
 import { FaInstagram, FaPhoneAlt, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiLogoInstagramAlt } from "react-icons/bi";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import useApi from "../utils/api";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const ContactSection = () => {
   const fadeInLeft = {
@@ -32,6 +36,43 @@ const ContactSection = () => {
       transition: { duration: 0.6, delay, ease: "easeOut" },
     }),
   };
+
+  const { data, loading, error, makeRequest } = useApi();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    const formData = new FormData();
+    formData.append("Name", data?.name);
+    formData.append("Email", data?.email);
+    formData.append("PhoneNumber", data?.phone);
+    formData.append("Query", data?.message);
+    makeRequest(
+      "https://api-playschool.tmkocplayschool.com/api/CustomerSupport/user/askquery",
+      "POST",
+      formData,
+      {
+        "Content-Type": "multipart/form-data",
+      }
+    );
+  };
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  // if (loading) {
+  //   return <>loading...</>;
+  // }
+
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <motion.div
@@ -93,15 +134,17 @@ const ContactSection = () => {
             <div className="flex flex-start items-start text-white gap-6">
               <BiLogoInstagramAlt size={40} />
               <FaYoutube size={42} />
-              <FaWhatsapp  size={38} />
+              <FaWhatsapp size={38} />
             </div>
           </motion.div>
 
           {/* Form Section */}
           <motion.div variants={fadeInRight} className="md:col-span-1">
-            <div className="gap-4 bg-[#fff] rounded-[20px] p-7 w-full shadow-md">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="gap-4 bg-[#fff] rounded-[20px] p-7 w-full shadow-md"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                {/* Left Side Inputs */}
                 <div className="flex flex-col justify-evenly gap-5">
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -109,49 +152,105 @@ const ContactSection = () => {
                     </div>
                     <input
                       type="text"
+                      {...register("name", { required: "Name is required" })}
                       className="border placeholder:font-[400] border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Name"
-                      required
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm">
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
+
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                       <HiOutlineMail className="size-5 text-[#464646]" />
                     </div>
                     <input
                       type="email"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Invalid email address",
+                        },
+                      })}
                       className="border border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Email"
-                      required
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
+
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                       <IoCallOutline className="size-5 text-[#464646]" />
                     </div>
                     <input
                       type="tel"
+                      {...register("phone", {
+                        required: "Phone number is required",
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: "Invalid phone number (10 digits required)",
+                        },
+                      })}
                       className="border border-[#464646] text-[#464646] text-md rounded-[12px] block w-full ps-10 p-2.5"
                       placeholder="Phone Number"
-                      required
                     />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
-                {/* Right Side (Textarea) */}
                 <div>
                   <textarea
+                    {...register("message", {
+                      required: "Message is required",
+                    })}
                     className="w-full h-full border border-[#464646] text-[#464646] text-md rounded-[12px] p-2.5 resize-none"
                     placeholder="Message"
                   ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button className="w-full hover:opacity-90 transition-all bg-[#AA008B] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[500] cursor-pointer">
+              {/* <button
+                type="submit"
+                className="w-full hover:opacity-90 transition-all bg-[#AA008B] p-4 rounded-[100px] text-white text-[20px] md:text-[24px] font-[500] cursor-pointer"
+              >
                 Send
+              </button> */}
+              <button
+                type="submit"
+                disabled={loading} // Disable button while loading
+                className={`w-full py-3 cursor-pointer my-4 text-white text-[20px] font-semibold rounded-full shadow-lg hover:opacity-90 transition-all ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed" // Show disabled style
+                    : "bg-[#AA008B]"
+                }`}
+              >
+                {loading ? (
+                  <span className="flex items-center justify-center">
+                    <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 mr-2" />{" "}
+                    Processing...
+                  </span>
+                ) : (
+                  "Send"
+                )}
               </button>
-            </div>
+            </form>
           </motion.div>
         </div>
       </div>

@@ -478,7 +478,7 @@ const CurriculumSection = forwardRef((props, ref) => {
               >
                 <img
                   className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
-                  src={slide.imgSrc}
+                  src={slide.imgSrc} 
                   alt={slide.text}
                 />
                 <div>

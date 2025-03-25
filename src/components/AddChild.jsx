@@ -15,7 +15,6 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   const [plans, setPlans] = useState([]);
   const { data, loading: loadingData, error, makeRequest } = useApi();
 
-  // Fetch countries with useApi hook
   useEffect(() => {
     const token = Cookies.get("authToken"); // Retrieve token from cookies
     if (token) {

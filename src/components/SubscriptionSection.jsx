@@ -54,7 +54,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setPlans(data?.data[0]))
+      .then((data) => setPlans(data?.data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
@@ -153,11 +153,11 @@ const SubscriptionSection = forwardRef((props, ref) => {
                 </span>
               </th>
               {plans?.map((plan, index) => {
-                if (plan?.isLive == false) {
+                if (plan?.isLive == false && plan?.currency == 'INR') {
                   return (
                     <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}
-                      {plan?.planFeature === 1 ? (
+                      {plan?.planFeature === 1 && plan?.currency === "INR" ? (
                         <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
                           Basic
                         </button>

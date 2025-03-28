@@ -20,11 +20,11 @@ const GameSection = () => {
   ];
 
   return (
-    <div className="py-18  bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
-      <div className="grid grid-cols-3 gap-12 mb-10 px-12 items-center">
-        <div className="text-white">
-          <p className="mb-4">TMKOC PLAYSCHOOL</p>
-          <p className="text-[64px] leading-16 font-[500]">
+    <div className="py-14 lg:py-18 bg-[radial-gradient(circle,#FF5177_15%,#D4002F_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 mb-10 px-6 lg:px-12 items-center">
+        <div className="text-white text-center lg:text-left">
+          <p className="mb-2 lg:mb-4">TMKOC PLAYSCHOOL</p>
+          <p className="text-[28px] lg:text-[64px] leading-8 lg:leading-16 font-[500]">
             Unlock the Joy of Learning!
           </p>
         </div>
@@ -43,13 +43,13 @@ const GameSection = () => {
               <p className="text-[28px] font-[600]">100K</p>
             </div>
           </div> */}
-          <p className="text-white leading-8 text-[16px] mb-4">
+          <p className="text-white leading-6 lg:leading-8 text-[16px] mb-4">
             Boost your child’s skills with interactive quizzes and engaging
             activities in a safe, kid-friendly environment. Download now and
             start the learning adventure! 🚀
           </p>
-          <p className="mb-4 text-white">Download Now On:</p>
-          <div className="grid grid-cols-2 gap-12">
+          {/* <p className="mb-4 text-white">Download Now On:</p> */}
+          <div className="grid grid-cols-2 gap-4 lg:gap-12">
             <img className="h-18 w-full" src={playLogo} alt="" />
             <img className="h-18 w-full" src={appLogo} alt="" />
           </div>
@@ -58,7 +58,7 @@ const GameSection = () => {
       <Swiper
         modules={[Autoplay]}
         spaceBetween={0}
-        slidesPerView={3}
+        // slidesPerView={3}
         speed={5000}
         autoplay={{
           delay: 0,
@@ -69,13 +69,13 @@ const GameSection = () => {
         freeMode={true}
         loop={true}
         // loopAdditionalSlides={40}
-        // breakpoints={{
-        //   320: { slidesPerView: 1.5, spaceBetween: 10 },
-        //   480: { slidesPerView: 2, spaceBetween: 12 },
-        //   640: { slidesPerView: 2.5, spaceBetween: 15 },
-        //   768: { slidesPerView: 3.5, spaceBetween: 18 },
-        //   1024: { slidesPerView: 6, spaceBetween: 20 },
-        // }}
+        breakpoints={{
+          320: { slidesPerView: 1, spaceBetween: 10 },
+          480: { slidesPerView: 1, spaceBetween: 12 },
+          640: { slidesPerView: 1, spaceBetween: 15 },
+          768: { slidesPerView: 3, spaceBetween: 18 },
+          1024: { slidesPerView: 3, spaceBetween: 20 },
+        }}
       >
         {gameSlide.map((slide, index) => (
           <SwiperSlide key={index}>

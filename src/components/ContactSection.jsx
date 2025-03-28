@@ -79,52 +79,54 @@ const ContactSection = () => {
       initial="hidden"
       whileInView="visible" // ✅ Trigger animations when in view
       viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
-      // className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-28"
-      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-28"
+      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-14 lg:pt-28"
     >
-      <motion.div variants={fadeUp} custom={0.3}>
+      <motion.div variants={fadeUp} custom={0.3} className="px-4 mb-6 lg:mb-10">
         <h4 className="text-[34px] font-[500] text-[#fff] leading-[41.14px] text-center mb-1">
           {/* Get In Touch With Us Now */} Contact Us
         </h4>
-        <p className="text-white text-[20px] text-center mb-10">
+        <p className="text-white text-[20px] text-center">
           Leave your email and we will get back to you within 24 hours
         </p>
       </motion.div>
       <div className="max-w-7xl mx-auto mb-10 px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Image Section */}
-          <motion.div
-            variants={fadeInLeft}
-            className="text-center relative hidden md:block"
-          >
+          <motion.div variants={fadeInLeft} className="text-center relative">
             {/* <motion.img
               className="h-[330px] w-auto absolute md:static top-[-50px] md:top-[-130px]"
               src={ContactBanner}
               alt=""
             /> */}
 
-            <div className="flex items-center flex-start gap-4 text-white mb-4">
+            <div className="flex items-start justify-start flex-start gap-4 text-white mb-4">
               <MdEmail size={40} />
               <div>
-                <p className="text-left text-[18px] mb-0">Email</p>
-                <p className="text-[24px] text-left font-[500]">
+                <p className="text-left leading-3 text-[16px] lg:text-[18px] mb-0">
+                  Email
+                </p>
+                <p className="text-[22px] lg:text-[24px] text-left font-[500]">
                   tmkocplayschool@gmail.com
                 </p>
               </div>
             </div>
-            <div className="flex items-center flex-start gap-4 text-white mb-4">
+            <div className="flex items-start flex-start gap-4 text-white mb-4">
               <FaPhoneAlt size={32} />
               <div>
-                <p className="text-left text-[18px] mb-0">Phone</p>
+                <p className="text-left leading-2 lg:leading-4 text-[16px] lg:text-[18px] mb-0">
+                  Phone
+                </p>
                 <p className="text-[24px] text-left font-[500]">
                   +91 97638678921
                 </p>
               </div>
             </div>
-            <div className="flex  items-center flex-start gap-4 text-white mb-10">
+            <div className="flex  items-start flex-start gap-4 text-white mb-10">
               <FaLocationDot size={36} />
               <div>
-                <p className="text-left text-[18px] mb-0">Address</p>
+                <p className="text-left leading-2 lg:leading-4 text-[16px] lg:text-[18px] mb-0">
+                  Address
+                </p>
                 <p className="text-[24px] text-left font-[500]">
                   4th Floor, Stanford, Juhu Lane, Andheri West, Mumbai,
                   Maharashtra 400058

@@ -39,7 +39,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
         console.log("show plans");
         setShowForm(false);
       } else {
-        setPlans(data?.data[0]);
+        setPlans(data?.data);
         setShowForm(true);
       }
     }

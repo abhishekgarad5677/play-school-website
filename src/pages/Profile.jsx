@@ -50,15 +50,15 @@ const Profile = () => {
   }, [makeRequest]);
 
   useEffect(() => {
-    if (data?.status === true) {
+    if (data?.status === true) {      
       setUserData(data?.data);
     }
   }, [data]);
 
   useEffect(() => {
     if (userData !== null) {
-      setUserFirstName(userData[1].split(" "));
-      setChildDetails(userData[2]);
+      setUserFirstName(userData.name.split(" "));
+      setChildDetails(userData?.students);
     }
   }, [userData]);
 

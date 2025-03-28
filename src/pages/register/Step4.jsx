@@ -22,7 +22,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setPlans(data?.data[0]))
+      .then((data) => setPlans(data?.data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
@@ -48,7 +48,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                 </span>
               </th>
               {plans?.map((plan, index) => {
-                if (plan?.isLive == false) {
+                if (plan?.isLive == false && plan?.currency == 'INR') {
                   return (
                     <th key={index} className="p-4 border border-gray-300">
                       {/* need to change this from backend */}
@@ -144,7 +144,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
             <tr>
               <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
               {plans
-                ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                ?.filter((plan) => plan?.isLive === false && plan?.currency == 'INR') // Filter out inactive plans
                 .map((plan, index) => (
                   <td key={index} className="p-4 border-none">
                     <label className="w-full cursor-pointer block">

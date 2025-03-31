@@ -2,6 +2,7 @@ import { motion, useTransform } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import BannerLeft from "../../public/banner-left.png";
 import BannerRight from "../../public/banner-right.png";
+import phone from "../../public/phone.png";
 import LockerRoom from "../../public/locker-room.png";
 import TapuTeam from "../../public/tapu-team.png";
 import BookShelf from "../../public/book-shelf.png";
@@ -85,7 +86,7 @@ const Banner = ({ scrollToRef, refs }) => {
         delay={1}
       />
 
-      <motion.img
+      {/* <motion.img
         initial="hidden"
         animate="visible"
         variants={{
@@ -99,7 +100,25 @@ const Banner = ({ scrollToRef, refs }) => {
         className="absolute bottom-10 right-0 w-[18%] lg:w-auto"
         src={BookShelf}
         alt=""
-      />
+      /> */}
+
+      <motion.div>
+        <motion.img
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, x: 50 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 0.8, delay: 0.6 },
+            },
+          }}
+          className="absolute bottom-10 right-0 w-[18%] lg:w-[16%]"
+          src={phone}
+          alt=""
+        />
+      </motion.div>
 
       <motion.img
         initial="hidden"

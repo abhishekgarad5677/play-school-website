@@ -118,7 +118,7 @@ const ContactSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start flex-start gap-4 text-white mb-4">
+              {/* <div className="flex items-start flex-start gap-4 text-white mb-4">
                 <FaPhoneAlt size={32} />
                 <div>
                   <p className="text-left leading-2 lg:leading-4 text-[16px] lg:text-[18px] mb-0">
@@ -128,7 +128,7 @@ const ContactSection = () => {
                     +91 97638678921
                   </p>
                 </div>
-              </div>
+              </div> */}
               <div className="flex  items-start flex-start gap-4 text-white mb-10">
                 <FaLocationDot size={36} />
                 <div>
@@ -144,7 +144,7 @@ const ContactSection = () => {
               <div className="flex flex-start items-start text-white gap-6">
                 <BiLogoInstagramAlt size={40} />
                 <FaYoutube size={42} />
-                <FaWhatsapp size={38} />
+                {/* <FaWhatsapp size={38} /> */}
               </div>
             </motion.div>
 

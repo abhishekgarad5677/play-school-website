@@ -244,7 +244,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
                   onClick={() => navigate("/register")}
                   className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
                 >
-                  Apply Now
+                  Enroll Now
                 </button>
               </td>
               <td className="p-4 borde-none">
@@ -252,7 +252,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
                   onClick={() => navigate("/register")}
                   className="w-full cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl"
                 >
-                  Apply Now
+                  Enroll Now
                 </button>
               </td>
             </tr>

@@ -20,3 +20,33 @@ body {
 .fredoka-one-font {
   font-family: 'Fredoka One', cursive !important;
 }
+
+/* Add this to your global CSS */
+.shine-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  z-index: 20;
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: rotate(25deg) translate(-100%, -100%);
+  }
+  100% {
+    transform: rotate(25deg) translate(100%, 100%);
+  }
+}
+

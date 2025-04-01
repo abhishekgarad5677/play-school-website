@@ -43,12 +43,12 @@ const GameSection = () => {
               <p className="text-[28px] font-[600]">100K</p>
             </div>
           </div> */}
-          <p className="text-white leading-6 lg:leading-8 text-[16px] mb-4">
+          <p className="text-white leading-6 lg:leading-8 text-[16px] mb-2">
             Boost your child’s skills with interactive quizzes and engaging
             activities in a safe, kid-friendly environment. Download now and
             start the learning adventure! 🚀
           </p>
-          {/* <p className="mb-4 text-white">Download Now On:</p> */}
+          <p className="mb-4 text-white">Download Now On:</p>
           <div className="grid grid-cols-2 gap-4 lg:gap-12">
             <img className="h-18 w-full" src={playLogo} alt="" />
             <img className="h-18 w-full" src={appLogo} alt="" />

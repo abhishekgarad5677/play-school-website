@@ -8,6 +8,8 @@ import SubscriptionSection from "../components/SubscriptionSection";
 import UspSection from "../components/UspSection";
 import { useLocation, useNavigate } from "react-router-dom";
 import GameSection from "../components/GameSection";
+import StarTrail from "../components/StarTrail";
+import SparkleBackground from "../components/SparkleBackground";
 
 const DefaultLayout = () => {
   const location = useLocation(); // ✅ Get location state
@@ -59,15 +61,17 @@ const DefaultLayout = () => {
 
   return (
     <div>
+      <StarTrail />
+      <SparkleBackground />
       <Banner
         scrollToRef={scrollToRef}
         refs={{ aboutRef, curriculumRef, pricingRef }}
       />
+      <GameSection />
       <AboutSection ref={aboutRef} />
       <UspSection />
       <CurriculumSection ref={curriculumRef} />
       <SubscriptionSection ref={pricingRef} />
-      <GameSection />
       <ContactSection />
     </div>
   );

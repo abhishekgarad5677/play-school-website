@@ -1,10 +1,15 @@
-import { motion, useTransform } from "framer-motion";
+import { motion, useAnimation, useTransform } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import BannerLeft from "../../public/banner-left.png";
 import BannerRight from "../../public/banner-right.png";
+import tapu from "../../public/tapu.png";
+import sonu from "../../public/sonu.png";
 import bannerPhone from "../../public/banner-phone.png";
+import PhoneAnimation from "../../public/PhoneAnimation.gif";
+import gamePhone from "../../public/gamePhone.gif";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import RotateImage from "./RotateImage";
 
 // Counter Animation with Delay Trigger
 const Counter = ({ from, to, duration, start }) => {
@@ -58,6 +63,32 @@ const FloatingImage = ({ src, className, delay }) => {
 const Banner = ({ scrollToRef, refs }) => {
   const navigate = useNavigate();
 
+  const strikeControls = useAnimation();
+  const [showDiscountedPrice, setShowDiscountedPrice] = useState(false);
+
+  useEffect(() => {
+    // Start the strikethrough animation
+    const strikeTimer = setTimeout(() => {
+      strikeControls.start({
+        width: "90%",
+        transition: {
+          duration: 1,
+          ease: "easeInOut",
+        },
+      });
+    }, 2600); // after parent reveal (delay 1.8 + duration 0.8)
+
+    // Show ₹599/- after strikethrough completes (1s after above)
+    const revealTimer = setTimeout(() => {
+      setShowDiscountedPrice(true);
+    }, 3600);
+
+    return () => {
+      clearTimeout(strikeTimer);
+      clearTimeout(revealTimer);
+    };
+  }, [strikeControls]);
+
   return (
     <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply lg:pt-5 relative overflow-hidden">
       <Navbar scrollToRef={scrollToRef} refs={refs} />
@@ -74,9 +105,41 @@ const Banner = ({ scrollToRef, refs }) => {
         delay={1}
       />
 
-      <FloatingImage
+      {/* <FloatingImage
         src={bannerPhone}
         className="absolute bottom-[35%] lg:bottom-0 right-8 h-30 lg:h-[600px]"
+        delay={1}
+      /> */}
+      <RotateImage
+        src={gamePhone}
+        className="absolute bottom-[35%] lg:bottom-10 right-95 w-[32%] z-10"
+        delay={1}
+        rotateIn={true} // Rotate in on load
+      />
+      <RotateImage
+        src={PhoneAnimation}
+        className="absolute bottom-[35%] lg:bottom-10 right-40 h-30 lg:h-[500px]"
+        delay={1}
+        rotateIn={true} // Rotate in on load
+      />
+      {/* <FloatingImage
+        src={PhoneAnimation}
+        className="absolute bottom-[35%] lg:bottom-10 right-40 h-30 lg:h-[500px]"
+        delay={1}
+      /> */}
+      {/* <FloatingImage
+        src={gamePhone}
+        className="absolute bottom-[35%] lg:bottom-10 right-95 w-[32%]"
+        delay={1}
+      /> */}
+      <FloatingImage
+        src={tapu}
+        className="absolute bottom-[35%] lg:bottom-0 right-192 w-[20%] z-20"
+        delay={1}
+      />
+      <FloatingImage
+        src={sonu}
+        className="absolute bottom-[35%] lg:bottom-0 right-5 w-[15%]"
         delay={1}
       />
 
@@ -91,7 +154,7 @@ const Banner = ({ scrollToRef, refs }) => {
             transition: { duration: 0.8, delay: 1.2 },
           },
         }}
-        className="text-left mx-14 w-[45%] lg:mt-30 pb-50  relative"
+        className="text-left mx-18 w-[45%] lg:mt-30 pb-50  relative"
       >
         <p className="space-x-2 text-[28px] lg:text-[38px] text-white flex-wrap justify-center items-center gap-1 lg:gap-2 leading-[1.1] lg:leading-[1.2] font-[500]">
           <span className="text-[#fff]">Learn</span>
@@ -153,16 +216,26 @@ const Banner = ({ scrollToRef, refs }) => {
             },
           }}
         >
-          <span className="flex text-[42px] lg:text-[58px] font-[600] top-[-30%] right-[0%] lg:top-[-30%] lg:right-[-35%] fredoka-font text-red-500">
-            <span className="relative text-red-500 before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-[90%] before:h-[5px] before:bg-white before:rotate-[13deg] before:origin-center">
-              ₹999/-
-            </span>{" "}
-          </span>
-          <p className="font-[500] text-[42px] lg:text-[38px]">
-            <span className=" text-white fredoka-font">₹</span>
-            <span className=" text-white">599</span>
-            <span className=" text-white">/-</span>
-          </p>
+          <div className="relative inline-block text-[42px] lg:text-[58px] font-[600] fredoka-font text-red-500">
+            <span>₹999/-</span>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={strikeControls}
+              className="absolute top-1/2 left-0 h-[5px] bg-white rotate-[13deg] origin-center"
+            />
+          </div>
+          {showDiscountedPrice && (
+            <motion.p
+              className="font-[500] text-[42px] lg:text-[38px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <span className="text-white fredoka-font">₹</span>
+              <span className="text-white">599</span>
+              <span className="text-white">/-</span>
+            </motion.p>
+          )}
         </motion.div>
         <motion.button
           whileHover={{ scale: 1.05 }}

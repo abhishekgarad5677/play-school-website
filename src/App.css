@@ -50,3 +50,7 @@ body {
   }
 }
 
+
+.reports-section .swiper-wrapper {
+  transition-timing-function: ease-in-out !important;
+}

@@ -7,13 +7,6 @@ import LockerRoom from "../../public/locker-room.png";
 import TapuTeam from "../../public/tapu-team.png";
 import BookShelf from "../../public/book-shelf.png";
 import Navbar from "./Navbar";
-import sonuAni from "../../public/animation-gif/SonuAnimation_Loop.gif";
-import TapuAni from "../../public/animation-gif/TapuCheerAnimation.gif";
-import offer1 from "../../public/animation-gif/Variation1.0.gif";
-import offer2 from "../../public/animation-gif/Variation2.0.gif";
-import offer3 from "../../public/animation-gif/Variation3.0.gif";
-import offer4 from "../../public/animation-gif/Variation4.0.gif";
-import offer5 from "../../public/animation-gif/Variation5.0.gif";
 import { useNavigate } from "react-router-dom";
 
 // Counter Animation with Delay Trigger

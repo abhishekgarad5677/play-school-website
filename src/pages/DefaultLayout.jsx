@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import AboutSection from "../components/AboutSection";
 import Banner from "../components/Banner";
 import ContactSection from "../components/ContactSection";
-import CurriculumSection from "../components/CurriculumSection";
+// import CurriculumSection from "../components/CurriculumSection";
 import FooterSection from "../components/FooterSection";
 import SubscriptionSection from "../components/SubscriptionSection";
 import UspSection from "../components/UspSection";
@@ -10,6 +10,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import GameSection from "../components/GameSection";
 import StarTrail from "../components/StarTrail";
 import SparkleBackground from "../components/SparkleBackground";
+import CurriculumSection from '../components/CurriculumSection'
+import Reports from "../components/Reports";
+
 
 const DefaultLayout = () => {
   const location = useLocation(); // ✅ Get location state
@@ -68,9 +71,11 @@ const DefaultLayout = () => {
         refs={{ aboutRef, curriculumRef, pricingRef }}
       />
       <GameSection />
+      <Reports />
       <AboutSection ref={aboutRef} />
       <UspSection />
       <CurriculumSection ref={curriculumRef} />
+      {/* <CurriculumSection /> */}
       <SubscriptionSection ref={pricingRef} />
       <ContactSection />
     </div>

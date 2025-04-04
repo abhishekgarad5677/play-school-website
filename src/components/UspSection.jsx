@@ -19,7 +19,7 @@ const UspSection = () => {
     {
       img: card3,
       title: "Learn in Your Language",
-      desc: "Now Available in English, Hindi, Marathi, Bangla, Punjabi, Tamil, French, Spanish & German",
+      desc: "Now Available in English, Hindi, Marathi, Bangla, Punjabi, Tamil as well as Spanish, French and German",
       gradient: "bg-[radial-gradient(circle,#FF5177_6%,#D4002F_120%)]",
     },
     {
@@ -94,7 +94,7 @@ const UspSection = () => {
         viewport={{ once: true }}
         className="text-[28px] lg:text-[36px] font-[500] text-[#fff] leading-[40px] lg:leading-[41.14px] text-center mb-1 lg:mb-0"
       >
-        Why TMKOC Playschool
+        Why TMKOC Playschool?
       </motion.h4>
 
       <motion.p

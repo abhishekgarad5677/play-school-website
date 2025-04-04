@@ -45,20 +45,20 @@ import card38 from "../../public/curriculum/VroomVroom.png";
 import card39 from "../../public/curriculum/WordMagic.png";
 import { motion } from "framer-motion";
 
-const CurriculumSection = forwardRef((props, ref) => {
+const CurriculumSectionBackup = forwardRef((props, ref) => {
   const slides = [
-    {
-      id: 2,
-      text: "Baby Phone",
-      imgSrc: card2,
-      textCol: "#DB9300",
-      bgColorInfo: "#fff",
-    },
     {
       id: 1,
       text: "First Word",
       imgSrc: card1,
       textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 2,
+      text: "Baby Phone",
+      imgSrc: card2,
+      textCol: "#DB9300",
       bgColorInfo: "#fff",
     },
     {
@@ -126,8 +126,15 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 12,
-      text: "Link-It",
+      text: "LinkIt",
       imgSrc: card12,
+      textCol: "#DE0B5C",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 13,
+      text: "Maze",
+      imgSrc: card13,
       textCol: "#DE0B5C",
       bgColorInfo: "#fff",
     },
@@ -139,31 +146,10 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
-      id: 13,
-      text: "Electronic Maze",
-      imgSrc: card13,
-      textCol: "#DE0B5C",
-      bgColorInfo: "#fff",
-    },
-    {
-      id: 18,
-      text: "Peek A Boo",
-      imgSrc: card18,
-      textCol: "#7C00DB",
-      bgColorInfo: "#fff",
-    },
-    {
       id: 15,
       text: "Music Mania",
       imgSrc: card15,
       textCol: "#18DADF",
-      bgColorInfo: "#fff",
-    },
-    {
-      id: 19,
-      text: "Reflection",
-      imgSrc: card19,
-      textCol: "#7C00DB",
       bgColorInfo: "#fff",
     },
     {
@@ -181,6 +167,20 @@ const CurriculumSection = forwardRef((props, ref) => {
       bgColorInfo: "#fff",
     },
     {
+      id: 18,
+      text: "Peek A Boo",
+      imgSrc: card18,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
+      id: 19,
+      text: "Reflection",
+      imgSrc: card19,
+      textCol: "#7C00DB",
+      bgColorInfo: "#fff",
+    },
+    {
       id: 20,
       text: "Sing Along",
       imgSrc: card20,
@@ -189,7 +189,7 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 21,
-      text: "Slide and Solve",
+      text: "Slide & Solve",
       imgSrc: card21,
       textCol: "#DE0B5C",
       bgColorInfo: "#fff",
@@ -217,7 +217,7 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 25,
-      text: "Dot To Dot Delight",
+      text: "Dot To Do tDelight",
       imgSrc: card25,
       textCol: "#DE0B5C",
       bgColorInfo: "#fff",
@@ -245,7 +245,7 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 28,
-      text: "Fruit & Veggies Fun",
+      text: "Fruit & VeggieFun",
       imgSrc: card28,
       textCol: "#DB9300",
       bgColorInfo: "#fff",
@@ -259,14 +259,14 @@ const CurriculumSection = forwardRef((props, ref) => {
     },
     {
       id: 31,
-      text: "Identification",
+      text: "Identity",
       imgSrc: card31,
       textCol: "#003EA2",
       bgColorInfo: "#fff",
     },
     {
       id: 33,
-      text: "Spot Hunt",
+      text: "Spot The",
       imgSrc: card33,
       textCol: "#DB9300",
       bgColorInfo: "#fff",
@@ -478,7 +478,7 @@ const CurriculumSection = forwardRef((props, ref) => {
               >
                 <img
                   className="w-[95%] h-[240px] lg:h-[200px] rounded-[12px]"
-                  src={slide.imgSrc}
+                  src={slide.imgSrc} 
                   alt={slide.text}
                 />
                 <div>
@@ -549,4 +549,4 @@ const CurriculumSection = forwardRef((props, ref) => {
   );
 });
 
-export default CurriculumSection;
+export default CurriculumSectionBackup;

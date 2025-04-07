@@ -102,16 +102,25 @@ export const SubPayment = () => {
                   );
 
                   console.log("Verification Response:", verifyResponse.data);
-                  if (verifyResponse?.data?.status) {
+                  if (verifyResponse?.data?.status === true) {
                     localStorage.removeItem("planId");
                     localStorage.removeItem("number");
                     localStorage.removeItem("token");
                     // navigate("/");
-                    window.location.href = "https://www.youtube.com";
+                    const query = encodeURIComponent(
+                      JSON.stringify(verifyResponse.data)
+                    );
+                    window.location.href = `https://www.youtube.com/?data=${query}`;
+                  } else {
+                    const query = encodeURIComponent(
+                      JSON.stringify(verifyResponse.data)
+                    );
+                    window.location.href = `https://www.youtube.com/?data=${query}`;
                   }
                 } catch (error) {
                   console.error("Payment Verification Error:", error);
                   // alert("Payment verification failed! Please try again.");
+                  window.location.href = `https://www.youtube.com/?mesage=somethingwentwrong`;
                 }
               }, 10000);
             } catch (error) {
@@ -126,6 +135,13 @@ export const SubPayment = () => {
           },
           theme: {
             color: "#0066FF",
+          },
+          modal: {
+            ondismiss: function () {
+              console.log("User closed the Razorpay payment modal.");
+              // You can also set an error or show a UI message
+              window.location.href = "https://www.youtube.com/";
+            },
           },
         };
 

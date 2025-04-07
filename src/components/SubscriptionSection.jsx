@@ -11,6 +11,9 @@ import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import useApi from "../utils/api";
+import { toast } from "react-toastify";
+import useGeoLocation from "../utils/useGeoLocation";
 
 const SubscriptionSection = forwardRef((props, ref) => {
   const data = [
@@ -40,23 +43,42 @@ const SubscriptionSection = forwardRef((props, ref) => {
 
   const navigate = useNavigate();
 
+  const { countryCode, loading: loadingUserLocation, error } = useGeoLocation();
+
+  const {
+    data: planData,
+    loading: planLoading,
+    error: planError,
+    makeRequest: getPlans,
+  } = useApi();
+
   const [plans, setPlans] = useState([]);
 
+  // api call for subscription plans
   useEffect(() => {
     const formData = new FormData();
-    formData.append("isInternational", false); // FormData values must be strings
-
-    fetch(
+    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    getPlans(
       "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
-      {
-        method: "POST",
-        body: formData, // No need for headers; browser sets them automatically
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => setPlans(data?.data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
+      "POST",
+      formData
+    );
+  }, [countryCode]);
+
+  // set plans data
+  useEffect(() => {
+    if (planData) {
+      setPlans(planData?.data);
+    }
+  }, [planData]);
+
+  if (error || planError) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-red-500">Error fetching Subscription Plans</p>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -152,31 +174,37 @@ const SubscriptionSection = forwardRef((props, ref) => {
                   Features
                 </span>
               </th>
-              {plans?.map((plan, index) => {
-                if (plan?.isLive == false) {
-                  return (
-                    <th key={index} className="p-4 border border-gray-300">
-                      {/* need to change this from backend */}
-                      {plan?.planFeature === 1 && plan?.currency === "INR" ? (
-                        <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
-                          Basic
-                        </button>
-                      ) : (
-                        <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
-                          Pro
-                        </button>
-                      )}
-                      {/* need to change this from backend */}
-                      <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                        ₹{plan?.amount / 100}/yr
-                      </p>
-                      <p className="text-[20px] font-[700] text-[#484848]">
-                        ₹{plan?.discountedAmount / 100}/yr
-                      </p>
-                    </th>
-                  );
-                }
-              })}
+              {!loadingUserLocation ? (
+                plans?.map((plan, index) => {
+                  if (plan?.isLive == false) {
+                    return (
+                      <th key={index} className="p-4 border border-gray-300">
+                        {/* need to change this from backend */}
+                        {plan?.planFeature === 1 ? (
+                          <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
+                            Basic
+                          </button>
+                        ) : (
+                          <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
+                            Pro
+                          </button>
+                        )}
+                        {/* need to change this from backend */}
+                        <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
+                          {countryCode === "IN" ? "₹" : "$"}
+                          {plan?.amount / 100}/yr
+                        </p>
+                        <p className="text-[20px] font-[700] text-[#484848]">
+                          {countryCode === "IN" ? "₹" : "$"}
+                          {plan?.discountedAmount / 100}/yr
+                        </p>
+                      </th>
+                    );
+                  }
+                })
+              ) : (
+                <>Loading</>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -242,7 +270,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               <td className="p-4 borde-none">
                 <button
                   onClick={() => navigate("/register")}
-                  className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
+               x   className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
                 >
                   Enroll Now
                 </button>

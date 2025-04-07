@@ -1,29 +1,36 @@
 import { useEffect, useState } from "react";
+import useApi from "./api";
 
-export default function useGeoLocation() {
-  const [locationData, setLocationData] = useState(null);
+const useGeoLocation = () => {
+  const {
+    data: countryData,
+    loading: loadingUserLocation,
+    error,
+    makeRequest: getUserLocation,
+  } = useApi();
+
+  const [countryCode, setCountryCode] = useState("IN");
 
   useEffect(() => {
-    getLocation();
-  }, []);
+    getUserLocation(
+      "http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query",
+      "GET",
+      null
+    );
+  }, [getUserLocation]);
 
-  async function getLocation() {
-    try {
-      const response = await fetch("http://ip-api.com/json");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      setLocationData(data);
-    } catch (error) {
-      console.error("Error fetching location data:", error);
+  useEffect(() => {
+    if (countryData?.status === "success") {
+      setCountryCode(countryData?.countryCode);
     }
-  }
+  }, [countryData]);
 
   return {
-    locationData: locationData,
-    city: locationData?.city,
-    lat: locationData?.lat,
-    lon: locationData?.lon,
+    countryData,
+    countryCode,
+    loading: loadingUserLocation,
+    error,
   };
-}
+};
+
+export default useGeoLocation;

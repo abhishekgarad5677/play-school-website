@@ -5,6 +5,12 @@ import useApi from "../../utils/api";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import avatar1 from "../../../public/avatar/Gogi1.png";
+import avatar2 from "../../../public/avatar/Gogi2.png";
+import avatar3 from "../../../public/avatar/Gogi3.png";
 
 const Step5 = ({ navigate }) => {
   const { data, makeRequest } = useApi();
@@ -67,13 +73,38 @@ const Step5 = ({ navigate }) => {
     }
   }, [childData]);
 
+  const gameSlide = [avatar1, avatar2, avatar3, avatar1, avatar2, avatar3];
+
   return (
     <div>
       <div className="flex flex-col gap-4 text-center w-full mb-10">
-        <img className="w-65 h-55 mx-auto" src={formLogo} alt="" />
+        {/* <img className="w-65 h-55 mx-auto" src={formLogo} alt="" /> */}
         <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
           Enter Child Details
         </p>
+      </div>
+
+      <div className="avatar-contaeiner mb-6">
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={0}
+          speed={5000}
+          freeMode={true}
+          loop={true}
+          breakpoints={{
+            320: { slidesPerView: 3, spaceBetween: 10 },
+            480: { slidesPerView: 3, spaceBetween: 12 },
+            640: { slidesPerView: 3, spaceBetween: 15 },
+            768: { slidesPerView: 3, spaceBetween: 18 },
+            1024: { slidesPerView: 3, spaceBetween: 20 },
+          }}
+        >
+          {gameSlide.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <img className="w-40" src={slide} alt="" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       <form className="space-y-6 w-full" onSubmit={handleSubmit(onSubmit)}>

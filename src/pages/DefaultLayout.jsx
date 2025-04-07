@@ -10,9 +10,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import GameSection from "../components/GameSection";
 import StarTrail from "../components/StarTrail";
 import SparkleBackground from "../components/SparkleBackground";
-import CurriculumSection from '../components/CurriculumSection'
+import CurriculumSection from "../components/CurriculumSection";
 import Reports from "../components/Reports";
-
+import { ToastContainer } from "react-toastify";
 
 const DefaultLayout = () => {
   const location = useLocation(); // ✅ Get location state
@@ -64,6 +64,7 @@ const DefaultLayout = () => {
 
   return (
     <div>
+      <ToastContainer />
       <StarTrail />
       <SparkleBackground />
       <Banner

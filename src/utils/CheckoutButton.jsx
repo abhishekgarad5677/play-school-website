@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import loader icon
 import { form } from "framer-motion/client";
 import logo from "../../public/playSchool-logo.png";
 import Cookies from "js-cookie";
+import { color } from "framer-motion";
 
 const CheckoutButton = ({
   selectedPlan,
@@ -13,14 +14,13 @@ const CheckoutButton = ({
 }) => {
   const [loading, setLoading] = useState(false); // State for loader and disabling button
   const token = Cookies.get("authToken");
-  console.log(token);
 
   const handlePayment = async () => {
     if (!selectedPlan) {
       setError("Please select a plan.");
       return;
     }
-    console.log(selectedPlan);
+    // console.log(selectedPlan);
 
     try {
       setLoading(true);
@@ -47,7 +47,7 @@ const CheckoutButton = ({
       let subscriptionId;
       if (data) {
         subscriptionId = data?.data?.sub_id;
-        console.log("Subscription ID:", data);
+        // console.log("Subscription ID:", data);
       }
 
       // Step 2: Open Razorpay Checkout
@@ -111,6 +111,7 @@ const CheckoutButton = ({
         theme: {
           color: "#0066FF",
         },
+        
       };
 
       const razor = new window.Razorpay(options);
@@ -120,8 +121,10 @@ const CheckoutButton = ({
       alert("Payment failed! Please try again.");
     } finally {
       setLoading(false);
+      console.log("closed");
     }
   };
+
 
   return (
     <button

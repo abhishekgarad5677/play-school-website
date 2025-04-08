@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import formLogo from "../../../public/register/formlogo.png";
 import useApi from "../../utils/api";
@@ -11,12 +11,27 @@ import { Autoplay } from "swiper/modules";
 import avatar1 from "../../../public/avatar/Gogi1.png";
 import avatar2 from "../../../public/avatar/Gogi2.png";
 import avatar3 from "../../../public/avatar/Gogi3.png";
+import avatar4 from "../../../public/avatar/Goli2.png";
+import avatar5 from "../../../public/avatar/Goli3.png";
+import avatar6 from "../../../public/avatar/Pinku1.png";
+import avatar7 from "../../../public/avatar/Pinku3.png";
+import avatar8 from "../../../public/avatar/Pinku5.png";
+import avatar9 from "../../../public/avatar/Sonu1.png";
+import avatar10 from "../../../public/avatar/Sonu2.png";
+import avatar11 from "../../../public/avatar/Sonu3.png";
+import avatar12 from "../../../public/avatar/Tappu1.png";
+import avatar13 from "../../../public/avatar/Tappu2.png";
+import avatar14 from "../../../public/avatar/Tappu3.png";
+import avatar15 from "../../../public/avatar/Tappu4.png";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Step5 = ({ navigate }) => {
-  const { data, makeRequest } = useApi();
+  const { data, makeRequest, loading: loadingAgeGroup } = useApi();
   const { data: childData, makeRequest: addChild } = useApi();
   const [ageGroup, setAgeGroup] = useState([]);
   const [loading, setLoading] = useState(false); // State for loader and disabling button
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
 
   const token = Cookies.get("authToken");
 
@@ -53,6 +68,7 @@ const Step5 = ({ navigate }) => {
     formData.append("Gender", data?.gender);
     formData.append("AgeGroupID", data?.ageGroup);
     formData.append("DateOfBirth ", data?.dateOfBirth);
+    formData.append("AvatarIndex ", activeIndex);
 
     addChild(
       "https://api-playschool.tmkocplayschool.com/api/Students/user/addstudent",
@@ -73,10 +89,26 @@ const Step5 = ({ navigate }) => {
     }
   }, [childData]);
 
-  const gameSlide = [avatar1, avatar2, avatar3, avatar1, avatar2, avatar3];
+  const avatar = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+    avatar9,
+    avatar10,
+    avatar11,
+    avatar12,
+    avatar13,
+    avatar14,
+    avatar15,
+  ];
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="flex flex-col gap-4 text-center w-full mb-10">
         {/* <img className="w-65 h-55 mx-auto" src={formLogo} alt="" /> */}
         <p className="text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
@@ -84,13 +116,32 @@ const Step5 = ({ navigate }) => {
         </p>
       </div>
 
-      <div className="avatar-contaeiner mb-6">
+      <div className="avatar-contaeiner mb-10 relative">
+        {/* Left Arrow */}
+        <button
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 cursor-pointer rounded-full shadow-md p-2"
+        >
+          <FiChevronLeft size={24} />
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 cursor-pointer rounded-full shadow-md p-2"
+        >
+          <FiChevronRight size={24} />
+        </button>
+
         <Swiper
           modules={[Autoplay]}
           spaceBetween={0}
-          speed={5000}
+          // speed={5000}
           freeMode={true}
           loop={true}
+          centeredSlides={true}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           breakpoints={{
             320: { slidesPerView: 3, spaceBetween: 10 },
             480: { slidesPerView: 3, spaceBetween: 12 },
@@ -99,11 +150,30 @@ const Step5 = ({ navigate }) => {
             1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
         >
-          {gameSlide.map((slide, index) => (
-            <SwiperSlide key={index}>
-              <img className="w-40" src={slide} alt="" />
-            </SwiperSlide>
-          ))}
+          {avatar.map((slide, index) => {
+            const realIndex = index % avatar.length;
+            const isActive = realIndex === activeIndex;
+            const isAdjacent =
+              realIndex === (activeIndex + 1) % avatar.length ||
+              realIndex ===
+                (activeIndex - 1 + avatar.length) % avatar.length;
+
+            return (
+              <SwiperSlide key={index}>
+                <img
+                  className={`transition-all duration-500 w-40 mx-auto ${
+                    isActive
+                      ? "scale-110 opacity-100"
+                      : isAdjacent
+                      ? "scale-90 opacity-60"
+                      : "scale-90 opacity-30"
+                  }`}
+                  src={slide}
+                  alt=""
+                />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
 
@@ -165,7 +235,7 @@ const Step5 = ({ navigate }) => {
               {...register("ageGroup", { required: "Age group is required" })}
             >
               <option value="">Select Age Group</option>
-              {ageGroup?.map((ele, index) => (
+              {!loadingAgeGroup && ageGroup?.map((ele, index) => (
                 <option key={index} value={ele?.id}>
                   {ele?.name}
                 </option>

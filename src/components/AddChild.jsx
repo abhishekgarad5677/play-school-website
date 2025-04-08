@@ -8,6 +8,7 @@ import { CiCircleInfo } from "react-icons/ci";
 import logo from "../../public/playSchool-logo.png";
 import { MdInfo } from "react-icons/md";
 import Step5 from "../pages/register/Step5";
+import useGeoLocation from "../utils/useGeoLocation";
 
 export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   if (!isOpen) return <></>;
@@ -15,13 +16,21 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   const [plans, setPlans] = useState([]);
   const { data, loading: loadingData, error, makeRequest } = useApi();
 
+  const {
+    countryCode,
+    loading: loadingUserLocation,
+    error: errorUserLocation,
+  } = useGeoLocation();
+
   useEffect(() => {
     const token = Cookies.get("authToken"); // Retrieve token from cookies
+    const formData = new FormData();
+    formData.append("isInternational", countryCode === "IN" ? false : true);
     if (token) {
       makeRequest(
         "https://api-playschool.tmkocplayschool.com/api/Razorpay/getaddchildplans",
         "POST",
-        null,
+        formData,
         {
           Authorization: `Bearer ${token}`, // Send token in headers
         }

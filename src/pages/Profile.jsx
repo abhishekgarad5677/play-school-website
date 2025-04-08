@@ -13,8 +13,6 @@ import addCildIon from "../../public/profile/add-child-icon.png";
 import childCard from "../../public/profile/child-card.png";
 import avgBg from "../../public/profile/avg-bg.png";
 import scoreBg from "../../public/profile/score-bg.png";
-import { TbDeviceMobileCheck } from "react-icons/tb";
-import { MdError } from "react-icons/md";
 import useApi from "../utils/api";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -23,12 +21,45 @@ import { ChildDetails } from "../components/ChildDetails";
 import { AddChild } from "../components/AddChild";
 import { use } from "react";
 import { useNavigate } from "react-router-dom";
+import avatar1 from "../../public/avatar/Gogi1.png";
+import avatar2 from "../../public/avatar/Gogi2.png";
+import avatar3 from "../../public/avatar/Gogi3.png";
+import avatar4 from "../../public/avatar/Goli2.png";
+import avatar5 from "../../public/avatar/Goli3.png";
+import avatar6 from "../../public/avatar/Pinku1.png";
+import avatar7 from "../../public/avatar/Pinku3.png";
+import avatar8 from "../../public/avatar/Pinku5.png";
+import avatar9 from "../../public/avatar/Sonu1.png";
+import avatar10 from "../../public/avatar/Sonu2.png";
+import avatar11 from "../../public/avatar/Sonu3.png";
+import avatar12 from "../../public/avatar/Tappu1.png";
+import avatar13 from "../../public/avatar/Tappu2.png";
+import avatar14 from "../../public/avatar/Tappu3.png";
+import avatar15 from "../../public/avatar/Tappu4.png";
 
 const Profile = () => {
   const { data, makeRequest } = useApi();
   const [userData, setUserData] = useState(null);
   const [userFirstName, setUserFirstName] = useState("");
   const [childDetails, setChildDetails] = useState([]);
+
+  const avatar = [
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5,
+    avatar6,
+    avatar7,
+    avatar8,
+    avatar9,
+    avatar10,
+    avatar11,
+    avatar12,
+    avatar13,
+    avatar14,
+    avatar15,
+  ];
 
   const fetchUserData = () => {
     const token = Cookies.get("authToken"); // Retrieve token from cookies
@@ -50,7 +81,7 @@ const Profile = () => {
   }, [makeRequest]);
 
   useEffect(() => {
-    if (data?.status === true) {      
+    if (data?.status === true) {
       setUserData(data?.data);
     }
   }, [data]);
@@ -93,6 +124,9 @@ const Profile = () => {
     Cookies.remove("authToken");
     navigate("/");
   };
+
+  console.log(childDetails);
+  
 
   return (
     <div className="">
@@ -192,14 +226,18 @@ const Profile = () => {
 
           <div className="flex items-center justify-center space-x-4 mt-4">
             {childDetails?.map((ele, index) => {
-              if (ele?.gender === "boy") {
+              if (ele?.gender === "Boy") {
                 return (
                   <div
                     key={index}
                     onClick={() => openModal(ele)}
                     className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%),url('../../public/profile/child-card.png')]"
                   >
-                    <img className="w-30 h-30" src={goli} alt="" />
+                    <img
+                      className="w-30 h-30"
+                      src={avatar[ele?.avatorNo]}
+                      alt=""
+                    />
                     <p className="text-[28px] font-[500]">{ele?.name}</p>
                   </div>
                 );
@@ -210,7 +248,11 @@ const Profile = () => {
                     onClick={() => openModal(ele)}
                     className="p-4 space-y-2 cursor-pointer text-center text-white border border-transparent rounded-lg bg-[radial-gradient(circle,#82F479_6%,#0EB401_120%),url('../../public/profile/child-card.png')]"
                   >
-                    <img className="w-30 h-30" src={sonu} alt="" />
+                    <img
+                      className="w-30 h-30"
+                      src={avatar[ele?.avatorNo]}
+                      alt=""
+                    />
                     <p className="text-[28px] font-[500]">{ele?.name}</p>
                   </div>
                 );
@@ -252,7 +294,7 @@ const Profile = () => {
               <img src={call} alt="Parent Avatar" className="w-6 h-6" />
               <p className="text-[#484848] text-[18px]">Contact Number</p>
               <p className="text-[#484848] font-[500] text-[22px]">
-                +91 {(userData !== null && userData[0]) || ""}
+                +91 {userData?.phoneNumber || ""}
               </p>
             </div>
             <div className="flex items-center flex-col gap-3 border-r-1 border-[#D9D9D9]">

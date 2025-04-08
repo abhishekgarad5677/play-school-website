@@ -4,7 +4,7 @@ import formLogo from "../../../public/register/formlogo.png";
 import useApi from "../../utils/api";
 import { form } from "framer-motion/client";
 import Cookies from "js-cookie";
-
+import useGeoLocation from "../../utils/useGeoLocation";
 
 const Step3 = ({ setCurrentStep, userNumber }) => {
   const [countries, setCountries] = useState([]);
@@ -65,6 +65,13 @@ const Step3 = ({ setCurrentStep, userNumber }) => {
       setCities(cityData.data || []);
     }
   }, [cityData]);
+
+  const {
+    countryCode,
+    loading: loadingUserLocation,
+    error: locationError,
+  } = useGeoLocation();
+
   // React Hook Form submission handler
   const onSubmit = (data) => {
     // formData will contain firstName, lastName, email, state, and city selections
@@ -76,6 +83,7 @@ const Step3 = ({ setCurrentStep, userNumber }) => {
     formData.append("State", data.state);
     formData.append("City", data.city);
     formData.append("Language", "English");
+    formData.append("IsInternationalUser", countryCode === "IN" ? false : true);
 
     createParentProfile(
       "https://api-playschool.tmkocplayschool.com/api/Auth/user/register",

@@ -8,7 +8,7 @@ import Step4 from "./Step4";
 import Step5 from "./Step5";
 
 export default function StepperForm() {
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(0);
   const [userNumber, setUseeNumber] = useState();
 
   const navigate = useNavigate();

@@ -90,7 +90,7 @@ const Banner = ({ scrollToRef, refs }) => {
   }, [strikeControls]);
 
   return (
-    <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply lg:pt-5 relative overflow-hidden">
+    <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply lg:pt-5 relative overflow-hidden">
       <Navbar scrollToRef={scrollToRef} refs={refs} />
 
       {/* Floating Images (Left & Right) */}

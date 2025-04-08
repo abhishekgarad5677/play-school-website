@@ -54,3 +54,14 @@ body {
 .reports-section .swiper-wrapper {
   transition-timing-function: ease-in-out !important;
 }
+
+
+.avatar-contaeiner .swiper-slide{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.avatar-contaeiner .swiper.swiper-initialized.swiper-horizontal{
+  overflow: visible !important;
+}

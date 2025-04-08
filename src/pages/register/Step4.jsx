@@ -14,7 +14,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
     countryCode,
     loading: loadingUserLocation,
     error: locationError,
-  } = useGeoLocation();
+  } = useGeoLocation(); 
 
   const {
     data: planData,

@@ -9,6 +9,10 @@ import logo from "../../public/playSchool-logo.png";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import avgBg from "../../public/profile/avg-bg.png";
 import scoreBg from "../../public/profile/score-bg.png";
+import useLeaderboardData from "../utils/GetLeaderBoardData";
+import { FiLoader } from "react-icons/fi";
+import useGeoLocation from "../utils/useGeoLocation";
+import useApi from "../utils/api";
 
 export const ChildDetails = ({
   isOpen,
@@ -31,32 +35,69 @@ export const ChildDetails = ({
   const [plans, setPlans] = useState([]);
   const [showPlans, setShowPlans] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [childData, setChildData] = useState(null);
+
+  const {
+    countryCode,
+    loading: loadingUserLocation,
+    error: errorUserLocation,
+  } = useGeoLocation();
+
+  const {
+    data: planData,
+    loading: planLoading,
+    error: planError,
+    makeRequest: getUpgradePlans,
+  } = useApi();
 
   const getPlans = async () => {
-    try {
-      const response = await axios.post(
-        "https://api-playschool.tmkocplayschool.com/api/Razorpay/upgradeplan",
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const formData = new FormData();
+    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    getUpgradePlans(
+      "https://api-playschool.tmkocplayschool.com/api/Razorpay/upgradeplan",
+      "POST",
+      formData,
+      {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      }
+    );
 
-      console.log(response.data); // Log the actual response data
+    // try {
+    //   const response = await axios.post(
+    //     "https://api-playschool.tmkocplayschool.com/api/Razorpay/upgradeplan",
+    //     null,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     }
+    //   );
+    //   console.log(response.data); // Log the actual response data
+    //   if (response?.data?.status === true) {
+    //     setPlans(response?.data?.data?.filter((ele) => ele?.isLive === false));
+    //     setShowPlans(true);
+    //   }
+    // } catch (error) {
+    //   console.error("Payment API Error:", error);
+    // }
+  };
 
-      if (response?.data?.status === true) {
+  useEffect(() => {
+    if (planData) {
+      console.log(planData);
+
+      if (planData?.status === true) {
         setPlans(
-          response?.data?.data[0]?.filter((ele) => ele?.isLive === false)
+          planData?.data?.filter(
+            (ele) => ele?.isLive === false && ele?.currency === "INR"
+          )
         );
         setShowPlans(true);
       }
-    } catch (error) {
-      console.error("Payment API Error:", error);
     }
-  };
+  }, [planData]);
 
   useEffect(() => {
     console.log(plans);
@@ -174,11 +215,36 @@ export const ChildDetails = ({
     }
   };
 
+  const {
+    data,
+    loading: loadingLeaderBoardData,
+    error,
+  } = useLeaderboardData(modalData?.name);
+
+  useEffect(() => {
+    if (data) {
+      console.log("Leaderboard Data:", data);
+      setChildData(data?.data);
+    }
+  }, [data]);
+
+  if (loadingLeaderBoardData) {
+    return (
+      <div className="fixed inset-0 bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-hidden">
+        <div className="relative p-4 w-full h-[90%] max-w-2xl">
+          <div className="relative bg-white h-full rounded-lg shadow-sm bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply flex items-center justify-center">
+            <FiLoader className="text-white text-5xl animate-spin" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-hidden">
       <div className="relative p-4 w-full max-w-2xl">
         {/* Modal content */}
-        <div className="relative bg-white rounded-lg shadow-sm  bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)]">
+        <div className="relative bg-white rounded-lg shadow-sm  bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
           {/* Modal header */}
           <div className="flex items-center justify-between px-5 pt-5 rounded-t">
             {showPlans ? (
@@ -222,28 +288,52 @@ export const ChildDetails = ({
                     <img
                       src={avgBg}
                       alt="Parent Avatar"
-                      className="w-full h-auto"
+                      className="w-full h-auto object-cover"
                     />
                     <span className="absolute top-5 left-10 text-[22px]">
-                      Average Score
+                      Total Score
                     </span>
-                    <p className="absolute -bottom-5 left-10 text-[120px] font-[500]">
-                      0
+                    <p className="absolute -bottom-0 left-6 text-[90px] font-[500]">
+                      {childData?.todayscore || 0}
+                      {childData?.plan}
                     </p>
                   </div>
-                  <div className="rounded-lg text-center text-white font-semibold text-lg relative">
-                    <img
-                      src={scoreBg}
-                      alt="Parent Avatar"
-                      className="w-full h-auto"
-                    />
-                    <span className="absolute top-5 left-10 text-[22px]">
-                      Rank
-                    </span>
-                    <p className="absolute -bottom-5 left-10 text-[120px] font-[500]">
-                      0
-                    </p>
-                  </div>
+                  {modalData?.plan !== "Pro" ? (
+                    <div className="relative rounded-2xl text-white text-center overflow-hidden shadow-lg">
+                      {/* Background image */}
+                      <img
+                        src={scoreBg}
+                        alt="Parent Avatar"
+                        className="w-full h-auto object-cover z-0"
+                      />
+
+                      {/* Global Rank Label */}
+                      <span className="absolute top-4 left-5 text-xl font-semibold drop-shadow-md z-10">
+                        Global Rank
+                      </span>
+
+                      {/* Overlay with lighter opacity */}
+                      <div className="absolute inset-0 bg-black bg-opacity-100 flex items-center justify-center px-4 z-20">
+                        <span className="text-white text-lg font-medium">
+                          🔒 Upgrade to Pro to see Global Rank
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="rounded-lg text-center text-white font-semibold text-lg relative">
+                      <img
+                        src={scoreBg}
+                        alt="Parent Avatar"
+                        className="w-full h-auto"
+                      />
+                      <span className="absolute top-5 left-6 text-[22px]">
+                        Global Rank
+                      </span>
+                      <p className="absolute -bottom-0 left-10 text-[90px] font-[500]">
+                        {childData?.today?.global || 0}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-8 bg-white shadow-lg rounded-2xl">
@@ -298,7 +388,7 @@ export const ChildDetails = ({
                       return (
                         <th
                           key={index}
-                          className="p-4 border border-gray-300 border-none  text-center rounded-tr-3xl"
+                          className="p-4 border border-gray-300 border-r-0  border-t-0 text-center rounded-tr-3xl"
                         >
                           <button className="bg-[#FFBAF3] mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
                             Pro
@@ -344,7 +434,7 @@ export const ChildDetails = ({
                     <td className="p-4 border-none rounded-bl-3xl border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                       Option to add another child with custom reporting
                     </td>
-                    <td className="p-4 border-none rounded-br-3xl  border-gray-300 text-green-600 border-b-0">
+                    <td className="p-4 rounded-br-3xl border border-r-0 border-gray-300 text-green-600 border-b-0">
                       <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
                         <FaCheck className="text-white text-[12px]" />
                       </div>
@@ -372,7 +462,7 @@ export const ChildDetails = ({
                                 Processing...
                               </span>
                             ) : (
-                              "Pay Now"
+                              "Buy Now"
                             )}
                           </button>
                         </td>

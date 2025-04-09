@@ -25,7 +25,7 @@ import avatar14 from "../../../public/avatar/Tappu3.png";
 import avatar15 from "../../../public/avatar/Tappu4.png";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-const Step5 = ({ navigate }) => {
+const Step5 = ({ navigate, mutate = () => {} }) => {
   const { data, makeRequest, loading: loadingAgeGroup } = useApi();
   const { data: childData, makeRequest: addChild } = useApi();
   const [ageGroup, setAgeGroup] = useState([]);
@@ -67,8 +67,11 @@ const Step5 = ({ navigate }) => {
     formData.append("ChildName", data?.childName);
     formData.append("Gender", data?.gender);
     formData.append("AgeGroupID", data?.ageGroup);
-    formData.append("DateOfBirth ", data?.dateOfBirth);
-    formData.append("AvatarIndex ", activeIndex);
+    formData.append("DateOfBirth", data?.dateOfBirth);
+    formData.append("AvatarIndex", activeIndex);
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+    }
 
     addChild(
       "https://api-playschool.tmkocplayschool.com/api/Students/user/addstudent",
@@ -86,6 +89,7 @@ const Step5 = ({ navigate }) => {
     if (childData?.status === true) {
       setLoading(false);
       navigate();
+      mutate()
     }
   }, [childData]);
 
@@ -155,8 +159,7 @@ const Step5 = ({ navigate }) => {
             const isActive = realIndex === activeIndex;
             const isAdjacent =
               realIndex === (activeIndex + 1) % avatar.length ||
-              realIndex ===
-                (activeIndex - 1 + avatar.length) % avatar.length;
+              realIndex === (activeIndex - 1 + avatar.length) % avatar.length;
 
             return (
               <SwiperSlide key={index}>
@@ -213,8 +216,8 @@ const Step5 = ({ navigate }) => {
               {...register("gender", { required: "Gender is required" })}
             >
               <option value="">Select Gender</option>
-              <option value="boy">Boy</option>
-              <option value="girl">Girl</option>
+              <option value="Boy">Boy</option>
+              <option value="Girl">Girl</option>
             </select>
             {errors.gender && (
               <span className="text-red-500 text-sm">
@@ -235,11 +238,12 @@ const Step5 = ({ navigate }) => {
               {...register("ageGroup", { required: "Age group is required" })}
             >
               <option value="">Select Age Group</option>
-              {!loadingAgeGroup && ageGroup?.map((ele, index) => (
-                <option key={index} value={ele?.id}>
-                  {ele?.name}
-                </option>
-              ))}
+              {!loadingAgeGroup &&
+                ageGroup?.map((ele, index) => (
+                  <option key={index} value={ele?.id}>
+                    {ele?.name}
+                  </option>
+                ))}
             </select>
             {errors.ageGroup && (
               <span className="text-red-500 text-sm">

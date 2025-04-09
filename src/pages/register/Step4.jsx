@@ -4,6 +4,9 @@ import { RxCross2 } from "react-icons/rx";
 import CheckoutButton from "../../utils/CheckoutButton";
 import useApi from "../../utils/api";
 import useGeoLocation from "../../utils/useGeoLocation";
+import PaymentVerificationScreen from "../../components/payment/PaymentVerificationScreen";
+// import successAnim from "../../../public/register/fail.json";
+import Lottie from "lottie-react";
 
 const Step4 = ({ setCurrentStep, userNumber }) => {
   const handleSubmit = () => {
@@ -14,7 +17,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
     countryCode,
     loading: loadingUserLocation,
     error: locationError,
-  } = useGeoLocation(); 
+  } = useGeoLocation();
 
   const {
     data: planData,
@@ -50,6 +53,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
       </div>
     );
   }
+
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [error, setError] = useState("");
@@ -177,7 +181,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                               : "peer-checked:ring-[#AA008B] bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white"
                           }`}
                         >
-                          Apply
+                          Select
                         </div>
                       </label>
                     </td>

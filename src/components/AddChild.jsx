@@ -4,11 +4,12 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { CiCircleInfo } from "react-icons/ci";
-import logo from "../../public/playSchool-logo.png";
 import { MdInfo } from "react-icons/md";
 import Step5 from "../pages/register/Step5";
 import useGeoLocation from "../utils/useGeoLocation";
+import { FiLoader } from "react-icons/fi";
+import logo from "../../public/playSchool-logo.png";
+import PaymentVerificationScreen from "../components/payment/PaymentVerificationScreen";
 
 export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   if (!isOpen) return <></>;
@@ -22,8 +23,14 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
     error: errorUserLocation,
   } = useGeoLocation();
 
+  const [showForm, setShowForm] = useState(true);
+  const [showVerificationScreen, setShowVerificationScreen] = useState(false);
+  const [verificationStatus, setVerificationStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const token = Cookies.get("authToken");
+
   useEffect(() => {
-    const token = Cookies.get("authToken"); // Retrieve token from cookies
     const formData = new FormData();
     formData.append("isInternational", countryCode === "IN" ? false : true);
     if (token) {
@@ -32,44 +39,30 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
         "POST",
         formData,
         {
-          Authorization: `Bearer ${token}`, // Send token in headers
+          Authorization: `Bearer ${token}`,
         }
       );
     }
   }, [makeRequest]);
 
-  const [showForm, setShowForm] = useState(true);
-
   useEffect(() => {
     if (data) {
-      console.log(data?.data);
-
-      if (data?.true === true && data?.data === null) {
-        console.log("show plans");
-        setShowForm(false);
-      } else {
-        setPlans(data?.data);
+      if (data?.status === true && data?.data !== null) {
+        setPlans(data?.data?.filter((ele) => ele?.isLive === false));
         setShowForm(true);
+      } else {
+        setShowForm(false);
       }
     }
   }, [data]);
 
-  const [loading, setLoading] = useState(false);
-
-  const token = Cookies.get("authToken");
+  console.log(plans);
 
   const handleSelect = async (selectedPlan) => {
-    console.log(selectedPlan);
-    if (!selectedPlan) {
-      setError("Please select a plan.");
-      return;
-    }
-    console.log(selectedPlan);
-
+    if (!selectedPlan) return;
     try {
       setLoading(true);
 
-      // Step 1: Create order on the server
       const formData = new FormData();
       formData.append("planId", selectedPlan?.id);
       formData.append("PhoneNumber", 774674743);
@@ -86,28 +79,21 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
         }
       );
 
-      // Store sub_id safely
-      let subscriptionId;
-      if (data) {
-        subscriptionId = data?.data?.sub_id;
-        console.log("Subscription ID:", data);
-      }
+      const subscriptionId = data?.data?.sub_id;
+      if (!subscriptionId) throw new Error("Subscription ID missing");
 
-      // Step 2: Open Razorpay Checkout
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY,
-        subscription_id: subscriptionId, // Pass the subscriptionId here
+        subscription_id: subscriptionId,
         image: logo,
         name: "Play School",
-        // currency: "INR",
         handler: async function (response) {
           try {
-            console.log("Payment Response:", response);
+            setShowVerificationScreen(true);
+            setVerificationStatus(null);
 
-            // Wait for 10 seconds before calling the verification API
             setTimeout(async () => {
               try {
-                // Create FormData for verification API
                 const verificationFormData = new FormData();
                 verificationFormData.append(
                   "PaymentId",
@@ -119,7 +105,6 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                 );
                 verificationFormData.append("Status", true);
 
-                // Make API call to verify payment
                 const verifyResponse = await axios.post(
                   "https://api-playschool.tmkocplayschool.com/api/Razorpay/verifypayment",
                   verificationFormData,
@@ -131,20 +116,26 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                   }
                 );
 
-                console.log("Verification Response:", verifyResponse.data);
-
                 if (verifyResponse?.data?.status) {
-                  // setCurrentStep(4);
+                  setVerificationStatus("success");
+                  setTimeout(() => {
+                    setShowVerificationScreen(false);
+                    setShowForm(false);
+                    setLoading(false);
+                    fetchUserData();
+                  }, 4000);
+                } else {
+                  setVerificationStatus("error");
+                  setTimeout(() => setShowVerificationScreen(false), 2500);
                 }
-                // alert("Payment verified successfully!");
               } catch (error) {
-                console.error("Payment Verification Error:", error);
-                alert("Payment verification failed! Please try again.");
+                setVerificationStatus("error");
+                setTimeout(() => setShowVerificationScreen(false), 2500);
               }
-            }, 10000); // 10-second delay (10000ms)
+            }, 2000);
           } catch (error) {
-            console.error("Payment Handler Error:", error);
-            alert("Something went wrong during payment processing!");
+            setVerificationStatus("error");
+            setTimeout(() => setShowVerificationScreen(false), 2500);
           }
         },
         prefill: {
@@ -155,23 +146,39 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
         theme: {
           color: "#0066FF",
         },
+        modal: {
+          ondismiss: () => {
+            setVerificationStatus("error");
+            setShowVerificationScreen(false);
+          },
+        },
       };
 
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (error) {
       console.error("Payment Error:", error);
-      alert("Payment failed! Please try again.");
-    } finally {
-      setShowForm(false);
-      setLoading(false);
-      fetchUserData();
+      setVerificationStatus("error");
+      setTimeout(() => setShowVerificationScreen(false), 2500);
     }
   };
+
+  if (loadingData || loadingUserLocation) {
+    return (
+      <div className="fixed inset-0 bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-hidden">
+        <div className="relative p-4 w-full h-[90%] max-w-2xl">
+          <div className="relative bg-white h-full rounded-lg shadow-sm bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply flex items-center justify-center">
+            <FiLoader className="text-white text-5xl animate-spin" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-md z-50 flex items-center justify-center overflow-hidden">
       <div className="relative p-4 w-full max-w-2xl">
+        {/* Your existing plan UI code */}
         {/* Modal content */}
         {showForm ? (
           <div className="relative bg-white rounded-lg shadow-sm  bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)]">
@@ -215,47 +222,69 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                         Features
                       </span>
                     </th>
-                    {plans?.map((plan, index) => {
-                      if (plan?.isLive == false) {
-                        return (
-                          <th
-                            key={index}
-                            className="p-4 border border-gray-300"
-                          >
-                            {/* need to change this from backend */}
-                            {plan?.planFeature == 1 ? (
-                              <button className="bg-[#C4FFBF] relative group cursor-pointer flex items-center gap-1 mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
-                                Basic
-                                <div className="flex items-center justify-center">
-                                  <span className="absolute -top-8 bg-gray-900 w-[130px] text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    Add new child ₹399
-                                  </span>
-                                  <MdInfo size={20} className="w-fit" />
-                                </div>
-                              </button>
-                            ) : (
+                    {plans.length > 1
+                      ? plans?.map((plan, index) => {
+                          if (plan?.isLive == false) {
+                            return (
+                              <th
+                                key={index}
+                                className="p-4 border text-center border-gray-300"
+                              >
+                                {/* need to change this from backend */}
+                                {plan?.planFeature == 1 ? (
+                                  <button className="bg-[#C4FFBF] relative group cursor-pointer flex items-center gap-1 mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
+                                    Basic
+                                    {/* <div className="flex items-center justify-center">
+                                      <span className="absolute -top-8 bg-gray-900 w-[130px] text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        Add new child ₹399
+                                      </span>
+                                      <MdInfo size={20} className="w-fit" />
+                                    </div> */}
+                                  </button>
+                                ) : (
+                                  <button className="bg-[#FFBAF3] relative group cursor-pointer flex items-center gap-1 mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
+                                    Pro
+                                    {/* <div className="relative flex items-center justify-center group">
+                                      <span className="absolute -top-17 bg-gray-900 w-[130px] text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        Upgrade existing child ₹400 + Add new
+                                        child ₹799
+                                      </span>
+                                      <MdInfo size={20} className="w-fit" />
+                                    </div> */}
+                                  </button>
+                                )}
+
+                                <p className="text-[20px] font-[700] text-[#484848]">
+                                  {plan?.currency === "INR" ? "₹" : "$"}
+                                  {plan?.upfrountAmount / 100}/yr
+                                </p>
+                              </th>
+                            );
+                          }
+                        })
+                      : plans?.map((plan, index) => {
+                          return (
+                            <th
+                              key={index}
+                              className="p-4 border border-gray-300"
+                            >
                               <button className="bg-[#FFBAF3] relative group cursor-pointer flex items-center gap-1 mb-3 text-[#97007C] py-1 px-6 rounded-[4px] text-[12px] font-[500]">
                                 Pro
-                                <div className="relative flex items-center justify-center group">
+                                {/* <div className="relative flex items-center justify-center group">
                                   <span className="absolute -top-17 bg-gray-900 w-[130px] text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     Upgrade existing child ₹400 + Add new child
                                     ₹799
                                   </span>
                                   <MdInfo size={20} className="w-fit" />
-                                </div>
+                                </div> */}
                               </button>
-                            )}
-                            {/* need to change this from backend */}
-                            {/* <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                            ₹{plan?.amount / 100}/yr
-                          </p> */}
-                            <p className="text-[20px] font-[700] text-[#484848]">
-                              ₹{plan?.upfrountAmount / 100}/yr
-                            </p>
-                          </th>
-                        );
-                      }
-                    })}
+
+                              <p className="text-[20px] font-[700] text-[#484848]">
+                                ₹{plan?.upfrountAmount / 100}/yr
+                              </p>
+                            </th>
+                          );
+                        })}
                   </tr>
                 </thead>
                 <tbody>
@@ -263,58 +292,95 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                     <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                       All Key Features
                     </td>
-                    <td className="p-4 border border-gray-300 text-center">
-                      <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
-                        <FaCheck className="text-white text-[12px]" />
-                      </div>
-                    </td>
-                    <td className="p-4 border border-gray-300 text-center">
-                      <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
-                        <FaCheck className="text-white text-[12px]" />
-                      </div>
-                    </td>
-                    {/* <td className="p-4 border border-gray-300 text-green-600">✔</td> */}
+                    {plans.length > 1 ? (
+                      <>
+                        <td className="p-4 border border-gray-300 text-center">
+                          <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                            <FaCheck className="text-white text-[12px]" />
+                          </div>
+                        </td>
+                        <td className="p-4 border border-gray-300 text-center">
+                          <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                            <FaCheck className="text-white text-[12px]" />
+                          </div>
+                        </td>
+                      </>
+                    ) : (
+                      <td className="p-4 border border-gray-300 text-center">
+                        <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                          <FaCheck className="text-white text-[12px]" />
+                        </div>
+                      </td>
+                    )}
                   </tr>
                   <tr className="bg-white">
                     <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                       Parental Access to Kids Performance Report (Updated Daily)
                     </td>
-                    <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
-                      Upto 50 Free Views
-                    </td>
-                    <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
-                      Unlimited Views
-                    </td>
+                    {plans.length > 1 ? (
+                      <>
+                        <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
+                          Upto 50 Free Views
+                        </td>
+                        <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
+                          Unlimited Views
+                        </td>
+                      </>
+                    ) : (
+                      <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
+                        Unlimited Views
+                      </td>
+                    )}
                   </tr>
                   <tr className="bg-white">
                     <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                       Global Ranking Report of the Kid across Games & Subjects
                     </td>
-                    <td className="p-4 border border-gray-300 ">
-                      <div className="bg-red-500 w-fit p-1 rounded-[50%] flex justify-center items-center mx-auto">
-                        <RxCross2 className="text-white text-[17px]" />
-                      </div>
-                    </td>
-                    <td className="p-4 border border-gray-300 ">
-                      <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
-                        <FaCheck className="text-white text-[12px] font-extrabold" />
-                      </div>
-                    </td>
+                    {plans.length > 1 ? (
+                      <>
+                        <td className="p-4 border border-gray-300 ">
+                          <div className="bg-red-500 w-fit p-1 rounded-[50%] flex justify-center items-center mx-auto">
+                            <RxCross2 className="text-white text-[17px]" />
+                          </div>
+                        </td>
+                        <td className="p-4 border border-gray-300 ">
+                          <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                            <FaCheck className="text-white text-[12px] font-extrabold" />
+                          </div>
+                        </td>
+                      </>
+                    ) : (
+                      <td className="p-4 border border-gray-300 ">
+                        <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                          <FaCheck className="text-white text-[12px] font-extrabold" />
+                        </div>
+                      </td>
+                    )}
                   </tr>
                   <tr className="bg-white">
                     <td className="p-4 border rounded-bl-3xl border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
                       Option to add another child with custom reporting
                     </td>
-                    <td className="p-4 border border-gray-300 text-green-600">
-                      <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
-                        <FaCheck className="text-white text-[12px]" />
-                      </div>
-                    </td>
-                    <td className="p-4 border border-gray-300 text-green-600  rounded-br-3xl">
-                      <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
-                        <FaCheck className="text-white text-[12px]" />
-                      </div>
-                    </td>
+                    {plans.length > 1 ? (
+                      <>
+                        <td className="p-4 border border-gray-300 text-green-600">
+                          <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                            <FaCheck className="text-white text-[12px]" />
+                          </div>
+                        </td>
+                        <td className="p-4 border border-gray-300 text-green-600  rounded-br-3xl">
+                          <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                            <FaCheck className="text-white text-[12px]" />
+                          </div>
+                        </td>
+                      </>
+                    ) : (
+                      <td className="p-4 border border-gray-300 text-green-600  rounded-br-3xl">
+                        <div className="bg-green-500 w-fit p-1.5 rounded-[50%] flex justify-center items-center mx-auto">
+                          <FaCheck className="text-white text-[12px]" />
+                        </div>
+                      </td>
+                    )}
                   </tr>
                   <tr>
                     <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
@@ -337,7 +403,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                                     : "peer-checked:ring-[#AA008B] bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white"
                                 }`}
                               >
-                                Apply
+                                Buy Now
                               </div>
                             </label>
                           </td>
@@ -357,7 +423,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                                     : "peer-checked:ring-[#AA008B] bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white"
                                 }`}
                               >
-                                Apply
+                                Buy Now
                               </div>
                             </label>
                           </td>
@@ -406,6 +472,11 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
             </div>
           </div>
         )}
+        {/* Show the verification screen overlay */}
+        <PaymentVerificationScreen
+          visible={showVerificationScreen}
+          status={verificationStatus}
+        />
       </div>
     </div>
   );

@@ -21,6 +21,11 @@ const PaymentVerificationScreen = ({ visible, status }) => {
     message = "❌ Verification failed!";
   }
 
+  if (status === "error") {
+    animationData = errorAnim;
+    message = "❌ Verification failed!";
+  }
+
   return (
     <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-2xl shadow-xl text-center max-w-sm w-full">

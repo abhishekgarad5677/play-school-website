@@ -13,6 +13,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css/autoplay";
 import "swiper/css";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Reports = () => {
   const attendanceData = [
@@ -38,6 +40,16 @@ const Reports = () => {
       img2: sec6,
     },
   ];
+
+  const [swapped, setSwapped] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSwapped((prev) => !prev);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="py-20 relative bg-[radial-gradient(circle,#ff9f4b_6%,#ff8310_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
@@ -85,7 +97,7 @@ const Reports = () => {
           className="relative reports-section"
           style={{ overflowX: "visible", overflowY: "hidden !important" }}
         >
-          <Swiper
+          {/* <Swiper
             modules={[Autoplay]}
             spaceBetween={50}
             slidesPerView={1}
@@ -99,11 +111,6 @@ const Reports = () => {
             {attendanceData?.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="shadow-lg relaticve bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%)] relative p-14 rounded-xl overflow-visible">
-                  {/* <img
-                    className="w-[5%] absolute bottom-2 left-2"
-                    src={repoFile}
-                    alt=""
-                  /> */}
                   <div className="mb-10">
                     <p className="text-[36px] text-white mb-4 font-[500] flex items-center gap-3">
                       {item.icon}
@@ -137,6 +144,69 @@ const Reports = () => {
                 </div>
               </SwiperSlide>
             ))}
+          </Swiper> */}
+
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={500}
+            slidesPerView={1}
+            loop
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+            }}
+            className="!overflow-visible"
+          >
+            {attendanceData?.map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <div className="shadow-lg relaticve bg-[radial-gradient(circle,#EE82FF_6%,#960CFF_120%)] relative p-14 rounded-xl overflow-visible">
+                    {/* Text content remains the same... */}
+                    <div className="mb-10">
+                      <p className="text-[36px] text-white mb-4 font-[500] flex items-center gap-3">
+                        {item.icon}
+                        {item.title}
+                      </p>
+                      <p className="text-[18px] w-[50%] leading-8 text-white">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <p className="w-[14%] text-white">
+                        TMKOC PlaySchool now available on
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <img className="w-[50px]" src={playStoreLogo} alt="" />
+                        <img className="w-[50px]" src={appStoreLogo} alt="" />
+                      </div>
+                    </div>
+                    <motion.img
+                      className="absolute bottom-8"
+                      animate={{
+                        right: swapped ? "3.75rem" : "15rem", // right-15 : right-60
+                        width: swapped ? "18%" : "16%",
+                        zIndex: swapped ? 10 : 5,
+                      }}
+                      transition={{ type: "spring", duration: 2 }}
+                      src={item.img1}
+                      alt=""
+                    />
+                    <motion.img
+                      className="absolute bottom-8"
+                      animate={{
+                        right: swapped ? "15rem" : "3.75rem",
+                        width: swapped ? "16%" : "18%",
+                        zIndex: swapped ? 5 : 10,
+                      }}
+                      transition={{ type: "spring", duration: 2 }}
+                      src={item.img2}
+                      alt=""
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </div>

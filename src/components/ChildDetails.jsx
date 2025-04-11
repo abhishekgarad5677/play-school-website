@@ -497,7 +497,7 @@ export const ChildDetails = ({
 
   useEffect(() => {
     if (planData?.status === true) {
-      setPlans(planData?.data?.filter((ele) => ele?.isLive === false));
+      setPlans(planData?.data?.filter((ele) => ele?.isLive === true));
       setShowPlans(true);
     }
   }, [planData]);
@@ -575,7 +575,7 @@ export const ChildDetails = ({
                 setVerificationStatus("error");
                 setTimeout(() => setShowVerificationScreen(false), 2500);
               }
-            }, 2000);
+            }, 5000);
           } catch (error) {
             setVerificationStatus("error");
             setTimeout(() => setShowVerificationScreen(false), 2500);
@@ -836,7 +836,7 @@ export const ChildDetails = ({
                     <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
 
                     {plans
-                      ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                      ?.filter((plan) => plan?.isLive === true) // Filter out inactive plans
                       .map((plan, index) => (
                         <td key={index} className="p-4 border-none">
                           <button

@@ -48,7 +48,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   useEffect(() => {
     if (data) {
       if (data?.status === true && data?.data !== null) {
-        setPlans(data?.data?.filter((ele) => ele?.isLive === false));
+        setPlans(data?.data?.filter((ele) => ele?.isLive === true));
         setShowForm(true);
       } else {
         setShowForm(false);
@@ -132,7 +132,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                 setVerificationStatus("error");
                 setTimeout(() => setShowVerificationScreen(false), 2500);
               }
-            }, 2000);
+            }, 5000);
           } catch (error) {
             setVerificationStatus("error");
             setTimeout(() => setShowVerificationScreen(false), 2500);
@@ -224,7 +224,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                     </th>
                     {plans.length > 1
                       ? plans?.map((plan, index) => {
-                          if (plan?.isLive == false) {
+                          if (plan?.isLive == true) {
                             return (
                               <th
                                 key={index}
@@ -280,7 +280,8 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                               </button>
 
                               <p className="text-[20px] font-[700] text-[#484848]">
-                                ₹{plan?.upfrountAmount / 100}/yr
+                                {plan?.currency === "INR" ? "₹" : "$"}
+                                {plan?.upfrountAmount / 100}/yr
                               </p>
                             </th>
                           );
@@ -385,7 +386,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
                   <tr>
                     <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
                     {plans
-                      ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                      ?.filter((plan) => plan?.isLive === true) // Filter out inactive plans
                       .map((plan, index) =>
                         plan?.planFeature == 1 ? (
                           <td key={index} className="p-4 border-none">

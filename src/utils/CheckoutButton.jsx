@@ -157,6 +157,7 @@ import logo from "../../public/playSchool-logo.png";
 import Cookies from "js-cookie";
 import useApi from "./api";
 import PaymentVerificationScreen from "../components/payment/PaymentVerificationScreen";
+import { toast, ToastContainer } from "react-toastify";
 // import PaymentVerificationScreen from "./PaymentVerificationScreen"; // <- Import
 
 const CheckoutButton = ({
@@ -195,6 +196,8 @@ const CheckoutButton = ({
       );
 
       const subscriptionId = createSubResponse?.data?.sub_id;
+      console.log("Subscription ID:", subscriptionId);
+      
       if (!subscriptionId) {
         throw new Error("Subscription ID not received.");
       }
@@ -293,17 +296,18 @@ const CheckoutButton = ({
                 }, 4000);
               } else {
                 // Step 3 (Error flow)
+                setShowVerificationScreen(true);
                 setVerificationStatus("error");
-
                 setTimeout(() => {
                   setShowVerificationScreen(false);
                 }, 2500);
               }
-            }, 2000); // Wait 2 seconds before verifying
+            }, 5000); // Wait 2 seconds before verifying
           } catch (err) {
-            console.error("Payment Handler Error:", err);
+            console.log("Payment Handler Error:", err);
+            setShowVerificationScreen(true);
             setVerificationStatus("error");
-            setTimeout(() => setShowVerificationScreen(false), 2500);
+            setTimeout(() => setShowVerificationScreen(false), 3000);
           }
         },
         prefill: {
@@ -319,15 +323,14 @@ const CheckoutButton = ({
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (err) {
-      console.error("Payment Error:", err);
-      // alert("Payment failed! Please try again.");
-      setVerificationStatus("error");
-      setTimeout(() => setShowVerificationScreen(false), 2500);
+      console.log(err);
+      toast.error(`${err}`);
     }
   };
 
   return (
     <>
+      <ToastContainer />
       <button
         onClick={handlePayment}
         disabled={loading}

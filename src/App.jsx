@@ -28,18 +28,18 @@ function App() {
         {/* Public Route */}
 
         {/* Protected Routes */}
-        {/* <Route element={<ProtectedRoutes />}> */}
-        <Route index element={<DefaultLayout />} />
-        <Route path="/payment" element={<SubPayment />} />
-        <Route path="/" element={<DefaultLayout />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/terms-condition" element={<TermsCondition />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/refund-cancellation" element={<RefundCancellation />} />
-        <Route path="*" element={<h2>❌ Page Not Found</h2>} />
-        {/* </Route> */}
+        <Route element={<ProtectedRoutes />}>
+          <Route index element={<DefaultLayout />} />
+          <Route path="/payment" element={<SubPayment />} />
+          <Route path="/" element={<DefaultLayout />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/terms-condition" element={<TermsCondition />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/refund-cancellation" element={<RefundCancellation />} />
+          <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

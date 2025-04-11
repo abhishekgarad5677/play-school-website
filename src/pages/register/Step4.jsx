@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import CheckoutButton from "../../utils/CheckoutButton";
 import useApi from "../../utils/api";
-import useGeoLocation from "../../utils/useGeoLocation";
+// import useGeoLocation from "../../utils/useGeoLocation";
 import PaymentVerificationScreen from "../../components/payment/PaymentVerificationScreen";
 // import successAnim from "../../../public/register/fail.json";
 import Lottie from "lottie-react";
@@ -13,11 +13,11 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
     setCurrentStep(4);
   };
 
-  const {
-    countryCode,
-    loading: loadingUserLocation,
-    error: locationError,
-  } = useGeoLocation();
+  // const {
+  //   countryCode,
+  //   loading: loadingUserLocation,
+  //   error: locationError,
+  // } = useGeoLocation();
 
   const {
     data: planData,
@@ -31,13 +31,15 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
   // api call for subscription plans
   useEffect(() => {
     const formData = new FormData();
-    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    // formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    formData.append("isInternational", true); // FormData values must be strings
     getPlans(
       "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
       "POST",
       formData
     );
-  }, [countryCode]);
+    // }, [countryCode]);
+  }, []);
 
   // set plans data
   useEffect(() => {
@@ -46,14 +48,14 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
     }
   }, [planData]);
 
-  if (locationError || planError) {
+  // if (locationError || planError) {
+  if (planError) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-red-500">Error fetching Subscription Plans</p>
       </div>
     );
   }
-
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [error, setError] = useState("");
@@ -66,7 +68,8 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
   return (
     <div className="h-130">
       <div className="overflow-x-auto">
-        {!loadingUserLocation || !planLoading ? (
+        {/* {!loadingUserLocation || !planLoading ? ( */}
+        {!planLoading ? (
           <table className="w-full md:w-max mx-auto border-collapse border-transparent ">
             <thead>
               <tr className="bg-white border-transparent ">
@@ -77,7 +80,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                 </th>
 
                 {plans?.map((plan, index) => {
-                  if (plan?.isLive == false) {
+                  if (plan?.isLive == true) {
                     return (
                       <th key={index} className="p-4 border border-gray-300">
                         {plan?.planFeature == 1 ? (
@@ -90,11 +93,11 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                           </button>
                         )}
                         <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                          {countryCode === "IN" ? "₹" : "$"}
+                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
                           {plan?.amount / 100}/yr
                         </p>
                         <p className="text-[20px] font-[700] text-[#484848]">
-                          {countryCode === "IN" ? "₹" : "$"}
+                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
                           {plan?.discountedAmount / 100}/yr
                         </p>
                       </th>
@@ -164,7 +167,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
               <tr>
                 <td className="p-4 border-none min-w-[200px] text-[12px] text-[#818181] max-w-[330px] bg-transparent"></td>
                 {plans
-                  ?.filter((plan) => plan?.isLive === false) // Filter out inactive plans
+                  ?.filter((plan) => plan?.isLive === true) // Filter out inactive plans
                   .map((plan, index) => (
                     <td key={index} className="p-4 border-none">
                       <label className="w-full cursor-pointer block">

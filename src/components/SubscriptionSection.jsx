@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import useApi from "../utils/api";
 import { toast } from "react-toastify";
-import useGeoLocation from "../utils/useGeoLocation";
+// import useGeoLocation from "../utils/useGeoLocation";
 
 const SubscriptionSection = forwardRef((props, ref) => {
   const data = [
@@ -43,7 +43,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
 
   const navigate = useNavigate();
 
-  const { countryCode, loading: loadingUserLocation, error } = useGeoLocation();
+  // const { countryCode, loading: loadingUserLocation, error } = useGeoLocation();
 
   const {
     data: planData,
@@ -57,13 +57,15 @@ const SubscriptionSection = forwardRef((props, ref) => {
   // api call for subscription plans
   useEffect(() => {
     const formData = new FormData();
-    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    // formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    formData.append("isInternational", true);
     getPlans(
       "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
       "POST",
       formData
     );
-  }, [countryCode]);
+    // }, [countryCode]);
+  }, []);
 
   // set plans data
   useEffect(() => {
@@ -72,7 +74,8 @@ const SubscriptionSection = forwardRef((props, ref) => {
     }
   }, [planData]);
 
-  if (error || planError) {
+  // if (error || planError) {
+  if (planError) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-red-500">Error fetching Subscription Plans</p>
@@ -170,15 +173,22 @@ const SubscriptionSection = forwardRef((props, ref) => {
           <thead>
             <tr className="bg-white border-transparent ">
               <th className="p-4 border-none border-gray-300 text-center rounded-tl-3xl  min-w-[200px] max-w-[330px]">
-                <span className="bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent text-[24px]">
                   Features
                 </span>
               </th>
-              {!loadingUserLocation ? (
+              {!planLoading ? (
                 plans?.map((plan, index) => {
-                  if (plan?.isLive == false) {
+                  if (plan?.isLive == true) {
                     return (
-                      <th key={index} className="p-4 border border-gray-300">
+                      <th
+                        key={index}
+                        className={`p-4 border border-gray-300 ${
+                          plan?.planFeature !== 1
+                            ? "border-r-0 border-t-0 rounded-tr-3xl"
+                            : ""
+                        }`}
+                      >
                         {/* need to change this from backend */}
                         {plan?.planFeature === 1 ? (
                           <button className="bg-[#C4FFBF] mb-3 text-[#0EB401] py-1 px-5 rounded-[4px] text-[12px] font-[500]">
@@ -191,11 +201,11 @@ const SubscriptionSection = forwardRef((props, ref) => {
                         )}
                         {/* need to change this from backend */}
                         <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                          {countryCode === "IN" ? "₹" : "$"}
+                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
                           {plan?.amount / 100}/yr
                         </p>
                         <p className="text-[20px] font-[700] text-[#484848]">
-                          {countryCode === "IN" ? "₹" : "$"}
+                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
                           {plan?.discountedAmount / 100}/yr
                         </p>
                       </th>
@@ -209,7 +219,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
           </thead>
           <tbody>
             <tr className="bg-white">
-              <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+              <td className="p-4 border border-gray-300 min-w-[200px] text-[15px] text-[#464646] font-[500] max-w-[330px] text-center px-5">
                 All Key Features
               </td>
               <td className="p-4 border border-gray-300 text-center">
@@ -225,7 +235,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               {/* <td className="p-4 border border-gray-300 text-green-600">✔</td> */}
             </tr>
             <tr className="bg-white">
-              <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+              <td className="p-4 border border-gray-300 min-w-[200px] text-[15px] text-[#464646] font-[500] max-w-[330px] text-center px-5">
                 Parental Access to Kids Performance Report (Updated Daily)
               </td>
               <td className="p-4 border border-gray-300 text-[12px] text-[#484848]">
@@ -236,7 +246,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               </td>
             </tr>
             <tr className="bg-white">
-              <td className="p-4 border border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+              <td className="p-4 border border-gray-300 min-w-[200px] text-[15px] text-[#464646] font-[500] max-w-[330px] text-center px-5">
                 Global Ranking Report of the Kid across Games & Subjects
               </td>
               <td className="p-4 border border-gray-300 ">
@@ -251,7 +261,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               </td>
             </tr>
             <tr className="bg-white">
-              <td className="p-4 border-none rounded-bl-3xl border-gray-300 min-w-[200px] text-[12px] text-[#818181] max-w-[330px] text-center px-10">
+              <td className="p-4 border-none rounded-bl-3xl border-gray-300 min-w-[200px] text-[15px] text-[#464646] font-[500] max-w-[330px] text-center px-5">
                 Option to add another child with custom reporting
               </td>
               <td className="p-4 border border-gray-300 text-green-600 border-b-0">
@@ -270,7 +280,8 @@ const SubscriptionSection = forwardRef((props, ref) => {
               <td className="p-4 borde-none">
                 <button
                   onClick={() => navigate("/register")}
-               x   className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
+                  x
+                  className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#82F479_1%,#0EB401_120%)] text-white px-4 py-2 rounded-3xl"
                 >
                   Enroll Now
                 </button>
@@ -278,7 +289,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
               <td className="p-4 borde-none">
                 <button
                   onClick={() => navigate("/register")}
-                  className="w-full cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl"
+                  className="w-full font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-4 py-2 rounded-3xl"
                 >
                   Enroll Now
                 </button>

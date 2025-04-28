@@ -33,6 +33,7 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
   useEffect(() => {
     const formData = new FormData();
     formData.append("isInternational", countryCode === "IN" ? false : true);
+    // formData.append("isInternational", true);
     if (token) {
       makeRequest(
         "https://api-playschool.tmkocplayschool.com/api/Razorpay/getaddchildplans",
@@ -138,11 +139,11 @@ export const AddChild = ({ isOpen, closeModal, fetchUserData }) => {
             setTimeout(() => setShowVerificationScreen(false), 2500);
           }
         },
-        prefill: {
-          name: "Your Name",
-          email: "your.email@example.com",
-          contact: "9999999999",
-        },
+        // prefill: {
+        //   name: "Your Name",
+        //   email: "your.email@example.com",
+        //   contact: "9999999999",
+        // },
         theme: {
           color: "#0066FF",
         },

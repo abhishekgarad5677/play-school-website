@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import CheckoutButton from "../../utils/CheckoutButton";
 import useApi from "../../utils/api";
-// import useGeoLocation from "../../utils/useGeoLocation";
+import useGeoLocation from "../../utils/useGeoLocation";
 import PaymentVerificationScreen from "../../components/payment/PaymentVerificationScreen";
 // import successAnim from "../../../public/register/fail.json";
 import Lottie from "lottie-react";
@@ -13,11 +13,11 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
     setCurrentStep(4);
   };
 
-  // const {
-  //   countryCode,
-  //   loading: loadingUserLocation,
-  //   error: locationError,
-  // } = useGeoLocation();
+  const {
+    countryCode,
+    loading: loadingUserLocation,
+    error: locationError,
+  } = useGeoLocation();
 
   const {
     data: planData,
@@ -31,15 +31,15 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
   // api call for subscription plans
   useEffect(() => {
     const formData = new FormData();
-    // formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
-    formData.append("isInternational", true); // FormData values must be strings
+    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    // formData.append("isInternational", true); // FormData values must be strings
     getPlans(
       "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
       "POST",
       formData
     );
-    // }, [countryCode]);
-  }, []);
+  }, [countryCode]);
+  // }, []);
 
   // set plans data
   useEffect(() => {
@@ -80,7 +80,7 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                 </th>
 
                 {plans?.map((plan, index) => {
-                  if (plan?.isLive == true) {
+                  if (plan?.isLive === true) {
                     return (
                       <th key={index} className="p-4 border border-gray-300">
                         {plan?.planFeature == 1 ? (
@@ -93,11 +93,11 @@ const Step4 = ({ setCurrentStep, userNumber }) => {
                           </button>
                         )}
                         <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
+                          {countryCode === "IN" ? "₹" : "$"}
                           {plan?.amount / 100}/yr
                         </p>
                         <p className="text-[20px] font-[700] text-[#484848]">
-                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
+                          {countryCode === "IN" ? "₹" : "$"}
                           {plan?.discountedAmount / 100}/yr
                         </p>
                       </th>

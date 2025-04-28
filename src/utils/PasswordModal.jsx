@@ -28,27 +28,35 @@ const PasswordModal = ({ onUnlock }) => {
       <img alt="" src={logo} className="h-[00px] lg:h-[150px]" />
       {/* <img className="absolute top-[-1px] left-0" src={TopLeft} alt="" />
       <img className="absolute top-[-1px] right-0" src={TopRight} alt="" /> */}
-      <img className="absolute top-70 left-[-20px]" src={LeftGroup} alt="" />
-      <img className="absolute top-80 right-20" src={RightGroup} alt="" />
+      <img
+        className="absolute top-70 left-[-20px] lg:block hidden"
+        src={LeftGroup}
+        alt=""
+      />
+      <img
+        className="absolute top-80 right-20 lg:block hidden"
+        src={RightGroup}
+        alt=""
+      />
 
       <img
-        className="absolute left-0 top-[50px] lg:top-[1px] w-[25%] lg:w-auto"
+        className="absolute left-0 top-[50px] lg:top-[1px] w-[25%] lg:w-auto lg:block hidden"
         src={topLeft}
         alt=""
       />
       <img
-        className="absolute right-0 top-[-6%] lg:top-[1px] w-[25%] lg:w-auto"
+        className="absolute right-0 top-[-6%] lg:top-[1px] w-[25%] lg:w-auto lg:block hidden"
         src={topRigth}
         alt=""
       />
 
       <img
-        className="absolute z-10  left-0 bottom-[0px] w-[40%] lg:w-[338px]"
+        className="absolute z-10  left-0 bottom-[0px] w-[40%] lg:w-[338px] lg:block hidden"
         src={bottomLeft}
         alt=""
       />
       <img
-        className="absolute z-10 right-0 bottom-[0px] w-[40%] lg:w-[338px]"
+        className="absolute z-10 right-0 bottom-[0px] w-[40%] lg:w-[338px] lg:block hidden"
         src={bottomRigth}
         alt=""
       />

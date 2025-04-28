@@ -581,11 +581,11 @@ export const ChildDetails = ({
             setTimeout(() => setShowVerificationScreen(false), 2500);
           }
         },
-        prefill: {
-          name: "Your Name",
-          email: "your.email@example.com",
-          contact: "9999999999",
-        },
+        // prefill: {
+        //   name: "Your Name",
+        //   email: "your.email@example.com",
+        //   contact: "9999999999",
+        // },
         theme: {
           color: "#0066FF",
         },

@@ -52,7 +52,7 @@ const Reports = () => {
   }, []);
 
   return (
-    <div className="py-20 relative bg-[radial-gradient(circle,#ff9f4b_6%,#ff8310_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
+    <div className="py-20 relative bg-[radial-gradient(circle,#ff9f4b_6%,#ff8310_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
       <img className="absolute left-[-3.5%] top-[-12%]" src={console} alt="" />
       <img
         className="absolute right-[-3.5%] top-[-12%] -scale-x-100"

@@ -13,7 +13,9 @@ const useGeoLocation = () => {
 
   useEffect(() => {
     getUserLocation(
-      "http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query",
+      `https://pro.ip-api.com/json/?fields=status,message,country,regionName,countryCode,query&key=${
+        import.meta.env.VITE_AI_API_KEY
+      }`,
       "GET",
       null
     );

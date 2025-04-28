@@ -50,7 +50,7 @@ const GameSection = () => {
   return (
     <div
       ref={ref}
-      className="py-14 lg:py-18 bg-[radial-gradient(circle,#FF5177_15%,#D4002F_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply"
+      className="py-14 lg:py-18 bg-[radial-gradient(circle,#FF5177_15%,#D4002F_190%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply"
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 mb-10 px-6 lg:px-12 items-center">
         <motion.div

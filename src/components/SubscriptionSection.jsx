@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import useApi from "../utils/api";
 import { toast } from "react-toastify";
+import useGeoLocation from "../utils/useGeoLocation";
 // import useGeoLocation from "../utils/useGeoLocation";
 
 const SubscriptionSection = forwardRef((props, ref) => {
@@ -43,7 +44,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
 
   const navigate = useNavigate();
 
-  // const { countryCode, loading: loadingUserLocation, error } = useGeoLocation();
+  const { countryCode, loading: loadingUserLocation, error } = useGeoLocation();
 
   const {
     data: planData,
@@ -57,15 +58,15 @@ const SubscriptionSection = forwardRef((props, ref) => {
   // api call for subscription plans
   useEffect(() => {
     const formData = new FormData();
-    // formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
-    formData.append("isInternational", true);
+    formData.append("isInternational", countryCode === "IN" ? false : true); // FormData values must be strings
+    // formData.append("isInternational", true);
     getPlans(
       "https://api-playschool.tmkocplayschool.com/api/Razorpay/getFirstChildPlans",
       "POST",
       formData
     );
-    // }, [countryCode]);
-  }, []);
+  }, [countryCode]);
+  // }, []);
 
   // set plans data
   useEffect(() => {
@@ -89,7 +90,7 @@ const SubscriptionSection = forwardRef((props, ref) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative pt-20 pb-10 px-6 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply"
+      className="relative pt-20 pb-10 px-6 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply"
     >
       <motion.img
         initial={{ opacity: 0, x: -100 }}
@@ -201,11 +202,11 @@ const SubscriptionSection = forwardRef((props, ref) => {
                         )}
                         {/* need to change this from backend */}
                         <p className="text line-through text-[#ACACAC] decoration-[#D4002F] font-[600]">
-                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
+                          {countryCode === "IN" ? "₹" : "$"}
                           {plan?.amount / 100}/yr
                         </p>
                         <p className="text-[20px] font-[700] text-[#484848]">
-                          {/* {countryCode === "IN" ? "₹" : "$"} */}$
+                          {countryCode === "IN" ? "₹" : "$"}
                           {plan?.discountedAmount / 100}/yr
                         </p>
                       </th>

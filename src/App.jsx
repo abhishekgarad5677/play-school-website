@@ -10,7 +10,8 @@ import Profile from "./pages/Profile";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Login from "./pages/login/Login";
 import { SubPayment } from "./pages/phone/SubPayment";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import NoInternetScreen from "./components/payment/NoInternetScreen";
 
 function App() {
   // useEffect(() => {
@@ -21,6 +22,22 @@ function App() {
   //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTg2OTY2NDMyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImQxZmE0NmY1LWQwYmQtNDQwNy1hOTUwLWU2OWJlZGYwYzU2YyIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.4aZoXnnVkGaqDXv1jc7SdPRxQ6BqpqAW9N-EFqLpP50"
   //   );
   // }, []);
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const updateStatus = () => setIsOnline(navigator.onLine);
+    window.addEventListener("online", updateStatus);
+    window.addEventListener("offline", updateStatus);
+    return () => {
+      window.removeEventListener("online", updateStatus);
+      window.removeEventListener("offline", updateStatus);
+    };
+  }, []);
+
+  if (!isOnline) {
+    return <NoInternetScreen />;
+  }
 
   return (
     <BrowserRouter>

@@ -84,7 +84,7 @@ const ContactSection = () => {
         initial="hidden"
         whileInView="visible" // ✅ Trigger animations when in view
         viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
-        className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-14 lg:pt-28"
+        className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-14 lg:pt-28"
       >
         <motion.div
           variants={fadeUp}

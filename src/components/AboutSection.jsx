@@ -48,7 +48,7 @@ const AboutSection = forwardRef((props, ref) => {
       viewport={{ once: true, amount: 0.2 }} // ✅ Starts when 20% of the section is visible
       // className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
       // className="bg-[radial-gradient(circle,#fecb22_2%,#fc8c05_190%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-2 lg:py-20 px-6"
-      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-6 lg:py-20 px-6"
+      className="bg-[radial-gradient(circle,#FF85E9_1%,#AA008B_110%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pb-14 pt-6 lg:py-20 px-6"
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-[40%_60%] gap-6 lg:gap-12 items-center">
         {/* Left Image with Floating Effect */}

@@ -115,7 +115,7 @@ const ContactSection = () => {
                     Email
                   </p>
                   <p className="text-[22px] lg:text-[24px] text-left font-[500]">
-                    tmkocplayschool@gmail.com
+                    info@tmkocplayschool.com
                   </p>
                 </div>
               </div>

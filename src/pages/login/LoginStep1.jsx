@@ -56,7 +56,7 @@ const LoginStep1 = ({ setCurrentStep, setUserNumber }) => {
             Enter your phone number
           </p>
           <p className="text-[16px] lg:text-[18px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
-            We will send you the 4-digit verification code
+            We will send you the 6-digit verification code
           </p>
         </div>
       </div>

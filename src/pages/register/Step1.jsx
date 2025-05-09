@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import phoneVerify from "../../../public/register/phoneVerify.png";
 import { CountryList } from "../../utils/CountryList";
 import Cookies from "js-cookie";
+import useApi from "../../utils/api";
+import { toast } from "react-toastify";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const Step1 = ({ setCurrentStep, setUseeNumber }) => {
+const Step1 = ({ setCurrentStep, setUserNumber }) => {
   const [selectedCountry, setSelectedCountry] = useState("IN"); // Default country
   const {
     register,
@@ -38,15 +41,43 @@ const Step1 = ({ setCurrentStep, setUseeNumber }) => {
     trigger("phoneNumber"); // Dynamically revalidate input
   };
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    setCurrentStep(1); // Move to the next step
-    setUseeNumber(data.phoneNumber);
-  };
+  const { makeRequest, loading, error, data } = useApi(); // custom hook
 
-  // const token = Cookies.get("authToken");
-  // Cookies.remove("authToken");
-  // console.log(token);
+  // const onSubmit = (data) => {
+  //   const selectedCountryData = CountryList.find(
+  //     (country) => country.code === selectedCountry
+  //   );
+
+  //   const fullNumber = `+${selectedCountryData.phone}${data.phoneNumber}`;
+  //   console.log("Full Number:", fullNumber);
+
+  //   setUserNumber(fullNumber);
+  //   setCurrentStep(1);
+  // };
+
+  const onSubmit = async (data) => {
+    const selectedCountryData = CountryList.find(
+      (country) => country.code === selectedCountry
+    );
+
+    const fullNumber = `+${selectedCountryData.phone}${data.phoneNumber}`;
+
+    // const API_KEY = "7087120e-2ce2-11ed-9c12-0200cd936042"; // replace with env var in production
+    const API_KEY = import.meta.env.VITE_OTP_API_KEY;
+    const url = `https://2factor.in/API/V1/${API_KEY}/SMS/${fullNumber}/AUTOGEN/OTPVerify`;
+
+    const response = await makeRequest(url); // uses GET by default
+
+    if (response && response.Status === "Success") {
+      console.log("OTP Sent:", response);
+      toast.success("OTP sent successfully!");
+      setUserNumber(fullNumber);
+      setCurrentStep(1);
+    } else {
+      toast.error("Something went wrong! Please try again.");
+      console.log("OTP sending failed", response);
+    }
+  };
 
   return (
     <div>
@@ -61,7 +92,7 @@ const Step1 = ({ setCurrentStep, setUseeNumber }) => {
             Enter your phone number
           </p>
           <p className="text-[16px] lg:text-[18px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
-            We will send you the 4-digit verification code
+            We will send you the 6-digit verification code
           </p>
         </div>
       </div>
@@ -115,11 +146,29 @@ const Step1 = ({ setCurrentStep, setUseeNumber }) => {
         )}
 
         {/* Submit Button */}
-        <button
+        {/* <button
           type="submit"
           className="w-full py-3 cursor-pointer my-4 text-white text-[20px] font-semibold bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] rounded-full shadow-lg hover:opacity-90 transition-all disabled:opacity-50"
         >
           Generate OTP
+        </button> */}
+        <button
+          type="submit"
+          disabled={loading}
+          className={`w-full py-3 my-4 text-white text-[20px] font-semibold rounded-full shadow-lg transition-all ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed opacity-50"
+              : "cursor-pointer bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] hover:opacity-90"
+          }`}
+        >
+          {loading ? (
+            <span className="flex items-center justify-center">
+              <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 mr-2" />
+              Sending OTP...
+            </span>
+          ) : (
+            "Get OTP"
+          )}
         </button>
       </form>
     </div>

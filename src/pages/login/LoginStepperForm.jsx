@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import LoginStep1 from "./LoginStep1";
 import LoginStep2 from "./LoginStep2";
+import { ToastContainer } from "react-toastify";
 
 export default function LoginStepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -13,6 +14,7 @@ export default function LoginStepperForm() {
   const steps = ["Enter Phone Number", "OTP Verification"];
   return (
     <div className="w-full">
+      <ToastContainer />
       <Link
         to={"/"}
         className="flex items-center w-fit gap-0 mb-2 text-[#0066FF] font-[600] text-[20px]"

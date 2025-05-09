@@ -12,6 +12,8 @@ import Login from "./pages/login/Login";
 import { SubPayment } from "./pages/phone/SubPayment";
 import { useEffect, useState } from "react";
 import NoInternetScreen from "./components/payment/NoInternetScreen";
+import CampaignLayout from "./pages/Form/CampaignLayout";
+import { DirectPayment } from "./pages/phone/DirectPayment";
 
 function App() {
   // useEffect(() => {
@@ -43,6 +45,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public Route */}
+        <Route path="/direct-payment" element={<DirectPayment />} />
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoutes />}>
@@ -56,6 +59,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-cancellation" element={<RefundCancellation />} />
           <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+          <Route path="/campaign-form" element={<CampaignLayout />} />
         </Route>
       </Routes>
     </BrowserRouter>

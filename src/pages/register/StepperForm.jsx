@@ -6,10 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
+import { ToastContainer } from "react-toastify";
 
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [userNumber, setUseeNumber] = useState();
+  const [userNumber, setUserNumber] = useState();
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -25,6 +26,7 @@ export default function StepperForm() {
   ];
   return (
     <div className="w-full">
+      <ToastContainer />
       <Link
         to={"/"}
         className="flex items-center w-fit gap-0 mb-2 text-[#0066FF] font-[600] text-[20px]"
@@ -90,7 +92,7 @@ export default function StepperForm() {
         {currentStep === 0 && (
           <Step1
             setCurrentStep={setCurrentStep}
-            setUseeNumber={setUseeNumber}
+            setUserNumber={setUserNumber}
           />
         )}
         {currentStep === 1 && (

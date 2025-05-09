@@ -4,16 +4,49 @@ import phoneVerify from "../../../public/register/phoneVerify.png";
 import useApi from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { MdEdit } from "react-icons/md";
 
 const Step2 = ({ setCurrentStep, userNumber }) => {
-  const [otp, setOtp] = useState(["", "", "", ""]);
-  const [timer, setTimer] = useState(30);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [timer, setTimer] = useState(60);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
+  const API_KEY = import.meta.env.VITE_OTP_API_KEY;
 
   const { data, loading, error, makeRequest } = useApi(); // useApi hook manages loading
 
   const { data: loginData, makeRequest: login } = useApi(); // login user
+
+  const {
+    data: resendData,
+    loading: resendLoading,
+    error: resendError,
+    makeRequest: resendOTP,
+  } = useApi(); // resend OTP
+
+  const handleResendOtp = async () => {
+    if (resendLoading || timer > 0) return;
+
+    const url = `https://2factor.in/API/V1/${API_KEY}/SMS/${userNumber}/AUTOGEN/OTPVerify`;
+
+    try {
+      const response = await resendOTP(url); // Uses GET by default
+
+      if (response && response.Status === "Success") {
+        console.log("OTP Resent:", response);
+        toast.success("OTP resent successfully!");
+        setOtp(["", "", "", "", "", ""]); // Clear old OTP
+        setTimer(60); // Restart timer
+      } else {
+        toast.error("Failed to resend OTP.");
+        console.error("OTP resend failed:", response);
+      }
+    } catch (error) {
+      console.error("Error while resending OTP:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
 
   useEffect(() => {
     if (timer > 0) {
@@ -48,20 +81,54 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
     }
   };
 
+  // const handleVerify = async () => {
+  //   if (otp.includes("") || timer === 0 || loading) return; // Prevent multiple clicks
+
+  //   const formData = new FormData();
+  //   formData.append("PhoneNumber", userNumber);
+
+  //   const response = await makeRequest(
+  //     "https://api-playschool.tmkocplayschool.com/api/Auth/user/isregistereduser",
+  //     "POST",
+  //     formData,
+  //     {
+  //       "Content-Type": "multipart/form-data",
+  //     }
+  //   );
+  // };
+
   const handleVerify = async () => {
-    if (otp.includes("") || timer === 0 || loading) return; // Prevent multiple clicks
+    if (otp.includes("") || timer === 0 || loading) return;
 
-    const formData = new FormData();
-    formData.append("PhoneNumber", userNumber);
+    const enteredOTP = otp.join(""); // Convert OTP digits to full string
 
-    const response = await makeRequest(
-      "https://api-playschool.tmkocplayschool.com/api/Auth/user/isregistereduser",
-      "POST",
-      formData,
-      {
-        "Content-Type": "multipart/form-data",
+    try {
+      const verifyUrl = `https://2factor.in/API/V1/${API_KEY}/SMS/VERIFY3/${userNumber}/${enteredOTP}`;
+
+      const verifyResponse = await makeRequest(verifyUrl); // default GET
+
+      if (verifyResponse?.Status === "Success") {
+        toast.success("OTP Verified Successfully");
+
+        // Now check user registration status
+        const formData = new FormData();
+        formData.append("PhoneNumber", userNumber);
+
+        await makeRequest(
+          "https://api-playschool.tmkocplayschool.com/api/Auth/user/isregistereduser",
+          "POST",
+          formData,
+          {
+            "Content-Type": "multipart/form-data",
+          }
+        );
+      } else {
+        toast.error("Invalid OTP, please try again.");
       }
-    );
+    } catch (err) {
+      console.error("OTP verification failed:", err);
+      toast.error("Something went wrong during verification.");
+    }
   };
 
   // **Automatically show an error toast when `error` changes**
@@ -71,52 +138,6 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
       console.log("Something went wrong! Please try again.");
     }
   }, [error]);
-
-  // const loginUser = async () => {
-  //   const formData = new FormData();
-  //   formData.append("PhoneNumber", userNumber);
-
-  //   login(
-  //     "https://api-playschool.tmkocplayschool.com/api/Auth/user/login",
-  //     "POST",
-  //     formData,
-  //     {
-  //       "Content-Type": "multipart/form-data",
-  //     }
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   console.log(loginData);
-  //   if (loginData && loginData?.status === true) {
-  //     const token = loginData?.data?.token;
-  //     Cookies.set("authToken", token, { expires: 7 }); // Expires in 7 days
-  //   }
-  // }, [loginData]);
-
-  // // **Automatically handle API response when `data` updates**
-  // useEffect(() => {
-  //   console.log(data);
-  //   if (data && data?.isRegistered === false) {
-  //     setCurrentStep(2);
-  //   } else if (data && data?.isSubscribed === false) {
-  //     loginUser();
-  //     setCurrentStep(3);
-  //     console.log("User not registered");
-  //   } else if (data && data?.isChildAdded === false) {
-  //     loginUser();
-  //     setCurrentStep(4);
-  //     console.log("User not registered");
-  //   } else if (
-  //     data?.isRegistered === true &&
-  //     data?.isSubscribed === true &&
-  //     data?.isChildAdded === true
-  //   ) {
-  //     // make api call for the use to login
-  //     loginUser();
-  //     navigate("/profile");
-  //   }
-  // }, [data]);
 
   const loginUser = async () => {
     const formData = new FormData();
@@ -186,10 +207,17 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
           <p className="text-[28px] lg:text-[40px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
             OTP Verification
           </p>
-          <p className="text-[16px] lg:text-[18px] font-[400] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
-            Enter the OTP sent to{" "}
-            <span className="font-[600]">{userNumber}</span>
-          </p>
+          <div className="flex items-center justify-center gap-1">
+            <p className="text-[16px] lg:text-[18px] font-[400] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">
+              Enter the OTP sent to{" "}
+              <span className="font-[600]">{userNumber}</span>
+            </p>
+            <MdEdit
+              onClick={() => setCurrentStep(0)}
+              size={18}
+              className="text-[#00CAFF] cursor-pointer"
+            />
+          </div>
         </div>
       </div>
 
@@ -211,12 +239,27 @@ const Step2 = ({ setCurrentStep, userNumber }) => {
       <p className="text-center bg-gradient-to-r font-[600] from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent mb-2">
         {timer}s
       </p>
-      <p
+      {/* <p
         onClick={() => setTimer(30)}
         className="text-center cursor-pointer bg-gradient-to-r font-[400] from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent"
       >
         Didn’t receive OTP? <span className="font-[600]">Resend OTP</span>
+      </p> */}
+
+      <p
+        onClick={handleResendOtp}
+        className={`text-center cursor-pointer font-[400] mb-2 bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent ${
+          timer > 0 || resendLoading
+            ? "opacity-50 cursor-not-allowed"
+            : "hover:opacity-80"
+        }`}
+      >
+        Didn’t receive OTP? <span className="font-[600]">Resend OTP</span>
+        {resendLoading && (
+          <AiOutlineLoading3Quarters className="inline-block ml-2 animate-spin" />
+        )}
       </p>
+      <div></div>
 
       {/* Fixed Verify Button */}
       <button

@@ -33,6 +33,15 @@ const DefaultLayout = () => {
   //   }
   // }, [navigate]);
 
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "token",
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTA4MjU0NTY4MiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjNmNGU4YWEwLWVlNDUtNDRkNC1hNGYxLTliNTUxM2Q4OGU1NSIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.mbqR0zD8POk5L_hz7OqJljcTtaHhb126pFIPpy6N4Es"
+  //   );
+  //   localStorage.setItem("planId", 88);
+  //   localStorage.setItem("number", Number("9082545682"));
+  // }, []);
+
   const aboutRef = useRef(null);
   const curriculumRef = useRef(null);
   const pricingRef = useRef(null);

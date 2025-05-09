@@ -11,6 +11,10 @@ const PaymentVerificationScreen = ({ visible, status }) => {
   let animationData = verifyingAnim;
   let message = "Verifying Payment...";
 
+  if (status === "loading") {
+    message = "Loading...";
+  }
+
   if (status === "success") {
     animationData = successAnim;
     message = "✅ Payment Verified!";

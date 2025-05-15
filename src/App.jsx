@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import NoInternetScreen from "./components/payment/NoInternetScreen";
 import CampaignLayout from "./pages/Form/CampaignLayout";
 import { DirectPayment } from "./pages/phone/DirectPayment";
+import { analytics, logEvent } from "./utils/firebaseConfig";
 
 function App() {
   // useEffect(() => {
@@ -35,6 +36,11 @@ function App() {
       window.removeEventListener("online", updateStatus);
       window.removeEventListener("offline", updateStatus);
     };
+  }, []);
+
+  useEffect(() => {
+    // Log the event for website visit
+    logEvent(analytics, "website_visit");
   }, []);
 
   if (!isOnline) {

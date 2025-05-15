@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import logo from "../../public/playSchool-logo.png";
-// import TopLeft from "../../public/subscription/top-left.png";
-// import TopRight from "../../public/subscription/top-right.png";
 import LeftGroup from "../../public/subscription/subs-left.png";
 import RightGroup from "../../public/subscription/subs-right.png";
 import bottomLeft from "../../public/usp/bottom-left.png";
 import bottomRigth from "../../public/usp/bottom-right.png";
 import topLeft from "../../public/usp/top-left.png";
 import topRigth from "../../public/usp/top-right.png";
-import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { IoIosAppstore } from "react-icons/io";
 import { LoginModal } from "../components/LoginModal";
 import playStoreLogo from "../../public/playstore-logo.png";
 import appLogo from "../../public/appstore-logo.png";
@@ -17,6 +13,7 @@ import mobTop from "../../public/password/mob-top.png";
 import mobRight from "../../public/password/mob-right.png";
 import mobLeft from "../../public/password/mob-left.png";
 import tapuTeam from "../../public/tapu-team.png";
+import { analytics, logEvent } from "../utils/firebaseConfig";
 
 const PasswordModal = ({ onUnlock }) => {
   const [password, setPassword] = useState("");
@@ -110,14 +107,16 @@ const PasswordModal = ({ onUnlock }) => {
         </h2>
         <div className="flex w-[50%] lg:w-[50%] flex-col lg:flex-row gap-3 justify-center text-center items-center">
           <a
-            className="w-fit"
-            href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+            className="w-fit cursor-pointer"
+            // href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+            onClick={() => logEvent(analytics, "android_download_click")}
           >
             <img className="w-[100%]" src={playStoreLogo} alt="" />
           </a>
           <a
-            className="w-fit"
-            href="https://testflight.apple.com/join/SYgGKcAG"
+            className="w-fit cursor-pointer"
+            // href="https://testflight.apple.com/join/SYgGKcAG"
+            onClick={() => logEvent(analytics, "ios_download_click")}
           >
             <img className="w-[100%]" src={appLogo} alt="" />
           </a>

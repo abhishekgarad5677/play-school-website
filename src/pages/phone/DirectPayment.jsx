@@ -116,7 +116,7 @@ export const DirectPayment = () => {
 
                   setTimeout(() => {
                     setShowVerificationScreen(false);
-                    window.location.href = "message=payment_cancelled";
+                    window.location.href = "message=verify_payment_failed";
                   }, 2500);
                 }
               }, 5000);

@@ -74,7 +74,7 @@ const DefaultLayout = () => {
   return (
     <div>
       <ToastContainer />
-      <StarTrail />
+      {/* <StarTrail /> */}
       <SparkleBackground />
       <Banner
         scrollToRef={scrollToRef}

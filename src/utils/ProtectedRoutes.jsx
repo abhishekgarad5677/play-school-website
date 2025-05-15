@@ -42,7 +42,7 @@ const ProtectedRoutes = () => {
     <Outlet />
   ) : (
     <div>
-      <StarTrail />
+      {/* <StarTrail /> */}
       <SparkleBackground />
       <PasswordModal onUnlock={() => setIsAuthenticated(true)} />
     </div>

@@ -108,14 +108,14 @@ const PasswordModal = ({ onUnlock }) => {
         <div className="flex w-[50%] lg:w-[50%] flex-col lg:flex-row gap-3 justify-center text-center items-center">
           <a
             className="w-fit cursor-pointer"
-            // href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+            href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
             onClick={() => logEvent(analytics, "android_download_click")}
           >
             <img className="w-[100%]" src={playStoreLogo} alt="" />
           </a>
           <a
             className="w-fit cursor-pointer"
-            // href="https://testflight.apple.com/join/SYgGKcAG"
+            href="https://testflight.apple.com/join/SYgGKcAG"
             onClick={() => logEvent(analytics, "ios_download_click")}
           >
             <img className="w-[100%]" src={appLogo} alt="" />

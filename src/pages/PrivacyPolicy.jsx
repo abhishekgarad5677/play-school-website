@@ -136,8 +136,8 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `The same shall be used for ______. It is
-            understood if the username shall be visible to
+          sction1: `The same shall be used for data collection. It is
+            understood if the username shall be visible to  
             others, and if it corresponds to the legal name
             of the Guardian/Child, You provide specific
             consent for the Personal Data to be
@@ -266,7 +266,7 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used to process the subscription fee and monitor the balance amount.`,
+          sction1: `Used to process the fee and monitor the balance amount.`,
         },
       ],
       col3: [
@@ -293,6 +293,24 @@ const PrivacyPolicy = () => {
           section1: "Registration",
           section2: "Analytics",
           section3: "Report Generation",
+        },
+      ],
+    },
+    {
+      col1: [
+        {
+          sction1: "Feedback",
+        },
+      ],
+      col2: [
+        {
+          sction1: `Used for improve user experience and provide seamless use of the Application.`,
+        },
+      ],
+      col3: [
+        {
+          section1:
+            "Sample Testing Phase Any Phase the User voluntaril submits feedback",
         },
       ],
     },
@@ -609,7 +627,13 @@ const PrivacyPolicy = () => {
   return (
     <div>
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-5 relative overflow-hidden">
-        <Navbar />
+        {/* <Navbar /> */}
+        <Link
+          to={"/"}
+          className="absolute left-4 top-4 lg:left-8 lg:top-8 text-xl lg:text-2xl text-white"
+        >
+          {"< "}back
+        </Link>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -621,33 +645,34 @@ const PrivacyPolicy = () => {
               transition: { duration: 0.4, ease: "easeOut" },
             },
           }}
-          className=" text-[54px] text-[#fff] leading-[176.3%] py-16 text-center font-[500]"
+          className="text-[35px] lg:text-[54px] text-[#fff] leading-[176.3%]  py-10 lg:py-16 text-center font-[500]"
         >
           Privacy Policy
         </motion.div>
       </div>
-      <div className="mx-14 py-10">
+      <div className="mx-8 lg:mx-14  py-10">
         <motion.div
           // className="mx-14 py-10"
-          initial={{ opacity: 0, y: 50 }} // Start with the element 50px below and invisible
+          initial={{ opacity: 0, y: 10 }} // Start with the element 50px below and invisible
           whileInView={{ opacity: 1, y: 0 }} // Animate to its natural position and full opacity
           viewport={{ once: true, amount: 0.2 }} // Trigger the animation when 20% of the element is visible; only animate once
           transition={{ duration: 0.4, ease: "easeOut" }} // Customize duration and easing as needed
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 6th May, 2024.
+            Last Updated: 16th May, 2025.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             This Privacy Policy explains Our policy regarding the collection,
             processing, use, disclosure, and transfer of Your information
             (“Privacy Policy”) for the application “TMKOC Play School”
-            application available on : ______________ (&quot;Application&quot;).
-            or products or services which are operative now or developed or
-            created in the future (the “Services”) which is owned and operated
-            by Neela Mediatech Private Limited, having its office at 401, 4th
-            Floor, Stanford, CTS no 554/1 to 4 Junction of SV Road and Juhu
-            lane, Andheri (W) Mumbai, MH 400058 (“NMPL”, “Us”, “We”, “Our”).
+            application available on : 16th May, 2025.
+            (&quot;Application&quot;). or products or services which are
+            operative now or developed or created in the future (the “Services”)
+            which is owned and operated by Neela Mediatech Private Limited,
+            having its office at 401, 4th Floor, Stanford, CTS no 554/1 to 4
+            Junction of SV Road and Juhu lane, Andheri (W) Mumbai, MH 400058
+            (“NMPL”, “Us”, “We”, “Our”).
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             This Privacy Policy describes what information We gather from You,
@@ -666,7 +691,7 @@ const PrivacyPolicy = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             Users are requested to read this Policy in conjunction with the
-            Terms of Use as can be found on ______________ We request You to
+            Terms of Use as can be found on 16th May, 2025. We request You to
             review the most recent version of the Policy periodically. By using
             the Services, You agree to the handling of Your information in
             accordance with this Policy. If You provide Us with Your information
@@ -1330,13 +1355,13 @@ const PrivacyPolicy = () => {
             rights. You also have the right to complain to the relevant data
             protection authority, including but not limited to the Data
             Protection Board as provided for under the Digital Personal Data
-            Protection Act, 2023 via ________________, or the Grievance
-            Appellate Committee or Inter-Departmental Committee set up under the
-            Information Technology (Intermediary Guidelines and Digital Media
-            Ethics Code) Rules, 2021, or other relevant authority. However, the
-            internal grievance redressal procedure shall be exhausted prior to
-            approaching the relevant authority thereof. The procedure for
-            grievance redressal can be found under Clause 10 herein.
+            Protection Act, 2023 or the Grievance Appellate Committee or
+            Inter-Departmental Committee set up under the Information Technology
+            (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021,
+            or other relevant authority. However, the internal grievance
+            redressal procedure shall be exhausted prior to approaching the
+            relevant authority thereof. The procedure for grievance redressal
+            can be found under Clause 10 herein.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             k) Miscellaneous: Any other right that is provided for specifically
@@ -1432,16 +1457,17 @@ const PrivacyPolicy = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             9.1. If You have any questions that do not relate to this Policy or
-            data privacy, then please write to Our customer support team at{" "}
+            data privacy or wish to provide feedback, then please write to Our
+            customer support team at{" "}
             <Link
               to="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "mailto:support@tmkocplayschool.com";
+                window.location.href = "mailto:info@tmkocplayschool.com";
               }}
               className="text-blue-500 underline"
             >
-              support@tmkocplayschool.com
+              info@tmkocplayschool.com
             </Link>{" "}
             so that Our customer support team can address Your concerns.
           </p>
@@ -1455,11 +1481,11 @@ const PrivacyPolicy = () => {
               to="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "mailto:support@tmkocplayschool.com";
+                window.location.href = "mailto:info@tmkocplayschool.com";
               }}
               className="text-blue-500 underline"
             >
-              support@tmkocplayschool.com
+              info@tmkocplayschool.com
             </Link>
           </p>
         </motion.div>
@@ -1548,9 +1574,9 @@ const PrivacyPolicy = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
+      {/* <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
         <FooterSection />
-      </div>
+      </div> */}
     </div>
   );
 };

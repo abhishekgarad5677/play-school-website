@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import FooterSection from "../components/FooterSection";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const TermsCondition = () => {
   useEffect(() => {
@@ -11,7 +12,13 @@ const TermsCondition = () => {
   return (
     <div>
       <div className="h-auto bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply pt-5 relative overflow-hidden">
-        <Navbar />
+        {/* <Navbar /> */}
+        <Link
+          to={"/"}
+          className="absolute left-4 top-4 lg:left-8 lg:top-8 text-xl lg:text-2xl text-white"
+        >
+          {"< "}back
+        </Link>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -23,39 +30,39 @@ const TermsCondition = () => {
               transition: { duration: 0.4, ease: "easeOut" },
             },
           }}
-          className=" text-[54px] text-[#fff] leading-[176.3%] py-16 text-center font-[500]"
+          className="text-[35px] lg:text-[54px] text-[#fff] leading-[176.3%] py-10 lg:py-16 text-center font-[500]"
         >
           Terms & Conditions
         </motion.div>
       </div>
-      <div className="mx-14 py-10">
+      <div className="mx-8 lg:mx-14 py-10">
         <motion.div
           // className="mx-14 py-10"
-          initial={{ opacity: 0, y: 50 }} // Start with the element 50px below and invisible
+          initial={{ opacity: 0, y: 10 }} // Start with the element 50px below and invisible
           whileInView={{ opacity: 1, y: 0 }} // Animate to its natural position and full opacity
           viewport={{ once: true, amount: 0.2 }} // Trigger the animation when 20% of the element is visible; only animate once
           transition={{ duration: 0.4, ease: "easeOut" }} // Customize duration and easing as needed
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 6th May, 2024.
+            Last Updated: 16th May, 2025.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px] mb-2">
-            The “TMKOC Play School” app available on ______________
-            (“Application”), and other services (collectively the “Services”)
-            are owned and operated by Neela Mediatech Private Limited, having
-            its office at 401, 4th Floor, Stanford, CTS no 554/1 to 4 Junction
-            of SV Road and Juhu lane, Andheri (W) Mumbai, MH 400058 (“NMPL”,
-            “Us”, “We”, “Our”). By registering an account with the Application,
-            You acknowledge that You have read and understood these Terms of Use
-            (“Terms of Use”) and agree to be bound by them. These Terms of Use
-            are to be read along with the Privacy Policy available on
-            ______________ . These Terms of Use and separate terms of service,
-            as applicable, may apply to Your use of the Services or to a
-            service, particular game’s rules, or product offered via the
-            Services (“Additional Terms of Use”). To the extent there is a
-            conflict between these Terms of Use and any Additional Terms of Use,
-            the Terms of Use shall prevail unless expressly stated otherwise.
+            The “TMKOC Play School” app available on 16th May 2025, and other
+            services (collectively the “Services”) are owned and operated by
+            Neela Mediatech Private Limited, having its office at 401, 4th
+            Floor, Stanford, CTS no 554/1 to 4 Junction of SV Road and Juhu
+            lane, Andheri (W) Mumbai, MH 400058 (“NMPL”, “Us”, “We”, “Our”). By
+            registering an account with the Application, You acknowledge that
+            You have read and understood these Terms of Use (“Terms of Use”) and
+            agree to be bound by them. These Terms of Use are to be read along
+            with the Privacy Policy available on the <a href="x">website.</a>{" "}
+            These Terms of Use and separate terms of service, as applicable, may
+            apply to Your use of the Services or to a service, particular game’s
+            rules, or product offered via the Services (“Additional Terms of
+            Use”). To the extent there is a conflict between these Terms of Use
+            and any Additional Terms of Use, the Terms of Use shall prevail
+            unless expressly stated otherwise.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             In these Terms of Use, “You” or “User” refers to You, being
@@ -176,11 +183,11 @@ const TermsCondition = () => {
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             b) The procedure undertaken for the purpose of collection of the
             Platform Fee is detailed under, for the sake of transparency and
-            clarity: ___________. It is herein clarified that auto pay may be
-            disabled by the User. However, in case of any inadvertent error the
-            Platform Fee is auto- deducted, We shall not be liable for the same,
-            and no claim shall be made including but not limited to a request of
-            refund, save and except if required by the applicable laws.
+            clarity. It is herein clarified that auto pay may be disabled by the
+            User. However, in case of any inadvertent error the Platform Fee is
+            auto- deducted, We shall not be liable for the same, and no claim
+            shall be made including but not limited to a request of refund, save
+            and except if required by the applicable laws.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             c) The registration shall apply to the specific territory where the
@@ -221,6 +228,18 @@ const TermsCondition = () => {
             intelligence from registration to termination. The User hereby
             provides specific consent for the use of the same and provision of
             data by NMPL to the artificial intelligence, if any.
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            g) Sample Testing Phase: The sample testing phase shall be in effect
+            from 15 th May, 2025 to 14 th June, 2025 subject to change at the
+            sole discretion of NMPL. The fee as chargeable shall be subsidised
+            for the first 5000 (five thousand) users subscribing during the
+            aforesaid month as decided by NMPL at Our sole discretion. The fee
+            collected shall be a one-time payment and the subscription shall be
+            valid for 1 (one) year subject to the terms of this Terms of Use.
+            The same shall not be renewable after the expiry of the term. No
+            user shall be entitled to the benefit as prescribed under this
+            clause and no claim shall be made otherwise.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             2.3 User Conduct
@@ -399,7 +418,7 @@ const TermsCondition = () => {
             for the activities performed through Your account. We assume no
             responsibility or liability for violations. If You become aware of
             any violation of this Agreement in connection with the use of the
-            game, please contact us at support@tmkocplayschool.com. We may
+            game, please contact us at info@tmkocplayschool.com. We may
             investigate any complaints and violations that come to our attention
             and may take any action that we deem fit after conducting an
             internal investigation as provided in the privacy policy, including,
@@ -609,10 +628,12 @@ const TermsCondition = () => {
             support agents on chat support, whether via artificial intelligence
             or otherwise, You shall not use abusive and derogatory language
             and/or post any objectionable information that is unlawful,
-            threatening, defamatory, or obscene. In the event You use abusive
-            language and/or post objectionable information, We reserve the right
-            to suspend the chat support service and/or terminate/suspend Your
-            Account, at any time with or without any notice.
+            threatening, defamatory, or obscene including but not limited
+            related to the feedback submitted to Us or communicated to others by
+            any means. In the event You use abusive language and/or post
+            objectionable information, We reserve the right to suspend the chat
+            support service and/or terminate/suspend Your Account, at any time
+            with or without any notice.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             9.3 Furthermore, We may establish general practices and limits
@@ -1066,7 +1087,7 @@ const TermsCondition = () => {
             appropriate circumstances, we also may terminate a Users account if
             the User is determined to be a repeat infringer. Our designated
             copyright agent for notice of alleged copyright infringement
-            appearing on the Service is: Email: support@tmkocplayschool.com
+            appearing on the Service is: Email: info@tmkocplayschool.com
           </p>
         </motion.div>
         <motion.div
@@ -1109,16 +1130,16 @@ const TermsCondition = () => {
             We welcome feedback, comments and suggestions for improvements to
             the Services (“Feedback”). You acknowledge and expressly agree that
             any contribution of Feedback does not and will not give or grant You
-            any right, title or interest in the Services or in any such
-            Feedback. All Feedback becomes Our sole and exclusive property, and
-            we may use and disclose Feedback in any manner and for any purpose
-            whatsoever without further notice or compensation to You and without
-            retention by You of any proprietary or other right or claim. You
-            hereby assign to Us any and all right, title and interest
-            (including, but not limited to, any patent, copyright, trade secret,
-            trademark, show-how, know-how, moral rights and any and all other
-            intellectual property right) that You may have in and to any and all
-            Feedback.
+            any right, title or interest in the Services or in any such Feedback
+            or raise any claims in case your Feedback is not implemented. All
+            Feedback becomes Our sole and exclusive property, and we may use and
+            disclose Feedback in any manner and for any purpose whatsoever
+            without further notice or compensation to You and without retention
+            by You of any proprietary or other right or claim. You hereby assign
+            to Us any and all right, title and interest (including, but not
+            limited to, any patent, copyright, trade secret, trademark,
+            show-how, know-how, moral rights and any and all other intellectual
+            property right) that You may have in and to any and all Feedback.
           </p>
         </motion.div>
         <motion.div
@@ -1196,13 +1217,13 @@ const TermsCondition = () => {
             other issues related to these Terms of Use:
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            Email: support@tmkocplayschool.com
+            Email: info@tmkocplayschool.com
           </p>
         </motion.div>
       </div>
-      <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
+      {/* <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
         <FooterSection />
-      </div>
+      </div> */}
     </div>
   );
 };

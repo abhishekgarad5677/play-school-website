@@ -15,6 +15,7 @@ import NoInternetScreen from "./components/payment/NoInternetScreen";
 import CampaignLayout from "./pages/Form/CampaignLayout";
 import { DirectPayment } from "./pages/phone/DirectPayment";
 import { analytics, logEvent } from "./utils/firebaseConfig";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   // useEffect(() => {
@@ -48,27 +49,33 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public Route */}
-        <Route path="/direct-payment" element={<DirectPayment />} />
-
-        {/* Protected Routes */}
-        <Route element={<ProtectedRoutes />}>
-          <Route index element={<DefaultLayout />} />
-          <Route path="/payment" element={<SubPayment />} />
-          <Route path="/" element={<DefaultLayout />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          {/* Public Route */}
+          <Route path="/direct-payment" element={<DirectPayment />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/refund-cancellation" element={<RefundCancellation />} />
-          <Route path="*" element={<h2>❌ Page Not Found</h2>} />
-          <Route path="/campaign-form" element={<CampaignLayout />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoutes />}>
+            <Route index element={<DefaultLayout />} />
+            <Route path="/payment" element={<SubPayment />} />
+            <Route path="/" element={<DefaultLayout />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/refund-cancellation"
+              element={<RefundCancellation />}
+            />
+            <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+            <Route path="/campaign-form" element={<CampaignLayout />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

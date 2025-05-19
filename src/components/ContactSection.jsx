@@ -69,6 +69,7 @@ const ContactSection = () => {
     console.log(data);
     if (data?.status === true) {
       toast.success(data?.message);
+      toast.success("We will get back to you within 24 hours");
       reset();
     }
   }, [data]);

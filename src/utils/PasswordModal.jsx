@@ -20,6 +20,7 @@ import { DownlaodApkAndriodModal } from "../components/payment/PreRegistration/D
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { DownlaodApkModalios } from "../components/payment/PreRegistration/DownlaodApkModalios";
 import { Link } from "react-router-dom";
+import { ContactModal } from "./ContactModal";
 
 const PasswordModal = ({ onUnlock }) => {
   const [password, setPassword] = useState("");
@@ -37,6 +38,7 @@ const PasswordModal = ({ onUnlock }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
   const [showStepsiOS, setShowStepsiOS] = useState(false);
 
@@ -56,6 +58,10 @@ const PasswordModal = ({ onUnlock }) => {
 
   const closeRegisterModal = () => {
     setIsRegisterOpen(false);
+  };
+
+  const closeContactModal = () => {
+    setIsContactOpen(false);
   };
 
   const handleFormSubmit = () => {
@@ -104,7 +110,12 @@ const PasswordModal = ({ onUnlock }) => {
 
   return (
     <div className="fixed inset-0 flex flex-col items-center gap-8 lg:gap-14 justify-start pt-16 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
-      <img alt="" src={logo} className="h-[100px] lg:h-[150px]" />
+      <img
+        onClick={() => openModal()}
+        alt=""
+        src={logo}
+        className="h-[100px] lg:h-[150px] cursor-pointer"
+      />
       <img
         className="absolute top-70 left-[-20px] lg:w-[30%] lg:block hidden"
         src={LeftGroup}
@@ -169,10 +180,17 @@ const PasswordModal = ({ onUnlock }) => {
         <Link to="/privacy-policy">
           <p>Privacy Policy</p>
         </Link>
+        <p>|</p>
+        <p className="cursor-pointer" onClick={() => setIsContactOpen(true)}>
+          Contact Us
+        </p>
       </div>
 
-      <h2 className="text-[34px] leading-none lg:leading-[34px] lg:text-5xl font-semibold text-yellow-300 text-center mb-0 lg:mb-2">
+      {/* <h2 className="text-[34px] leading-none lg:leading-[34px] lg:text-5xl font-semibold text-yellow-300 text-center mb-0 lg:mb-2">
         Now Available For Early Access!
+      </h2> */}
+      <h2 className="text-[34px] leading-none lg:leading-[34px] lg:text-5xl font-semibold text-yellow-300 text-center mb-0 lg:mb-2">
+        7 Days Free Trial Available Now!
       </h2>
       <div className="flex flex-col gap-6 items-center justify-center">
         <h2 className="text-xl lg:text-3xl leading-none font-semibold text-white text-center">
@@ -195,11 +213,18 @@ const PasswordModal = ({ onUnlock }) => {
             <img className="w-[100%]" src={playStoreLogo} alt="" />
           </a> */}
           {/* if downlaod apk directly */}
-          <div className="lg:w-[70%] ">
-            <a className="cursor-pointer" onClick={() => downloadApk()}>
+          <div className="">
+            {/* <a className="cursor-pointer" onClick={() => downloadApk()}>
               <img className="w-[100%]" src={androidLogo} alt="" />
+            </a> */}
+            <a
+              className="cursor-pointer"
+              href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+              onClick={() => logEvent(analytics, "Web_Android_Click_Button")}
+            >
+              <img className="w-[100%]" src={playStoreLogo} alt="" />
             </a>
-            <div className="flex items-center gap-2 justify-center">
+            {/* <div className="flex items-center gap-2 justify-center">
               <FaRegQuestionCircle className="text-white text-[30px]" />
               <p
                 onClick={() => showStepsModal()}
@@ -207,17 +232,17 @@ const PasswordModal = ({ onUnlock }) => {
               >
                 How To Download on Android?
               </p>
-            </div>
+            </div> */}
           </div>
           <div>
             <a
               className="w-fit cursor-pointer"
               href="https://testflight.apple.com/join/SYgGKcAG"
-              onClick={() => logEvent(analytics, "ios_download_click")}
+              onClick={() => logEvent(analytics, "Web_iOS_Click_Button")}
             >
               <img className="w-[100%]" src={appLogo} alt="" />
             </a>
-            <div className="flex items-center gap-2  justify-center">
+            {/* <div className="flex items-center gap-2  justify-center">
               <FaRegQuestionCircle className="text-white text-[30px]" />
               <p
                 onClick={() => showiosStepsModal()}
@@ -225,7 +250,7 @@ const PasswordModal = ({ onUnlock }) => {
               >
                 How To Download On iOS?
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* <p className="text-center text-[#AA008B] cursor-pointer">
@@ -257,6 +282,7 @@ const PasswordModal = ({ onUnlock }) => {
         isOpen={showStepsiOS}
         closeModal={closeiosStepsModal}
       />
+      <ContactModal isOpen={isContactOpen} closeModal={closeContactModal} />
     </div>
   );
 };

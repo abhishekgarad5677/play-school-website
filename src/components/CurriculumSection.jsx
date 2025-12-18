@@ -429,7 +429,7 @@ const CurriculumSection = forwardRef((props, ref) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.section
+      <motion.section 
         className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply py-16 lg:py-28"
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

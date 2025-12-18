@@ -19,11 +19,11 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   // useEffect(() => {
-  //   localStorage.setItem("planId", "46");
-  //   localStorage.setItem("number", "9876543210");
+  //   localStorage.setItem("planId", "15");
+  //   // localStorage.setItem("number", "9876543210");
   //   localStorage.setItem(
   //     "token",
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTg2OTY2NDMyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImQxZmE0NmY1LWQwYmQtNDQwNy1hOTUwLWU2OWJlZGYwYzU2YyIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.4aZoXnnVkGaqDXv1jc7SdPRxQ6BqpqAW9N-EFqLpP50"
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibXVzdGFmYWthbmlubm92YXRpb25zQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImJkMjEwMjlhLTdhNGEtNDVhZS04NDM2LTA1OThmNTVjZGI2MyIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.Z72OG0QLOcNAFtDoK_QIRdpeYqVueRYog-fWUfn2Mh4"
   //   );
   // }, []);
 
@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     // Log the event for website visit
-    logEvent(analytics, "website_visit");
+    logEvent(analytics, "Web_View");
   }, []);
 
   if (!isOnline) {
@@ -57,11 +57,11 @@ function App() {
           <Route path="/direct-payment" element={<DirectPayment />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/payment" element={<SubPayment />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoutes />}>
             <Route index element={<DefaultLayout />} />
-            <Route path="/payment" element={<SubPayment />} />
             <Route path="/" element={<DefaultLayout />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />

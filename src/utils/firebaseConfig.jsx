@@ -7,13 +7,13 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDEkcMykYH7_hFSZriCQB8diHIb8rNBSVM",
-  authDomain: "playschool-d0d02.firebaseapp.com",
-  projectId: "playschool-d0d02",
-  storageBucket: "playschool-d0d02.firebasestorage.app",
-  messagingSenderId: "487054130459",
-  appId: "1:487054130459:web:57aa188f933390cf4a67be",
-  measurementId: "G-EX5XX1MJTY",
+  apiKey: "AIzaSyAQZlVVHnG8qhIMCLlIvCN25wKm0ozwuRs",
+  authDomain: "playschool-website.firebaseapp.com",
+  projectId: "playschool-website",
+  storageBucket: "playschool-website.firebasestorage.app",
+  messagingSenderId: "432407751097",
+  appId: "1:432407751097:web:0b839b1a2e7993bf1eee68",
+  measurementId: "G-VFQC6CEL3C",
 };
 
 // Initialize Firebase

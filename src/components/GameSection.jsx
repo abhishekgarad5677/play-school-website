@@ -83,8 +83,18 @@ const GameSection = () => {
           </p>
           <p className="mb-4 text-white">Download Now On:</p>
           <div className="grid grid-cols-2 gap-4 lg:gap-12">
-            <img className="h-18 w-full" src={playLogo} alt="Play Store" />
-            <img className="h-18 w-full" src={appLogo} alt="App Store" />
+            <a
+              className="cursor-pointer"
+              href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+            >
+              <img className="h-18 w-full" src={playLogo} alt="Play Store" />
+            </a>
+            <a
+              className="w-fit cursor-pointer"
+              href="https://testflight.apple.com/join/SYgGKcAG"
+            >
+              <img className="h-18 w-full" src={appLogo} alt="App Store" />
+            </a>
           </div>
         </motion.div>
       </div>

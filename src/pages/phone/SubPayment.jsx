@@ -7,7 +7,7 @@ import PaymentVerificationScreen from "../../components/payment/PaymentVerificat
 export const SubPayment = () => {
   const [localData, setLocalData] = useState({
     planId: null,
-    number: null,
+    // number: null,
     token: null,
   });
 
@@ -19,18 +19,18 @@ export const SubPayment = () => {
 
   useEffect(() => {
     const planId = localStorage.getItem("planId");
-    const number = localStorage.getItem("number");
+    // const number = localStorage.getItem("number");
     const token = localStorage.getItem("token");
 
-    if (planId && number && token) {
-      setLocalData({ planId, number, token });
+    if (planId && token) {
+      setLocalData({ planId, token });
     }
   }, []);
 
   useEffect(() => {
-    if (!localData.planId || !localData.number || !localData.token) {
+    if (!localData.planId || !localData.token) {
       // Redirect if required data is missing
-      // window.location.href = "https://www.tmkocplayschool.com/payment";
+      window.location.href = "https://www.tmkocplayschool.com/payment";
       return;
     }
 
@@ -41,7 +41,7 @@ export const SubPayment = () => {
 
         const formData = new FormData();
         formData.append("planId", Number(localData.planId));
-        formData.append("PhoneNumber", localData.number);
+        formData.append("PhoneNumber", 9999999999);
         formData.append("IsFreeTrial", false);
 
         const { data } = await axios.post(
@@ -56,6 +56,9 @@ export const SubPayment = () => {
         );
 
         const subscriptionId = data?.data?.sub_id;
+
+        console.log(data?.data?.sub_id);
+
         if (!subscriptionId) {
           window.location.href = "message=subscription_id_not_found";
           return;
@@ -80,7 +83,7 @@ export const SubPayment = () => {
                   "SubscriptionId",
                   response?.razorpay_subscription_id
                 );
-                // verificationFormData.append("Status", true);
+                verificationFormData.append("Status", true);
 
                 const verifyResponse = await axios.post(
                   "https://api-playschool.tmkocplayschool.com/api/Razorpay/verifypayment",
@@ -141,6 +144,7 @@ export const SubPayment = () => {
         setVerificationStatus("error");
         setShowVerificationScreen(true);
         setTimeout(() => setShowVerificationScreen(false), 2500);
+        window.location.href = "message=payment_failed";
       }
     };
 

@@ -12,8 +12,13 @@ import appLogo from "../../public/appstore-logo.png";
 import androidLogo from "../../public/android-download.png";
 import mobTop from "../../public/password/mob-top.png";
 import mobRight from "../../public/password/mob-right.png";
-import mobLeft from "../../public/password/mob-left.png";
 import tapuTeam from "../../public/tapu-team.png";
+import mobLeft from "../../public/password/mob-left.png";
+import bottomleft from "../../public/password/bottomleft.png";
+import bottomright from "../../public/password/bottomright.png";
+import card1logo from "../../public/password/card1logo.png";
+import card2logo from "../../public/password/card2logo.png";
+import card3logo from "../../public/password/card3logo.png";
 import { analytics, logEvent } from "../utils/firebaseConfig";
 import { PreRegistrationModal } from "../components/payment/PreRegistration/PreRegistrationModal";
 import { DownlaodApkAndriodModal } from "../components/payment/PreRegistration/DownlaodApkAndriodModal";
@@ -29,8 +34,8 @@ const PasswordModal = ({ onUnlock }) => {
   const handleSubmit = () => {
     const CORRECT_PASSWORD = "tmkoc123@";
     if (password === CORRECT_PASSWORD) {
-      onUnlock(true); // Unlock access
-      localStorage.setItem("authenticated", "true"); // Store authentication
+      onUnlock(true);
+      localStorage.setItem("authenticated", "true");
     } else {
       setError("Incorrect password. Try again!");
     }
@@ -42,226 +47,183 @@ const PasswordModal = ({ onUnlock }) => {
   const [showSteps, setShowSteps] = useState(false);
   const [showStepsiOS, setShowStepsiOS] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const openRegisterModal = () => setIsRegisterOpen(true);
+  const closeRegisterModal = () => setIsRegisterOpen(false);
 
-  // for registeration modal
-
-  const openRegisterModal = () => {
-    setIsRegisterOpen(true);
-  };
-
-  const closeRegisterModal = () => {
-    setIsRegisterOpen(false);
-  };
-
-  const closeContactModal = () => {
-    setIsContactOpen(false);
-  };
+  const closeContactModal = () => setIsContactOpen(false);
 
   const handleFormSubmit = () => {
     openRegisterModal();
     logEvent(analytics, "android_download_click");
   };
 
-  // apk download direct link
-
   const downloadApk = () => {
     const apkUrl = import.meta.env.VITE_APP_APK_URL;
     const link = document.createElement("a");
     link.href = apkUrl;
-    link.setAttribute("download", "TMKOCPlayschool.apk"); // filename is optional
+    link.setAttribute("download", "TMKOCPlayschool.apk");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     logEvent(analytics, "android_download_click");
   };
 
-  const openStepsModal = () => {
-    setShowSteps(true);
-  };
+  const openStepsModal = () => setShowSteps(true);
+  const closeStepsModal = () => setShowSteps(false);
+  const showStepsModal = () => openStepsModal();
 
-  const closeStepsModal = () => {
-    setShowSteps(false);
-  };
-
-  const showStepsModal = () => {
-    openStepsModal();
-    // logEvent(analytics, "android_download_click");
-  };
-
-  const openiosStepsModal = () => {
-    setShowStepsiOS(true);
-  };
-
-  const closeiosStepsModal = () => {
-    setShowStepsiOS(false);
-  };
-
-  const showiosStepsModal = () => {
-    openiosStepsModal();
-    // logEvent(analytics, "android_download_click");
-  };
+  const openiosStepsModal = () => setShowStepsiOS(true);
+  const closeiosStepsModal = () => setShowStepsiOS(false);
+  const showiosStepsModal = () => openiosStepsModal();
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center gap-8 lg:gap-14 justify-start pt-16 bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%),url('../../public/background-cover2.png')] bg-cover bg-center bg-no-repeat bg-blend-multiply bg-opacity-50">
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col items-center justify-start bg-[url('../../public/password/passwordBg.png')] bg-cover bg-center bg-no-repeat">
+      {/* bottom corners (hide on small screens so it doesn't cover content) */}
       <img
-        onClick={() => openModal()}
-        alt=""
-        src={logo}
-        className="h-[100px] lg:h-[150px] cursor-pointer"
-      />
-      <img
-        className="absolute top-70 left-[-20px] lg:w-[30%] lg:block hidden"
-        src={LeftGroup}
+        className="absolute bottom-0 left-0 z-10 w-[26%] hidden md:block"
+        src={bottomleft}
         alt=""
       />
       <img
-        className="absolute top-80 right-20 lg:w-[23%] lg:block hidden"
-        src={RightGroup}
+        className="absolute bottom-0 right-0 z-10 w-[26%] hidden md:block"
+        src={bottomright}
         alt=""
       />
 
-      <img
-        className="absolute left-0 top-[50px] lg:top-[1px] w-[25%] lg:w-auto lg:block hidden"
-        src={topLeft}
-        alt=""
-      />
-      <img
-        className="absolute right-0 top-[-6%] lg:top-[1px] w-[25%] lg:w-auto lg:block hidden"
-        src={topRigth}
-        alt=""
-      />
-
-      <img
-        className="absolute z-10  left-0 bottom-[0px] w-[40%] lg:w-[338px] lg:block"
-        src={bottomLeft}
-        alt=""
-      />
-      <img
-        className="absolute z-10 right-0 bottom-[0px] w-[40%] lg:w-[338px] lg:block"
-        src={bottomRigth}
-        alt=""
-      />
-
-      <img
-        className="absolute z-10 right-1/2 translate-x-1/2 top-[-30px] w-[80%] lg:w-[338px] lg:hidden"
-        src={mobTop}
-        alt=""
-      />
-      <img
-        className="absolute top-1/2 right-[-50px] -translate-y-1/2 z-10 w-[35%] lg:hidden"
-        src={mobRight}
-        alt=""
-      />
-      <img
-        className="absolute top-1/2 left-[-50px] -translate-y-1/2 z-10 w-[40%] lg:hidden"
-        src={mobLeft}
-        alt=""
-      />
-
-      {/* <button
-        onClick={() => openModal()}
-        className="absolute right-24 top-[-6%] lg:top-[10px] w-fit font-[500] cursor-pointer hover:scale-105 transition-all bg-[radial-gradient(circle,#FF2DD9_1%,#AA008B_120%)] text-white px-6 py-2 rounded-4xl"
-      >
-        Login
-      </button> */}
-
-      <div className="absolute lg:right-30 lg:top-[3%] bottom-[17%] lg:bottom-auto flex gap-2 items-center text-white z-10">
+      {/* top links (stack on mobile) */}
+      <div className="z-10  flex-col hidden lg:flex sm:flex-row gap-2 sm:gap-10 items-center text-[12px] sm:text-[16px] text-white font-medium pt-3 sm:pt-5">
         <Link to="/terms-condition">
           <p>Terms And Conditions</p>
         </Link>
-        <p>|</p>
-        <Link to="/privacy-policy">
-          <p>Privacy Policy</p>
-        </Link>
-        <p>|</p>
         <p className="cursor-pointer" onClick={() => setIsContactOpen(true)}>
           Contact Us
         </p>
+        <Link to="/privacy-policy">
+          <p>Privacy Policy</p>
+        </Link>
       </div>
 
-      {/* <h2 className="text-[34px] leading-none lg:leading-[34px] lg:text-5xl font-semibold text-yellow-300 text-center mb-0 lg:mb-2">
-        Now Available For Early Access!
-      </h2> */}
-      <h2 className="text-[34px] leading-none lg:leading-[34px] lg:text-5xl font-semibold text-yellow-300 text-center mb-0 lg:mb-2">
-        7 Days Free Trial Available Now!
-      </h2>
-      <div className="flex flex-col gap-6 items-center justify-center">
-        <h2 className="text-xl lg:text-3xl leading-none font-semibold text-white text-center">
-          Tap to begin your adventure today!
-        </h2>
-        <div className="flex w-[50%] lg:w-[50%] flex-col lg:flex-row gap-3 justify-center text-center items-center gap-3">
-          {/* if link is available then show the link */}
-          {/* <a
-            className="w-fit cursor-pointer"
-            href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
-            onClick={() => logEvent(analytics, "android_download_click")}
-          >
-            <img className="w-[100%]" src={playStoreLogo} alt="" />
-          </a> */}
-          {/* <a
-            className="w-fit cursor-pointer"
-            // href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
-            onClick={() => handleFormSubmit()}
-          >
-            <img className="w-[100%]" src={playStoreLogo} alt="" />
-          </a> */}
-          {/* if downlaod apk directly */}
-          <div className="">
-            {/* <a className="cursor-pointer" onClick={() => downloadApk()}>
-              <img className="w-[100%]" src={androidLogo} alt="" />
-            </a> */}
-            <a
-              className="cursor-pointer"
-              href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
-              onClick={() => logEvent(analytics, "Web_Android_Click_Button")}
+      {/* center card wrapper */}
+      <div className="lg:flex-1 w-full flex items-center justify-center px-3 sm:px-0">
+        {/* Card: scale down on small heights so no scrolling on mobile */}
+        <div className="relative w-full sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+          {/* content */}
+          <div className="flex flex-col items-center text-center">
+            <img
+              onClick={openModal}
+              alt="TMKOC Playschool"
+              src={logo}
+              className="h-[60px] sm:h-[80px] lg:h-[84px] cursor-pointer"
+            />
+
+            <h1
+              className="mt-2 text-[18px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] font-extrabold fredoka-font
+               bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
+               bg-clip-text text-transparent"
             >
-              <img className="w-[100%]" src={playStoreLogo} alt="" />
-            </a>
-            {/* <div className="flex items-center gap-2 justify-center">
-              <FaRegQuestionCircle className="text-white text-[30px]" />
-              <p
-                onClick={() => showStepsModal()}
-                className="text-[16px] text-white cursor-pointer underline"
+              Get Your Child TMKOC Playschool App
+            </h1>
+
+            <p className="mt-0 text-[12px] sm:text-[14px] lg:text-[18px] text-[#484848] font-medium">
+              Premium Learning Curriculum For Early Learners
+            </p>
+
+            {/* pricing card */}
+            <div className="mt-2 w-full max-w-[760px] border-2 border-[#1E7BEA] rounded-2xl px-4 sm:px-6 py-3 sm:py-4">
+              <div className="text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#484848]">
+                ₹0
+              </div>
+              <div className="text-[20px] sm:text-[28px] lg:text-[32px] font-extrabold text-[#484848] -mt-1">
+                7 Days Free Trial
+              </div>
+              <div className="mt-1 text-[12px] sm:text-[14px] lg:text-[16px] text-[#484848] font-semibold">
+                Then{" "}
+                <span className="line-through text-[#8B8B8B] mr-2">₹1499</span>
+                <span className="text-[#2F2F2F]">₹999/Yr</span>
+              </div>
+            </div>
+
+            {/* USPs */}
+            <div className="mt-3 sm:mt-4 w-full max-w-[900px] grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="bg-[#F4F4F4] rounded-2xl py-3 sm:py-4 px-3 sm:px-4 gap-2 flex justify-start sm:justify-center items-center">
+                <img className="w-[18%] sm:w-[26%]" src={card1logo} alt="" />
+                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#5A5A5A] text-left">
+                  Multi-lingual content
+                </div>
+              </div>
+
+              <div className="bg-[#F4F4F4] rounded-2xl py-3 sm:py-5 px-3 sm:px-4 gap-2 flex justify-start sm:justify-center items-center">
+                <img className="w-[18%] sm:w-[26%]" src={card2logo} alt="" />
+                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#5A5A5A] text-left">
+                  500+ fun learning activities
+                </div>
+              </div>
+
+              <div className="bg-[#F4F4F4] rounded-2xl py-3 sm:py-5 px-3 sm:px-4 gap-2 flex justify-start sm:justify-center items-center">
+                <img className="w-[18%] sm:w-[26%]" src={card3logo} alt="" />
+                <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#5A5A5A] text-left">
+                  Progress tracking & leaderboards
+                </div>
+              </div>
+            </div>
+
+            {/* store buttons */}
+            <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <button
+                type="button"
+                onClick={() => {
+                  logEvent(analytics, "Web_Android_Click_Button");
+                  window.open(
+                    "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool",
+                    "_blank",
+                  );
+                }}
+                className="rounded-xl overflow-hidden"
               >
-                How To Download on Android?
-              </p>
-            </div> */}
-          </div>
-          <div>
-            <a
-              className="w-fit cursor-pointer"
-              href="https://testflight.apple.com/join/SYgGKcAG"
-              onClick={() => logEvent(analytics, "Web_iOS_Click_Button")}
-            >
-              <img className="w-[100%]" src={appLogo} alt="" />
-            </a>
-            {/* <div className="flex items-center gap-2  justify-center">
-              <FaRegQuestionCircle className="text-white text-[30px]" />
-              <p
-                onClick={() => showiosStepsModal()}
-                className="text-[16px] text-white cursor-pointer underline"
+                <img
+                  src={playStoreLogo}
+                  alt="Google Play"
+                  className="h-[48px] sm:h-[54px] lg:h-[60px] cursor-pointer"
+                />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  logEvent(analytics, "Web_iOS_Click_Button");
+                  window.open(
+                    "https://testflight.apple.com/join/SYgGKcAG",
+                    "_blank",
+                  );
+                }}
+                className="rounded-xl overflow-hidden"
               >
-                How To Download On iOS?
-              </p>
-            </div> */}
+                <img
+                  src={appLogo}
+                  alt="App Store"
+                  className="h-[48px] sm:h-[54px] lg:h-[60px] cursor-pointer"
+                />
+              </button>
+            </div>
           </div>
         </div>
-        {/* <p className="text-center text-[#AA008B] cursor-pointer">
-          Click here to know how to get started for andoid users!
-        </p> */}
-        <img
-          className="lg:hidden absolute z-4 right-1/2 translate-x-1/2 bottom-[-3px]"
-          src={tapuTeam}
-          alt=""
-        />
       </div>
+
+      <div className="z-10 flex lg:hidden sm:flex-row gap-6 sm:gap-10 items-center text-[12px] sm:text-[16px] text-[#484848] font-medium pt-3 sm:pt-5">
+        <Link to="/terms-condition">
+          <p>Terms And Conditions</p>
+        </Link>
+        <p className="cursor-pointer" onClick={() => setIsContactOpen(true)}>
+          Contact Us
+        </p>
+        <Link to="/privacy-policy">
+          <p>Privacy Policy</p>
+        </Link>
+      </div>
+
       <LoginModal
         isOpen={isModalOpen}
         closeModal={closeModal}
@@ -270,18 +232,22 @@ const PasswordModal = ({ onUnlock }) => {
         error={error}
         password={password}
       />
+
       <PreRegistrationModal
         isOpen={isRegisterOpen}
         closeModal={closeRegisterModal}
       />
+
       <DownlaodApkAndriodModal
         isOpen={showSteps}
         closeModal={closeStepsModal}
       />
+
       <DownlaodApkModalios
         isOpen={showStepsiOS}
         closeModal={closeiosStepsModal}
       />
+
       <ContactModal isOpen={isContactOpen} closeModal={closeContactModal} />
     </div>
   );

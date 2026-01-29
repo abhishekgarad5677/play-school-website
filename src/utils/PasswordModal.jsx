@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import logo from "../../public/playSchool-logo.png";
-import LeftGroup from "../../public/subscription/subs-left.png";
-import RightGroup from "../../public/subscription/subs-right.png";
-import bottomLeft from "../../public/usp/bottom-left.png";
-import bottomRigth from "../../public/usp/bottom-right.png";
-import topLeft from "../../public/usp/top-left.png";
-import topRigth from "../../public/usp/top-right.png";
 import { LoginModal } from "../components/LoginModal";
 import playStoreLogo from "../../public/playstore-logo.png";
 import appLogo from "../../public/appstore-logo.png";
-import androidLogo from "../../public/android-download.png";
-import mobTop from "../../public/password/mob-top.png";
-import mobRight from "../../public/password/mob-right.png";
-import tapuTeam from "../../public/tapu-team.png";
-import mobLeft from "../../public/password/mob-left.png";
 import bottomleft from "../../public/password/bottomleft.png";
 import bottomright from "../../public/password/bottomright.png";
 import card1logo from "../../public/password/card1logo.png";
@@ -22,7 +11,6 @@ import card3logo from "../../public/password/card3logo.png";
 import { analytics, logEvent } from "../utils/firebaseConfig";
 import { PreRegistrationModal } from "../components/payment/PreRegistration/PreRegistrationModal";
 import { DownlaodApkAndriodModal } from "../components/payment/PreRegistration/DownlaodApkAndriodModal";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { DownlaodApkModalios } from "../components/payment/PreRegistration/DownlaodApkModalios";
 import { Link } from "react-router-dom";
 import { ContactModal } from "./ContactModal";
@@ -80,7 +68,7 @@ const PasswordModal = ({ onUnlock }) => {
   const showiosStepsModal = () => openiosStepsModal();
 
   return (
-    <div className="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col items-center justify-start bg-[url('../../public/password/passwordBg.png')] bg-cover bg-center bg-no-repeat">
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col items-center justify-start bg-[url('/password/passwordBg.png')] bg-cover bg-center bg-no-repeat">
       {/* bottom corners (hide on small screens so it doesn't cover content) */}
       <img
         className="absolute bottom-0 left-0 z-10 w-[26%] hidden md:block"
@@ -167,7 +155,7 @@ const PasswordModal = ({ onUnlock }) => {
                 <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#5A5A5A] text-left">
                   Progress tracking & leaderboards
                 </div>
-              </div>
+              </div> 
             </div>
 
             {/* store buttons */}

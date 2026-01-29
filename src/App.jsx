@@ -1,32 +1,31 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy, useEffect, useState } from "react";
 import "./App.css";
-import DefaultLayout from "./pages/DefaultLayout";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import RefundCancellation from "./pages/RefundCancellation";
-import Register from "./pages/register/RegisterMain";
-import TermsCondition from "./pages/TermsCondition";
-import Profile from "./pages/Profile";
+
 import ProtectedRoutes from "./utils/ProtectedRoutes";
-import Login from "./pages/login/Login";
-import { SubPayment } from "./pages/phone/SubPayment";
-import { useEffect, useState } from "react";
 import NoInternetScreen from "./components/payment/NoInternetScreen";
-import CampaignLayout from "./pages/Form/CampaignLayout";
-import { DirectPayment } from "./pages/phone/DirectPayment";
+
 import { analytics, logEvent } from "./utils/firebaseConfig";
 import { ToastContainer } from "react-toastify";
 
-function App() {
-  // useEffect(() => {
-  //   localStorage.setItem("planId", "15");
-  //   // localStorage.setItem("number", "9876543210");
-  //   localStorage.setItem(
-  //     "token",
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibXVzdGFmYWthbmlubm92YXRpb25zQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImJkMjEwMjlhLTdhNGEtNDVhZS04NDM2LTA1OThmNTVjZGI2MyIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzciLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MTc3In0.Z72OG0QLOcNAFtDoK_QIRdpeYqVueRYog-fWUfn2Mh4"
-  //   );
-  // }, []);
+// Lazy-loaded pages
+const DefaultLayout = lazy(() => import("./pages/DefaultLayout"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const RefundCancellation = lazy(() => import("./pages/RefundCancellation"));
+const Register = lazy(() => import("./pages/register/RegisterMain"));
+const TermsCondition = lazy(() => import("./pages/TermsCondition"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Login = lazy(() => import("./pages/login/Login"));
+const SubPayment = lazy(() => import("./pages/phone/SubPayment"));
+const CampaignLayout = lazy(() => import("./pages/Form/CampaignLayout"));
+const DirectPayment = lazy(() => import("./pages/phone/DirectPayment"));
 
+function PageLoader() {
+  // keep it super light to avoid blocking
+  return <div style={{ padding: 16 }}>Loading...</div>;
+}
+
+function App() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -40,41 +39,42 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Log the event for website visit
     logEvent(analytics, "Web_View");
   }, []);
 
-  if (!isOnline) {
-    return <NoInternetScreen />;
-  }
+  if (!isOnline) return <NoInternetScreen />;
 
   return (
     <>
       <ToastContainer />
-      <BrowserRouter>
-        <Routes>
-          {/* Public Route */}
-          <Route path="/direct-payment" element={<DirectPayment />} />
-          <Route path="/terms-condition" element={<TermsCondition />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/payment" element={<SubPayment />} />
 
-          {/* Protected Routes */}
-          <Route element={<ProtectedRoutes />}>
-            <Route index element={<DefaultLayout />} />
-            <Route path="/" element={<DefaultLayout />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/refund-cancellation"
-              element={<RefundCancellation />}
-            />
-            <Route path="*" element={<h2>❌ Page Not Found</h2>} />
-            <Route path="/campaign-form" element={<CampaignLayout />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      {/* All lazy routes must be inside Suspense */}
+      <Suspense fallback={<PageLoader />}>
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/direct-payment" element={<DirectPayment />} />
+            <Route path="/terms-condition" element={<TermsCondition />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/payment" element={<SubPayment />} />
+
+            {/* Protected Routes */}
+            <Route element={<ProtectedRoutes />}>
+              <Route index element={<DefaultLayout />} />
+              <Route path="/" element={<DefaultLayout />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/refund-cancellation"
+                element={<RefundCancellation />}
+              />
+              <Route path="/campaign-form" element={<CampaignLayout />} />
+              <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </>
   );
 }

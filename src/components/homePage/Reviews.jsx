@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {  Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import reviewHeading from "../../assets/reviews/Vector.png";
@@ -116,10 +116,10 @@ const Reviews = () => {
         Real experiences from families and educators who trust TMKOC Playschool.
       </motion.p>
 
-      <section className="w-full py-8 lg:py-14 overflow-x-hidden lg:overflow-visible review-cards">
-        <div className="mx-auto max-w-7xl px-4 overflow-visible">
+      <section className="w-full py-8 lg:py-14 overflow-x-hidden overflow-y-auto lg:overflow-y-visible lg:overflow-visible review-cards">
+        <div className="mx-auto max-w-7xl px-4 ">
           {/* MOBILE/TABLET: Swiper */}
-          <div className="lg:hidden overflow-visible">
+          <div className="lg:hidden ">
             <Swiper
               modules={[Autoplay]}
               slidesPerView={1}
@@ -129,9 +129,9 @@ const Reviews = () => {
               className="pb-10 overflow-visible"
             >
               {reviewsData.map((review, index) => (
-                <SwiperSlide className="overflow-visible" key={index}>
+                <SwiperSlide className="" key={index}>
                   {/* extra padding so avatar doesn't get clipped */}
-                  <div className="px-2 pb-10 overflow-visible">
+                  <div className="px-2 pb-10 ">
                     <ReviewCard review={review} index={0} />
                   </div>
                 </SwiperSlide>

@@ -48,12 +48,12 @@ function App() {
             <Route path="/terms-condition" element={<TermsCondition />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-            <Route path="/" element={<HomePage />} />
             {/* Protected Routes */}
-            {/* <Route element={<ProtectedRoutes />}> */}
-            <Route index element={<HomePage />} />
-            <Route path="*" element={<h2>❌ Page Not Found</h2>} />
-            {/* </Route> */}
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<HomePage />} />
+              <Route index element={<HomePage />} />
+              <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </Suspense>

@@ -16,6 +16,8 @@ import { useState, useEffect } from "react";
 import m1 from "../../assets/reports/mobile/M1.png";
 import m2 from "../../assets/reports/mobile/M2.png";
 import m3 from "../../assets/reports/mobile/M3.png";
+import { Link } from "react-router-dom";
+import { analytics, logEvent } from "../../utils/firebaseConfig";
 
 const Reports = () => {
   const attendanceData = [
@@ -112,13 +114,45 @@ const Reports = () => {
                         </p>
                         <div className="flex justify-start items-center gap-3">
                           {/* <Link to={'/'}> */}
-                          <img
-                            className="w-[50px]"
-                            src={playStoreLogo}
-                            alt=""
-                          />
+                          <Link
+                            className=""
+                            to={
+                              "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+                            }
+                            target="_blank"
+                            onClick={() => {
+                              logEvent(analytics, "Web_Android_Click_Button");
+                              window.open(
+                                "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool",
+                                "_blank",
+                              );
+                            }}
+                          >
+                            <img
+                              className="w-[50px]"
+                              src={playStoreLogo}
+                              alt=""
+                            />
+                          </Link>
                           {/* </Link> */}
-                          <img className="w-[50px]" src={appStoreLogo} alt="" />
+                          <Link
+                            className=""
+                            to={"https://testflight.apple.com/join/SYgGKcAG"}
+                            target="_blank"
+                            onClick={() => {
+                              logEvent(analytics, "Web_iOS_Click_Button");
+                              window.open(
+                                "https://testflight.apple.com/join/SYgGKcAG",
+                                "_blank",
+                              );
+                            }}
+                          >
+                            <img
+                              className="w-[50px]"
+                              src={appStoreLogo}
+                              alt=""
+                            />
+                          </Link>
                         </div>
                       </div>
                       <motion.img

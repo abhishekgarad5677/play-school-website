@@ -8,26 +8,26 @@ const UspSection = () => {
   const data = [
     {
       img: card1,
-      title: "Kids activity reporting",
-      desc: "attendance, progress, scores, achievements",
+      title: "Smart Activity Reports",
+      desc: "Track attendance, progress, scores, and achievements in one place.",
       gradient: "bg-[radial-gradient(circle,#FF5177_6%,#D4002F_120%)]",
     },
     {
       img: card2,
-      title: "Structured curriculum",
-      desc: "for all age groups (<2, 2-4, 4-6, 6+)",
+      title: "Age-Wise Learning Paths",
+      desc: "Structured curriculum for every stage: under 2, 2–4, 4–6, and 6+ years.",
       gradient: "bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)]",
     },
     {
       img: card3,
-      title: "Multi-lingual",
-      desc: "english, hindi, marathi, bangla, punjabi, tamil,french, spanish.",
+      title: "Multi-Lingual Learning",
+      desc: "Available in English, Hindi, Marathi, Bangla, Punjabi, Tamil, French, and Spanish.",
       gradient: "bg-[radial-gradient(circle,#FF5177_6%,#D4002F_120%)]",
     },
     {
       img: card4,
-      title: "500+ Learning Activities",
-      desc: "Featuring gamified learning in English, math, music, coloring.",
+      title: "500+ Play-Based Activities",
+      desc: "A rich mix of English, math, music, coloring, and creative learning.",
       gradient: "bg-[radial-gradient(circle,#00CAFF_6%,#0066FF_120%)]",
     },
   ];
@@ -50,7 +50,7 @@ const UspSection = () => {
              bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
              bg-clip-text text-transparent text-center"
       >
-        USP of TMKOC Playschool
+        Why Parents Love TMKOC Playschool
       </motion.h1>
 
       <motion.p
@@ -60,8 +60,8 @@ const UspSection = () => {
         viewport={{ once: true }}
         className="lg:text-[16px] leading-[18px] text-[12px] text-[#484848] font-[400] lg:leading-[20px] text-center fredoka-font mb-6 lg:mb-8"
       >
-        Fun & interactive learning with TMKOC characters! Explore alphabets,
-        numbers, music & more in a safe, playful environment.
+        Learning made joyful with trusted TMKOC characters, where education
+        meets entertainment in a safe, child-friendly space.
       </motion.p>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5 max-w-7xl lg:mx-auto">

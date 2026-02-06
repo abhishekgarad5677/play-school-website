@@ -48,12 +48,12 @@ const Navbar = ({
 }) => {
   const leftNav = [
     { name: "Home", action: onHomeClick },
-    { name: "Child Progress", action: onReportsClick },
+    { name: "Child's Learning Journey ", action: onReportsClick },
   ];
 
   const rightNav = [
     { name: "Learning Apps", action: onLearningAppsClick },
-    { name: "USP", action: onUspClick },
+    { name: "Why Parents Love Us", action: onUspClick },
     // add more if you want:
     // { name: "Reviews", action: onReviewsClick },
     // { name: "Kids", action: onKidsClick },
@@ -132,7 +132,6 @@ const Navbar = ({
           backgroundColor: "rgba(255,255,255,1)",
           opacity: bgOpacity,
 
-          
           boxShadow,
           backdropFilter: "saturate(1.2) blur(6px)",
         }}

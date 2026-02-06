@@ -1,14 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy, useEffect, useState } from "react";
 import "./App.css";
-
-import ProtectedRoutes from "./utils/ProtectedRoutes";
+// import ProtectedRoutes from "./utils/ProtectedRoutes";
 import NoInternetScreen from "./components/NoInternetScreen";
-
 import { analytics, logEvent } from "./utils/firebaseConfig";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./pages/HomePage";
-
 // Lazy-loaded pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsCondition = lazy(() => import("./pages/TermsCondition"));
@@ -47,13 +44,12 @@ function App() {
             {/* Public Routes */}
             <Route path="/terms-condition" element={<TermsCondition />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
             {/* Protected Routes */}
-            <Route element={<ProtectedRoutes />}>
-              <Route path="/" element={<HomePage />} />
-              <Route index element={<HomePage />} />
-              <Route path="*" element={<h2>❌ Page Not Found</h2>} />
-            </Route>
+            <Route path="/" element={<HomePage />} />
+            {/* <Route element={<ProtectedRoutes />}> */}
+            <Route index element={<HomePage />} />
+            <Route path="*" element={<h2>❌ Page Not Found</h2>} />
+            {/* </Route> */}
           </Routes>
         </BrowserRouter>
       </Suspense>

@@ -7,7 +7,6 @@ import sec6 from "../../public/reports/sec-6.png";
 import appStoreLogo from "../../public/reports/app-store.png";
 import playStoreLogo from "../../public/reports/play-store.png";
 import console from "../../public/reports/console.png";
-import repoFile from "../../public/reports/repo-file.png";
 import { FaCalendarDays, FaMedal, FaTrophy } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";

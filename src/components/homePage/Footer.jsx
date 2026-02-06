@@ -24,7 +24,7 @@ const Footer = () => {
         bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
         bg-clip-text text-transparent text-center lg:w-[50%] mx-auto"
         >
-          Start your child’s learning membership today
+          Begin Your Child’s Learning Journey Today
         </motion.h1>
 
         <motion.p
@@ -34,7 +34,8 @@ const Footer = () => {
           viewport={{ once: true }}
           className="text-[12px] lg:text-[16px] text-[#484848] text-center fredoka-font"
         >
-          Fresh learning activities added regularly with simple prepaid plans.
+          New activities added regularly with easy prepaid plans, because joyful
+          learning should never stop.
         </motion.p>
       </div>
 

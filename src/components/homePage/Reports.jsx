@@ -20,24 +20,24 @@ import m3 from "../../assets/reports/mobile/M3.png";
 const Reports = () => {
   const attendanceData = [
     {
-      title: "Attendance Tracking",
-      desc: "Keep track of your child’s learning progress with our attendance tracker. Monitor daily activity and ensure consistent learning habits.",
+      title: "Daily Attendance",
+      desc: "A simple way to track your child’s regular participation and routine.",
       icon: <FaCalendarDays size={26} />,
       img1: sec1,
       img2: sec2,
       mobileScreen: m1,
     },
     {
-      title: "Weekly Rank",
-      desc: "See how your child performs each week! Our ranking system encourages healthy competition and motivates kids to do their best.",
+      title: "Weekly Stars & Ranks",
+      desc: "Gentle motivation that celebrates effort and improvement, not competition.",
       icon: <FaTrophy size={26} />, // Replace icon if needed
       img1: sec3,
       img2: sec4,
       mobileScreen: m2,
     },
     {
-      title: "Medals Earned",
-      desc: "Celebrate achievements with medals! Every milestone reached earns your child a special reward, keeping them engaged and excited to learn.",
+      title: "Medals & Achievements",
+      desc: "Happy rewards that make children proud of their learning milestones.",
       icon: <FaMedal size={26} />, // Replace icon if needed
       img1: sec5,
       img2: sec6,
@@ -60,10 +60,14 @@ const Reports = () => {
       <div className="max-w-7xl mx-4 lg:mx-auto">
         <h2
           className="text-[28px] lg:text-[44px] fredoka-one-font bg-[radial-gradient(circle_at_center,#00CAFF_40%,#0066FF_160%)]
-             bg-clip-text text-transparent font-[500] text-center mb-8 w-[100%] lg:w-[60%] leading-[34px] lg:leading-[46px]"
+             bg-clip-text text-transparent font-[500] text-center mb-4 w-[100%] lg:w-[60%] leading-[34px] lg:leading-[54px]"
         >
-          Track Your Child's Progress Through TMKOC Playschool
+          Stay Connected to Your Child’s Learning Journey
         </h2>
+        <p className="text-[18px] lg:text-[20px] text-[#484848] mb-4 w-[100%] lg:w-[60%] font-[400] text-center leading-[30px] lg:leading-[40px]">
+          Know how your child is learning, progressing, and enjoying every step
+          - without pressure, only encouragement.
+        </p>
 
         <div
           className="relative reports-section"
@@ -91,7 +95,11 @@ const Reports = () => {
                           {item.title}
                         </p>
                         <div className="lg:hidden flex justify-center items-center mb-4 relative">
-                          <img className="w-[80%]" src={item.mobileScreen} alt="" />
+                          <img
+                            className="w-[80%]"
+                            src={item.mobileScreen}
+                            alt=""
+                          />
                         </div>
                         <p className="text-[16px] text-left text-[#484848] w-[100%] lg:w-[50%] leading-6 lg:leading-8 ">
                           {item.desc}

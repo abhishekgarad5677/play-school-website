@@ -1,10 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import {  Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import reviewHeading from "../../assets/reviews/Vector.png";
 import stars from "../../assets/reviews/stars.png";
 import user1 from "../../assets/reviews/users/user1.png";
@@ -16,28 +15,28 @@ const reviewsData = [
   {
     title: "Screen Time That Feels Positive",
     description:
-      "From learning new words to spotting patterns and enjoying creative role-play, Leona loves these fun and interactive learning activities.",
+      "My child enjoys learning every day with TMKOC Playschool. The activities are fun, engaging, and perfectly suited for young kids.",
     name: "Daya Gada",
     image: user1,
   },
   {
     title: "Screen Time That Feels Positive",
     description:
-      "From learning new words to spotting patterns and enjoying creative role-play, Leona loves these fun and interactive learning activities.",
+      "The structured curriculum and progress tracking make it easy to guide children while keeping learning joyful.",
     name: "Jacob Jones",
     image: user2,
   },
   {
     title: "Screen Time That Feels Positive",
     description:
-      "From learning new words to spotting patterns and enjoying creative role-play, Leona loves these fun and interactive learning activities.",
+      "The multilingual content and child-friendly design truly stand out. A wonderful learning platform for early years.",
     name: "Albert Flores",
     image: user3,
   },
   {
     title: "Screen Time That Feels Positive",
     description:
-      "From learning new words to spotting patterns and enjoying creative role-play, Leona loves these fun and interactive learning activities.",
+      "TMKOC Playschool makes learning feel like play. My daughter has become more confident and curious.",
     name: "Gogi Roshan",
     image: user4,
   },
@@ -104,7 +103,7 @@ const Reviews = () => {
         bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
         bg-clip-text text-transparent text-center"
       >
-        Loved by Parents & Teachers
+        Loved by Parents & Teachers Worldwide
       </motion.h1>
 
       <motion.p
@@ -114,15 +113,15 @@ const Reviews = () => {
         viewport={{ once: true }}
         className="text-[12px] lg:text-[16px] text-[#484848] text-center fredoka-font mb-1 lg:mb-8"
       >
-        Hear their experiences
+        Real experiences from families and educators who trust TMKOC Playschool.
       </motion.p>
 
-      <section className="w-full py-8 lg:py-14 overflow-visible review-cards">
+      <section className="w-full py-8 lg:py-14 overflow-x-hidden lg:overflow-visible review-cards">
         <div className="mx-auto max-w-7xl px-4 overflow-visible">
           {/* MOBILE/TABLET: Swiper */}
           <div className="lg:hidden overflow-visible">
             <Swiper
-              modules={[ Autoplay]}
+              modules={[Autoplay]}
               slidesPerView={1}
               spaceBetween={16}
               pagination={{ clickable: true }}

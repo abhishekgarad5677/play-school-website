@@ -10,12 +10,12 @@ const Kids = () => {
       <div className="absolute inset-0 flex items-center">
         <div className="ml-20 w-[30%] text-white">
           <h1 className="fredoka-one-font text-[44px] leading-[44px] mb-5">
-            Made for little hands & big smiles
+            Designed for Little Hands & Big Smiles
           </h1>
 
           <p className="text-[18px] leading-[24px]">
-            Created and tested for preschool kids, the activities are intuitive
-            and frustration-free, so children enjoy learning independently.
+            Tested with preschoolers, every activity is simple, colorful, and
+            frustration-free so children can explore and learn independently.
           </p>
         </div>
       </div>

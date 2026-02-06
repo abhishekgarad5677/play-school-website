@@ -47,56 +47,56 @@ const LearningApps = () => {
       [
         {
           title: "Flash Cards",
-          desc: "A fun learning activity where kids explore animal sounds and improve listening skills through playful interaction.",
+          desc: "Colorful visuals to introduce shapes, colors, and familiar objects.",
           iconBg: "bg-green-100",
           iconText: icon1,
           cover: bg1,
         },
         {
           title: "Peek-A-Boo",
-          desc: "A learning activity that helps kids trace letters and shapes to improve writing and hand-eye coordination.",
+          desc: "A fun surprise activity that sparks curiosity, attention, and early cognitive development",
           iconBg: "bg-pink-100",
           iconText: icon2,
           cover: bg2,
         },
         {
           title: "Music Mania",
-          desc: "Simple brain games that help kids improve thinking skills, memory, and focus in a playful and engaging way.",
+          desc: "Soothing tunes and rhymes to support sensory and emotional development.",
           iconBg: "bg-purple-100",
           iconText: icon3,
           cover: bg3,
         },
         {
           title: "Baby Phone",
-          desc: "Playful music activities that build rhythm, listening, and creativity through fun interactions.",
+          desc: "Fun tapping and sounds to improve coordination and exploration.",
           iconBg: "bg-yellow-100",
           iconText: icon4,
           cover: bg4,
         },
         {
           title: "Flash Cards",
-          desc: "A fun learning activity where kids explore animal sounds and improve listening skills through playful interaction.",
+          desc: "Colorful visuals to introduce shapes, colors, and familiar objects.",
           iconBg: "bg-green-100",
           iconText: icon1,
           cover: bg1,
         },
         {
           title: "Peek-A-Boo",
-          desc: "A learning activity that helps kids trace letters and shapes to improve writing and hand-eye coordination.",
+          desc: "A fun surprise activity that sparks curiosity, attention, and early cognitive development",
           iconBg: "bg-pink-100",
           iconText: icon2,
           cover: bg2,
         },
         {
           title: "Music Mania",
-          desc: "Simple brain games that help kids improve thinking skills, memory, and focus in a playful and engaging way.",
+          desc: "Soothing tunes and rhymes to support sensory and emotional development.",
           iconBg: "bg-purple-100",
           iconText: icon3,
           cover: bg3,
         },
         {
           title: "Baby Phone",
-          desc: "Playful music activities that build rhythm, listening, and creativity through fun interactions.",
+          desc: "Fun tapping and sounds to improve coordination and exploration.",
           iconBg: "bg-yellow-100",
           iconText: icon4,
           cover: bg4,
@@ -105,56 +105,56 @@ const LearningApps = () => {
       [
         {
           title: "Learn and play songs",
-          desc: "Short interactive stories to boost vocabulary and comprehension.",
+          desc: "Catchy songs that introduce letters, numbers, and actions naturally.",
           iconBg: "bg-blue-100",
           iconText: icon5,
           cover: bg5,
         },
         {
           title: "Trace Time",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Early tracing is fun to build finger strength and writing readiness.",
           iconBg: "bg-red-100",
           iconText: icon6,
           cover: bg6,
         },
         {
           title: "Link it",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Simple connection activities that grow logical thinking.",
           iconBg: "bg-red-100",
           iconText: icon7,
           cover: bg7,
         },
         {
           title: "Mind Match",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Memory activities that sharpen focus and observation.",
           iconBg: "bg-red-100",
           iconText: icon8,
           cover: bg8,
         },
         {
           title: "Learn and play songs",
-          desc: "Short interactive stories to boost vocabulary and comprehension.",
+          desc: "Catchy songs that introduce letters, numbers, and actions naturally.",
           iconBg: "bg-blue-100",
           iconText: icon5,
           cover: bg5,
         },
         {
           title: "Trace Time",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Early tracing is fun to build finger strength and writing readiness.",
           iconBg: "bg-red-100",
           iconText: icon6,
           cover: bg6,
         },
         {
           title: "Link it",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Simple connection activities that grow logical thinking.",
           iconBg: "bg-red-100",
           iconText: icon7,
           cover: bg7,
         },
         {
           title: "Mind Match",
-          desc: "Coloring and matching activities for creativity and recognition.",
+          desc: "Memory activities that sharpen focus and observation.",
           iconBg: "bg-red-100",
           iconText: icon8,
           cover: bg8,
@@ -163,56 +163,56 @@ const LearningApps = () => {
       [
         {
           title: "Geo Quest",
-          desc: "Counting and number puzzles for early numeracy.",
+          desc: "An exciting introduction to shapes, space, and patterns.",
           iconBg: "bg-emerald-100",
           iconText: icon9,
           cover: bg9,
         },
         {
-          title: "Sports",
-          desc: "Phonics + word building games to strengthen reading.",
+          title: "Sports Fun",
+          desc: "Playful sports activities for balance, movement, and coordination.",
           iconBg: "bg-indigo-100",
           iconText: icon10,
           cover: bg10,
         },
         {
           title: "Match the Set",
-          desc: "Phonics + word building games to strengthen reading.",
+          desc: "Sorting and grouping activities that develop math readiness.",
           iconBg: "bg-indigo-100",
           iconText: icon11,
           cover: bg11,
         },
         {
-          title: "Brain Games",
-          desc: "Phonics + word building games to strengthen reading.",
+          title: "Brain Activities",
+          desc: "Problem-solving activities that encourage smart thinking.",
           iconBg: "bg-indigo-100",
           iconText: icon12,
           cover: bg12,
         },
         {
           title: "Geo Quest",
-          desc: "Counting and number puzzles for early numeracy.",
+          desc: "An exciting introduction to shapes, space, and patterns.",
           iconBg: "bg-emerald-100",
           iconText: icon9,
           cover: bg9,
         },
         {
-          title: "Sports",
-          desc: "Phonics + word building games to strengthen reading.",
+          title: "Sports Fun",
+          desc: "Playful sports activities for balance, movement, and coordination.",
           iconBg: "bg-indigo-100",
           iconText: icon10,
           cover: bg10,
         },
         {
           title: "Match the Set",
-          desc: "Phonics + word building games to strengthen reading.",
+          desc: "Sorting and grouping activities that develop math readiness.",
           iconBg: "bg-indigo-100",
           iconText: icon11,
           cover: bg11,
         },
         {
-          title: "Brain Games",
-          desc: "Phonics + word building games to strengthen reading.",
+          title: "Brain Activities",
+          desc: "Problem-solving activities that encourage smart thinking.",
           iconBg: "bg-indigo-100",
           iconText: icon12,
           cover: bg12,
@@ -221,56 +221,28 @@ const LearningApps = () => {
       [
         {
           title: "Time Telling",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
+          desc: "nteractive lessons that make reading clocks simple and fun. ",
           iconBg: "bg-orange-100",
           iconText: icon13,
           cover: bg13,
         },
         {
-          title: "Coding Game",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
+          title: "Coding Activities",
+          desc: "Beginner logic activities that build sequencing and reasoning.",
           iconBg: "bg-orange-100",
           iconText: icon14,
           cover: bg14,
         },
         {
           title: "Word Magic",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
+          desc: "Fun word activities that strengthen vocabulary and reading skills.",
           iconBg: "bg-orange-100",
           iconText: icon15,
           cover: bg15,
         },
         {
           title: "Reflection",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
-          iconBg: "bg-orange-100",
-          iconText: icon16,
-          cover: bg16,
-        },
-        {
-          title: "Time Telling",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
-          iconBg: "bg-orange-100",
-          iconText: icon13,
-          cover: bg13,
-        },
-        {
-          title: "Coding Game",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
-          iconBg: "bg-orange-100",
-          iconText: icon14,
-          cover: bg14,
-        },
-        {
-          title: "Word Magic",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
-          iconBg: "bg-orange-100",
-          iconText: icon15,
-          cover: bg15,
-        },
-        {
-          title: "Reflection",
-          desc: "Bigger challenges for reasoning, memory, and problem solving.",
+          desc: "BCreative thinking activities that help children express ideas.",
           iconBg: "bg-orange-100",
           iconText: icon16,
           cover: bg16,
@@ -297,18 +269,18 @@ const LearningApps = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="relative py-10 lg:py-16"
       >
-        <div >
+        <div>
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-[28px] lg:text-[44px] mb-3 lg:mb-6 leading-[34px] lg:leading-[46px] fredoka-one-font font-[500]
+            className="text-[28px] lg:text-[44px] mb-3 lg:mb-6 leading-[34px] lg:leading-[56px] fredoka-one-font font-[500]
             bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
             bg-clip-text text-transparent text-center"
           >
-            Playschool Learning Apps
+            Learning Apps Designed for Every Growing Stage
           </motion.h1>
 
           <motion.p
@@ -316,11 +288,11 @@ const LearningApps = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:text-[12px] leading-[16px] text-[18px] text-[#484848] font-[400]
+            className="text-[18px] lg:text-[20px] text-[#484848] font-[400]
             lg:leading-[20px] text-center fredoka-font mb-8"
           >
-            A collection of learning apps designed to support your child’s
-            overall development.
+            Carefully crafted activities that match your child’s age, pace, and
+            interests.
           </motion.p>
         </div>
 
@@ -350,6 +322,7 @@ const LearningApps = () => {
         {/* Swiper */}
         <div className="mx-auto">
           <Swiper
+            modules={[Autoplay]}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             speed={700} // smooth
             loop={true}
@@ -385,7 +358,7 @@ const LearningApps = () => {
                       </h3>
                     </div>
 
-                    <p className="text-[16px] leading-[24px] text-[#484848]">
+                    <p className="text-[16px] leading-[24px] line-clamp-2 text-[#484848]">
                       {item.desc}
                     </p>
                   </div>

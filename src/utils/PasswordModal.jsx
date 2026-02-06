@@ -9,11 +9,11 @@ import card1logo from "../../public/password/card1logo.png";
 import card2logo from "../../public/password/card2logo.png";
 import card3logo from "../../public/password/card3logo.png";
 import { analytics, logEvent } from "../utils/firebaseConfig";
-import { PreRegistrationModal } from "../components/payment/PreRegistration/PreRegistrationModal";
-import { DownlaodApkAndriodModal } from "../components/payment/PreRegistration/DownlaodApkAndriodModal";
-import { DownlaodApkModalios } from "../components/payment/PreRegistration/DownlaodApkModalios";
+// import { PreRegistrationModal } from "../components/payment/PreRegistration/PreRegistrationModal";
+// import { DownlaodApkAndriodModal } from "../components/payment/PreRegistration/DownlaodApkAndriodModal";
+// import { DownlaodApkModalios } from "../components/payment/PreRegistration/DownlaodApkModalios";
 import { Link } from "react-router-dom";
-import { ContactModal } from "./ContactModal";
+// import { ContactModal } from "./ContactModal";
 
 const PasswordModal = ({ onUnlock }) => {
   const [password, setPassword] = useState("");
@@ -157,7 +157,7 @@ const PasswordModal = ({ onUnlock }) => {
                 </div>
               </div> 
             </div>
-
+ 
             {/* store buttons */}
             <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <button
@@ -221,7 +221,7 @@ const PasswordModal = ({ onUnlock }) => {
         password={password}
       />
 
-      <PreRegistrationModal
+      {/* <PreRegistrationModal
         isOpen={isRegisterOpen}
         closeModal={closeRegisterModal}
       />
@@ -234,9 +234,9 @@ const PasswordModal = ({ onUnlock }) => {
       <DownlaodApkModalios
         isOpen={showStepsiOS}
         closeModal={closeiosStepsModal}
-      />
+      /> */}
 
-      <ContactModal isOpen={isContactOpen} closeModal={closeContactModal} />
+      {/* <ContactModal isOpen={isContactOpen} closeModal={closeContactModal} /> */}
     </div>
   );
 };

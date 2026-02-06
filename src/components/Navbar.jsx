@@ -20,7 +20,6 @@ const Navbar = ({ scrollToRef, refs }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    // <header className="sticky top-7 z-50 bg-white mx-10 rounded-[20px]">
     <motion.header
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}

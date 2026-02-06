@@ -32,7 +32,8 @@
   }
 
   @keyframes sparkle {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.2;
       transform: translateY(0) scale(1);
     }
@@ -45,4 +46,9 @@
   .animate-sparkle {
     animation: sparkle 4s ease-in-out infinite;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h, 90px);
 }

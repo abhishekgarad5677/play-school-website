@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { MdError } from "react-icons/md";
-import { TbDeviceMobileCheck } from "react-icons/tb";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { FaCheck } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
-import logo from "../../public/playSchool-logo.png";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import avgBg from "../../public/profile/avg-bg.png";
-import scoreBg from "../../public/profile/score-bg.png";
-import useLeaderboardData from "../utils/GetLeaderBoardData";
-import { FiLoader } from "react-icons/fi";
-import useApi from "../utils/api";
-import PaymentVerificationScreen from "./payment/PaymentVerificationScreen";
+// import React, { useEffect, useState } from "react";
+// import { MdError } from "react-icons/md";
+// import { TbDeviceMobileCheck } from "react-icons/tb";
+// import axios from "axios";
+// import Cookies from "js-cookie";
+// import { FaCheck } from "react-icons/fa";
+// import { RxCross2 } from "react-icons/rx";
+// import logo from "../../public/playSchool-logo.png";
+// import { AiOutlineLoading3Quarters } from "react-icons/ai";
+// import avgBg from "../../public/profile/avg-bg.png";
+// import scoreBg from "../../public/profile/score-bg.png";
+// // import useLeaderboardData from "../utils/GetLeaderBoardData";
+// import { FiLoader } from "react-icons/fi";
+// import useApi from "../utils/api";
+// import PaymentVerificationScreen from "./payment/PaymentVerificationScreen";
 
 export const LoginModal = ({
   isOpen,

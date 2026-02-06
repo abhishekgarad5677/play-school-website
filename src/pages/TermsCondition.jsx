@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import FooterSection from "../components/FooterSection";
-import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -45,39 +43,45 @@ const TermsCondition = () => {
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 16th May, 2025.
+            Last Updated: 6th Jan, 2026.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px] mb-2">
-            The “TMKOC Play School” app available on 16th May 2025, and other
-            services (collectively the “Services”) are owned and operated by
-            Neela Mediatech Private Limited, having its office at 401, 4th
-            Floor, Stanford, CTS no 554/1 to 4 Junction of SV Road and Juhu
-            lane, Andheri (W) Mumbai, MH 400058 (“NMPL”, “Us”, “We”, “Our”). By
+            The “TMKOC Playschool” application (“Application”), and products or
+            services which are operative now or developed or created in the
+            future (collectively the “Services”) are owned and operated by Neela
+            Mediatech Private Limited, having its office at 401, 4th Floor,
+            Stanford, CTS no 554/1 to 4 Junction of SV Road and Juhu lane,
+            Andheri (W) Mumbai, MH 400058 (“NMPL”, “Us”, “We”, “Our”). By
             registering an account with the Application, You acknowledge that
             You have read and understood these Terms of Use (“Terms of Use”) and
             agree to be bound by them. These Terms of Use are to be read along
-            with the Privacy Policy available on the <a href="x">website.</a>{" "}
-            These Terms of Use and separate terms of service, as applicable, may
-            apply to Your use of the Services or to a service, particular game’s
-            rules, or product offered via the Services (“Additional Terms of
-            Use”). To the extent there is a conflict between these Terms of Use
-            and any Additional Terms of Use, the Terms of Use shall prevail
-            unless expressly stated otherwise.
+            with the Privacy Policy available on
+            https://tmkocplayschool.com/privacy-policy. These Terms of Use and
+            separate terms of service, as applicable, may apply to Your use of
+            the Services or to a service, particular game’s rules, or product
+            offered via the Services (“Additional Terms of Use”). To the extent
+            there is a conflict between these Terms of Use and any Additional
+            Terms of Use, the Terms of Use shall prevail unless expressly stated
+            otherwise.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            In these Terms of Use, “You” or “User” refers to You, being
-            an adult who has attained the age of 18 (eighteen) years and who can
-            lawfully enter into a contract under the laws applicable to the
-            location in which the person resides on behalf of the Child. The
-            “Child” shall be the child (or “Children”, wherever the context so
-            requires) who has not completed the age of 18 (eighteen) years, who
-            shall be using the Services under the supervision of You, for which
-            You shall provide verifiable consent. By registering for, or using
-            the Services, You represent and warrant that You are an adult.
+            In these Terms of Use, “You” or “User” refers to You, being an adult
+            who has attained the age of 18 (eighteen) years and who can lawfully
+            enter into a contract under the laws applicable to the location in
+            which the person resides on behalf of the Child. The “Child” shall
+            be the child (or “Children”, wherever the context so requires) who
+            has not completed the age of 18 (eighteen) years, who shall be using
+            the Services under the supervision of You, for which You shall
+            provide verifiable consent. By registering for, or using the
+            Services, You represent and warrant that You are an adult.
+            Application is designed for use by children under parental
+            supervision. Parents or legal guardians are responsible for account
+            setup, subscription management, and monitoring their Child’s use of
+            the Application. Children are not needed to create independent
+            accounts.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            This is a legally binding agreement between You and Us
-            (“Agreement”).
+            This is a legally binding agreement between You and Us (“Agreement”)
           </p>
         </motion.div>
         <motion.div
@@ -126,68 +130,86 @@ const TermsCondition = () => {
             2. ACCOUNTS AND USER CONDUCT
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            2.1 “Account” is the account designed for personal use, offered by
-            Us or through one of Our affiliates, pursuant to registration of the
-            User for the Services and payment for the Services, the costing is
-            available on the Application which shall differ from territory to
-            territory (the costing shall be referred to as the “Platform Fee”).
-            The term of subscription shall be for a period of 1 (one) year from
-            the date of payment of the Platform Fee (“Term”) which may be
-            auto-renewed via auto-pay. The said Account shall be linked to the
-            user id generated by NMPL. The User shall be permitted to create up
-            to 3 (three) profiles per Account for up to 3 (three) Children. The
-            Account shall have different plans, determined basis the Platform
-            Fee selected by the User:
+            2.1 Account and Subscription:
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            a) Basic Plan: The same shall provide the User with access of up to
-            50 (fifty) report views per Child. No global rankings (elaborated
-            upon under Clause 7) shall be available for the Basic Plan.
+            a) “Account” means a personal user account created by the User
+            pursuant to registration on the Application and subject to payment
+            of the applicable subscription fee (“Platform Fee”), as displayed on
+            the Application and varying based on the User’s territory. The
+            Application operates under a single, unified subscription plan,
+            which provides uniform access to the Services for all Users and
+            Children without any tier-based differentiation.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            b) Pro Plan: The same shall provide the User access to unlimited
-            number of reports views per Child. The global ranking of the
-            Children shall be visible on subscription to the Pro Plan. It is
-            herein stated that in case one Child has subscribed to the Pro Plan,
-            all the Children shall subscribe to the Pro Plan. The same shall
-            apply for the upgradation of the Plan.
+            b) The Platform Fee is offered on an annual subscription basis for a
+            period of 1 (one) year (“Subscription Term”). Prior to commencement
+            of the Subscription Term, eligible Users may be offered a one-time
+            free trial period of 7 (seven) days. To activate the free trial,
+            Users are mandatorily required to add a valid payment method
+            (including UPI, credit card or debit card) through the authorised
+            payment gateway for the purpose of creating an electronic mandate
+            (“e- mandate”) and enabling auto-renewal. Users shall not be
+            permitted to access the free trial without adding a payment method.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            In case the User wishes to at any time after subscribing to the
-            Basic Plan, wish to upgrade to the Pro Plan, You shall pay the
-            difference provided on the Application. Such upgrade shall not
-            modify the Term of the subscription, which shall end on the
-            completion of 1 (one) year of the subscription of the Basic Plan.
+            c) Upon initiation of the free trial, a nominal refundable amount of
+            INR 5 (Indian Rupees Five) (or such other amount for international
+            users, as determined by the payment gateway) may be debited solely
+            for the purpose of e-mandate creation. Refund of such amount shall
+            be subject to the timelines and policies of the respective bank or
+            payment service provider. Upon expiry of the free trial period, the
+            applicable annual Platform Fee shall be automatically debited from
+            the User’s linked payment method.
           </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            d) Pricing for Indian and international Users may vary based on the
+            country, currency and payment gateway norms.
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            e) Once the Platform Fee is successfully debited, the subscription
+            amount shall be non-refundable under all circumstances, save and
+            except as required under applicable law. The Account shall be linked
+            to the user ID generated by NMPL. The User may create up to 3
+            (three) profiles per Account for up to 3 (three) Children.
+          </p>
+
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             2.2 Use of Application
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             a) The Application shall be available on to be used on mobile
             devices. In order to register as a User on the Application via Your
-            mobile phone, a User must register an Account using a valid mobile
-            number that belongs to the User, and not a third party, registered
-            in territory where the User resides. The User ensure that all
-            information provided by the User elaborated under the privacy policy
-            linked hereinabove, is, true, accurate, current, and complete at all
-            times. A User may enter a desired username at the time of
-            registration. It is understood if the username shall be visible to
-            others, and if it corresponds to the legal name of the User/Child,
-            You provide specific consent for the personal data to be
-            attributable to You in the public domain of the Application while
-            displaying the global rankings. Upon successful registration, the
-            User would be granted the unique username. The User shall have the
-            option of modifying the username once after the Account is
-            registered.
+            mobile phone, a User must register an Account using a valid Google
+            account or an Apple ID , as applicable, that belongs to the User,
+            and not a third party, registered in territory where the User
+            resides. The User ensure that all information provided by the User
+            elaborated under the privacy policy linked hereinabove, is, true,
+            accurate, current, and complete at all times. A User may enter a
+            desired username at the time of registration. It is understood if
+            the username shall be visible to others, and if it corresponds to
+            the legal name of the User/Child, You provide specific consent for
+            the personal data to be attributable to You in the public domain of
+            the Application while displaying the global rankings. Upon
+            successful registration, the User would be granted the unique
+            username. The User shall have the option of modifying the username
+            once after the Account is registered.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            b) The procedure undertaken for the purpose of collection of the
-            Platform Fee is detailed under, for the sake of transparency and
-            clarity. It is herein clarified that auto pay may be disabled by the
-            User. However, in case of any inadvertent error the Platform Fee is
-            auto- deducted, We shall not be liable for the same, and no claim
-            shall be made including but not limited to a request of refund, save
-            and except if required by the applicable laws.
+            b) Payments towards the Platform Fee, creation of e-mandates, free
+            trial validation and subscription renewals are processed through
+            authorised third-party payment gateways for users with an android
+            device and through the in-built billing system on iOS devices.
+            Auto-renewal shall occur unless cancelled by the User through the
+            payment method service or application used to create the e-mandate.
+            The Application does not provide any in-app cancellation mechanism.
+            NMPL shall not be responsible for delays, failures or inadvertent
+            auto-debits arising from the payment gateway, bank or payment
+            service provider. No refund shall be issued for any debited
+            subscription amount, except as required under applicable law. In
+            case of any inadvertent auto- debit of the Platform Fee, NMPL shall
+            not be liable for the same and no refund shall be claimed, save and
+            except as required under applicable law.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             c) The registration shall apply to the specific territory where the
@@ -197,7 +219,7 @@ const TermsCondition = () => {
             their current territory with a mobile number of the territory where
             the User is present and pay the requisite Platform Fee (defined
             below). To successfully log into the Services, Users will be
-            required to provide the one-time password (“OTP”) sent to their
+            required to provide the one- time password (“OTP”) sent to their
             registered mobile phone numbers, in order to validate the registered
             mobile number. Carrier charges in relation to User verification
             shall be paid and borne by You. If We have reasonable grounds to
@@ -228,18 +250,6 @@ const TermsCondition = () => {
             intelligence from registration to termination. The User hereby
             provides specific consent for the use of the same and provision of
             data by NMPL to the artificial intelligence, if any.
-          </p>
-          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            g) Sample Testing Phase: The sample testing phase shall be in effect
-            from 15 th May, 2025 to 14 th June, 2025 subject to change at the
-            sole discretion of NMPL. The fee as chargeable shall be subsidised
-            for the first 5000 (five thousand) users subscribing during the
-            aforesaid month as decided by NMPL at Our sole discretion. The fee
-            collected shall be a one-time payment and the subscription shall be
-            valid for 1 (one) year subject to the terms of this Terms of Use.
-            The same shall not be renewable after the expiry of the term. No
-            user shall be entitled to the benefit as prescribed under this
-            clause and no claim shall be made otherwise.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             2.3 User Conduct
@@ -291,7 +301,7 @@ const TermsCondition = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             iii. disrupt the normal flow of dialogue or otherwise act in a
-            manner that negatively affects other user's ability to engage in
+            manner that negatively affects other users' ability to engage in
             real time exchanges;
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
@@ -354,14 +364,29 @@ const TermsCondition = () => {
             to a refund save and except if provided otherwise by the applicable
             law. You shall further be liable to indemnify Us for any costs
             incurred due to such acts. NMPL shall be entitled to additionally
-            claim damages from You for the same.
-          </p>
-          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            claim damages from You for the same. <br />
             Compliance with the above rules and regulations, these Terms of Use
             or privacy policy does not constitute a guarantee of continued or
             future access to the Services. We reserve the right to limit or
             terminate Your access to the Services at any time without any
             liability.
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            2.4 Cancellation and Renewal:
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            a) Users may cancel their subscription at any time during the free
+            trial period or after commencement of the Subscription Term.
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            b) All cancellations must be carried out solely through the payment
+            method service or application (including bank, UPI app or card
+            issuer) used to create the e-mandate. The Application does not
+            support subscription cancellations directly.
+          </p>
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
+            c) Cancellation shall prevent future renewals only and shall not
+            entitle the User to any refund of amounts already paid.
           </p>
         </motion.div>
         <motion.div
@@ -371,7 +396,7 @@ const TermsCondition = () => {
           transition={{ duration: 0.4, ease: "easeOut" }} // Customize duration and easing as needed
           className="mb-8"
         >
-          <p className="text-[28px] font-[600] text-[#000] mb-2">
+          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             3. REGULAR UPDATES OF THE APP
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
@@ -404,14 +429,15 @@ const TermsCondition = () => {
           transition={{ duration: 0.4, ease: "easeOut" }} // Customize duration and easing as needed
           className="mb-8"
         >
-          <p className="text-[28px] font-[600] text-[#000] mb-2">4. GAMES</p>
+          <p className="text-[28px] font-[600] text-[#000] mb-2">
+            4. ACTIVITIES
+          </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            4.1 The Application offers multiple educational gameplay
-            opportunities for all Children via the Users. The games can be
-            downloaded by the Child, providing an experiential opportunity to
-            expand their knowledge. Games may be suggested to the User basis the
-            performance of the Child. The User may view the reports generated on
-            the Application.
+            4.1 The Application offers multiple educational activities for all
+            Children via the Users. The activities can be downloaded by the Child,
+            providing an experiential opportunity to expand their knowledge.
+            Activities may be suggested to the User basis the performance of the
+            Child. The User may view the reports generated on the Application.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             4.2 If the Child chooses to play a game, You shall be responsible
@@ -480,7 +506,7 @@ const TermsCondition = () => {
             Trademarks); and (iii) other forms of intellectual property.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            5.2 We own all rights relating to the games and other Content made
+            5.2 We own all rights relating to the activities and other Content made
             available through the Application and further we reserve the right
             to record, store, monetize any gaming content on the Application and
             exploit it in any mode/medium/format, whether existing now or
@@ -524,7 +550,7 @@ const TermsCondition = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             Our Services also include the generation and maintenance of a record
-            of each User&#39;s game activity, history, statistics, archive, and
+            of each User's game activity, history, statistics, archive, and
             a public record of play basis the Account plan adopted. When a Child
             with a Pro Plan plays a game, they shall receive a global ranking
             basis their performance basis comparison with the scores of other

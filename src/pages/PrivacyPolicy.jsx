@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import FooterSection from "../components/FooterSection";
-import Navbar from "../components/Navbar";
+// import FooterSection from "../components/FooterSection";
+// import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -175,7 +175,7 @@ const PrivacyPolicy = () => {
     {
       col1: [
         {
-          sction1: "Phone Number",
+          sction1: "Google Account/ Apple ID",
         },
       ],
       col2: [
@@ -660,7 +660,7 @@ const PrivacyPolicy = () => {
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 16th May, 2025.
+            Last Updated: 6th Jan, 2026.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             This Privacy Policy explains Our policy regarding the collection,
@@ -1055,13 +1055,13 @@ const PrivacyPolicy = () => {
             this Policy and as far as practicable or as required by applicable
             law.
           </p>
-          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
+          {/* <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             b) Advertising Platforms and Networks (commonly known as ‘ad
             networks’): We have partnered up with various ad networks to display
             advertisements on Our Services.
-          </p>
+          </p> */}
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            c) Analytics providers: We work with service providers that help Us
+            b) Analytics providers: We work with service providers that help Us
             analyse and understand Personal Data and identify and develop
             trends, patterns, and insights to optimise and improve the Services
             and create new products or features. These service providers also
@@ -1070,7 +1070,7 @@ const PrivacyPolicy = () => {
             provide better games, Services, and generate reports for You.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            d) Payment gateways: We have partnered with payment gateways who
+            c) Payment gateways: We have partnered with payment gateways who
             offer payment support. These payment gateways help Us in processing
             payments made by You by facilitating transfer of monies from Your
             bank account or mobile payment services or online payment services.
@@ -1085,11 +1085,17 @@ const PrivacyPolicy = () => {
             gateways.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            e) We may also disclose aggregated or anonymised information about
+            d) We may also disclose aggregated or anonymised information about
             You along with information that does not identify any individual or
             device (save and except any banking or transaction related data
             which shall be stored as per the guidelines issued by the
             government), except where limited by applicable laws.
+          </p>
+          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
+            e) The User acknowledges that the Application offers a single
+            subscription plan and confirms that consent provided under this
+            Privacy Policy applies uniformly to all Users and Children without
+            any plan-based differentiation.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             f) The service providers and other partners We share Your data with,
@@ -1513,7 +1519,7 @@ const PrivacyPolicy = () => {
             Committee/Inter-Departmental Committee.
           </p>
         </motion.div>
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <p className="text-[28px] font-[600] text-center text-[#000] mb-2">
             ANNEXURE A
           </p>
@@ -1572,7 +1578,7 @@ const PrivacyPolicy = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <div className="bg-[radial-gradient(circle,#82F479_15%,#0EB401_190%),url('../../public/background-cover2.png')] pt-6 bg-cover bg-center bg-no-repeat bg-blend-multiply">
         <FooterSection />

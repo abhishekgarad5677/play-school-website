@@ -43,7 +43,7 @@ const TermsCondition = () => {
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 6th Jan, 2026.
+            Last Updated: 13th Feb, 2026.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px] mb-2">
             The “TMKOC Playschool” application (“Application”), and products or
@@ -199,7 +199,7 @@ const TermsCondition = () => {
             b) Payments towards the Platform Fee, creation of e-mandates, free
             trial validation and subscription renewals are processed through
             authorised third-party payment gateways for users with an android
-            device and through the in-built billing system on iOS devices.
+            device and through the apple in-app billing system on iOS devices.
             Auto-renewal shall occur unless cancelled by the User through the
             payment method service or application used to create the e-mandate.
             The Application does not provide any in-app cancellation mechanism.
@@ -218,38 +218,18 @@ const TermsCondition = () => {
             period, the User shall be required to register for the Services in
             their current territory with a mobile number of the territory where
             the User is present and pay the requisite Platform Fee (defined
-            below). To successfully log into the Services, Users will be
-            required to provide the one- time password (“OTP”) sent to their
-            registered mobile phone numbers, in order to validate the registered
-            mobile number. Carrier charges in relation to User verification
-            shall be paid and borne by You. If We have reasonable grounds to
-            suspect that such mobile number is inaccurate, not current, or
-            incomplete, then we may suspend or terminate Your account, and
-            refuse any and all current or future use of the Service. The User
-            shall ensure that the location provided shall be true and accurate,
-            any suspected tampering shall attract consequences including but not
-            limited to suspension of the Account (defined below). If the
-            registered mobile number registered with the Application is
-            objected/ changed/ updated/ corrected/ rectified /deleted, all
-            progress as saved in the previous mobile number would be deleted.
+            below). The User shall ensure that the location provided shall be
+            approximate, any suspected tampering shall attract consequences
+            including but not limited to suspension of the Account (defined
+            below).
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             d) Each User shall create and operate a single Account using a valid
-            mobile number in accordance with these Terms of Use. In an event a
-            User has created multiple accounts with different mobile numbers /
-            usernames, We reserve the right, in our sole discretion, to suspend
-            or disqualify an Account and nullify any benefits received, if any.
-          </p>
-          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            e) NMPL shall trace the exact location via the IP Address of the
-            Data Principal every time the Application is opened, for which
-            specific consent is obtained under the Privacy Policy.
-          </p>
-          <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            f) It is hereby declared that the Application may use artificial
-            intelligence from registration to termination. The User hereby
-            provides specific consent for the use of the same and provision of
-            data by NMPL to the artificial intelligence, if any.
+            Google Account or Apple ID Account in accordance with these Terms of
+            Use. In an event a User has created multiple accounts with different
+            Google Account or Apple ID Account, We reserve the right, in our
+            sole discretion, to suspend or disqualify an Account and nullify any
+            benefits received, if any.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             2.3 User Conduct
@@ -282,10 +262,10 @@ const TermsCondition = () => {
             Account rights. If We learn that an ineligible User has created an
             Account, We may seek confirmation of the User’s status or deactivate
             the Account (either permanently or temporarily), without notice to
-            the ineligible User. The same shall be determined by using the exact
-            location as traced from the IP address of the person accessing the
-            Application every time the same is opened, which You specifically
-            consent to.
+            the ineligible User. The same shall be determined by using the
+            approximate location as traced from the IP address of the person
+            accessing the Application every time the same is opened, which You
+            specifically consent to.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             f) You agree to not use the Services to:
@@ -409,9 +389,10 @@ const TermsCondition = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             3.2 In the event of major updates, the User must update the
-            Application, failing which the User will not be able to access the
             Application. A pop-up message will prompt the User to update the
-            Application before further access is granted.
+            Application before further access is granted for Android Devices,
+            iOS Device Users can directly update the Application from the App
+            Store.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             3.3 In case the Service is disrupted or hampered in the due course
@@ -434,10 +415,11 @@ const TermsCondition = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             4.1 The Application offers multiple educational activities for all
-            Children via the Users. The activities can be downloaded by the Child,
-            providing an experiential opportunity to expand their knowledge.
-            Activities may be suggested to the User basis the performance of the
-            Child. The User may view the reports generated on the Application.
+            Children via the Users. The activities can be downloaded by the
+            Child, providing an experiential opportunity to expand their
+            knowledge. Activities may be suggested to the User basis the
+            performance of the Child. The User may view the reports generated on
+            the Application.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             4.2 If the Child chooses to play a game, You shall be responsible
@@ -506,12 +488,13 @@ const TermsCondition = () => {
             Trademarks); and (iii) other forms of intellectual property.
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
-            5.2 We own all rights relating to the activities and other Content made
-            available through the Application and further we reserve the right
-            to record, store, monetize any gaming content on the Application and
-            exploit it in any mode/medium/format, whether existing now or
-            developed in the future, for any purpose whatsoever in relation to
-            the Application or for any other reason as we may deem fit.
+            5.2 We own all rights relating to the activities and other Content
+            made available through the Application and further we reserve the
+            right to record, store, monetize any gaming content on the
+            Application and exploit it in any mode/medium/format, whether
+            existing now or developed in the future, for any purpose whatsoever
+            in relation to the Application or for any other reason as we may
+            deem fit.
           </p>
         </motion.div>
         <motion.div
@@ -550,27 +533,27 @@ const TermsCondition = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#000] leading-[34px]">
             Our Services also include the generation and maintenance of a record
-            of each User's game activity, history, statistics, archive, and
-            a public record of play basis the Account plan adopted. When a Child
+            of each User's game activity, history, statistics, archive, and a
+            public record of play basis the Account plan adopted. When a Child
             with a Pro Plan plays a game, they shall receive a global ranking
             basis their performance basis comparison with the scores of other
-            pro plan subscribers, which shall be visible to all Pro Plan Users,
-            which shall include certain the username, country and score,
-            (“UGA”). In case more than 1 (one) Child has the same score, all
-            such Children shall be provided the same global ranking. High
-            scores, points, and usernames may be treated as public records and
-            published on leaderboards within the Application or elsewhere, which
-            may include gaming streams, screenshots of leaderboard, etc. that
-            can be accessed, used, and monetized by the Application for
-            purposes, including but not limited to, publishing images of the UGA
-            in for example, blogs, videos, in-Application publications including
-            leaderboards, social media posts, game collections, which you hereby
-            provide specific consent for. NMPL shall not be responsible for any
-            errors which may be committed in calculation of the scores or the
-            rank provided for Children with the same score. It is hereby agreed
-            that the User/Child shall not be permitted to publish UGA of other
-            users/children on any public or private domain including but not
-            limited to social media.
+            pro plan subscribers, which shall be visible to all Users
+            anonymousl, which shall include certain information such as the
+            rank, country and score. In case more than 1 (one) Child has the
+            same score, all such Children shall be provided the same global
+            ranking. High scores, points, and rank may be treated as public
+            records and published on leaderboards within the Application or
+            elsewhere, which may include gaming streams, screenshots of
+            leaderboard, etc. that can be accessed, used, and monetized by the
+            Application for purposes, including but not limited to, publishing
+            images of the UGA in for example, blogs, videos, in-Application
+            publications including leaderboards, social media posts, game
+            collections, which you hereby provide specific consent for. NMPL
+            shall not be responsible for any errors which may be committed in
+            calculation of the scores or the rank provided for Children with the
+            same score. It is hereby agreed that the User/Child shall not be
+            permitted to publish UGA of other users/children on any public or
+            private domain including but not limited to social media.
           </p>
         </motion.div>
         <motion.div

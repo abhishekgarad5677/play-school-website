@@ -105,26 +105,7 @@ const PrivacyPolicy = () => {
       ],
       col3: [
         {
-          section1:
-            "Registration Grievance Redressal (ifrequired) Global Ranking",
-        },
-      ],
-    },
-    {
-      col1: [
-        {
-          sction1: "Identification Proof of the Guardian (Optional)",
-        },
-      ],
-      col2: [
-        {
-          sction1:
-            "The same may be provided to verify the consent provided for registration.",
-        },
-      ],
-      col3: [
-        {
-          section1: "Registration",
+          section1: "Registration Grievance Redressal (if required)",
         },
       ],
     },
@@ -136,20 +117,20 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `The same shall be used for data collection. It is
-            understood if the username shall be visible to  
-            others, and if it corresponds to the legal name
-            of the Guardian/Child, You provide specific
-            consent for the Personal Data to be
-            attributable to You in the public domain of
-            the Application while displaying the Global
-            Rankings.`,
+          sction1: `The same shall be used for data collection. It
+          is understood if the username shall be visible
+          to others, and if it corresponds to the legal
+          name of the Guardian/Child, You provide
+          specific consent for the Personal Data to be
+          attributable to You in the public domain of the
+          Application while displaying the Global
+          Rankings. This information is not used for
+          tracking, profiling, or advertising.`,
         },
       ],
       col3: [
         {
-          section1: "Registration",
-          section2: "Global Ranking",
+          section1: "Registration Global Ranking",
         },
       ],
     },
@@ -161,14 +142,12 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used for reporting purposes.`,
+          sction1: "Used for reporting purposes.",
         },
       ],
       col3: [
         {
-          section1: "Registration",
-          section2: "Reporting",
-          section3: "Technical Support",
+          section1: "Reporting",
         },
       ],
     },
@@ -180,43 +159,36 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used for verification and registration purposes.`,
+          sction1: "Used for verification and registration purposes.",
         },
       ],
       col3: [
         {
-          section1: "Registration",
-          section2: "Technical Support",
-          section3: "Grievance Redressal (if required)",
+          section1:
+            "Registration Technical Support Grievance Redressal (if required)",
         },
       ],
     },
     {
       col1: [
         {
-          sction1: "One Time Password",
+          sction1: "Phone number",
         },
       ],
       col2: [
         {
-          sction1: `To successfully log into the Services, Users will be required to provide the one-time
-        password (“OTP”) sent to their registered
-        mobile phone numbers, for which we may
-        ask Users to give us the permission to read
-        the OTP sent to their registered mobile phone
-        numbers. The provision of this information is
-        optional, and it is at Users’ discretion to
-        either provide us with the requisite
-        permission to access the OTP for auto-filling
-        on the Services or the Users may choose to
-        key in the OTP on their own.`,
+          sction1: `Used only for parental communication such as
+          progress updates, attendance reports, and
+          important service-related notifications via
+          WhatsApp. Phone numbers are not used for
+          authentication or login.`,
         },
       ],
       col3: [
         {
-          section1: "Verification",
-          section2: "Technical Support",
-          section3: "Grievance Redressal",
+          section1: `Verification
+            Technical Support
+            Grievance Redressal`,
         },
       ],
     },
@@ -228,14 +200,15 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used for communication.`,
+          sction1: "Used for communication and customer support",
         },
       ],
       col3: [
         {
-          section1: "Registration",
-          section2: "Technical Support",
-          section3: "Grievance Redressal (if required)",
+          section1: `Registration
+          Technical Support
+          Grievance Redressal (if
+          required`,
         },
       ],
     },
@@ -247,14 +220,16 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used for providing a more personalized experience.`,
+          sction1: `A child’s age (derived from date of birth) is
+            used only to place the child in an age-
+            appropriate learning group. This information
+            is not used for tracking, profiling, or
+            advertising.`,
         },
       ],
       col3: [
         {
-          section1: "Registration",
-          section2: "Analytics",
-          section3: "Report Generation",
+          section1: "Registration Report Generation",
         },
       ],
     },
@@ -266,33 +241,17 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used to process the fee and monitor the balance amount.`,
+          sction1: `On iOS devices, all subscription payments are
+          processed exclusively through Apple’s In-App
+          Purchase system. NMPL does not collect or
+          store any banking, card, or payment
+          credentials on iOS.`,
+          sction2: `On Android devices, authorised third-party payment gateways may be used as described.`,
         },
       ],
       col3: [
         {
-          section1: "Registration/ Re-Registration",
-          section2: "Banking Status confirmation",
-          section3: "Auto Pay",
-        },
-      ],
-    },
-    {
-      col1: [
-        {
-          sction1: "Gender of Child",
-        },
-      ],
-      col2: [
-        {
-          sction1: `Used for providing a more personalized experience.`,
-        },
-      ],
-      col3: [
-        {
-          section1: "Registration",
-          section2: "Analytics",
-          section3: "Report Generation",
+          section1: `Registration/ Re-Registration Banking Status confirmation Auto Pay`,
         },
       ],
     },
@@ -304,13 +263,14 @@ const PrivacyPolicy = () => {
       ],
       col2: [
         {
-          sction1: `Used for improve user experience and provide seamless use of the Application.`,
+          sction1:
+            "Used to improve user experience and provide seamless use of the Application.",
         },
       ],
       col3: [
         {
           section1:
-            "Sample Testing Phase Any Phase the User voluntaril submits feedback",
+            "Sample Testing Phase Any Phase the User voluntarily submits feedback",
         },
       ],
     },
@@ -321,27 +281,34 @@ const PrivacyPolicy = () => {
     {
       col1: [
         {
-          sction1: `Exact Location including
-            Continent, Country,
-            Country Code, Region,
-            State, City, Zip (via IP
-            Address)`,
+          sction1: `Approximate Location
+        including, Country, State,
+        City, (via IP Address)`,
         },
       ],
       col2: [
         {
-          sction1: "Analysis and Processing of Data.",
-          sction2: "Fraud detection.",
-          sction3: "Targeted Advertising.",
-          sction4: `For Premium Users: Global Ranking.
-                    To enforce Our rights to monitor, investigate,
-                    prevent and/or mitigate violations of the
-                    Terms of Use and this Policy.`,
+          sction1: `Used for fraud detection, security,
+                    compliance, regional analytics, and
+                    determination of applicable subscription
+                    pricing based on country.`,
+          sction2: `Exact GPS location or precise address data is not collected.`,
+          sction3: `NMPL does not use location data of Children
+                    for behavioural profiling or targeted
+                    advertising. Any advertisements displayed on
+                    the Application, if at all, shall be contextual in
+                    nature and not based on profiling or tracking
+                    of Children.`,
+          sction4: `Location data may also be used to enforce
+                    compliance with the Terms of Use and
+                    applicable laws, for Global Ranking, to apply
+                    language, curriculum relevance, and legal
+                    compliance.`,
         },
       ],
       col3: [
         {
-          section1: `Every time the application is opened.Compliance Purposes.`,
+          section1: `During Registration process`,
         },
       ],
     },
@@ -354,26 +321,27 @@ const PrivacyPolicy = () => {
       col2: [
         {
           sction1: `The same shall be generated by NMPL but
-            shall be used by the Data Principal to access
-            the Services provided or make a complaint of
-            the lack thereof. 7.1. ferent games and to
-            monitor compliance.`,
+              shall be used by the Data Principal to access
+              the Services provided or make a complaint of
+              the lack thereof.`,
         },
       ],
       col3: [
         {
-          section1: `Registration`,
-          section2: `Login`,
-          section3: `Monitoring of Compliance`,
-          section4: `Technical Support`,
-          section5: `Grievance Redressal (if required)`,
+          section1: `Registration
+                    Login
+                    Monitoring of
+                    Compliance
+                    Technical Support
+                    Grievance Redressal (if
+                    required)`,
         },
       ],
     },
     {
       col1: [
         {
-          sction1: `Time Spent on the Game`,
+          sction1: `Time Spent on the Application`,
         },
       ],
       col2: [
@@ -384,8 +352,7 @@ const PrivacyPolicy = () => {
       col3: [
         {
           section1: `Every time a game is played.`,
-          section2: `Analytics`,
-          section3: `Report Generation`,
+          section2: `Report Generation`,
         },
       ],
     },
@@ -403,7 +370,6 @@ const PrivacyPolicy = () => {
       col3: [
         {
           section1: `Every time a game is played.`,
-          section2: `Analytics`,
           section3: `Report Generation`,
         },
       ],
@@ -422,12 +388,10 @@ const PrivacyPolicy = () => {
       col3: [
         {
           section1: `Every time a game is played.`,
-          section2: `Analytics`,
+          section2: `Global Ranking`,
           section3: `Report Generation`,
-          section4: `Global Ranking`,
-          section5: `Report Generation`,
-          section6: `Marketing and Promotion`,
-          section7: `Monetization`,
+          section4: `Educational`,
+          section5: `engagement insights`,
         },
       ],
     },
@@ -452,42 +416,45 @@ const PrivacyPolicy = () => {
       col1: [
         {
           sction1: `Usage Data, including the
-                time You launch the
-                Services, the pages and
-                content viewed, IP
-                address, unique device
-                identifiers, any adverts
-                that You viewed and
-                clicked on, the objects
-                and links You clicked on
-                and interacted with, and
-                scrolling/gesture/tap
-                information.`,
+              time You launch the
+              Services, the pages and
+              content viewed, IP
+              address, unique device
+              identifiers, any adverts
+              that You viewed and
+              clicked on, the objects and
+              links You clicked on and interacted with, and
+              scrolling/gesture/tap
+              information.`,
+          sction2: `(We do not collect
+              persistent device
+              identifiers for tracking
+              purposes. We do not track
+              children across apps,
+              websites, or services.)`,
         },
       ],
       col2: [
         {
           sction1: `To provide features and functionality of the
-            Services such as in-app messages, push
-            notifications and gameplay performance
-            records.`,
+                  Services such as in-app messages, push
+                  notifications and gameplay performance
+                  records.`,
           sction2: `To update features to better Our Services and
-            develop new products, games and other
-            offerings and services.`,
+                  develop new products, games and other
+                  offerings and services.`,
           sction3: `To create reports and develop insights about
-            Our business. We may use aggregated or
-            anonymised data for such purposes.`,
-          sction4: `To help train Our machine learning and AI
-            models to provide You with personalized
-            content and user experience as well as for the purposes outlined in this Policy.
-            To enforce Our rights to monitor, investigate,
-            prevent and/or mitigate violations of the
-            Terms of Use and this Policy.`,
+                  Our business. We may use aggregated or anonymised data for such purposes as well as
+                    for the purposes outlined in this Policy.`,
+          sction4: `To enforce Our rights to monitor, investigate,
+                prevent and/or mitigate violations of the
+                Terms of Use and this Policy.`,
         },
       ],
       col3: [
         {
-          section1: `Every time the application is opened.`,
+          section1: `Every time the
+          application is opened.`,
         },
       ],
     },
@@ -495,48 +462,19 @@ const PrivacyPolicy = () => {
       col1: [
         {
           sction1: `Diagnostics Data
-            including Crash logs and
-            usage and performance
-            statistics.`,
+                including Crash logs and
+                usage and performance
+                statistics.`,
         },
       ],
       col2: [
         {
           sction1: `To troubleshoot software bugs, patch errors,
-            and maintain functionality of the Services;
-            To help train Our machine learning and AI
-            models to provide You with personalized
-            content and user experience as well as for the
-            purposes outlined in this Policy.
-            To enforce Our rights to monitor, investigate,
-            prevent and/or mitigate violations of the
-            Terms of Use and this Policy.`,
-        },
-      ],
-      col3: [
-        {
-          section1: `Every time the application is opened.`,
-        },
-      ],
-    },
-    {
-      col1: [
-        {
-          sction1: `Tracking Technologies`,
-        },
-      ],
-      col2: [
-        {
-          sction1: `We may use technologies, such as software
-            development kits (SDK) and API as part of
-            Services We deliver to you. We use these
-            technologies to secure and improve Our
-            Services, to understand Your preferences,
-            collect information about Your activity, and
-            device and tailor Our Services to Your
-            interests. We may also use these technologies
-            to collect information when You interact with
-            Services.`,
+                and maintain functionality of the Services as
+                well as for the purposes outlined in this Policy.
+                To enforce Our rights to monitor, investigate,
+                prevent and/or mitigate violations of the
+                Terms of Use and this Policy.`,
         },
       ],
       col3: [
@@ -660,14 +598,13 @@ const PrivacyPolicy = () => {
           className="mb-8"
         >
           <p className="text-[28px] font-[600] text-[#000] mb-2">
-            Last Updated: 6th Jan, 2026.
+            Last Updated: 13th Feb, 2026.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             This Privacy Policy explains Our policy regarding the collection,
             processing, use, disclosure, and transfer of Your information
             (“Privacy Policy”) for the application “TMKOC Play School”
-            application available on : 16th May, 2025.
-            (&quot;Application&quot;). or products or services which are
+            application ("Application") or products or services which are
             operative now or developed or created in the future (the “Services”)
             which is owned and operated by Neela Mediatech Private Limited,
             having its office at 401, 4th Floor, Stanford, CTS no 554/1 to 4
@@ -691,21 +628,24 @@ const PrivacyPolicy = () => {
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             Users are requested to read this Policy in conjunction with the
-            Terms of Use as can be found on 16th May, 2025. We request You to
-            review the most recent version of the Policy periodically. By using
-            the Services, You agree to the handling of Your information in
-            accordance with this Policy. If You provide Us with Your information
-            We will treat Your information according to this Policy. If We need
-            to use Your Personal Data for any other purpose, other than as
-            disclosed herein, We will update this Policy or ask for Your prior
-            consent, if necessary.
+            Terms of Use as can be found on
+            <a href="https://tmkocplayschool.com/terms-condition">
+              https://tmkocplayschool.com/terms-condition
+            </a>
+            . We request You to review the most recent version of the Policy
+            periodically. By using the Services, You agree to the handling of
+            Your information in accordance with this Policy. If You provide Us
+            with Your information We will treat Your information according to
+            this Policy. If We need to use Your Personal Data for any other
+            purpose, other than as disclosed herein, We will update this Policy
+            or ask for Your prior consent, if necessary
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             If You do not agree with this Policy in general or any part of it,
             please do not use Our Services. By continuing to use the Services,
             You acknowledge and expressly agree to Our collection, processing,
             storing, transfer, and use of Your information as described in this
-            Policy. You agree, and confirm freely, specifically, unconditionally
+            Policy. You agree, and confirm freely, specifically, unconditionally
             and unambiguously consent, after taking an informed decision, to
             provide Your information which will be stored in electronic form and
             the same shall be maintained in Our records for the period of time,
@@ -726,7 +666,7 @@ const PrivacyPolicy = () => {
             1.1. Personal data as means any data about an individual who is
             identifiable by or in relation to such data. The same shall, where
             the context requires, refers to the data of the Data Principal and
-            the Child.
+            the Child
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             1.2. Child shall mean an individual who has not completed the age of
@@ -884,7 +824,24 @@ const PrivacyPolicy = () => {
             </table>
           </div>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2 ">
-            b) We and Our third-party service providers, also collect the
+            b) The Application generates and maintains records of User game
+            activity, including gameplay history, scores, rankings, and
+            performance analytics. Certain elements of such User game activity,
+            including usernames, country, scores, and rankings, may be displayed
+            publicly within the Application, including on leaderboards,
+            screenshots, promotional material, social media posts, or other
+            Application-related publications. By registering for and using the
+            Services, the User expressly consents to such publication and use of
+            User Game Activity data for Application-related purposes. It is
+            understood if the username shall be visible to others, and if it
+            corresponds to the legal name of the User/Child, You provide
+            specific consent for the personal data to be attributable to You in
+            the public domain of the Application while displaying the global
+            rankings. It is recommended that parents avoid using real names for
+            Children
+          </p>
+          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2 ">
+            c) We and Our third-party service providers, also collect the
             information You provide to Us when You correspond with Us including
             when You require customer support, submit questions or comments,
             rate the Services and other content You post using the Services. The
@@ -896,7 +853,7 @@ const PrivacyPolicy = () => {
             in accordance with this Policy.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2 ">
-            c) Please note that We do not, in any manner, collect any special
+            d) Please note that We do not, in any manner, collect any special
             category data such as racial or ethnic origin, political opinions,
             religious beliefs, genetic data, biometric data, or data concerning
             user’s sex life or sexual orientation. If it has been brought to Our
@@ -905,12 +862,12 @@ const PrivacyPolicy = () => {
             Clause 9 below and We will delete such special category data.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2 ">
-            d) The data as tabulated may also be used to perform Our agreement
+            e) The data as tabulated may also be used to perform Our agreement
             with You and provide Our Services to You and also in order to take
             steps at Your request prior to entering into an agreement.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2 ">
-            e) By attesting to this policy, You understand that Your data may be
+            f) By attesting to this policy, You understand that Your data may be
             used for certain “legitimate purposes” as prescribed under the
             applicable law without Your consent, and You hereby waive any claim
             against NMPL with respect to such purposes.
@@ -997,9 +954,10 @@ const PrivacyPolicy = () => {
             </table>
           </div>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            The data as tabulated may also be used to perform Our agreement with
-            You and provide Our Services to You and also in order to take steps
-            at Your request prior to entering into an agreement.
+            c) The data as tabulated may also be used to perform Our agreement
+            with You and provide Our Services to You, comply with legal
+            obligations, prevent fraud, and improve the functionality and
+            security of the Application
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             By attesting to this policy, You understand that Your data may be
@@ -1055,34 +1013,28 @@ const PrivacyPolicy = () => {
             this Policy and as far as practicable or as required by applicable
             law.
           </p>
-          {/* <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            b) Advertising Platforms and Networks (commonly known as ‘ad
-            networks’): We have partnered up with various ad networks to display
-            advertisements on Our Services.
-          </p> */}
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             b) Analytics providers: We work with service providers that help Us
             analyse and understand Personal Data and identify and develop
             trends, patterns, and insights to optimise and improve the Services
-            and create new products or features. These service providers also
-            help Us track App usage and Users’ engagement with the Services
-            including games available on the Services and gameplay to help Us
-            provide better games, Services, and generate reports for You.
+            and create new products or features.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            c) Payment gateways: We have partnered with payment gateways who
-            offer payment support. These payment gateways help Us in processing
-            payments made by You by facilitating transfer of monies from Your
-            bank account or mobile payment services or online payment services.
-            Certain Personal Data is transmitted to these payment gateways for
-            the purpose of processing any payments. The transmission of Your
-            payment information is automatic, and at no point do we, or any of
-            Our agents or employees, have the ability to review, access or
-            retain such payment information. We are required to retain Your
-            email address by some of Our online payment service providers. For
-            more information on how Your payment information is processed,
-            please see the terms of use and privacy policies of those payment
-            gateways.
+            c) Payment gateways: We have partnered with authorised third-party
+            payment gateways (on Android devices), including Razorpay and
+            Apple’s in-built billing system on iOS devices, to facilitate
+            subscription payments, creation and management of e-mandates,
+            processing of refundable mandate amounts, auto- renewals, and
+            related transactions. Certain Personal Data, including contact
+            details and transaction- related information, is transmitted to such
+            payment gateways for the purpose of processing payments. NMPL does
+            not store or have access to Users’ complete card details, UPI
+            credentials, bank account information or authentication data. Refund
+            of any refundable mandate amount and processing timelines are
+            governed by the respective bank or payment service provider’s
+            policies. For further information on how payment information is
+            processed, Users are advised to review the applicable terms and
+            privacy policies of the payment gateway.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             d) We may also disclose aggregated or anonymised information about
@@ -1098,25 +1050,9 @@ const PrivacyPolicy = () => {
             any plan-based differentiation.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            f) The service providers and other partners We share Your data with,
-            and the processing of such data by such service providers and
-            partners will be in accordance with their terms of use and privacy
-            policies. An indicative list of Our service providers is more
-            particularly detailed in Annexure-A. If You have any questions
-            regarding the service providers that We share Your Personal Data
-            with or who undertake processing on Your Personal Data, please
-            contact Us as described via the means provided under Clause 9.
-          </p>
-          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             4.5. We may also share Your Personal Data in order to comply with
             the applicable law which shall include disclosure for “legitimate
-            purposes” as prescribed, without your consent.
-          </p>
-          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            4.6. For more information regarding the sharing of data with third
-            parties please review the applicable sections below and notices
-            within Annexure A or please contact Us as described in the “Contact
-            Us” section below.
+            purposes” as prescribed, without your consent
           </p>
         </motion.div>
         <motion.div
@@ -1184,15 +1120,7 @@ const PrivacyPolicy = () => {
             records if required by law or if it is relevant to prevent fraud or
             future violations of Our policies or for legitimate business
             purposes when permitted by applicable law. All retained data will
-            continue to be subject to Our Policy in effect at that time.
-          </p>
-          <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            5.7 Please note that any Personal Data about You stored or retained
-            by a third party is subject to the third party’s terms of use and
-            privacy policy and You must contact them directly to get Your data
-            deleted. The third parties that We have engaged for the purposes of
-            delivering and analysing Our Services, are listed out in Annexure –
-            A.
+            continue to be subject to Our Policy in effect at that time
           </p>
         </motion.div>
         <motion.div
@@ -1270,7 +1198,7 @@ const PrivacyPolicy = () => {
             the Terms.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
-            7.2. In certain circumstances, You have the following data
+            7.2. IIn certain circumstances, You have the following data
             protection rights which can be exercised by You by contacting Us at
             the contact information provided in the “Contact Us” section below -
           </p>
@@ -1299,6 +1227,8 @@ const PrivacyPolicy = () => {
             c) Access: You have the right to request a summary of the Personal
             Data that We process about You and the processing activities
             undertaken. However, there are exceptions to this right, so that
+            access may be denied if, for example, We are legally prevented from
+            disclosing such information.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             d) Accuracy: We aim to keep Your Personal Data accurate and
@@ -1308,18 +1238,19 @@ const PrivacyPolicy = () => {
             mechanism provided in the Terms. However, You shall be liable in the
             instance the information provided/ completed/ updated by You is
             inaccurate/misleading and nothing herein shall be construed
-            otherwise. Exercise
+            otherwise. Exercise of this right shall impact certain Services
+            provided, as can be found in the Terms of Use.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             e) Rectification: You have the right to request the rectification of
             inaccurate Personal Data and, taking into account the purposes of
-            the processing, to complete Your Personal Data. You are also able to
+            the processing, to complete Your Personal Data. You are also able to
             correct or rectify certain inaccurate Personal Data in accordance
             with the mechanism provided in the Terms. However, You shall be
             liable in the instance the information provided/ corrected/
             rectified by You is inaccurate/misleading and nothing herein shall
             be construed otherwise. Exercise of this right shall impact certain
-            Services provided, as can be found in the terms of use.
+            Services provided, as can be found in the Terms of Use.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             f) Deletion: You have the right to delete or request that We delete
@@ -1333,7 +1264,7 @@ const PrivacyPolicy = () => {
             shall occur only basis any data fed after deletion. However, the
             consequence of such deletion shall lay on You. Exercise of this
             right shall impact certain Services provided, as can be found in the
-            terms of use.
+            Terms of Use.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             g) Nomination: You may nominate one or more person who shall, in the
@@ -1361,13 +1292,13 @@ const PrivacyPolicy = () => {
             rights. You also have the right to complain to the relevant data
             protection authority, including but not limited to the Data
             Protection Board as provided for under the Digital Personal Data
-            Protection Act, 2023 or the Grievance Appellate Committee or
-            Inter-Departmental Committee set up under the Information Technology
-            (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021,
-            or other relevant authority. However, the internal grievance
-            redressal procedure shall be exhausted prior to approaching the
-            relevant authority thereof. The procedure for grievance redressal
-            can be found under Clause 10 herein.
+            Protection Act, 2023 via or the Grievance Appellate Committee or
+            Inter- Departmental Committee set up under the Information
+            Technology (Intermediary Guidelines and Digital Media Ethics Code)
+            Rules, 2021, or other relevant authority. However, the internal
+            grievance redressal procedure shall be exhausted prior to
+            approaching the relevant authority thereof. The procedure for
+            grievance redressal can be found under Clause 10 herein.
           </p>
           <p className="text-[16px] font-[400] text-[#464646] leading-[34px] mb-2">
             k) Miscellaneous: Any other right that is provided for specifically
@@ -1509,7 +1440,7 @@ const PrivacyPolicy = () => {
             10.1. If You wish to make a complaint regarding any matter with
             respect to Our Services or Application, You may write to the email
             id as provided under Clause 9. We shall acknowledge the same within
-            24 (twenty-four hours). We shall conduct an internal enquiry and
+            24 (twenty- four hours). We shall conduct an internal enquiry and
             take steps outlined in the Terms of Use and resolve the same within
             15 (fifteen) days from the date of its receipt.
           </p>

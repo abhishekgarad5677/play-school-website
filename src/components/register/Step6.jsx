@@ -6,8 +6,11 @@ import step5right from "../../assets/register/step5right.png";
 import step5left from "../../assets/register/step5left.png";
 import Cookies from "js-cookie";
 import { CountryStateList } from "../../utils/CountryStateList";
-import { useLazyGetCitiesQuery } from "../../services/CitieslocationApi";
-import { useRegisterOrloginUserEmailMutation } from "../../services/registrationApi";
+import {
+  useGetCitiesMutation,
+  useRegisterOrloginUserEmailMutation,
+} from "../../services/registrationApi";
+import { CitiesList } from "../../utils/CitiesList";
 
 const Step6 = ({ setStep, parentDetails }) => {
   const loading = false;
@@ -65,42 +68,38 @@ const Step6 = ({ setStep, parentDetails }) => {
   const [
     fetchCities,
     { data: cities = [], isFetching: citiesLoading, error: citiesError },
-  ] = useLazyGetCitiesQuery();
+  ] = useGetCitiesMutation();
 
   const [
     registerOrLoginUser,
     { isLoading: apiLoading, error: apiError, data: apiData },
   ] = useRegisterOrloginUserEmailMutation();
 
-  // useEffect(() => {
-  //   fetchCities({ country: "Afghanistan", state: "Badakhshan" });
-  // }, [fetchCities]);
-
-  // fetch("/countriesnow/api/v0.1/countries/state/cities", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     country: "Afghanistan",
-  //     state: "Badakhshan",
-  //   }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data));
+  // set local cities
+  const localCities = useMemo(() => {
+    if (selectedCountry !== "India" || !selectedState) return [];
+    return CitiesList[selectedState] || [];
+  }, [selectedCountry, selectedState]);
 
   // fetch cities when state changes
   useEffect(() => {
     if (!selectedCountry || !selectedState) return;
 
-    // reset current city
+    // reset city whenever state changes
     setValue("city", "");
 
-    // call RTK (India will use local CitiesList inside queryFn)
+    if (selectedCountry === "India") {
+      // Do NOT call API for India
+      return;
+    }
+
+    // Call API only for non-India countries
     fetchCities({ country: selectedCountry, state: selectedState });
   }, [selectedCountry, selectedState, fetchCities, setValue]);
 
-  const onSubmit = async (data) => {
-    // console.log("Location:", data, parentDetails, user_form_data);
+  const cityOptions = selectedCountry === "India" ? localCities : cities;
 
+  const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append(
       "Name",
@@ -120,22 +119,19 @@ const Step6 = ({ setStep, parentDetails }) => {
     formData.append("TestingType", "1");
     formData.append("SubscriptionType", "3");
 
-    for (const [k, v] of formData.entries()) console.log("===", k, v);
+    // for (const [k, v] of formData.entries()) console.log("===", k, v);
 
     await registerOrLoginUser(formData).unwrap();
-
-    // setStep(7);
   };
 
   useEffect(() => {
     if (apiData && apiData?.status === true) {
-      console.log(apiData);
-      setStep(7)
+      setStep(7);
     }
   }, [apiData]);
 
   return (
-    <div className="relative m-auto h-screen w-full mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+    <div className="relative m-auto lg:h-screen w-full mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
       <img className="absolute right-[-4%] top-[-2%]" src={step5right} alt="" />
       <img className="absolute left-[-4.5%] top-[-2%]" src={step5left} alt="" />
 
@@ -162,7 +158,7 @@ const Step6 = ({ setStep, parentDetails }) => {
 
         {/* ===== FORM ===== */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <div className="w-[70%] mx-auto text-left">
+          <div className="lg:w-[70%] mx-auto text-left">
             {/* Country */}
             <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A]">
               Country
@@ -229,7 +225,7 @@ const Step6 = ({ setStep, parentDetails }) => {
                   <option value="">
                     {selectedState ? "Select city" : "Select state first"}
                   </option>
-                  {cities.map((c) => (
+                  {cityOptions?.map((c) => (
                     <option key={c} value={c}>
                       {c}
                     </option>

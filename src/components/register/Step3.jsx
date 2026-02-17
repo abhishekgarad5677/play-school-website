@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import logo from "../../../public/playSchool-logo.png";
 import numberBanner from "../../assets/register/numberBanner.png";
@@ -8,7 +8,7 @@ import { CountryList } from "../../utils/CountryList";
 import { useAddPhoneNumberMutation } from "../../services/registrationApi";
 
 const Step3 = ({ setStep }) => {
-  const loading = false;
+  const [showErr, setShowErr] = useState(false);
 
   const [
     addPhoneNumber,
@@ -41,8 +41,6 @@ const Step3 = ({ setStep }) => {
     (ele) => ele.code === locationData?.countryCode,
   );
 
-  console.log(countryObj?.phoneLength);
-
   // ✅ Use detected country's phone length; fallback to 10
   const requiredPhoneLength = countryObj?.phoneLength ?? 10;
 
@@ -55,8 +53,12 @@ const Step3 = ({ setStep }) => {
   };
 
   useEffect(() => {
-    if (apiData) {
+    if (apiData === true) {
+      setShowErr(false);
       setStep(4);
+    } else if (apiData === false) {
+      console.log("response");
+      setShowErr(true);
     }
   }, [apiData]);
 
@@ -111,6 +113,12 @@ const Step3 = ({ setStep }) => {
           progress reports.
         </p>
 
+        {showErr ? (
+          <p className="text-red-500 text-sm mt-2">Number already exist.</p>
+        ) : (
+          <></>
+        )}
+
         {/* ===== PHONE INPUT ===== */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-5">
           <div className="w-full max-w-[520px] mx-auto text-left">
@@ -159,11 +167,11 @@ const Step3 = ({ setStep }) => {
               type="submit"
               className={`w-full mt-6 py-4 fredoka-one-font flex justify-center items-center gap-2 text-white text-[18px] rounded-full shadow-lg transition-all
                 ${
-                  loading
+                  apiLoading
                     ? "bg-gray-400 cursor-not-allowed opacity-50"
                     : "cursor-pointer bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] hover:opacity-90"
                 }`}
-              disabled={loading}
+              disabled={apiLoading}
             >
               Next
             </button>

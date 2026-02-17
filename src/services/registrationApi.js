@@ -4,8 +4,7 @@ import Cookies from "js-cookie";
 export const registrationApi = createApi({
   reducerPath: "registrationApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://3.111.148.23/api/",
-    // baseUrl: "http://10.1.1.138:7177/api/",
+    baseUrl: import.meta.env.VITE_BASE_URL,
     prepareHeaders: (headers) => {
       const token = Cookies.get("auth_token");
       if (token) {
@@ -66,6 +65,20 @@ export const registrationApi = createApi({
         body,
       }),
     }),
+    getCities: builder.mutation({
+      query: (body) => ({
+        url: "Auth/cities",
+        method: "POST",
+        body,
+      }),
+    }),
+    getProfile: builder.mutation({
+      query: (body) => ({
+        url: "Auth/user/profile",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -77,4 +90,6 @@ export const {
   useCreateSubscriptionMutation,
   usePaymentStatusMutation,
   useStudentAudioAndTextMutation,
+  useGetCitiesMutation,
+  useGetProfileMutation
 } = registrationApi;

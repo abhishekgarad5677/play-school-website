@@ -96,6 +96,7 @@ const Step1 = ({ setStep }) => {
         isPhoneNumberConfirmed,
         isSubscribed,
         isRegistered,
+        isFreeTrialEnd,
         token,
       } = apiData?.data;
 
@@ -127,8 +128,14 @@ const Step1 = ({ setStep }) => {
         setStep(2);
       } else if (isPhoneNumberConfirmed === false) {
         setStep(3);
-      } else if (isSubscribed === false) {
-        // } else if (isSubscribed === true) {
+      } else if (
+        isSubscribed === false &&
+        isRegistered === true &&
+        isFreeTrialEnd === true
+      ) {
+        // user has cancelled the subscription
+        setStep(4);
+      } else if (isSubscribed === false && isRegistered === false) {
         setStep(4);
       } else if (isSubscribed && isRegistered === false) {
         setStep(5);
@@ -142,7 +149,7 @@ const Step1 = ({ setStep }) => {
 
   return (
     <div className="relative m-auto lg:h-screen w-full mt-0 lg:mt-10 sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center w-[80%] mx-auto">
+      <div className="flex flex-col items-center text-center lg:w-[80%] mx-auto">
         <img
           alt="TMKOC Playschool"
           src={logo}
@@ -189,7 +196,7 @@ const Step1 = ({ setStep }) => {
           }`}
         >
           <FcGoogle className="text-3xl bg-white p-1 rounded-full" />
-          {disabled ? "Signing in..." : "Sign Up with Google"}
+          {googleLoading ? "Signing in..." : "Sign Up with Google"}
         </button>
       </div>
     </div>

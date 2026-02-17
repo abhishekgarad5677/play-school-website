@@ -6,10 +6,12 @@ import NoInternetScreen from "./components/NoInternetScreen";
 import { analytics, logEvent } from "./utils/firebaseConfig";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./pages/HomePage";
+
 // Lazy-loaded pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsCondition = lazy(() => import("./pages/TermsCondition"));
 const Register = lazy(() => import("./pages/Register"));
+// const Profile = lazy(() => import("./pages/Profile"));
 
 function PageLoader() {
   return <div style={{ padding: 16 }}>Loading...</div>;
@@ -48,6 +50,7 @@ function App() {
             {/* Protected Routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             {/* <Route element={<ProtectedRoutes />}> */}
             <Route index element={<HomePage />} />
             <Route path="*" element={<h2>❌ Page Not Found</h2>} />

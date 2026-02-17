@@ -12,8 +12,8 @@ const Step7 = ({ setStep }) => {
   };
 
   return (
-    <div className="relative m-auto h-screen w-full mt-10  sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center gap-3 w-[70%] justify-center mx-auto">
+    <div className="relative m-auto lg:h-screen w-full mt-10  sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+      <div className="flex flex-col items-center text-center gap-3 lg:w-[70%] justify-center mx-auto">
         <img
           alt="TMKOC Playschool"
           src={logo}
@@ -46,7 +46,7 @@ const Step7 = ({ setStep }) => {
         <img
           alt="step1 banner"
           src={step7banner}
-          className="h-[60px] sm:h-[80px] lg:h-[260px]"
+          className="lg:h-[260px]"
         />
 
         <button

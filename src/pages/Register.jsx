@@ -12,11 +12,21 @@ import Step8 from "../components/register/Step8";
 import Step9 from "../components/register/Step9";
 
 const Register = () => {
-  const [step, setStep] = useState(9);
+  const [step, setStep] = useState(1);
   const [parentDetails, setparentDetails] = useState();
 
   return (
-    <div className="relative w-screen lg:h-auto flex flex-col overflow-y-scroll items-center justify-start bg-[url('/password/passwordBgMobile.png')] lg:bg-[url('/password/passwordBg.png')] bg-cover bg-center bg-no-repeat">
+    <div
+      className={`${step === 1 ? "h-screen" : "lg:h-auto"}
+                  ${step === 3 ? "h-screen" : "lg:h-auto"}
+                  ${step === 4 ? "h-screen" : "lg:h-auto"}
+                  ${step === 5 ? "h-screen" : "lg:h-auto"}
+                  ${step === 6 ? "h-screen" : "lg:h-auto"}
+                  ${step === 7 ? "h-screen" : "lg:h-auto"}
+                  ${step === 8 ? "h-screen" : "lg:h-auto"}
+                  ${step === 9 ? "h-screen" : "lg:h-auto"}
+      relative w-screen flex flex-col overflow-y-scroll items-center justify-start bg-[url('/password/passwordBgMobile.png')] lg:bg-[url('/password/passwordBg.png')] bg-cover bg-center bg-no-repeat`}
+    >
       <img
         className="absolute bottom-0 left-0 z-10 w-[26%] hidden md:block"
         src={bottomleft}

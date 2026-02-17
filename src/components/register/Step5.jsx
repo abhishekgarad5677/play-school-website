@@ -27,7 +27,7 @@ const Step5 = ({ setStep, setparentDetails }) => {
   };
 
   return (
-    <div className="relative m-auto h-screen w-full mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+    <div className="relative m-auto lg:h-screen w-full mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
       <img className="absolute right-[-4%] top-[-2%]" src={step5right} alt="" />
       <img className="absolute left-[-4.5%] top-[-2%]" src={step5left} alt="" />
       <div className="flex flex-col items-center text-center gap-4">
@@ -52,7 +52,7 @@ const Step5 = ({ setStep, setparentDetails }) => {
 
         {/* ===== FORM ===== */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <div className="w-[70%] mx-auto text-left">
+          <div className="lg:w-[70%] mx-auto text-left">
             {/* First Name */}
             <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A]">
               First Name

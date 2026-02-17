@@ -15,12 +15,12 @@ const Step9 = () => {
   // }, []);
 
   return (
-    <div className="relative m-auto h-screen w-full mt-10  sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center gap-3 w-[70%] justify-center mx-auto">
+    <div className="relative m-auto lg:h-screen w-full mt-10  sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+      <div className="flex flex-col items-center text-center gap-3 lg:w-[70%] justify-center mx-auto">
         <img
           alt="TMKOC Playschool"
           src={logo}
-          className="h-[60px] sm:h-[80px] lg:h-[84px] cursor-pointer"
+          className="h-[100px] lg:h-[84px] cursor-pointer"
         />
         <img
           className="absolute top-0 left-0 w-[20%]"
@@ -38,7 +38,7 @@ const Step9 = () => {
           style={{ height: 300 }}
         />
         <h1
-          className="mt-2 text-[18px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[32px] lg:leading-[54px] fredoka-one-font
+          className="lg:mt-2 text-[18px] sm:text-[26px] lg:text-[48px] leading-[24px] sm:leading-[32px] lg:leading-[54px] fredoka-one-font
                bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
                bg-clip-text text-transparent"
         >

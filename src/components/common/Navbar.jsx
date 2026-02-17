@@ -146,7 +146,7 @@ const Navbar = ({
               <button
                 type="button"
                 onClick={() => safeRun(item.action)}
-                className="text-[18px] font-normal cursor-pointer cursor-pointer tracking-wide text-gray-700 hover:text-black transition"
+                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition"
               >
                 {item.name}
               </button>

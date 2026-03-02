@@ -22,24 +22,18 @@ const Banner = () => {
                 target="_blank"
                 onClick={() => {
                   logEvent(analytics, "Web_Android_Click_Button");
-                  window.open(
-                    "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool",
-                    "_blank",
-                  );
                 }}
               >
                 <img src={playstorebtn} alt="" />
               </Link>
               <Link
                 className="w-[30%] lg:w-[20%]"
-                to={"https://testflight.apple.com/join/SYgGKcAG"}
+                to={
+                  "https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
+                }
                 target="_blank"
                 onClick={() => {
                   logEvent(analytics, "Web_iOS_Click_Button");
-                  window.open(
-                    "https://testflight.apple.com/join/SYgGKcAG",
-                    "_blank",
-                  );
                 }}
               >
                 <img src={appstorebtn} alt="" />

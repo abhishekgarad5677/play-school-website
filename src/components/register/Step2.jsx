@@ -128,9 +128,9 @@ const Step2 = ({ setStep }) => {
       setStep(3);
     }
   }, [apiData]);
-
+  
   return (
-    <div className="relative m-auto w-full sm:w-[92%] overflow-scroll lg:w-[60%] mt-0 lg:mt-10 p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+    <div className="relative m-auto w-full sm:w-[92%]  lg:w-[60%] mt-0 lg:mt-10 p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
       <div className="flex flex-col items-center text-center">
         <img
           alt="TMKOC Playschool"

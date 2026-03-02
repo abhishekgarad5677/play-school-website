@@ -42,15 +42,11 @@ const Footer = () => {
       <div className="flex justify-center items-center gap-2 lg:gap-5">
         <a
           className="flex justify-end"
-          href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
+          href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => {
             logEvent(analytics, "Web_Android_Click_Button");
-            window.open(
-              "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool",
-              "_blank",
-            );
           }}
         >
           <img
@@ -62,12 +58,11 @@ const Footer = () => {
 
         <a
           className="flex justify-start"
-          href="https://apps.apple.com/app/idYOUR_APP_ID"
+          href="https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => {
             logEvent(analytics, "Web_iOS_Click_Button");
-            window.open("https://testflight.apple.com/join/SYgGKcAG", "_blank");
           }}
         >
           <img

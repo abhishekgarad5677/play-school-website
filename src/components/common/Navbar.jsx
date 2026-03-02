@@ -155,8 +155,15 @@ const Navbar = ({
         </ul>
 
         {/* LOGO */}
-        <motion.div variants={navItem} className="flex justify-center">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+        {/* <motion.div variants={navItem} className="flex justify-center">
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault(); // prevents react-router from changing route
+              safeRun(onHomeClick); // scroll to top/hero (same as Home)
+              setMobileMenuOpen(false);
+            }}
+          >
             <img
               src={logo}
               alt="Play School Logo"
@@ -164,6 +171,28 @@ const Navbar = ({
               onLoad={syncNavHeightVar}
             />
           </Link>
+        </motion.div> */}
+
+        <motion.div variants={navItem} className="flex justify-center">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              safeRun(onHomeClick);
+              setMobileMenuOpen(false);
+            }}
+            className="cursor-pointer select-none"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+            aria-label="Go to top"
+          >
+            <img
+              src={logo}
+              alt="Play School Logo"
+              className="h-20 w-auto object-contain"
+              onLoad={syncNavHeightVar}
+              draggable="false"
+            />
+          </button>
         </motion.div>
 
         {/* RIGHT LINKS */}
@@ -223,13 +252,20 @@ const Navbar = ({
                 <DialogPanel className="h-full px-6 py-6 overflow-y-auto">
                   {/* Header */}
                   <div className="flex items-center justify-between">
-                    <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                    <Link
+                      to="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        runAfterMobileClose(onHomeClick); // close menu safely, then scroll
+                      }}
+                    >
                       <img src={logo} alt="Logo" className="h-20" />
                     </Link>
 
                     <button
                       onClick={() => setMobileMenuOpen(false)}
-                      className="p-2 text-gray-700"
+                      // className="p-2 text-gray-700 outline-none focus:outline-none focus:ring-0 active:outline-none border-0"
+                      className="p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded"
                       type="button"
                       aria-label="Close menu"
                     >

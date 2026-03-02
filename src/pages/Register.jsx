@@ -10,6 +10,7 @@ import Step6 from "../components/register/Step6";
 import Step7 from "../components/register/Step7";
 import Step8 from "../components/register/Step8";
 import Step9 from "../components/register/Step9";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -27,6 +28,9 @@ const Register = () => {
                   ${step === 9 ? "h-screen" : "lg:h-auto"}
       relative w-screen flex flex-col overflow-y-scroll items-center justify-start bg-[url('/password/passwordBgMobile.png')] lg:bg-[url('/password/passwordBg.png')] bg-cover bg-center bg-no-repeat`}
     >
+      <Link to={"/"} className="absolute top-5 left-5 text-white font-[400] text-[18px]">
+        {"<"} Back to home
+      </Link>
       <img
         className="absolute bottom-0 left-0 z-10 w-[26%] hidden md:block"
         src={bottomleft}

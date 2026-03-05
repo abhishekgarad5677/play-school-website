@@ -122,10 +122,6 @@ const Reports = () => {
                             target="_blank"
                             onClick={() => {
                               logEvent(analytics, "Web_Android_Click_Button");
-                              window.open(
-                                "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool",
-                                "_blank",
-                              );
                             }}
                           >
                             <img
@@ -137,14 +133,12 @@ const Reports = () => {
                           {/* </Link> */}
                           <Link
                             className=""
-                            to={"https://testflight.apple.com/join/SYgGKcAG"}
+                            to={
+                              "https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
+                            }
                             target="_blank"
                             onClick={() => {
                               logEvent(analytics, "Web_iOS_Click_Button");
-                              window.open(
-                                "https://testflight.apple.com/join/SYgGKcAG",
-                                "_blank",
-                              );
                             }}
                           >
                             <img

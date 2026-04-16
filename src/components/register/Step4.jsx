@@ -4,6 +4,8 @@ import card1logo from "../../../public/password/card1logo.png";
 import card2logo from "../../../public/password/card2logo.png";
 import card3logo from "../../../public/password/card3logo.png";
 import numberBanner from "../../assets/register/numberBanner.png";
+import bag from "../../assets/register/bag.png";
+
 import {
   useCreateSubscriptionMutation,
   useGetPricingDetailsMutation,
@@ -63,8 +65,8 @@ const Step4 = ({ setStep }) => {
 
     const formData = new FormData();
     formData.append("planId", planDetails?.planId); // for live
-    // formData.append("planId", 109); // for test
-    formData.append("PhoneNumber", "8452005565");
+    // formData.append("planId", 110); // for test
+    // formData.append("PhoneNumber", "8452005565");
     formData.append("IsFreeTrial", auth?.isFreeTrialStart ? false : true);
 
     // reset guard so user can retry
@@ -171,7 +173,7 @@ const Step4 = ({ setStep }) => {
   }, [paymentStatusData]);
 
   return (
-    <div className="relative lg:h-screen mt-10 w-full sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+    <div className="relative lg:h-full mt-4 lg:mt-10 w-full sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
       <div className="flex flex-col items-center text-center">
         <img
           alt="TMKOC Playschool"
@@ -215,36 +217,42 @@ const Step4 = ({ setStep }) => {
             </button>
           </div>
         ) : (
-          <div className="lg:w-[80%] mx-auto space-y-4">
-            <h1 className="mt-2 text-[18px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] font-extrabold fredoka-font bg-gradient-to-r from-[#00BDEF] to-[#0066FF] bg-clip-text text-transparent">
-              Get Your Child TMKOC Playschool App
+          <div className="w-[100%] lg:w-[80%] mx-auto space-y-4">
+            <h1 className="mt-2 text-[22px] sm:text-[26px] lg:text-[36px] leading-[28px] sm:leading-[32px] lg:leading-[44px] font-extrabold fredoka-font bg-gradient-to-r from-[#00BDEF] to-[#0066FF] bg-clip-text text-transparent">
+              Subscribe & Win a TMKOC Playschool Bag
             </h1>
-
-            <p className="mt-0 text-[12px] sm:text-[14px] lg:text-[18px] text-[#484848] font-medium">
-              Premium Learning Curriculum For Early Learners
-            </p>
+            <div className="flex justify-center items-center">
+              <img alt="bag" src={bag} className="lg:h-[260px]" />
+            </div>
 
             <div className="w-full border-2 border-[#1E7BEA] rounded-2xl px-4 sm:px-6 py-3 sm:py-4">
               <div className="text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#484848]">
-                ₹0
+                Start For Just {planDetails?.currencySymbol}0
               </div>
-              <div className="text-[20px] sm:text-[28px] lg:text-[32px] font-extrabold text-[#484848] -mt-1">
-                7 Days Free Trial
-              </div>
-              <div className="mt-1 text-[12px] sm:text-[14px] lg:text-[16px] text-[#484848] font-semibold">
+
+              <p className="text-center text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
+                {planDetails?.currencySymbol}
+                {planDetails?.authPrice} refundable fee within 24 hours
+              </p>
+
+              <div className="mt-2 text-[20px] lg:text-[24px] text-[#484848] font-semibold">
                 Then{" "}
-                <span className="line-through text-[#8B8B8B] mr-2">
+                {/* <span className="line-through text-[#8B8B8B] mr-2">
                   {planDetails?.currencySymbol}
                   {Math.round(Math.max((planDetails?.price ?? 0) * 2.5) + 1)}
-                </span>
+                </span> */}
                 <span className="text-[#2F2F2F]">
                   {planDetails?.currencySymbol}
                   {planDetails?.price} /Yr
-                </span>
+                </span>{" "}
+                After 7 Days
               </div>
+              <p className="mt-2 text-center text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
+                Cancel anytime • No charges for 7 Days.
+              </p>
             </div>
 
-            <div className="w-full max-w-[900px] grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            {/* <div className="w-full max-w-[900px] grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <div className="bg-[#F4F4F4] rounded-2xl py-3 sm:py-4 px-3 sm:px-4 gap-2 flex justify-start sm:justify-center items-center">
                 <img className="w-[18%] sm:w-[26%]" src={card1logo} alt="" />
                 <div className="text-[11px] sm:text-[12px] lg:text-[13px] text-[#5A5A5A] text-left">
@@ -265,7 +273,7 @@ const Step4 = ({ setStep }) => {
                   Progress tracking & leaderboards
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <button
               onClick={handleSubscription}
@@ -278,15 +286,11 @@ const Step4 = ({ setStep }) => {
               }`}
               disabled={createSubscriptionLoading}
             >
-              Start Your Free Trial Now
+              Start Free Trial Now
             </button>
 
-            <p className="text-[16px] text-[#D81814]">
-              7-day free trial • Limited time offer
-            </p>
-            <p className="text-[16px] text-[#484848]">
-              {planDetails?.currencySymbol}
-              {planDetails?.authPrice} refundable fee • Cancel anytime
+            <p className="text-[12px] text-[#484848]">
+              Already Trusted by 10,000+ Parents
             </p>
           </div>
         )}

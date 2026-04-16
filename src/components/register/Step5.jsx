@@ -27,10 +27,10 @@ const Step5 = ({ setStep, setparentDetails }) => {
   };
 
   return (
-    <div className="relative m-auto lg:h-screen w-full mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+    <div className="relative m-auto lg:h-screen w-full mt-6 lg:mt-10 sm:w-[92%] overflow-hidden lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
       <img className="absolute right-[-4%] top-[-2%]" src={step5right} alt="" />
       <img className="absolute left-[-4.5%] top-[-2%]" src={step5left} alt="" />
-      <div className="flex flex-col items-center text-center gap-4">
+      <div className="flex flex-col items-center text-center gap-4 w-[100%] lg:w-[80%] mx-auto">
         <img
           alt="TMKOC Playschool"
           src={logo}
@@ -43,19 +43,19 @@ const Step5 = ({ setStep, setparentDetails }) => {
         />
 
         <h1
-          className="text-[18px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] fredoka-one-font
+          className="text-[22px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] fredoka-one-font
             bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
             bg-clip-text text-transparent"
         >
-          Enter Parent Details
+          We will send your child’s weekly progress report here!
         </h1>
 
         {/* ===== FORM ===== */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <div className="lg:w-[70%] mx-auto text-left">
+          <div className="lg:w-[90%] mx-auto text-left">
             {/* First Name */}
             <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A]">
-              First Name
+              Parent’s First Name
             </label>
             <input
               placeholder="Enter first name"
@@ -63,13 +63,13 @@ const Step5 = ({ setStep, setparentDetails }) => {
                 focus:ring-2 focus:ring-[#019CFF]/30
                 ${errors.firstName ? "border-red-400" : "border-[#ACACAC]"}`}
               {...register("firstName", {
-                required: "First name is required.",
+                required: "Parent’s First name is required.",
                 minLength: {
                   value: 2,
                   message: "Enter at least 2 characters.",
                 },
                 validate: (v) =>
-                  v.trim().length > 0 || "First name is required.",
+                  v.trim().length > 0 || "Parent’s First name is required.",
               })}
             />
             {errors.firstName && (
@@ -80,7 +80,7 @@ const Step5 = ({ setStep, setparentDetails }) => {
 
             {/* Last Name */}
             <label className="block mt-5 text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A]">
-              Last Name
+              Parent’s Last Name
             </label>
             <input
               placeholder="Enter last name"
@@ -88,13 +88,13 @@ const Step5 = ({ setStep, setparentDetails }) => {
                 focus:ring-2 focus:ring-[#019CFF]/30
                 ${errors.lastName ? "border-red-400" : "border-[#ACACAC]"}`}
               {...register("lastName", {
-                required: "Last name is required.",
+                required: "Parent’s Last name is required.",
                 minLength: {
                   value: 2,
                   message: "Enter at least 2 characters.",
                 },
                 validate: (v) =>
-                  v.trim().length > 0 || "Last name is required.",
+                  v.trim().length > 0 || "Parent’s Last name is required.",
               })}
             />
             {errors.lastName && (
@@ -115,7 +115,7 @@ const Step5 = ({ setStep, setparentDetails }) => {
                 }`}
               disabled={loading}
             >
-              Next
+              Set Up Free Trial
             </button>
           </div>
         </form>

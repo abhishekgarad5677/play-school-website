@@ -6,12 +6,14 @@ import NoInternetScreen from "./components/NoInternetScreen";
 import { analytics, logEvent } from "./utils/firebaseConfig";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./pages/HomePage";
+import Subscribe from "./pages/Subscribe";
+import ExtendFreeTrial from "./pages/ExtendFreeTrial";
 
 // Lazy-loaded pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsCondition = lazy(() => import("./pages/TermsCondition"));
 const Register = lazy(() => import("./pages/Register"));
-// const Profile = lazy(() => import("./pages/Profile"));
+const Profile = lazy(() => import("./pages/Profile"));
 
 function PageLoader() {
   return <div style={{ padding: 16 }}>Loading...</div>;
@@ -30,9 +32,9 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    logEvent(analytics, "Web_View");
-  }, []);
+  // useEffect(() => {
+  //   logEvent(analytics, "Web_View");
+  // }, []);
 
   if (!isOnline) return <NoInternetScreen />;
 
@@ -50,7 +52,9 @@ function App() {
             {/* Protected Routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/subscribe" element={<Subscribe />} />
+            <Route path="/free-trial-extend" element={<ExtendFreeTrial />} />
+            <Route path="/profile" element={<Profile />} />
             {/* <Route element={<ProtectedRoutes />}> */}
             <Route index element={<HomePage />} />
             <Route path="*" element={<h2>❌ Page Not Found</h2>} />

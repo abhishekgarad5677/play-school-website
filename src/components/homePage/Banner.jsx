@@ -3,10 +3,12 @@ import phone from "../../assets/banner/phone.png";
 import faviconLogo from "../../assets/banner/faviconLogo.png";
 import playstorebtn from "../../assets/common/playstorebtn.png";
 import appstorebtn from "../../assets/common/appstorebtn.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { analytics, logEvent } from "../../utils/firebaseConfig";
 
 const Banner = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="pt-6 lg:pt-8 pb-10 lg:pb-16 space-y-4 lg:space-y-6 flex flex-col justify-center items-center mx-4 lg:mx-auto">
@@ -42,6 +44,14 @@ const Banner = () => {
           </div>
           <img src={phone} alt="" />
         </div>
+
+        <button
+          type="button"
+          onClick={() => navigate("/register")}
+          className="fredoka-one-font lg:hidden px-7 py-3 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+        >
+          Start Free Trial Now
+        </button>
 
         <h1
           className="text-[28px] lg:text-[44px] leading-[34px] lg:leading-[54px] text-center fredoka-one-font font-[500]

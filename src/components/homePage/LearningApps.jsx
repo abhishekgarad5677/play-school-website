@@ -280,7 +280,7 @@ const LearningApps = () => {
             bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
             bg-clip-text text-transparent text-center"
           >
-            Learning Apps Designed for Every Growing Stage
+            Learning Activities Designed for Every Growing Stage
           </motion.h1>
 
           <motion.p

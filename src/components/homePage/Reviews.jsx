@@ -11,34 +11,64 @@ import user2 from "../../assets/reviews/users/user2.png";
 import user3 from "../../assets/reviews/users/user3.png";
 import user4 from "../../assets/reviews/users/user4.png";
 
+// const reviewsData = [
+//   {
+//     title: "Screen Time That Feels Positive",
+//     description:
+//       "My child enjoys learning every day with TMKOC Playschool. The activities are fun, engaging, and perfectly suited for young kids.",
+//     name: "Daya Gada",
+//     image: user1,
+//   },
+//   {
+//     title: "Screen Time That Feels Positive",
+//     description:
+//       "The structured curriculum and progress tracking make it easy to guide children while keeping learning joyful.",
+//     name: "Jacob Jones",
+//     image: user2,
+//   },
+//   {
+//     title: "Screen Time That Feels Positive",
+//     description:
+//       "The multilingual content and child-friendly design truly stand out. A wonderful learning platform for early years.",
+//     name: "Albert Flores",
+//     image: user3,
+//   },
+//   // {
+//   //   title: "Screen Time That Feels Positive",
+//   //   description:
+//   //     "TMKOC Playschool makes learning feel like play. My daughter has become more confident and curious.",
+//   //   name: "Gogi Roshan",
+//   //   image: user4,
+//   // },
+// ];
+
 const reviewsData = [
   {
-    title: "Screen Time That Feels Positive",
+    title: "Highly Recommended!",
     description:
-      "My child enjoys learning every day with TMKOC Playschool. The activities are fun, engaging, and perfectly suited for young kids.",
-    name: "Daya Gada",
-    image: user1,
-  },
-  {
-    title: "Screen Time That Feels Positive",
-    description:
-      "The structured curriculum and progress tracking make it easy to guide children while keeping learning joyful.",
-    name: "Jacob Jones",
+      "This app is very easy to use. The features are simple to understand and very helpful in daily life. I had a very good experience using it. Highly recommended 👍",
+    name: "Pooja Lakra",
     image: user2,
   },
   {
-    title: "Screen Time That Feels Positive",
+    title: "Increases Studies & General Knowledge",
     description:
-      "The multilingual content and child-friendly design truly stand out. A wonderful learning platform for early years.",
-    name: "Albert Flores",
+      "Really this game is very good, it is even better for children, so many types of games increase studies and general knowledge, so salute to the person who made this game ✨❤️",
+    name: "Kausik Paul",
     image: user3,
   },
   {
-    title: "Screen Time That Feels Positive",
+    title: "Wonderful Learning App for Children!",
     description:
-      "TMKOC Playschool makes learning feel like play. My daughter has become more confident and curious.",
-    name: "Gogi Roshan",
+      "Thank you tmkoc for making this wonderful learning app for childrens this is not a learning this is a games for children with learning 👍 i wish ap aise he learning app banate jaye",
+    name: "Afrin Taj",
     image: user4,
+  },
+  {
+    title: "Nice App for Kids",
+    description: "Nice app for kids.",
+    name: "Deepak Kumawat",
+    image: user1,
   },
 ];
 
@@ -49,7 +79,7 @@ const ReviewCard = ({ review, index = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="relative rounded-[20px] border border-gray-200 bg-white px-6 pb-24 pt-10 shadow-sm"
+      className="relative rounded-[20px] border border-gray-200 bg-white px-6 pb-10 pt-10 shadow-sm"
     >
       {/* Quote */}
       <div className="absolute -top-5 left-14 text-6xl font-black leading-none text-sky-500">
@@ -74,13 +104,13 @@ const ReviewCard = ({ review, index = 0 }) => {
       </p>
 
       {/* Avatar */}
-      <div className="absolute -bottom-18 left-1/2 h-[150px] w-[150px] -translate-x-1/2 overflow-hidden rounded-full">
+      {/* <div className="absolute -bottom-18 left-1/2 h-[150px] w-[150px] -translate-x-1/2 overflow-hidden rounded-full">
         <img
           src={review.image}
           alt={review.name}
           className="h-full w-full object-cover"
         />
-      </div>
+      </div> */}
     </motion.div>
   );
 };
@@ -91,7 +121,7 @@ const Reviews = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative pt-10 lg:pt-16 pb-12 lg:pb-20 bg-[#E1EBFA] px-4 lg:px-auto"
+      className="relative pt-10 lg:pt-16 lg:pb-18 bg-[#E1EBFA] px-4 lg:px-auto"
     >
       {/* Heading */}
       <motion.h1
@@ -116,7 +146,7 @@ const Reviews = () => {
         Real experiences from families and educators who trust TMKOC Playschool.
       </motion.p>
 
-      <section className="w-full py-8 lg:py-14 overflow-x-hidden overflow-y-auto lg:overflow-y-visible lg:overflow-visible review-cards">
+      <section className="w-full py-8 lg:py-8 overflow-x-hidden overflow-y-auto lg:overflow-y-visible lg:overflow-visible review-cards">
         <div className="mx-auto max-w-7xl px-4 ">
           {/* MOBILE/TABLET: Swiper */}
           <div className="lg:hidden ">

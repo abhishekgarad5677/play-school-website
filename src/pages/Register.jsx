@@ -28,7 +28,10 @@ const Register = () => {
                   ${step === 9 ? "h-screen" : "lg:h-auto"}
       relative w-screen flex flex-col overflow-y-scroll items-center justify-start bg-[url('/password/passwordBgMobile.png')] lg:bg-[url('/password/passwordBg.png')] bg-cover bg-center bg-no-repeat`}
     >
-      <Link to={"/"} className="absolute top-5 left-5 text-white font-[400] text-[18px]">
+      <Link
+        to={"/"}
+        className="absolute top-5 left-5 text-white font-[400] text-[18px]"
+      >
         {"<"} Back to home
       </Link>
       <img

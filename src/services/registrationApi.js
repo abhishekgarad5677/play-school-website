@@ -17,10 +17,18 @@ export const registrationApi = createApi({
   endpoints: (builder) => ({
     // ✅ Add endpoints later, examples:
     registerOrloginUserEmail: builder.mutation({
-      query: (body) => ({
-        url: "Auth/user/registerOrloginUserEmail",
+      query: (formData) => ({
+        // url: "Auth/user/registerOrloginUserEmail",
+        url: "AuthUser/email",
         method: "POST",
-        body,
+        body: formData,
+      }),
+    }),
+    resgisterUserLocation: builder.mutation({
+      query: (formData) => ({
+        url: "/AuthUser/registration",
+        method: "POST",
+        body: formData,
       }),
     }),
     addChild: builder.mutation({
@@ -84,6 +92,7 @@ export const registrationApi = createApi({
 
 export const {
   useRegisterOrloginUserEmailMutation,
+  useResgisterUserLocationMutation,
   useAddChildMutation,
   useAddPhoneNumberMutation,
   useGetPricingDetailsMutation,
@@ -91,5 +100,5 @@ export const {
   usePaymentStatusMutation,
   useStudentAudioAndTextMutation,
   useGetCitiesMutation,
-  useGetProfileMutation
+  useGetProfileMutation,
 } = registrationApi;

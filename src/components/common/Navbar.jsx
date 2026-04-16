@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../public/playSchool-logo.png";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -52,7 +52,7 @@ const Navbar = ({
   ];
 
   const rightNav = [
-    { name: "Learning Apps", action: onLearningAppsClick },
+    { name: "Learning Activities", action: onLearningAppsClick },
     { name: "Why Parents Love Us", action: onUspClick },
     // add more if you want:
     // { name: "Reviews", action: onReviewsClick },
@@ -62,6 +62,7 @@ const Navbar = ({
   const mobileNav = [...leftNav, ...rightNav];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   /* ---------- NAVBAR HEIGHT -> CSS VAR (for scroll padding) ---------- */
 
@@ -138,8 +139,7 @@ const Navbar = ({
       />
 
       {/* ===================== DESKTOP NAV ===================== */}
-      <motion.nav className="relative flex items-center justify-between lg:justify-center gap-20 px-5 lg:px-8 py-2">
-        {/* LEFT LINKS */}
+      {/* <motion.nav className="relative flex items-center justify-between lg:justify-center gap-20 px-5 lg:px-8 py-2">
         <ul className="hidden lg:flex items-center gap-20">
           {leftNav.map((item) => (
             <motion.li key={item.name} variants={navItem}>
@@ -153,25 +153,6 @@ const Navbar = ({
             </motion.li>
           ))}
         </ul>
-
-        {/* LOGO */}
-        {/* <motion.div variants={navItem} className="flex justify-center">
-          <Link
-            to="/"
-            onClick={(e) => {
-              e.preventDefault(); // prevents react-router from changing route
-              safeRun(onHomeClick); // scroll to top/hero (same as Home)
-              setMobileMenuOpen(false);
-            }}
-          >
-            <img
-              src={logo}
-              alt="Play School Logo"
-              className="h-20 w-auto object-contain"
-              onLoad={syncNavHeightVar}
-            />
-          </Link>
-        </motion.div> */}
 
         <motion.div variants={navItem} className="flex justify-center">
           <button
@@ -195,7 +176,6 @@ const Navbar = ({
           </button>
         </motion.div>
 
-        {/* RIGHT LINKS */}
         <ul className="hidden lg:flex items-center gap-20">
           {rightNav.map((item) => (
             <motion.li key={item.name} variants={navItem}>
@@ -210,12 +190,107 @@ const Navbar = ({
           ))}
         </ul>
 
-        {/* MOBILE MENU BUTTON */}
         <div className="flex lg:hidden">
           <motion.button
             variants={navItem}
             onClick={() => setMobileMenuOpen(true)}
             className="p-3 text-gray-700"
+            aria-label="Open menu"
+            type="button"
+          >
+            <IoIosMenu className="text-[30px]" />
+          </motion.button>
+        </div>
+      </motion.nav> */}
+
+      {/* ===================== DESKTOP NAV ===================== */}
+      <motion.nav className="relative flex items-center justify-between lg:grid lg:grid-cols-3 px-5 lg:px-8 py-2">
+        {/* COL 1 — Logo (left-aligned) */}
+        <motion.div variants={navItem} className="flex justify-start">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              safeRun(onHomeClick);
+              setMobileMenuOpen(false);
+            }}
+            className="cursor-pointer select-none"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+            aria-label="Go to top"
+          >
+            <img
+              src={logo}
+              alt="Play School Logo"
+              className="h-20 w-auto object-contain"
+              onLoad={syncNavHeightVar}
+              draggable="false"
+            />
+          </button>
+        </motion.div>
+
+        {/* COL 2 — leftNav | CTA | rightNav (center-aligned) */}
+        <ul className="hidden lg:flex items-center justify-center gap-8 ml-6">
+          {leftNav.map((item) => (
+            <motion.li key={item.name} variants={navItem}>
+              <button
+                type="button"
+                onClick={() => safeRun(item.action)}
+                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition whitespace-nowrap"
+              >
+                {item.name}
+              </button>
+            </motion.li>
+          ))}
+
+          {/* <motion.li variants={navItem}>
+            <button
+              type="button"
+              className="inline-flex items-center px-5 py-2.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-[15px] font-semibold tracking-wide shadow-md transition whitespace-nowrap"
+            >
+              Start Free Trial Now
+            </button>
+          </motion.li> */}
+
+          {/* <motion.li variants={navItem}>
+            <button
+              type="button"
+              // onClick={() => handleSocialSignIn("google")}
+              className={
+                "w-full py-4 fredoka-one-font flex justify-center items-center gap-2 my-2 text-white text-[18px] rounded-full shadow-lg transition-all cursor-pointer bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] hover:opacity-90"
+              }
+            >
+              Start Free Trial Now
+            </button>
+          </motion.li> */}
+          <motion.li variants={navItem}>
+            <button
+              type="button"
+              onClick={() => navigate("/register")}
+              className="fredoka-one-font px-7 py-3 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+            >
+              Start Free Trial Now
+            </button>
+          </motion.li>
+
+          {rightNav.map((item) => (
+            <motion.li key={item.name} variants={navItem}>
+              <button
+                type="button"
+                onClick={() => safeRun(item.action)}
+                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition whitespace-nowrap"
+              >
+                {item.name}
+              </button>
+            </motion.li>
+          ))}
+        </ul>
+
+        {/* COL 3 — empty on desktop, hamburger on mobile (right-aligned) */}
+        <div className="flex justify-end">
+          <motion.button
+            variants={navItem}
+            onClick={() => setMobileMenuOpen(true)}
+            className="flex lg:hidden p-3 text-gray-700"
             aria-label="Open menu"
             type="button"
           >
@@ -285,6 +360,17 @@ const Navbar = ({
                         {item.name}
                       </button>
                     ))}
+                    {/* CTA — mobile */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        navigate("/register");
+                      }}
+                      className="fredoka-one-font w-full py-3 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+                    >
+                      Start Free Trial Now
+                    </button>
                   </div>
                 </DialogPanel>
               </motion.div>

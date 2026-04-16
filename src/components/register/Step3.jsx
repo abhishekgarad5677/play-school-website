@@ -75,8 +75,8 @@ const Step3 = ({ setStep }) => {
   };
 
   return (
-    <div className="relative m-auto w-full mt-10 sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center">
+    <div className="relative m-auto w-full mt-6 lg:mt-10  lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
+      <div className="flex flex-col items-center text-center lg:w-[80%] mx-auto">
         <img
           alt="TMKOC Playschool"
           src={logo}
@@ -97,21 +97,16 @@ const Step3 = ({ setStep }) => {
         <img
           alt="step1 banner"
           src={numberBanner}
-          className="h-[60px] sm:h-[80px] lg:h-[260px] cursor-pointer"
+          className="lg:h-[260px] cursor-pointer"
         />
 
         <h1
-          className="mt-2 text-[18px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] fredoka-one-font
+          className="mt-4 text-[22px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] fredoka-one-font
           bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
           bg-clip-text text-transparent"
         >
-          Enter Your Phone Number
+          Where Should We Send The Progress Reports?
         </h1>
-
-        <p className="mt-2 max-w-[520px] text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
-          We will share communications regarding offers, app updates & child’s
-          progress reports.
-        </p>
 
         {showErr ? (
           <p className="text-red-500 text-sm mt-2">Number already exist.</p>
@@ -121,8 +116,8 @@ const Step3 = ({ setStep }) => {
 
         {/* ===== PHONE INPUT ===== */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-5">
-          <div className="w-full max-w-[520px] mx-auto text-left">
-            <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A]">
+          <div className="w-full  text-center">
+            <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A] text-left">
               Phone Number
             </label>
 
@@ -163,6 +158,14 @@ const Step3 = ({ setStep }) => {
               </p>
             )}
 
+            <p className="mt-4 text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
+              Get weekly reports showing exactly what your child learned,
+              mastered, and is working on next.
+            </p>
+            <p className="text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
+              No spam — just your child's progress.
+            </p>
+
             <button
               type="submit"
               className={`w-full mt-6 py-4 fredoka-one-font flex justify-center items-center gap-2 text-white text-[18px] rounded-full shadow-lg transition-all
@@ -173,8 +176,14 @@ const Step3 = ({ setStep }) => {
                 }`}
               disabled={apiLoading}
             >
-              Next
+              Get My Free Trial
             </button>
+            <p
+              onClick={() => setStep(4)}
+              className="mt-2 cursor-pointer underline text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#8f8f8f]"
+            >
+              Skip For Now
+            </p>
           </div>
         </form>
       </div>

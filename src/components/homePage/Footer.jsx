@@ -5,6 +5,12 @@ import playstorebtn from "../../assets/common/playstorebtn.png";
 import appstorebtn from "../../assets/common/appstorebtn.png";
 import footerBottom from "../../assets/common/footer-bottom.png";
 import { analytics, logEvent } from "../../utils/firebaseConfig";
+import {
+  FaYoutube,
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -71,6 +77,75 @@ const Footer = () => {
             alt="Download on the App Store"
           />
         </a>
+      </div>
+
+      {/* Social Media Section */}
+      <div className="flex flex-col justify-center items-center gap-3">
+        <h3 className="text-[18px] lg:text-[22px] font-[500] text-[#484848] fredoka-font">
+          Follow Us
+        </h3>
+
+        <div className="flex justify-center items-center gap-3 lg:gap-5 flex-wrap">
+          <a
+            href="https://youtube.com/@tmkocplayschool?si=C_DTnjN0co0k9NkC"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              logEvent(analytics, "Web_Youtube_Click");
+            }}
+            className="w-[44px] h-[44px] lg:w-[50px] lg:h-[50px]
+      rounded-full bg-[#5A5A5A] hover:bg-red-600
+      text-white flex items-center justify-center
+      transition-all duration-300 hover:scale-110"
+          >
+            <FaYoutube className="text-[18px] lg:text-[22px]" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/tmkoc_playschool?igsh=M3VybWRxOGc0MHlw&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              logEvent(analytics, "Web_Instagram_Click");
+            }}
+            className="w-[44px] h-[44px] lg:w-[50px] lg:h-[50px]
+      rounded-full bg-[#5A5A5A] hover:bg-pink-600
+      text-white flex items-center justify-center
+      transition-all duration-300 hover:scale-110"
+          >
+            <FaInstagram className="text-[18px] lg:text-[22px]" />
+          </a>
+
+          <a
+            href="https://www.facebook.com/profile.php?id=61586755376374"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              logEvent(analytics, "Web_Facebook_Click");
+            }}
+            className="w-[44px] h-[44px] lg:w-[50px] lg:h-[50px]
+      rounded-full bg-[#5A5A5A] hover:bg-blue-600
+      text-white flex items-center justify-center
+      transition-all duration-300 hover:scale-110"
+          >
+            <FaFacebookF className="text-[18px] lg:text-[22px]" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/111410032/admin/dashboard/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              logEvent(analytics, "Web_Linkedin_Click");
+            }}
+            className="w-[44px] h-[44px] lg:w-[50px] lg:h-[50px]
+      rounded-full bg-[#5A5A5A] hover:bg-[#0077B5]
+      text-white flex items-center justify-center
+      transition-all duration-300 hover:scale-110"
+          >
+            <FaLinkedinIn className="text-[18px] lg:text-[22px]" />
+          </a>
+        </div>
       </div>
 
       <div className="w-[80%] mx-auto">

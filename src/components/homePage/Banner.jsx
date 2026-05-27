@@ -1,5 +1,6 @@
 import React from "react";
-import phone from "../../assets/banner/phone.png";
+// import phone from "../../assets/banner/phone.png";
+import phone from "../../assets/banner/phoneNew.png";
 import faviconLogo from "../../assets/banner/faviconLogo.png";
 import playstorebtn from "../../assets/common/playstorebtn.png";
 import appstorebtn from "../../assets/common/appstorebtn.png";
@@ -42,6 +43,7 @@ const Banner = () => {
               </Link>
             </div>
           </div>
+          {/* <img src={phone} alt="" /> */}
           <img src={phone} alt="" />
         </div>
 

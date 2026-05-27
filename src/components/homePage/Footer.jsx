@@ -117,9 +117,9 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://www.facebook.com/profile.php?id=61586755376374"
+            href="https://www.facebook.com/tmkocplayschool/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
             onClick={() => {
               logEvent(analytics, "Web_Facebook_Click");
             }}

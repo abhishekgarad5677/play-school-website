@@ -6,14 +6,14 @@ import NoInternetScreen from "./components/NoInternetScreen";
 import { analytics, logEvent } from "./utils/firebaseConfig";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./pages/HomePage";
-import Subscribe from "./pages/Subscribe";
-import ExtendFreeTrial from "./pages/ExtendFreeTrial";
 
 // Lazy-loaded pages
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsCondition = lazy(() => import("./pages/TermsCondition"));
 const Register = lazy(() => import("./pages/Register"));
 const Profile = lazy(() => import("./pages/Profile"));
+const Subscribe = lazy(() => import("./pages/Subscribe"));
+const ExtendFreeTrial = lazy(() => import("./pages/ExtendFreeTrial"));
 
 function PageLoader() {
   return <div style={{ padding: 16 }}>Loading...</div>;
@@ -32,9 +32,9 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    logEvent(analytics, "Web_View");
-  }, []);
+  // useEffect(() => {
+  //   logEvent(analytics, "Web_View");
+  // }, []);
 
   if (!isOnline) return <NoInternetScreen />;
 

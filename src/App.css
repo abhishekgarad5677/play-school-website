@@ -69,3 +69,17 @@ body {
 .review-cards .swiper.swiper-initialized.swiper-horizontal.pb-10.overflow-visible.swiper-backface-hidden{
   overflow: visible ;
 }
+
+.seven-skills-swiper .swiper-pagination-bullet {
+  background: #0066FF;
+  opacity: 0.3;
+  width: 8px;
+  height: 8px;
+}
+
+.seven-skills-swiper .swiper-pagination-bullet-active {
+  background: #0066FF;
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}

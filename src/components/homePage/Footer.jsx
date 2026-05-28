@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import playstorebtn from "../../assets/common/playstorebtn.png";
 import appstorebtn from "../../assets/common/appstorebtn.png";
-import footerBottom from "../../assets/common/footer-bottom.png";
+import footerBottom from "../../assets/common/footer-bottom.webp";
 import { analytics, logEvent } from "../../utils/firebaseConfig";
 import {
   FaYoutube,

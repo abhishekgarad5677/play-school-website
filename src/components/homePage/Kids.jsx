@@ -1,5 +1,5 @@
 import React from "react";
-import kids from "../../assets/kids/kids.png";
+import kids from "../../assets/kids/kids.webp";
 
 const Kids = () => {
   return (

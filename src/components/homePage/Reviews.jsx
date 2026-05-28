@@ -6,41 +6,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import reviewHeading from "../../assets/reviews/Vector.png";
 import stars from "../../assets/reviews/stars.png";
-import user1 from "../../assets/reviews/users/user1.png";
-import user2 from "../../assets/reviews/users/user2.png";
-import user3 from "../../assets/reviews/users/user3.png";
-import user4 from "../../assets/reviews/users/user4.png";
-
-// const reviewsData = [
-//   {
-//     title: "Screen Time That Feels Positive",
-//     description:
-//       "My child enjoys learning every day with TMKOC Playschool. The activities are fun, engaging, and perfectly suited for young kids.",
-//     name: "Daya Gada",
-//     image: user1,
-//   },
-//   {
-//     title: "Screen Time That Feels Positive",
-//     description:
-//       "The structured curriculum and progress tracking make it easy to guide children while keeping learning joyful.",
-//     name: "Jacob Jones",
-//     image: user2,
-//   },
-//   {
-//     title: "Screen Time That Feels Positive",
-//     description:
-//       "The multilingual content and child-friendly design truly stand out. A wonderful learning platform for early years.",
-//     name: "Albert Flores",
-//     image: user3,
-//   },
-//   // {
-//   //   title: "Screen Time That Feels Positive",
-//   //   description:
-//   //     "TMKOC Playschool makes learning feel like play. My daughter has become more confident and curious.",
-//   //   name: "Gogi Roshan",
-//   //   image: user4,
-//   // },
-// ];
 
 const reviewsData = [
   {
@@ -48,27 +13,27 @@ const reviewsData = [
     description:
       "This app is very easy to use. The features are simple to understand and very helpful in daily life. I had a very good experience using it. Highly recommended 👍",
     name: "Pooja Lakra",
-    image: user2,
+    // image: user2,
   },
   {
     title: "Increases Studies & General Knowledge",
     description:
       "Really this game is very good, it is even better for children, so many types of games increase studies and general knowledge, so salute to the person who made this game ✨❤️",
     name: "Kausik Paul",
-    image: user3,
+    // image: user3,
   },
   {
     title: "Wonderful Learning App for Children!",
     description:
       "Thank you tmkoc for making this wonderful learning app for childrens this is not a learning this is a games for children with learning 👍 i wish ap aise he learning app banate jaye",
     name: "Afrin Taj",
-    image: user4,
+    // image: user4,
   },
   {
     title: "Nice App for Kids",
     description: "Nice app for kids.",
     name: "Deepak Kumawat",
-    image: user1,
+    // image: user1,
   },
 ];
 

@@ -1,13 +1,15 @@
-import { useRef } from "react";
+import { useRef, Suspense, lazy } from "react";
 import Navbar from "../components/common/Navbar";
 import Banner from "../components/homePage/Banner";
-import UspSection from "../components/homePage/UspSection";
 import SparkleBackground from "../components/SparkleBackground";
-import Reviews from "../components/homePage/Reviews";
-import Kids from "../components/homePage/Kids";
-import Footer from "../components/homePage/Footer";
-import Reports from "../components/homePage/Reports";
-import LearningApps from "../components/homePage/LearningApps";
+import SevenSkills from "../components/homePage/SevenSkills";
+
+const Reports = lazy(() => import("../components/homePage/Reports"));
+const LearningApps = lazy(() => import("../components/homePage/LearningApps"));
+const UspSection = lazy(() => import("../components/homePage/UspSection"));
+const Reviews = lazy(() => import("../components/homePage/Reviews"));
+const Kids = lazy(() => import("../components/homePage/Kids"));
+const Footer = lazy(() => import("../components/homePage/Footer"));
 
 const HomePage = () => {
   const reportsRef = useRef(null);
@@ -35,27 +37,33 @@ const HomePage = () => {
 
       <Banner />
 
-      <div ref={reportsRef}>
-        <Reports />
-      </div>
+      <Suspense fallback={null}>
+        <div ref={reportsRef}>
+          <Reports />
+        </div>
 
-      <div ref={learningAppsRef}>
-        <LearningApps />
-      </div>
+        <div>
+          <SevenSkills />
+        </div>
 
-      <div ref={uspRef}>
-        <UspSection />
-      </div>
+        <div ref={learningAppsRef}>
+          <LearningApps />
+        </div>
 
-      <div ref={reviewsRef}>
-        <Reviews />
-      </div>
+        <div ref={uspRef}>
+          <UspSection />
+        </div>
 
-      <div ref={kidsRef}>
-        <Kids />
-      </div>
+        <div ref={reviewsRef}>
+          <Reviews />
+        </div>
 
-      <Footer />
+        <div ref={kidsRef}>
+          <Kids />
+        </div>
+
+        <Footer />
+      </Suspense>
     </div>
   );
 };

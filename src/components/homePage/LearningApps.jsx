@@ -4,37 +4,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import icon1 from "../../assets/learning/icon1.png";
-import bg1 from "../../assets/learning/bg1.png";
+import bg1 from "../../assets/learning/bg1.webp";
 import icon2 from "../../assets/learning/icon2.png";
-import bg2 from "../../assets/learning/bg2.png";
+import bg2 from "../../assets/learning/bg2.webp";
 import icon3 from "../../assets/learning/icon3.png";
-import bg3 from "../../assets/learning/bg3.png";
+import bg3 from "../../assets/learning/bg3.webp";
 import icon4 from "../../assets/learning/icon4.png";
-import bg4 from "../../assets/learning/bg4.png";
+import bg4 from "../../assets/learning/bg4.webp";
 import icon5 from "../../assets/learning/icon5.png";
-import bg5 from "../../assets/learning/bg5.png";
+import bg5 from "../../assets/learning/bg5.webp";
 import icon6 from "../../assets/learning/icon6.png";
-import bg6 from "../../assets/learning/bg6.png";
+import bg6 from "../../assets/learning/bg6.webp";
 import icon7 from "../../assets/learning/icon7.png";
-import bg7 from "../../assets/learning/bg7.png";
+import bg7 from "../../assets/learning/bg7.webp";
 import icon8 from "../../assets/learning/icon8.png";
-import bg8 from "../../assets/learning/bg8.png";
+import bg8 from "../../assets/learning/bg8.webp";
 import icon9 from "../../assets/learning/icon9.png";
-import bg9 from "../../assets/learning/bg9.png";
+import bg9 from "../../assets/learning/bg9.webp";
 import icon10 from "../../assets/learning/icon10.png";
-import bg10 from "../../assets/learning/bg10.jpg";
+import bg10 from "../../assets/learning/bg10.webp";
 import icon11 from "../../assets/learning/icon11.png";
-import bg11 from "../../assets/learning/bg11.jpg";
+import bg11 from "../../assets/learning/bg11.webp";
 import icon12 from "../../assets/learning/icon12.png";
-import bg12 from "../../assets/learning/bg12.png";
+import bg12 from "../../assets/learning/bg12.webp";
 import icon13 from "../../assets/learning/icon13.png";
-import bg13 from "../../assets/learning/bg13.png";
+import bg13 from "../../assets/learning/bg13.webp";
 import icon14 from "../../assets/learning/icon14.png";
-import bg14 from "../../assets/learning/bg14.png";
+import bg14 from "../../assets/learning/bg14.webp";
 import icon15 from "../../assets/learning/icon15.png";
-import bg15 from "../../assets/learning/bg15.png";
+import bg15 from "../../assets/learning/bg15.webp";
 import icon16 from "../../assets/learning/icon16.png";
-import bg16 from "../../assets/learning/bg16.png";
+import bg16 from "../../assets/learning/bg16.webp";
 
 const LearningApps = () => {
   const swiperRef = useRef(null);
@@ -265,6 +265,8 @@ const LearningApps = () => {
                     <img
                       src={item.cover}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -272,7 +274,13 @@ const LearningApps = () => {
                   {/* Content */}
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-4 mb-2">
-                      <img className="h-14 w-14" src={item.iconText} alt="" />
+                      <img
+                        className="h-14 w-14"
+                        src={item.iconText}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
                       <h3 className="fredoka-one-font text-[20px] lg:text-[22px] leading-[22px] text-[#484848]">
                         {item.title}
                       </h3>

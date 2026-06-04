@@ -55,7 +55,7 @@ const Banner = () => {
           Start Free Trial Now
         </button>
 
-        <h1
+        {/* <h1
           className="text-[28px] lg:text-[44px] leading-[34px] lg:leading-[54px] text-center fredoka-one-font font-[500]
              bg-[radial-gradient(circle_at_center,#00CAFF_40%,#0066FF_160%)]
              bg-clip-text text-transparent"
@@ -66,6 +66,18 @@ const Banner = () => {
           Fun, interactive activities that nurture curiosity, creativity, and
           confidence, helping your child grow happily, one playful moment at a
           time.
+        </p> */}
+        <h1
+          className="text-[28px] lg:text-[44px] leading-[34px] w-[100%] lg:w-[60%] lg:leading-[54px] text-center fredoka-one-font font-[500]
+             bg-[radial-gradient(circle_at_center,#00CAFF_40%,#0066FF_160%)]
+             bg-clip-text text-transparent"
+        >
+          TMKOC Playschool App - Bhaarat Ki Pathshala for Little Learners
+        </h1>
+        <p className="text-[18px] lg:text-[20px] text-[#484848] font-[400] w-[100%] lg:w-[44%] text-center leading-[30px] lg:leading-[40px]">
+          TMKOC Playschool App brings the vision of Bhaarat Ki Pathshala to life
+          with fun, engaging activities that help children learn, play, and grow
+          with confidence every day.
         </p>
       </div>
     </>

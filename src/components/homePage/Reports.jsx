@@ -1,182 +1,164 @@
 import sec1 from "../../assets/reports/sec-1.png";
 import sec2 from "../../assets/reports/sec-2.png";
-import sec3 from "../../assets/reports/sec-3.png";
-import sec4 from "../../assets/reports/sec-4.png";
-import sec5 from "../../assets/reports/sec-5.png";
-import sec6 from "../../assets/reports/sec-6.png";
-import appStoreLogo from "../../assets/reports/app-store.png";
-import playStoreLogo from "../../assets/reports/play-store.png";
-import { FaCalendarDays, FaMedal, FaTrophy } from "react-icons/fa6";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css/autoplay";
-import "swiper/css";
+import playstorebtn from "../../assets/common/playstorebtn.png";
+import appstorebtn from "../../assets/common/appstorebtn.png";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import m1 from "../../assets/reports/mobile/M1.png";
-import m2 from "../../assets/reports/mobile/M2.png";
-import m3 from "../../assets/reports/mobile/M3.png";
 import { Link } from "react-router-dom";
 import { analytics, logEvent } from "../../utils/firebaseConfig";
 
+const features = [
+  {
+    emoji: "🏆",
+    title: "Track Progress",
+    desc: "See stars, ranks and milestone in one place.",
+  },
+  {
+    emoji: "📅",
+    title: "Daily Updates",
+    desc: "Monitor attendance and learning habits easily.",
+  },
+  {
+    emoji: "🏅",
+    title: "Celebrate Growth",
+    desc: "Encourage achievements and keep them motivated.",
+  },
+];
+
+const revealMotion = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+  viewport: { once: true },
+};
+
 const Reports = () => {
-  const attendanceData = [
-    {
-      title: "Daily Attendance",
-      desc: "A simple way to track your child’s regular participation and routine.",
-      icon: <FaCalendarDays size={26} />,
-      img1: sec1,
-      img2: sec2,
-      mobileScreen: m1,
-    },
-    {
-      title: "Weekly Stars & Ranks",
-      desc: "Gentle motivation that celebrates effort and improvement, not competition.",
-      icon: <FaTrophy size={26} />, // Replace icon if needed
-      img1: sec3,
-      img2: sec4,
-      mobileScreen: m2,
-    },
-    {
-      title: "Medals & Achievements",
-      desc: "Happy rewards that make children proud of their learning milestones.",
-      icon: <FaMedal size={26} />, // Replace icon if needed
-      img1: sec5,
-      img2: sec6,
-      mobileScreen: m3,
-    },
-  ];
-
-  const [swapped, setSwapped] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSwapped((prev) => !prev);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="py-10 lg:py-16 relative overflow-hidden">
-      <div className="max-w-7xl mx-4 lg:mx-auto">
-        <h2
-          className="text-[28px] lg:text-[44px] fredoka-one-font bg-[radial-gradient(circle_at_center,#00CAFF_40%,#0066FF_160%)]
-             bg-clip-text text-transparent font-[500] text-center mb-4 w-[100%] lg:w-[60%] leading-[34px] lg:leading-[54px]"
-        >
-          Stay Connected to Your Child’s Learning Journey
-        </h2>
-        <p className="text-[18px] lg:text-[20px] text-[#484848] mb-4 w-[100%] lg:w-[60%] font-[400] text-center leading-[30px] lg:leading-[40px]">
-          Know how your child is learning, progressing, and enjoying every step
-          - without pressure, only encouragement.
-        </p>
+    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#F0F4FC_0%,#E7EDF9_100%)] py-10 lg:py-16">
+      {/* ---- decorations ---- */}
+      <div className="hidden lg:block absolute top-10 left-[46%] text-[#A8C6F0]">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+        </svg>
+      </div>
+      <span className="hidden lg:block absolute top-[12%] left-[2%] text-[24px]">
+        ⭐
+      </span>
+      <span className="hidden lg:block absolute top-[8%] right-[3%] text-[24px]">
+        ⭐
+      </span>
+      <span className="hidden lg:block absolute top-[58%] left-[4%] text-[20px] text-[#A8C6F0]">
+        ✦
+      </span>
 
-        <div
-          className="relative reports-section"
-          style={{ overflowX: "visible", overflowY: "hidden !important" }}
-        >
-          <Swiper
-            modules={[Autoplay]}
-            spaceBetween={500}
-            slidesPerView={1}
-            loop
-            autoplay={{
-              delay: 6000,
-              disableOnInteraction: false,
-            }}
-            className="!overflow-visible"
+      <div className="relative max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center">
+          {/* ---- left content ---- */}
+          <div>
+            <motion.h2
+              {...revealMotion}
+              className="poppins-font font-bold text-[30px] lg:text-[54px] leading-[38px] lg:leading-[70px] mb-4 lg:mb-6"
+            >
+              <span className="text-[#0D1B4C]">
+                Stay Connected to Your Child&rsquo;s{" "}
+              </span>
+              <span className="text-[#1D6FF2]">Learning Journey</span>
+            </motion.h2>
+
+            <motion.p
+              {...revealMotion}
+              className="poppins-font text-[14px] lg:text-[19px] leading-[22px] lg:leading-[32px] text-[#00092D] mb-6 lg:mb-10 w-[100%] lg:w-[90%]"
+            >
+              Know how your child is learning, progressing and enjoying every
+              step - without pressure, only encouragement.
+            </motion.p>
+
+            {/* ---- feature cards ---- */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5 mb-6 lg:mb-10">
+              {features.map((feature) => (
+                <motion.div
+                  key={feature.title}
+                  {...revealMotion}
+                  className="bg-white rounded-[20px] shadow-[0_10px_30px_rgba(29,111,242,0.10)] p-5 lg:p-6 flex flex-col items-center text-center"
+                >
+                  <span className="text-[44px] lg:text-[54px] leading-none mb-4">
+                    {feature.emoji}
+                  </span>
+                  <h3 className="poppins-font font-semibold text-[15px] lg:text-[17px] text-[#0D1B4C] mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="poppins-font text-[12px] lg:text-[13.5px] leading-[18px] lg:leading-[20px] text-[#3A3A4A]">
+                    {feature.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* ---- store buttons ---- */}
+            <motion.div
+              {...revealMotion}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 lg:gap-5"
+            >
+              <p className="poppins-font text-[14px] lg:text-[17px] text-[#00092D] w-auto lg:w-[24%]">
+                TMKOC Playschool now available on
+              </p>
+              <div className="flex items-center gap-3 lg:gap-4">
+                <Link
+                  to={
+                    "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+                  }
+                  target="_blank"
+                  onClick={() => {
+                    logEvent(analytics, "Web_Android_Click_Button");
+                  }}
+                >
+                  <img
+                    className="w-[130px] lg:w-[160px]"
+                    src={playstorebtn}
+                    alt="Get it on Google Play"
+                  />
+                </Link>
+                <Link
+                  to={
+                    "https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
+                  }
+                  target="_blank"
+                  onClick={() => {
+                    logEvent(analytics, "Web_iOS_Click_Button");
+                  }}
+                >
+                  <img
+                    className="w-[130px] lg:w-[160px]"
+                    src={appstorebtn}
+                    alt="Download on the App Store"
+                  />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ---- right phones ---- */}
+          <motion.div
+            {...revealMotion}
+            className="relative flex items-end justify-center gap-3 lg:gap-4"
           >
-            {attendanceData?.map((item, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div className="rounded-[20px] p-[2px] bg-gradient-to-b from-[#00CAFF] to-[#0066FF]">
-                    <div className="shadow-lg bg-white relative p-6 lg:p-14 rounded-[20px] overflow-visible ">
-                      <div className="mb-4 lg:mb-10">
-                        <p className="text-[24px] lg:text-[30px] fredoka-one-font text-[#484848] mb-4 flex items-center gap-3">
-                          {item.icon}
-                          {item.title}
-                        </p>
-                        <div className="lg:hidden flex justify-center items-center mb-4 relative">
-                          <img
-                            className="w-[80%]"
-                            src={item.mobileScreen}
-                            alt=""
-                          />
-                        </div>
-                        <p className="text-[16px] text-left text-[#484848] w-[100%] lg:w-[50%] leading-6 lg:leading-8 ">
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col lg:flex-row gap-3 lg:gap-2 items-start lg:items-center justify-start">
-                        <p className="w-[100%] lg:w-[14%]">
-                          TMKOC Playschool now available on
-                        </p>
-                        <div className="flex justify-start items-center gap-3">
-                          {/* <Link to={'/'}> */}
-                          <Link
-                            className=""
-                            to={
-                              "https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
-                            }
-                            target="_blank"
-                            onClick={() => {
-                              logEvent(analytics, "Web_Android_Click_Button");
-                            }}
-                          >
-                            <img
-                              className="w-[50px]"
-                              src={playStoreLogo}
-                              alt=""
-                            />
-                          </Link>
-                          {/* </Link> */}
-                          <Link
-                            className=""
-                            to={
-                              "https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
-                            }
-                            target="_blank"
-                            onClick={() => {
-                              logEvent(analytics, "Web_iOS_Click_Button");
-                            }}
-                          >
-                            <img
-                              className="w-[50px]"
-                              src={appStoreLogo}
-                              alt=""
-                            />
-                          </Link>
-                        </div>
-                      </div>
-                      <motion.img
-                        className="hidden lg:block absolute bottom-8"
-                        animate={{
-                          right: swapped ? "3.75rem" : "15rem", // right-15 : right-60
-                          width: swapped ? "18%" : "16%",
-                          zIndex: swapped ? 10 : 5,
-                        }}
-                        transition={{ type: "spring", duration: 0.8 }}
-                        src={item.img1}
-                        alt=""
-                      />
-                      <motion.img
-                        className="hidden lg:block absolute bottom-8"
-                        animate={{
-                          right: swapped ? "15rem" : "3.75rem",
-                          width: swapped ? "16%" : "18%",
-                          zIndex: swapped ? 5 : 10,
-                        }}
-                        transition={{ type: "spring", duration: 0.8 }}
-                        src={item.img2}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+            <img
+              className="w-[42%] lg:w-[44%] object-contain"
+              src={sec1}
+              alt="TMKOC Playschool weekly summary report"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              className="w-[48%] lg:w-[52%] object-contain"
+              src={sec2}
+              alt="TMKOC Playschool attendance calendar"
+              loading="lazy"
+              decoding="async"
+            />
+            {/* TODO: drop the sitting-boy illustration (transparent webp) into
+                src/assets/reports/ and render it here, absolutely positioned
+                bottom-right over the phones */}
+          </motion.div>
         </div>
       </div>
     </div>

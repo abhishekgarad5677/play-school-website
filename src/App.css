@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* * {
   font-family: 'Fredoka', sans-serif;
@@ -19,6 +20,10 @@ body {
 
 .fredoka-one-font {
   font-family: 'Fredoka One', cursive !important;
+}
+
+.poppins-font {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* Add this to your global CSS */

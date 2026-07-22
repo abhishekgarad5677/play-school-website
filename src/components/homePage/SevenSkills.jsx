@@ -1,137 +1,210 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import sevenSkillsBanner from "../../assets/seven-skills/7skills.png";
+const NumberIcon = () => (
+  <span className="poppins-font font-bold leading-none select-none">
+    <span className="text-[#7C55E6] text-[22px] lg:text-[26px] inline-block -rotate-12">
+      4
+    </span>
+    <span className="text-[#7C55E6] text-[26px] lg:text-[30px] inline-block -translate-y-2">
+      5
+    </span>
+    <span className="text-[#F0439B] text-[22px] lg:text-[26px] inline-block rotate-12">
+      3
+    </span>
+  </span>
+);
 
-import numberIsland from "../../assets/seven-skills/Number Island.webp";
-import wordIsland from "../../assets/seven-skills/Word Island.webp";
-import natureIsland from "../../assets/seven-skills/Nature Island.webp";
-import exploreIsland from "../../assets/seven-skills/Explore Island.webp";
-import pictureSmartImg from "../../assets/seven-skills/Picture smart.webp";
-import musicIsland from "../../assets/seven-skills/Music Island.webp";
-import peopleSelfIsland from "../../assets/seven-skills/People & self Island.webp";
+const WordIcon = () => (
+  <span className="poppins-font font-bold leading-none select-none">
+    <span className="text-[#7C55E6] text-[24px] lg:text-[28px] inline-block -translate-y-2">
+      J
+    </span>
+    <span className="text-[#7C55E6] text-[22px] lg:text-[26px] inline-block -rotate-12 translate-y-1">
+      L
+    </span>
+    <span className="text-[#F0439B] text-[22px] lg:text-[26px] inline-block rotate-12">
+      K
+    </span>
+  </span>
+);
 
-const skills = [
+const EmojiIcon = ({ emoji }) => (
+  <span className="text-[30px] lg:text-[36px] leading-none select-none">
+    {emoji}
+  </span>
+);
+
+const leftSkills = [
   {
-    title: "Word Smart",
-    emoji: "📚",
-    desc: "The one who loves stories, remembers every rhyme and always has something to say. We build this through interactive storytelling, alphabet adventures and language activities that make words irresistible.",
-    image: wordIsland,
+    title: "Number",
+    desc: "Build number sense and early math confidence.",
+    titleColor: "text-[#F5820B]",
+    border: "border-[#F8DCB6]",
+    circle: "bg-[#FCE4C3]",
+    icon: <NumberIcon />,
   },
   {
-    title: "Number Smart",
-    emoji: "🔢",
-    desc: "The kid who counts everything, solves problems in their head and always figures out the fastest way home. We build this through activities that make numbers feel like superpowers, not homework.",
-    image: numberIsland,
+    title: "Word",
+    desc: "Boosts language skills through letters and words.",
+    titleColor: "text-[#3FA43C]",
+    border: "border-[#CBEBC2]",
+    circle: "bg-[#D6F0CB]",
+    icon: <WordIcon />,
   },
   {
-    title: "Picture Smart",
-    emoji: "🎨",
-    desc: "The kid who thinks in images, sees patterns everywhere and draws what they can't yet say in words. We build this through visual puzzles and creative activities that reward how they see the world.",
-    image: pictureSmartImg,
-  },
-  {
-    title: "Music Smart",
-    emoji: "🎵",
-    desc: "The one who hums without realising, feels every beat and remembers everything set to a tune. We build this through rhythm activities, instrument exploration and rhymes that make learning stick like their favourite song.",
-    image: musicIsland,
-  },
-  {
-    title: "Nature Smart",
-    emoji: "🌿",
-    desc: "The child who notices the butterfly before anyone else does. We build this through activities that spark curiosity about the living world - animals, patterns, seasons and everything in between.",
-    image: natureIsland,
-  },
-  {
-    title: "People & Self Smart",
-    emoji: "🤝",
-    desc: "The child who understands feelings, their own and everyone else's. We build this through activities rooted in Gokuldham's greatest value: that knowing yourself and caring for others is the smartest thing a person can do.",
-    image: peopleSelfIsland,
-  },
-  {
-    title: "Body Smart",
-    emoji: "🤸",
-    desc: "The one who learns best by doing - touching, moving, building, creating. We build this through tracing, coloring and hands-on challenges that turn every tap into a full-body learning moment.",
-    image: exploreIsland,
+    title: "Music",
+    desc: "Introduce music and rhythm in fun ways.",
+    titleColor: "text-[#F0A818]",
+    border: "border-[#FAE8C0]",
+    circle: "bg-[#C7E6F8]",
+    icon: <EmojiIcon emoji="🎷" />,
   },
 ];
 
+const rightSkills = [
+  {
+    title: "Art",
+    desc: "Sparks creativity and visual expression.",
+    titleColor: "text-[#F0439B]",
+    border: "border-[#FAD3E4]",
+    circle: "bg-[#FBDCE6]",
+    icon: <EmojiIcon emoji="🎨" />,
+  },
+  {
+    title: "General Knowledge",
+    desc: "Develops physical skills and healthy habits.",
+    titleColor: "text-[#1D6FF2]",
+    border: "border-[#C9E0FA]",
+    circle: "bg-[#D3E7FB]",
+    icon: <EmojiIcon emoji="🌍" />,
+  },
+  {
+    title: "Self & Others",
+    desc: "Builds empathy confidence and social skills.",
+    titleColor: "text-[#16A34A]",
+    border: "border-[#C6EEDD]",
+    circle: "bg-[#CDF0E4]",
+    icon: <EmojiIcon emoji="🧑‍🤝‍🧑" />,
+  },
+];
+
+const natureSkill = {
+  title: "Nature",
+  desc: "Encourages curiosity about nature and our world.",
+  titleColor: "text-[#3FA43C]",
+  border: "border-[#D5EFC0]",
+  circle: "bg-[#DFF3CA]",
+  icon: <EmojiIcon emoji="🌻" />,
+};
+
+const cardMotion = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+  viewport: { once: true },
+};
+
+const SkillCard = ({ skill }) => (
+  <motion.div
+    {...cardMotion}
+    className={`bg-white rounded-[22px] border ${skill.border} shadow-[0_10px_30px_rgba(93,79,193,0.10)] p-4 lg:p-6 flex items-center gap-4 lg:gap-5`}
+  >
+    <div
+      className={`${skill.circle} w-[70px] h-[70px] lg:w-[90px] lg:h-[90px] rounded-full flex items-center justify-center shrink-0`}
+    >
+      {skill.icon}
+    </div>
+    <div>
+      <h3
+        className={`poppins-font font-semibold text-[16px] lg:text-[19px] mb-1 lg:mb-2 ${skill.titleColor}`}
+      >
+        {skill.title}
+      </h3>
+      <p className="poppins-font text-[13px] lg:text-[15px] leading-[19px] lg:leading-[22px] text-[#3A3A4A]">
+        {skill.desc}
+      </p>
+    </div>
+  </motion.div>
+);
+
 const SevenSkills = () => {
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="relative py-10 lg:py-16 mx-4 lg:mx-auto overflow-x-hidden"
-    >
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-[28px] lg:text-[44px] mb-3 lg:mb-6 leading-[34px] lg:leading-[46px] fredoka-one-font font-[500]
-             bg-[radial-gradient(circle_at_center,#00CAFF_10%,#0066FF_90%)]
-             bg-clip-text text-transparent text-center"
-      >
-        7 Skills for the Real World
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="lg:text-[16px] leading-[18px] text-[12px] text-[#484848] font-[400] lg:leading-[20px] text-center fredoka-font mb-8 lg:mb-10"
-      >
-        Most apps teach one skill. TMKOC Playschool builds 7 - through play,
-        adventure, and favourite Gokuldham characters kids love.
-      </motion.p>
-
-      <div className="lg:max-w-7xl lg:mx-auto">
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          //   autoplay={{ delay: 12000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          loop={true}
-          speed={700}
-          className="seven-skills-swiper !pb-10"
-        >
-          {skills.map((skill) => (
-            <SwiperSlide key={skill.title}>
-              <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-4 px-1 lg:px-0">
-                {/* Image — top on mobile, left on desktop */}
-                <div className="w-full lg:w-[75%] flex items-center justify-center">
-                  <img
-                    src={skill.image}
-                    alt={skill.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full max-w-[460px] lg:max-w-none object-contain"
-                  />
-                </div>
-
-                {/* Content — bottom on mobile, right on desktop */}
-                <div className="w-full lg:w-[48%] flex flex-col justify-center pb-2 lg:pb-6">
-                  <div className="flex items-center gap-3 mb-3 lg:mb-4">
-                    <span className="text-[28px] lg:text-[32px] leading-none">
-                      {skill.emoji}
-                    </span>
-                    <h3 className="fredoka-one-font text-[22px] lg:text-[28px] leading-[26px] lg:leading-[34px] text-[#484848]">
-                      {skill.title}
-                    </h3>
-                  </div>
-                  <p className="text-[15px] lg:text-[17px] text-[#484848] leading-[24px] lg:leading-[28px] fredoka-font">
-                    {skill.desc}
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#F3F2FC_0%,#E9E7F9_100%)] py-10 lg:py-16">
+      {/* ---- decorations ---- */}
+      <div className="hidden lg:block absolute top-16 left-10 text-[#A8C6F0] rotate-[-15deg]">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+        </svg>
       </div>
-    </motion.div>
+      <span className="hidden lg:block absolute top-[26%] left-[15%] text-[26px]">
+        ⭐
+      </span>
+      <span className="hidden lg:block absolute top-[10%] right-[14%] text-[26px]">
+        ⭐
+      </span>
+      <div className="hidden lg:block absolute top-[24%] right-[2%] w-40 h-16 bg-white rounded-full opacity-90" />
+      <div className="hidden lg:block absolute top-[42%] left-[-3%] w-44 h-16 bg-white rounded-full opacity-70" />
+
+      <div className="relative max-w-7xl mx-auto px-4 lg:px-8">
+        {/* ---- badge ---- */}
+        <motion.div
+          {...cardMotion}
+          className="flex justify-center mb-5 lg:mb-6"
+        >
+          <div className="bg-white rounded-full shadow-[0_6px_20px_rgba(93,79,193,0.12)] px-5 py-2.5 lg:px-7 lg:py-3 flex items-center gap-2">
+            <span className="text-[18px] lg:text-[20px]">⭐</span>
+            <span className="poppins-font font-semibold text-[14px] lg:text-[17px] text-[#0D1B4C]">
+              Building Strong Foundations
+            </span>
+          </div>
+        </motion.div>
+
+        {/* ---- heading ---- */}
+        <motion.h1
+          {...cardMotion}
+          className="poppins-font font-bold text-center text-[30px] lg:text-[56px] leading-[38px] lg:leading-[66px] mb-3 lg:mb-4"
+        >
+          <span className="bg-[linear-gradient(90deg,#8B5CF6,#6D4AE0)] bg-clip-text text-transparent">
+            7 Skills{" "}
+          </span>
+          <span className="text-[#0D1B4C]">for the Real World</span>
+        </motion.h1>
+
+        <motion.p
+          {...cardMotion}
+          className="poppins-font text-center text-[13px] lg:text-[19px] leading-[20px] lg:leading-[30px] text-[#2B2B40] mb-8 lg:mb-12 max-w-[560px] mx-auto"
+        >
+          We focus on 7 essential skills that help children learn, grow and
+          shine in everyday life.
+        </motion.p>
+
+        {/* ---- cards grid ---- */}
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_0.95fr_1fr] gap-4 lg:gap-6 lg:items-end">
+          {/* left column */}
+          <div className="flex flex-col gap-4 lg:gap-6">
+            {leftSkills.map((skill) => (
+              <SkillCard key={skill.title} skill={skill} />
+            ))}
+          </div>
+
+          {/* center column — kids illustration + nature card */}
+          <div className="flex flex-col gap-4 lg:gap-6 justify-end">
+            {/* TODO: drop the kids trio illustration (transparent webp) into
+                src/assets/seven-skills/ and render it here */}
+            <img src={sevenSkillsBanner} alt="" />
+            <SkillCard skill={natureSkill} />
+          </div>
+
+          {/* right column */}
+          <div className="flex flex-col gap-4 lg:gap-6">
+            {rightSkills.map((skill) => (
+              <SkillCard key={skill.title} skill={skill} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

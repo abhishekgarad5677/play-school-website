@@ -7,61 +7,30 @@ import { IoClose } from "react-icons/io5";
 import {
   motion,
   useScroll,
-  useTransform,
+  useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
 
-/* ===================== ANIMATIONS ===================== */
-
-const navParent = {
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      when: "beforeChildren",
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-const navItem = {
-  hidden: { opacity: 0, y: -8 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
-
-/* ===================== COMPONENT ===================== */
-
 const Navbar = ({
   onHomeClick,
+  onSevenSkillsClick,
   onReportsClick,
   onLearningAppsClick,
-  onUspClick,
+  onVideoClick,
   onReviewsClick,
-  onKidsClick,
 }) => {
-  const leftNav = [
+  const navLinks = [
     { name: "Home", action: onHomeClick },
-    { name: "Child's Learning Journey ", action: onReportsClick },
+    { name: "7 Skills", action: onSevenSkillsClick },
+    { name: "Learning Journey", action: onReportsClick },
+    { name: "Activities", action: onLearningAppsClick },
+    { name: "Watch Video", action: onVideoClick },
+    { name: "Testimonials", action: onReviewsClick },
   ];
-
-  const rightNav = [
-    { name: "Learning Activities", action: onLearningAppsClick },
-    { name: "Why Parents Love Us", action: onUspClick },
-    // add more if you want:
-    // { name: "Reviews", action: onReviewsClick },
-    // { name: "Kids", action: onKidsClick },
-  ];
-
-  const mobileNav = [...leftNav, ...rightNav];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
+  const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
 
   /* ---------- NAVBAR HEIGHT -> CSS VAR (for scroll padding) ---------- */
@@ -83,15 +52,22 @@ const Navbar = ({
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  /* ---------- SCROLL EFFECT ---------- */
+  /* ---------- HIDE ON SCROLL DOWN / SHOW ON SCROLL UP ---------- */
 
   const { scrollY } = useScroll();
-  const bgOpacity = useTransform(scrollY, [0, 80], [0, 1]);
-  const shadowOpacity = useTransform(scrollY, [0, 80], [0, 0.12]);
-  const boxShadow = useTransform(
-    shadowOpacity,
-    (o) => `0 8px 24px rgba(0,0,0,${o})`,
-  );
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (mobileMenuOpen) {
+      setHidden(false);
+      return;
+    }
+    if (latest > previous && latest > 120) {
+      setHidden(true);
+    } else if (latest < previous) {
+      setHidden(false);
+    }
+  });
 
   /* ---------- HELPERS ---------- */
 
@@ -99,205 +75,99 @@ const Navbar = ({
     if (typeof fn === "function") fn();
   };
 
-  // ✅ IMPORTANT: Force-unlock scroll (HeadlessUI Dialog can keep body locked on mobile)
+  const handleNavClick = (item) => {
+    setActiveLink(item.name);
+    safeRun(item.action);
+  };
+
+  // Force-unlock scroll (HeadlessUI Dialog can keep body locked on mobile)
   const forceUnlockScroll = () => {
     document.body.style.overflow = "";
     document.body.style.paddingRight = "";
     document.documentElement.style.overflow = "";
   };
 
-  // ✅ Mobile: close menu -> wait for exit animation & HeadlessUI cleanup -> unlock -> scroll
-  const runAfterMobileClose = (fn) => {
+  // Mobile: close menu -> wait for exit animation -> unlock -> scroll
+  const runAfterMobileClose = (item) => {
+    setActiveLink(item.name);
     setMobileMenuOpen(false);
-
-    // match your exit transition (0.25s) + small buffer
     window.setTimeout(() => {
       forceUnlockScroll();
-      safeRun(fn);
+      safeRun(item.action);
     }, 320);
   };
 
   return (
     <motion.header
       ref={headerRef}
-      initial="hidden"
-      animate="visible"
-      variants={navParent}
-      className="sticky top-0 z-50"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{
+        y: hidden ? "-130%" : 0,
+        opacity: 1,
+      }}
+      transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+      className="fixed top-0 inset-x-0 z-50 px-3 lg:px-6 pt-3 lg:pt-4"
     >
-      {/* Glass background */}
-      <motion.div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundColor: "rgba(255,255,255,1)",
-          opacity: bgOpacity,
+      <nav className="max-w-[1500px] mx-auto bg-white rounded-3xl shadow-[0_10px_30px_rgba(13,27,76,0.10)] flex items-center justify-between pl-4 pr-3 lg:pl-6 lg:pr-4 py-4">
+        {/* ---- logo ---- */}
+        <button
+          type="button"
+          onClick={() => {
+            setActiveLink("Home");
+            safeRun(onHomeClick);
+            setMobileMenuOpen(false);
+          }}
+          className="cursor-pointer select-none shrink-0"
+          style={{ WebkitTapHighlightColor: "transparent" }}
+          aria-label="Go to top"
+        >
+          <img
+            src={logo}
+            alt="TMKOC Playschool"
+            className="h-12 lg:h-14 w-auto object-contain"
+            onLoad={syncNavHeightVar}
+            draggable="false"
+          />
+        </button>
 
-          boxShadow,
-          backdropFilter: "saturate(1.2) blur(6px)",
-        }}
-      />
-
-      {/* ===================== DESKTOP NAV ===================== */}
-      {/* <motion.nav className="relative flex items-center justify-between lg:justify-center gap-20 px-5 lg:px-8 py-2">
-        <ul className="hidden lg:flex items-center gap-20">
-          {leftNav.map((item) => (
-            <motion.li key={item.name} variants={navItem}>
+        {/* ---- desktop links ---- */}
+        <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
+          {navLinks.map((item) => (
+            <li key={item.name}>
               <button
                 type="button"
-                onClick={() => safeRun(item.action)}
-                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition"
+                onClick={() => handleNavClick(item)}
+                className={`poppins-font text-[15px] font-medium cursor-pointer transition-colors whitespace-nowrap ${
+                  activeLink === item.name
+                    ? "text-[#1D6FF2]"
+                    : "text-[#3A3A4A] hover:text-[#0D1B4C]"
+                }`}
               >
                 {item.name}
               </button>
-            </motion.li>
+            </li>
           ))}
         </ul>
 
-        <motion.div variants={navItem} className="flex justify-center">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              safeRun(onHomeClick);
-              setMobileMenuOpen(false);
-            }}
-            className="cursor-pointer select-none"
-            style={{ WebkitTapHighlightColor: "transparent" }}
-            aria-label="Go to top"
-          >
-            <img
-              src={logo}
-              alt="Play School Logo"
-              className="h-20 w-auto object-contain"
-              onLoad={syncNavHeightVar}
-              draggable="false"
-            />
-          </button>
-        </motion.div>
+        {/* ---- desktop CTA ---- */}
+        <button
+          type="button"
+          onClick={() => navigate("/register")}
+          className="hidden lg:block poppins-font font-semibold px-7 py-3 text-white text-[15px] rounded-full shadow-[0_8px_20px_rgba(46,158,63,0.35)] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#5FC24B,#2E9E3F)]"
+        >
+          Start Free Trial
+        </button>
 
-        <ul className="hidden lg:flex items-center gap-20">
-          {rightNav.map((item) => (
-            <motion.li key={item.name} variants={navItem}>
-              <button
-                type="button"
-                onClick={() => safeRun(item.action)}
-                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition"
-              >
-                {item.name}
-              </button>
-            </motion.li>
-          ))}
-        </ul>
-
-        <div className="flex lg:hidden">
-          <motion.button
-            variants={navItem}
-            onClick={() => setMobileMenuOpen(true)}
-            className="p-3 text-gray-700"
-            aria-label="Open menu"
-            type="button"
-          >
-            <IoIosMenu className="text-[30px]" />
-          </motion.button>
-        </div>
-      </motion.nav> */}
-
-      {/* ===================== DESKTOP NAV ===================== */}
-      <motion.nav className="relative flex items-center justify-between lg:grid lg:grid-cols-3 px-5 lg:px-8 py-2">
-        {/* COL 1 — Logo (left-aligned) */}
-        <motion.div variants={navItem} className="flex justify-start">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              safeRun(onHomeClick);
-              setMobileMenuOpen(false);
-            }}
-            className="cursor-pointer select-none"
-            style={{ WebkitTapHighlightColor: "transparent" }}
-            aria-label="Go to top"
-          >
-            <img
-              src={logo}
-              alt="Play School Logo"
-              className="h-20 w-auto object-contain"
-              onLoad={syncNavHeightVar}
-              draggable="false"
-            />
-          </button>
-        </motion.div>
-
-        {/* COL 2 — leftNav | CTA | rightNav (center-aligned) */}
-        <ul className="hidden lg:flex items-center justify-center gap-8 ml-6">
-          {leftNav.map((item) => (
-            <motion.li key={item.name} variants={navItem}>
-              <button
-                type="button"
-                onClick={() => safeRun(item.action)}
-                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition whitespace-nowrap"
-              >
-                {item.name}
-              </button>
-            </motion.li>
-          ))}
-
-          {/* <motion.li variants={navItem}>
-            <button
-              type="button"
-              className="inline-flex items-center px-5 py-2.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-[15px] font-semibold tracking-wide shadow-md transition whitespace-nowrap"
-            >
-              Start Free Trial Now
-            </button>
-          </motion.li> */}
-
-          {/* <motion.li variants={navItem}>
-            <button
-              type="button"
-              // onClick={() => handleSocialSignIn("google")}
-              className={
-                "w-full py-4 fredoka-one-font flex justify-center items-center gap-2 my-2 text-white text-[18px] rounded-full shadow-lg transition-all cursor-pointer bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] hover:opacity-90"
-              }
-            >
-              Start Free Trial Now
-            </button>
-          </motion.li> */}
-          <motion.li variants={navItem}>
-            <button
-              type="button"
-              onClick={() => navigate("/register")}
-              className="fredoka-one-font px-7 py-3 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
-            >
-              Start Free Trial Now
-            </button>
-          </motion.li>
-
-          {rightNav.map((item) => (
-            <motion.li key={item.name} variants={navItem}>
-              <button
-                type="button"
-                onClick={() => safeRun(item.action)}
-                className="text-[18px] font-normal cursor-pointer tracking-wide text-gray-700 hover:text-black transition whitespace-nowrap"
-              >
-                {item.name}
-              </button>
-            </motion.li>
-          ))}
-        </ul>
-
-        {/* COL 3 — empty on desktop, hamburger on mobile (right-aligned) */}
-        <div className="flex justify-end">
-          <motion.button
-            variants={navItem}
-            onClick={() => setMobileMenuOpen(true)}
-            className="flex lg:hidden p-3 text-gray-700"
-            aria-label="Open menu"
-            type="button"
-          >
-            <IoIosMenu className="text-[30px]" />
-          </motion.button>
-        </div>
-      </motion.nav>
+        {/* ---- mobile hamburger ---- */}
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="flex lg:hidden p-2 text-[#0D1B4C]"
+          aria-label="Open menu"
+          type="button"
+        >
+          <IoIosMenu className="text-[30px]" />
+        </button>
+      </nav>
 
       {/* ===================== MOBILE MENU ===================== */}
       <AnimatePresence>
@@ -331,15 +201,17 @@ const Navbar = ({
                       to="/"
                       onClick={(e) => {
                         e.preventDefault();
-                        runAfterMobileClose(onHomeClick); // close menu safely, then scroll
+                        runAfterMobileClose({
+                          name: "Home",
+                          action: onHomeClick,
+                        });
                       }}
                     >
-                      <img src={logo} alt="Logo" className="h-20" />
+                      <img src={logo} alt="TMKOC Playschool" className="h-14" />
                     </Link>
 
                     <button
                       onClick={() => setMobileMenuOpen(false)}
-                      // className="p-2 text-gray-700 outline-none focus:outline-none focus:ring-0 active:outline-none border-0"
                       className="p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded"
                       type="button"
                       aria-label="Close menu"
@@ -349,13 +221,17 @@ const Navbar = ({
                   </div>
 
                   {/* Links */}
-                  <div className="mt-8 space-y-3">
-                    {mobileNav.map((item) => (
+                  <div className="mt-8 space-y-2">
+                    {navLinks.map((item) => (
                       <button
                         key={item.name}
                         type="button"
-                        onClick={() => runAfterMobileClose(item.action)}
-                        className="block w-full text-left rounded-lg px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50"
+                        onClick={() => runAfterMobileClose(item)}
+                        className={`poppins-font block w-full text-left rounded-lg px-3 py-3 text-base font-medium ${
+                          activeLink === item.name
+                            ? "text-[#1D6FF2] bg-[#EAF3FF]"
+                            : "text-[#3A3A4A] hover:bg-gray-50"
+                        }`}
                       >
                         {item.name}
                       </button>
@@ -367,9 +243,9 @@ const Navbar = ({
                         setMobileMenuOpen(false);
                         navigate("/register");
                       }}
-                      className="fredoka-one-font w-full py-3 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)]"
+                      className="poppins-font font-semibold w-full mt-4 py-3.5 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[linear-gradient(90deg,#5FC24B,#2E9E3F)]"
                     >
-                      Start Free Trial Now
+                      Start Free Trial
                     </button>
                   </div>
                 </DialogPanel>

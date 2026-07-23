@@ -7,17 +7,15 @@ import SevenSkills from "../components/homePage/SevenSkills";
 const Reports = lazy(() => import("../components/homePage/Reports"));
 const LearningApps = lazy(() => import("../components/homePage/LearningApps"));
 const VideoShowcase = lazy(() => import("../components/homePage/VideoShowcase"));
-const UspSection = lazy(() => import("../components/homePage/UspSection"));
 const Reviews = lazy(() => import("../components/homePage/Reviews"));
-const Kids = lazy(() => import("../components/homePage/Kids"));
 const Footer = lazy(() => import("../components/homePage/Footer"));
 
 const HomePage = () => {
+  const sevenSkillsRef = useRef(null);
   const reportsRef = useRef(null);
   const learningAppsRef = useRef(null);
-  const uspRef = useRef(null);
+  const videoRef = useRef(null);
   const reviewsRef = useRef(null);
-  const kidsRef = useRef(null);
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -27,19 +25,19 @@ const HomePage = () => {
     <div>
       <SparkleBackground />
 
-      {/* <Navbar
+      <Navbar
         onHomeClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onSevenSkillsClick={() => scrollToSection(sevenSkillsRef)}
         onReportsClick={() => scrollToSection(reportsRef)}
         onLearningAppsClick={() => scrollToSection(learningAppsRef)}
-        onUspClick={() => scrollToSection(uspRef)}
+        onVideoClick={() => scrollToSection(videoRef)}
         onReviewsClick={() => scrollToSection(reviewsRef)}
-        onKidsClick={() => scrollToSection(kidsRef)}
-      /> */}
+      />
 
       <Banner />
 
       <Suspense fallback={null}>
-        <div>
+        <div ref={sevenSkillsRef}>
           <SevenSkills />
         </div>
 
@@ -51,19 +49,13 @@ const HomePage = () => {
           <LearningApps />
         </div>
 
-        <VideoShowcase />
-
-        {/* <div ref={uspRef}>
-          <UspSection />
-        </div> */}
+        <div ref={videoRef}>
+          <VideoShowcase />
+        </div>
 
         <div ref={reviewsRef}>
           <Reviews />
         </div>
-
-        {/* <div ref={kidsRef}>
-          <Kids />
-        </div> */}
 
         <Footer />
       </Suspense>

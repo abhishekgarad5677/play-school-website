@@ -229,6 +229,26 @@ const Footer = () => {
 
           {/* links */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:gap-x-7">
+            <a
+              href="https://tmkocplayschool.com/faq"
+              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
+            >
+              <span className="text-[#5B3FD6]">
+                <QuestionIcon />
+              </span>
+              FAQ
+            </a>
+            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
+            <a
+              href="mailto:info@tmkocplayschool.com"
+              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
+            >
+              <span className="text-[#5B3FD6]">
+                <MailIcon />
+              </span>
+              Support
+            </a>
+            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
             <Link
               to={"/terms-condition"}
               className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
@@ -248,27 +268,6 @@ const Footer = () => {
               </span>
               Privacy Policy
             </Link>
-            {/* TODO: point FAQ & Support to their real destinations (no routes exist yet) */}
-            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
-            <Link
-              to={"#"}
-              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
-            >
-              <span className="text-[#5B3FD6]">
-                <QuestionIcon />
-              </span>
-              FAQ
-            </Link>
-            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
-            <Link
-              to={"#"}
-              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
-            >
-              <span className="text-[#5B3FD6]">
-                <MailIcon />
-              </span>
-              Support
-            </Link>
           </div>
         </div>
 
@@ -276,11 +275,16 @@ const Footer = () => {
         <div className="relative text-center">
           <p className="poppins-font text-[13px] lg:text-[16px] text-[#9A98A8] flex items-center justify-center gap-2 mb-1">
             <span className="text-[#F26D85]">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </svg>
             </span>
-            © 2025 TMKOC Playschool. All rights reserved.
+            © 2026 TMKOC Playschool. All rights reserved.
           </p>
           <p className="poppins-font text-[11px] lg:text-[13px] text-[#9A98A8]">
             Powered by Neela Mediatech Private Limited

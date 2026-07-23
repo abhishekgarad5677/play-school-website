@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import star1 from "../../assets/common/stra1.webp";
 
 const reviewsData = [
   {
@@ -74,7 +75,7 @@ const Reviews = () => {
     <div className="relative overflow-hidden bg-[#EEF3FB] py-10 lg:py-16">
       {/* ---- decorations ---- */}
       <span className="hidden lg:block absolute top-[10%] left-[13%] text-[30px] rotate-[-15deg]">
-        ⭐
+        <img className="w-[70%]" src={star1} alt="" />
       </span>
       <span className="hidden lg:block absolute top-[12%] right-[10%] text-[#F26D85] rotate-[20deg]">
         <HeartIcon size={34} />
@@ -102,8 +103,8 @@ const Reviews = () => {
           viewport={{ once: true }}
           className="poppins-font font-bold text-center text-[26px] lg:text-[48px] leading-[34px] lg:leading-[60px] mb-3"
         >
-          <span className="text-[#0D1B4C]">Loved by Parents, </span>
-          <span className="text-[#1D6FF2]">Trusted by Families</span>
+          <span className="text-[#09184A]">Loved by Parents, </span>
+          <span className="text-[#086AFB]">Trusted by Families</span>
         </motion.h2>
 
         <div className="flex justify-center mb-4 lg:mb-5">
@@ -115,9 +116,9 @@ const Reviews = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="poppins-font text-center text-[14px] lg:text-[19px] text-[#00092D] mb-8 lg:mb-12"
+          className="poppins-font text-center text-[14px] lg:text-[19px] text-[#000000] mb-8 lg:mb-12"
         >
-          See what parents love about TMKOC Playschool.
+          See what parents love about Playschool.
         </motion.p>
 
         {/* ---- carousel ---- */}

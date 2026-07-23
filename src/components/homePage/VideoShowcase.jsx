@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  FaPlay,
+  FaArrowRight,
+  FaGamepad,
+  FaGraduationCap,
+  FaShieldAlt,
+} from "react-icons/fa";
+import videomainbg from "../../assets/video/video-main-bg.png";
+import arrow from "../../assets/common/arrow.webp";
+import cloud from "../../assets/common/cloud.webp";
+import star1 from "../../assets/common/stra1.webp";
 
 const YOUTUBE_VIDEO_ID = "L5RBBOkdyqI";
 const videoThumb = `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
@@ -15,29 +26,17 @@ const features = [
   {
     title: "Fun Learning Games",
     desc: "Interactive activities kids love",
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.5 6h-11A5.5 5.5 0 0 0 1 11.5v3A3.5 3.5 0 0 0 4.5 18c1.2 0 2.3-.62 2.95-1.6l.9-1.4h7.3l.9 1.4a3.5 3.5 0 0 0 2.95 1.6 3.5 3.5 0 0 0 3.5-3.5v-3A5.5 5.5 0 0 0 17.5 6zM9 12H7.5v1.5h-2V12H4v-2h1.5V8.5h2V10H9v2zm6.75 1a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm3-3a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z" />
-      </svg>
-    ),
+    icon: <FaGamepad className="text-[26px] text-[#5039F1]" />,
   },
   {
     title: "Expert Designed",
     desc: "Built by education specialists",
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
-      </svg>
-    ),
+    icon: <FaGraduationCap className="text-[26px] text-[#5039F1]" />,
   },
   {
     title: "Safe & Ad-Free",
     desc: "100% Secure learning environment",
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2 4 5v6c0 5.25 3.4 10.15 8 11.25 4.6-1.1 8-6 8-11.25V5l-8-3zm1 13h-2v-3H8v-2h3V7h2v3h3v2h-3v3z" />
-      </svg>
-    ),
+    icon: <FaShieldAlt className="text-[24px] text-[#5039F1]" />,
   },
 ];
 
@@ -46,10 +45,13 @@ const VideoShowcase = () => {
 
   return (
     <div className="py-6 lg:py-10 px-4 lg:px-8">
-      <div className="relative overflow-hidden rounded-[28px] lg:rounded-[40px] bg-[linear-gradient(180deg,#EFEAFB_0%,#E2DBF6_100%)] max-w-[1500px] mx-auto px-5 py-10 lg:px-12 lg:py-16">
+      <div
+        className="relative bg-cover overflow-hidden rounded-[28px] lg:rounded-[40px] bg-cover bg-center bg-no-repeat max-w-[1500px] mx-auto px-5 py-10 lg:px-12 lg:py-16"
+        style={{ backgroundImage: `url(${videomainbg})` }}
+      >
         {/* ---- decorations ---- */}
-        <span className="hidden lg:block absolute top-[8%] left-[24%] text-[22px]">
-          ⭐
+        <span className="hidden lg:block absolute top-[8%] left-[24%]">
+          <img className="w-[70%]" src={star1} alt="" />
         </span>
         <span className="hidden lg:block absolute top-[12%] right-[30%] text-[20px]">
           ⭐
@@ -63,30 +65,23 @@ const VideoShowcase = () => {
         <span className="hidden lg:block absolute bottom-[18%] right-[22%] text-[20px] text-[#F5C518]">
           ✦
         </span>
-        <div className="hidden lg:block absolute top-[4%] left-[28%] text-[#A8C6F0] rotate-[20deg]">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-          </svg>
+        <div className="hidden lg:block absolute top-[10%] left-[28%] text-[#A8C6F0] rotate-[20deg]">
+          <img className="w-[50%]" src={arrow} alt="" />
         </div>
-        <div className="hidden lg:block absolute top-[16%] right-[24%] w-40 h-16 bg-white rounded-full opacity-90" />
+        <div className="hidden lg:block absolute top-[16%] right-[24%] w-40 h-16 ">
+          <img src={cloud} />
+        </div>
 
         <div className="relative flex flex-col lg:grid lg:grid-cols-[0.9fr_1.5fr_0.75fr] gap-8 lg:gap-10 items-center">
           {/* ---- left content ---- */}
           <div className="w-full">
             <motion.div {...revealMotion} className="mb-5 lg:mb-7">
               <div className="inline-flex items-center gap-2.5 bg-white rounded-full shadow-[0_6px_20px_rgba(91,63,214,0.12)] pl-2 pr-5 py-2">
-                <span className="w-8 h-8 rounded-full bg-[#5B3FD6] flex items-center justify-center">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                  >
-                    <path d="M8 5v14l11-7L8 5z" />
-                  </svg>
+                <span className="w-8 h-8 rounded-full bg-[#3817CE] flex items-center justify-center">
+                  <FaPlay className="text-white text-[12px] translate-x-[1px]" />
                 </span>
-                <span className="poppins-font font-semibold text-[13px] lg:text-[15px] text-[#5B3FD6]">
-                  Watch &amp; Explore
+                <span className="poppins-font font-semibold text-[13px] lg:text-[15px] text-[#3817CE]">
+                  Watch & Explore
                 </span>
               </div>
             </motion.div>
@@ -118,22 +113,9 @@ const VideoShowcase = () => {
               onClick={() => setPlaying(true)}
               className="poppins-font font-semibold flex items-center gap-3 bg-[#5B3FD6] text-white text-[15px] lg:text-[18px] rounded-full px-8 lg:px-10 py-3.5 lg:py-4 shadow-[0_10px_25px_rgba(91,63,214,0.35)] cursor-pointer transition-all hover:opacity-90 mb-6 lg:mb-9"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7L8 5z" />
-              </svg>
+              <FaPlay className="text-white text-[14px]" />
               Watch Video
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
+              <FaArrowRight className="text-white text-[18px]" />
             </motion.button>
 
             <motion.p
@@ -186,14 +168,7 @@ const VideoShowcase = () => {
                       className="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/10 transition-all hover:bg-black/20"
                     >
                       <span className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-white/95 shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex items-center justify-center transition-transform hover:scale-105">
-                        <svg
-                          width="28"
-                          height="28"
-                          viewBox="0 0 24 24"
-                          fill="#5B3FD6"
-                        >
-                          <path d="M8 5v14l11-7L8 5z" />
-                        </svg>
+                        <FaPlay className="text-[#5B3FD6] text-[24px] lg:text-[28px] translate-x-[2px]" />
                       </span>
                     </button>
                   </>
@@ -212,17 +187,19 @@ const VideoShowcase = () => {
               <motion.div
                 key={feature.title}
                 {...revealMotion}
-                className="bg-white rounded-[20px] shadow-[0_10px_30px_rgba(91,63,214,0.10)] p-5 lg:p-6"
+                className="flex justify-start items-center gap-3 bg-[#F8F8F8] rounded-[20px] p-5 lg:p-6"
               >
-                <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-xl bg-[#5B3FD6] text-white flex items-center justify-center mb-3 lg:mb-4">
+                <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-xl shadow-2xl bg-[#fff] text-white flex items-center justify-center mb-3 lg:mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="poppins-font font-semibold text-[14px] lg:text-[16px] text-[#0D1B4C] mb-1">
-                  {feature.title}
-                </h3>
-                <p className="poppins-font text-[12px] lg:text-[13.5px] leading-[18px] lg:leading-[20px] text-[#3A3A4A]">
-                  {feature.desc}
-                </p>
+                <div>
+                  <h3 className="poppins-font font-semibold text-[14px] lg:text-[16px] text-[#0D1B4C] mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="poppins-font text-[12px] lg:text-[13.5px] leading-[18px] lg:leading-[20px] text-[#3A3A4A]">
+                    {feature.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

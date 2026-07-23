@@ -229,26 +229,6 @@ const Footer = () => {
 
           {/* links */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:gap-x-7">
-            <a
-              href="https://tmkocplayschool.com/faq"
-              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
-            >
-              <span className="text-[#5B3FD6]">
-                <QuestionIcon />
-              </span>
-              FAQ
-            </a>
-            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
-            <a
-              href="mailto:info@tmkocplayschool.com"
-              className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"
-            >
-              <span className="text-[#5B3FD6]">
-                <MailIcon />
-              </span>
-              Support
-            </a>
-            <span className="hidden lg:block w-px h-7 bg-[#1B1B1B]" />
             <Link
               to={"/terms-condition"}
               className="poppins-font flex items-center gap-2 text-[13px] lg:text-[16px] text-[#1D1B4C] hover:text-[#5B3FD6] transition-colors"

@@ -11,7 +11,10 @@ const Banner = () => {
   return (
     <div
       className="aspect-[1920/1035] w-full bg-no-repeat bg-cover bg-center flex items-center"
-      style={{ backgroundImage: `url(${banner})` }}
+      style={{
+        backgroundImage: `url(${banner})`,
+        backgroundColor: "#F3F2FC",
+      }}
     >
       <div className="w-[46%] lg:w-[44%] mb-16 pl-[3%] lg:pl-[5%] space-y-2 lg:space-y-3">
         <div>

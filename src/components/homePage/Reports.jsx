@@ -69,7 +69,7 @@ const Reports = () => {
               className="poppins-font text-[14px] lg:text-[19px] leading-[22px] lg:leading-[32px] text-[#00092D] mb-6 lg:mb-10 w-[100%] lg:w-[90%]"
             >
               Know how your child is learning, progressing and enjoying every
-              step - without pressure, only encouragement.
+              step without pressure, only encouragement.
             </motion.p>
 
             {/* ---- feature cards ---- */}

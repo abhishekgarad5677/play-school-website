@@ -1,5 +1,6 @@
 import { useRef, Suspense, lazy } from "react";
 import Navbar from "../components/common/Navbar";
+import FloatingCTA from "../components/common/FloatingCTA";
 import Banner from "../components/homePage/Banner";
 import SparkleBackground from "../components/SparkleBackground";
 import SevenSkills from "../components/homePage/SevenSkills";
@@ -59,6 +60,8 @@ const HomePage = () => {
 
         <Footer />
       </Suspense>
+
+      <FloatingCTA />
     </div>
   );
 };

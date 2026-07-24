@@ -33,6 +33,10 @@ import icon15 from "../../assets/learning/icon15.png";
 import bg15 from "../../assets/learning/bg15.webp";
 import icon16 from "../../assets/learning/icon16.png";
 import bg16 from "../../assets/learning/bg16.webp";
+import arrow from "../../assets/common/arrow.webp";
+import cloud from "../../assets/common/cloud.webp";
+import star1 from "../../assets/common/stra1.webp";
+import Bush from "../../assets/common/Bush.webp";
 
 const revealMotion = {
   initial: { opacity: 0, y: 24 },
@@ -170,27 +174,22 @@ const LearningApps = () => {
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#E8F2FC_0%,#DCEAF9_100%)] py-10 lg:py-16">
       {/* ---- decorations ---- */}
       <span className="hidden lg:block absolute top-[8%] left-[22%] text-[26px]">
-        ⭐
+        <img className="w-[70%]" src={star1} alt="" />
       </span>
       <span className="hidden lg:block absolute top-[6%] left-[2%] text-[16px] text-[#F0A818]">
-        ✦
+        <img className="w-[40%]" src={star1} alt="" />
       </span>
       <span className="hidden lg:block absolute top-[42%] left-[30%] text-[22px] text-[#F7A8C8]">
         ✦
       </span>
-      <div className="hidden lg:block absolute top-[5%] left-[32%] text-[#A8C6F0]">
-        <svg width="52" height="52" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-        </svg>
+      <div className="hidden lg:block absolute top-[5%] left-[24%] text-[#A8C6F0]">
+        <img className="w-[60%] rotate-90" src={arrow} alt="" />
       </div>
       <div className="hidden lg:block absolute top-[-4%] right-[-2%] w-52 h-24 bg-white rounded-full" />
       {/* bush bottom-left */}
-      <div className="hidden lg:block absolute bottom-[-40px] left-[-40px]">
+      <div className="hidden lg:block absolute bottom-[-40px] left-[-80px]">
         <div className="relative">
-          <div className="w-40 h-40 bg-[#4CAF50] rounded-full absolute bottom-0 left-0" />
-          <div className="w-28 h-28 bg-[#66BB6A] rounded-full absolute bottom-0 left-24" />
-          <div className="w-20 h-20 bg-[#81C784] rounded-full bottom-0 left-40 absolute" />
-          <div className="w-56 h-20" />
+          <img className="w-[70%]" src={Bush} alt="" />
         </div>
       </div>
 
@@ -200,7 +199,7 @@ const LearningApps = () => {
           <div className="lg:sticky lg:top-24">
             <motion.div {...revealMotion} className="mb-5 lg:mb-8">
               <div className="inline-flex items-center gap-2 bg-white rounded-full shadow-[0_6px_20px_rgba(29,111,242,0.10)] px-4 py-2 lg:px-5 lg:py-2.5">
-                <span className="text-[16px] lg:text-[18px]">⭐</span>
+                <img className="w-[10%]" src={star1} alt="" />
                 <span className="poppins-font font-semibold text-[13px] lg:text-[15px] text-[#5B3FD6]">
                   Activities for Every Age
                 </span>
@@ -211,10 +210,10 @@ const LearningApps = () => {
               {...revealMotion}
               className="poppins-font font-bold text-[30px] lg:text-[48px] leading-[38px] lg:leading-[64px] mb-4 lg:mb-5"
             >
-              <span className="text-[#0D1B4C]">
+              <span className="text-[#09184A]">
                 Learning Activities Designed for Every{" "}
               </span>
-              <span className="text-[#5B3FD6]">Growing Stage</span>
+              <span className="text-[#4837D0]">Growing Stage</span>
             </motion.h2>
 
             <motion.div
@@ -224,15 +223,15 @@ const LearningApps = () => {
 
             <motion.p
               {...revealMotion}
-              className="poppins-font text-[14px] lg:text-[18px] leading-[22px] lg:leading-[30px] text-[#00092D] mb-6 lg:mb-9"
+              className="poppins-font text-[14px] lg:text-[18px] leading-[22px] lg:leading-[30px] text-[#000] mb-6 lg:mb-9"
             >
-              Interactive activities that adapt to your child&rsquo;s age, pace
+              Interactive activities that adapt to your child's age, pace
               and interests. Because every child learn in their own special way.
             </motion.p>
 
             {/* ---- age group pills ---- */}
             <motion.div {...revealMotion}>
-              <p className="poppins-font font-semibold text-[16px] lg:text-[19px] text-[#0D1B4C] mb-3 lg:mb-4">
+              <p className="poppins-font font-semibold text-[16px] lg:text-[19px] text-[#00003E] mb-3 lg:mb-4">
                 Select Age Group
               </p>
               <div className="flex flex-wrap items-center gap-2 lg:gap-3">
@@ -243,7 +242,7 @@ const LearningApps = () => {
                       key={tab}
                       type="button"
                       onClick={() => setActiveTab(idx)}
-                      className={`poppins-font font-semibold text-[13px] lg:text-[15px] px-4 lg:px-6 py-2.5 lg:py-3 rounded-full cursor-pointer transition-all duration-300 whitespace-nowrap
+                      className={`poppins-font font-semibold text-[13px] lg:text-[14px] px-4 lg:px-4 py-2.5 lg:py-2.5 rounded-full cursor-pointer transition-all duration-300 whitespace-nowrap
                         ${
                           isActive
                             ? "bg-[#5B3FD6] text-white shadow-[0_8px_20px_rgba(91,63,214,0.35)]"
@@ -292,7 +291,7 @@ const LearningApps = () => {
                       {item.desc}
                     </p>
                   </div>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={() => navigate("/register")}
                     className="poppins-font font-semibold shrink-0 flex items-center gap-2 text-[#5B3FD6] text-[12px] lg:text-[14px] border-2 border-[#D9D2F5] rounded-full px-3.5 lg:px-5 py-2 lg:py-2.5 cursor-pointer transition-all hover:bg-[#F3F0FD] whitespace-nowrap"
@@ -306,7 +305,7 @@ const LearningApps = () => {
                       <path d="M8 5v14l11-7L8 5z" />
                     </svg>
                     Try Activity
-                  </button>
+                  </button> */}
                 </div>
               </motion.div>
             ))}

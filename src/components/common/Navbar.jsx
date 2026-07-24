@@ -124,7 +124,7 @@ const Navbar = ({
           <img
             src={logo}
             alt="TMKOC Playschool"
-            className="h-12 lg:h-14 w-auto object-contain"
+            className="h-12 lg:h-16 w-auto object-contain"
             onLoad={syncNavHeightVar}
             draggable="false"
           />

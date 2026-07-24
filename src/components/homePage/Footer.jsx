@@ -10,6 +10,8 @@ import {
   FaFacebookF,
   FaLinkedinIn,
 } from "react-icons/fa";
+import arrow from "../../assets/common/arrow.webp";
+import star1 from "../../assets/common/stra1.webp";
 
 const revealMotion = {
   initial: { opacity: 0, y: 24 },
@@ -28,7 +30,7 @@ const socials = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/tmkoc_playschool?igsh=M3VybWRxOGc0MHlw&utm_source=qr",
+    href: "https://www.instagram.com/tmkoc_playschool?igsh=N3l0cWVodGIxc2cy",
     event: "Web_Instagram_Click",
     icon: <FaInstagram />,
     hover: "hover:text-pink-600",
@@ -40,13 +42,13 @@ const socials = [
     icon: <FaFacebookF />,
     hover: "hover:text-blue-600",
   },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/111410032/admin/dashboard/",
-    event: "Web_Linkedin_Click",
-    icon: <FaLinkedinIn />,
-    hover: "hover:text-[#0077B5]",
-  },
+  // {
+  //   label: "LinkedIn",
+  //   href: "https://www.linkedin.com/company/111410032/admin/dashboard/",
+  //   event: "Web_Linkedin_Click",
+  //   icon: <FaLinkedinIn />,
+  //   hover: "hover:text-[#0077B5]",
+  // },
 ];
 
 const ShieldIcon = () => (
@@ -136,23 +138,18 @@ const Footer = () => {
     <footer className="px-4 lg:px-8 py-6 lg:py-10">
       <div className="relative overflow-hidden rounded-[28px] lg:rounded-[44px] bg-[#F4F2FB] max-w-[1500px] mx-auto px-6 lg:px-16 pt-10 lg:pt-20 pb-8 lg:pb-10">
         {/* ---- decorations ---- */}
-        <span className="hidden lg:block absolute top-[22%] left-[9%] text-[30px]">
-          ⭐
+        <span className="hidden lg:block absolute top-[18%] left-[9%] text-[30px]">
+          <img className="w-[70%]" src={star1} alt="" />
         </span>
-        <span className="hidden lg:block absolute top-[20%] right-[13%] text-[#F0439B] text-[26px] rotate-[-15deg]">
-          ✦
-        </span>
-        <div className="hidden lg:block absolute top-[24%] right-[3%] text-[#8B5CF6] rotate-[15deg]">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-          </svg>
+        <div className="hidden lg:block absolute top-[14%] right-[-2%] rotate-[15deg]">
+          <img className="w-[60%] rotate-90" src={arrow} alt="" />
         </div>
 
         {/* ---- top: tagline + download ---- */}
         <div className="relative flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-10 items-center mb-10 lg:mb-16">
           <motion.h2
             {...revealMotion}
-            className="poppins-font font-medium text-[24px] lg:text-[40px] leading-[34px] lg:leading-[56px] text-[#1B1B1B] text-center lg:text-left lg:pl-[14%]"
+            className="poppins-font lg:w-[90%] font-regular text-[24px] lg:text-[36px] leading-[34px] lg:leading-[52px] text-[#1B1B1B] text-center lg:text-left lg:pl-[14%]"
           >
             Play, Learn and Grow Together Every Day!
             <HeartOutline />
@@ -162,7 +159,7 @@ const Footer = () => {
             {...revealMotion}
             className="flex flex-col items-center gap-4 lg:gap-5"
           >
-            <h3 className="poppins-font font-bold text-[20px] lg:text-[28px] text-[#1D1B4C]">
+            <h3 className="poppins-font font-semibold text-[20px] lg:text-[28px] text-[#0E0A57]">
               Download Our App
             </h3>
             <div className="flex flex-col items-center gap-3 lg:gap-4">

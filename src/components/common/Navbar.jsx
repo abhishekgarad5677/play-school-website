@@ -29,9 +29,17 @@ const Navbar = ({
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
   const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
+
+  /* ---------- ALWAYS START AT TOP ON RELOAD ---------- */
+
+  useLayoutEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   /* ---------- NAVBAR HEIGHT -> CSS VAR (for scroll padding) ---------- */
 
@@ -76,7 +84,6 @@ const Navbar = ({
   };
 
   const handleNavClick = (item) => {
-    setActiveLink(item.name);
     safeRun(item.action);
   };
 
@@ -89,7 +96,6 @@ const Navbar = ({
 
   // Mobile: close menu -> wait for exit animation -> unlock -> scroll
   const runAfterMobileClose = (item) => {
-    setActiveLink(item.name);
     setMobileMenuOpen(false);
     window.setTimeout(() => {
       forceUnlockScroll();
@@ -113,7 +119,6 @@ const Navbar = ({
         <button
           type="button"
           onClick={() => {
-            setActiveLink("Home");
             safeRun(onHomeClick);
             setMobileMenuOpen(false);
           }}
@@ -137,11 +142,7 @@ const Navbar = ({
               <button
                 type="button"
                 onClick={() => handleNavClick(item)}
-                className={`poppins-font text-[15px] font-medium cursor-pointer transition-colors whitespace-nowrap ${
-                  activeLink === item.name
-                    ? "text-[#1D6FF2]"
-                    : "text-[#3A3A4A] hover:text-[#0D1B4C]"
-                }`}
+                className="poppins-font text-[15px] font-medium cursor-pointer transition-colors whitespace-nowrap text-[#3A3A4A] hover:text-[#0D1B4C]"
               >
                 {item.name}
               </button>
@@ -227,11 +228,7 @@ const Navbar = ({
                         key={item.name}
                         type="button"
                         onClick={() => runAfterMobileClose(item)}
-                        className={`poppins-font block w-full text-left rounded-lg px-3 py-3 text-base font-medium ${
-                          activeLink === item.name
-                            ? "text-[#1D6FF2] bg-[#EAF3FF]"
-                            : "text-[#3A3A4A] hover:bg-gray-50"
-                        }`}
+                        className="poppins-font block w-full text-left rounded-lg px-3 py-3 text-base font-medium text-[#3A3A4A] hover:bg-gray-50"
                       >
                         {item.name}
                       </button>

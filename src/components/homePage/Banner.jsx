@@ -18,7 +18,7 @@ const Banner = () => {
     >
       <div className="w-[46%] lg:w-[44%] mb-16 pl-[3%] lg:pl-[5%] space-y-2 lg:space-y-3">
         <div>
-          <h1 className="poppins-font font-[600] text-[22px] leading-[26px] lg:text-[74px] lg:leading-[90px]">
+          <h1 className="poppins-font font-[600] text-[22px] leading-[26px] lg:text-[68px] lg:leading-[80px]">
             <span className="text-[#1b1b1b]">Bhaarat ki</span>
             <br />
             <span className="text-[#462BAE]">Paathshala</span>

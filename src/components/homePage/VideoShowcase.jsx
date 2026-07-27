@@ -74,8 +74,11 @@ const VideoShowcase = () => {
 
         <div className="relative flex flex-col lg:grid lg:grid-cols-[0.9fr_1.5fr_0.75fr] gap-8 lg:gap-10 items-center">
           {/* ---- left content ---- */}
-          <div className="w-full">
-            <motion.div {...revealMotion} className="mb-5 lg:mb-7">
+          <div className="w-full text-center lg:text-left">
+            <motion.div
+              {...revealMotion}
+              className="mb-5 lg:mb-7 flex justify-center lg:justify-start"
+            >
               <div className="inline-flex items-center gap-2.5 bg-white rounded-full shadow-[0_6px_20px_rgba(91,63,214,0.12)] pl-2 pr-5 py-2">
                 <span className="w-8 h-8 rounded-full bg-[#3817CE] flex items-center justify-center">
                   <FaPlay className="text-white text-[12px] translate-x-[1px]" />
@@ -96,7 +99,7 @@ const VideoShowcase = () => {
 
             <motion.div
               {...revealMotion}
-              className="w-14 h-[5px] bg-[#F5C518] rounded-full mb-5 lg:mb-7"
+              className="w-14 h-[5px] bg-[#F5C518] rounded-full mb-5 lg:mb-7 mx-auto lg:mx-0"
             />
 
             <motion.p
@@ -111,7 +114,7 @@ const VideoShowcase = () => {
               {...revealMotion}
               type="button"
               onClick={() => setPlaying(true)}
-              className="poppins-font font-semibold flex items-center gap-3 bg-[#5B3FD6] text-white text-[15px] lg:text-[18px] rounded-full px-8 lg:px-10 py-3.5 lg:py-4 shadow-[0_10px_25px_rgba(91,63,214,0.35)] cursor-pointer transition-all hover:opacity-90 mb-6 lg:mb-9"
+              className="poppins-font font-semibold flex items-center gap-3 bg-[#5B3FD6] text-white text-[15px] lg:text-[18px] rounded-full px-8 lg:px-10 py-3.5 lg:py-4 shadow-[0_10px_25px_rgba(91,63,214,0.35)] cursor-pointer transition-all hover:opacity-90 mb-6 lg:mb-9 mx-auto lg:mx-0"
             >
               <FaPlay className="text-white text-[14px]" />
               Watch Video
@@ -120,7 +123,7 @@ const VideoShowcase = () => {
 
             <motion.p
               {...revealMotion}
-              className="poppins-font text-[13px] lg:text-[16px] text-[#0D1B4C] flex items-center gap-2"
+              className="poppins-font text-[13px] lg:text-[16px] text-[#0D1B4C] flex items-center justify-center lg:justify-start gap-2"
             >
               <svg
                 width="18"

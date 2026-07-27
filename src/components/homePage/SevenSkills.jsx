@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import sevenSkillsBanner from "../../assets/seven-skills/7skills.png";
 import arrow from "../../assets/common/arrow.webp";
 import star1 from "../../assets/common/stra1.webp";
@@ -75,12 +80,39 @@ const natureSkill = {
   icon: nature,
 };
 
+const allSkills = [...leftSkills, ...rightSkills, natureSkill];
+
 const cardMotion = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6 },
   viewport: { once: true },
 };
+
+// Mobile carousel card — logo on top, then heading + desc
+const MobileSkillCard = ({ skill }) => (
+  <div
+    className={`bg-white rounded-[26px] border-2 ${skill.border} shadow-[0_12px_34px_rgba(93,79,193,0.12)] px-5 py-8 flex flex-col items-center text-center h-full`}
+  >
+    <div className="w-[90px] h-[90px] rounded-full flex items-center justify-center shrink-0 overflow-hidden mb-4">
+      <img
+        className="w-full h-full object-contain"
+        src={skill.icon}
+        alt={skill.title}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <h3
+      className={`poppins-font font-bold text-[22px] mb-2 ${skill.titleColor}`}
+    >
+      {skill.title}
+    </h3>
+    <p className="poppins-font text-[15px] leading-[22px] text-[#3A3A4A] max-w-[280px]">
+      {skill.desc}
+    </p>
+  </div>
+);
 
 const SkillCard = ({ skill }) => (
   <motion.div
@@ -112,6 +144,8 @@ const SkillCard = ({ skill }) => (
 );
 
 const SevenSkills = () => {
+  const swiperRef = useRef(null);
+
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#F3F2FC_0%,#E9E7F9_100%)] py-10 lg:py-16">
       {/* ---- decorations ---- */}
@@ -162,28 +196,72 @@ const SevenSkills = () => {
           shine in everyday life.
         </motion.p>
 
-        {/* ---- cards grid ---- */}
-        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_0.95fr_1fr] gap-4 lg:gap-6 lg:items-end">
+        {/* ---- DESKTOP: cards grid ---- */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_0.95fr_1fr] gap-6 lg:items-end">
           {/* left column */}
-          <div className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-6">
             {leftSkills.map((skill) => (
               <SkillCard key={skill.title} skill={skill} />
             ))}
           </div>
 
           {/* center column — kids illustration + nature card */}
-          <div className="flex flex-col gap-4 lg:gap-6 justify-end">
-            {/* TODO: drop the kids trio illustration (transparent webp) into
-                src/assets/seven-skills/ and render it here */}
+          <div className="flex flex-col gap-6 justify-end">
             <img src={sevenSkillsBanner} alt="" />
             <SkillCard skill={natureSkill} />
           </div>
 
           {/* right column */}
-          <div className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-6">
             {rightSkills.map((skill) => (
               <SkillCard key={skill.title} skill={skill} />
             ))}
+          </div>
+        </div>
+
+        {/* ---- MOBILE: center illustration + swiper ---- */}
+        <div className="lg:hidden">
+          <img
+            src={sevenSkillsBanner}
+            alt=""
+            className="w-[80%] max-w-[360px] mx-auto mb-6"
+          />
+
+          <div className="relative">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              slidesPerView={1}
+              spaceBetween={16}
+              loop
+              autoplay={{ delay: 4000, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              className="seven-skills-swiper !pb-10"
+            >
+              {allSkills.map((skill) => (
+                <SwiperSlide key={skill.title} className="!h-auto pb-1">
+                  <MobileSkillCard skill={skill} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* arrows */}
+            <button
+              type="button"
+              aria-label="Previous skill"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="absolute left-0 top-[42%] -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-[0_6px_18px_rgba(13,27,76,0.15)] flex items-center justify-center text-[#3A3A4A] active:scale-95"
+            >
+              <FaChevronLeft className="text-[14px]" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next skill"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="absolute right-0 top-[42%] -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-[0_6px_18px_rgba(13,27,76,0.15)] flex items-center justify-center text-[#3A3A4A] active:scale-95"
+            >
+              <FaChevronRight className="text-[14px]" />
+            </button>
           </div>
         </div>
       </div>

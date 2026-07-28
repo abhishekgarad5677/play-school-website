@@ -32,9 +32,9 @@ function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   logEvent(analytics, "Web_View");
-  // }, []);
+  useEffect(() => {
+    logEvent(analytics, "Web_View");
+  }, []);
 
   if (!isOnline) return <NoInternetScreen />;
 

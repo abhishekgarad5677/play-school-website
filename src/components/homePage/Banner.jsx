@@ -44,7 +44,7 @@ const Banner = () => {
             <button
               type="button"
               onClick={() => navigate("/register")}
-              className="poppins-font font-semibold px-6 py-2.5 lg:px-8 lg:py-3.5 text-white text-[14px] lg:text-[18px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#5FC24B,#2E9E3F)]"
+              className="poppins-font font-semibold px-6 py-2.5 lg:px-8 lg:py-3.5 text-white text-[14px] lg:text-[18px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
             >
               Start 7-Day Free Trial
             </button>

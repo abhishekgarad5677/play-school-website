@@ -88,17 +88,3 @@ body {
   width: 24px;
   border-radius: 4px;
 }
-
-.learning-apps-swiper .swiper-pagination-bullet {
-  background: #5B3FD6;
-  opacity: 0.3;
-  width: 8px;
-  height: 8px;
-}
-
-.learning-apps-swiper .swiper-pagination-bullet-active {
-  background: #5B3FD6;
-  opacity: 1;
-  width: 24px;
-  border-radius: 4px;
-}

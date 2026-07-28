@@ -105,25 +105,25 @@ const LearningApps = () => {
       [
         {
           title: "Musical Instruments",
-          desc: "Pop the balloons, meet the letters, learning A to Z has never been this satisfying! A bubbly, colourful way to give tiny minds their very first hello to alphabets.",
+          desc: "Explore instruments, sounds, and rhythms through fun interactive music activities.",
           iconText: icon1,
           cover: bg1,
         },
         {
           title: "Interactive Rhymes",
-          desc: "Apples, bananas, and so much more - can your little one name them all? Bright visuals that make recognising colours, shapes, and names an absolute delight.",
+          desc: "Sing along to cheerful rhymes that build language and listening skills.",
           iconText: icon2,
           cover: bg2,
         },
         {
           title: "Flash Cards",
-          desc: "1 ice cream, 2 ice creams… wait, can we count more? A sweet, simple way to introduce numbers through play that kids will want to do again and again.",
+          desc: "Learn professions, animals, vehicles, fruits, and more with colorful flash cards.",
           iconText: icon3,
           cover: bg3,
         },
         {
           title: "Coloring Fun",
-          desc: "Sing it, hear it, love it - rhymes that tiny ears just can't get enough of! Fun sounds and playful words that secretly build language skills one giggle at a time.",
+          desc: "Fill every picture with colors and bring creativity to life.",
           iconText: icon4,
           cover: bg4,
         },
@@ -132,25 +132,25 @@ const LearningApps = () => {
       [
         {
           title: "Color Sorting",
-          desc: "Can your little detective find what's hiding in every scene? Sharpen those eyes and hunt down every sneaky difference to win the round!",
+          desc: "Match and sort colors while improving observation and thinking skills.",
           iconText: icon5,
           cover: bg5,
         },
         {
           title: "Trace Time",
-          desc: "Fingers ready, it's time to write - trace letters and numbers in the most fun way possible! Every stroke builds the finger strength and confidence little writers need.",
+          desc: "Trace letters and numbers while building handwriting confidence.",
           iconText: icon6,
           cover: bg6,
         },
         {
           title: "Learn To Count",
-          desc: "Boom, dhol, and beautiful tunes, all for tiny ears to explore! Discover instruments and rhythms that make learning feel like one big dance party.",
+          desc: "Count animals and objects through playful number activities.",
           iconText: icon7,
           cover: bg7,
         },
         {
           title: "Spot The Difference",
-          desc: "No rules, just colours and a whole lot of creative fun waiting to happen! Pick up that brush and bring every picture to life completely your own way.",
+          desc: "Find hidden differences and sharpen observation with every challenge.",
           iconText: icon8,
           cover: bg8,
         },
@@ -159,25 +159,25 @@ const LearningApps = () => {
       [
         {
           title: "Animal & their Young Ones",
-          desc: "Who's that baby animal, and where's its mum - can you find the match? Pair adorable animal families and discover the wild, wonderful world of nature one duo at a time.",
+          desc: "Match baby animals with their parents while exploring nature.",
           iconText: icon9,
           cover: bg9,
         },
         {
           title: "Brain Games",
-          desc: "The wires need connecting and only your little problem-solver can crack it! Navigate tricky circuits and mazes that make thinking feel like the most exciting adventure ever.",
+          desc: "Solve fun puzzles that encourage thinking and problem-solving.",
           iconText: icon10,
           cover: bg10,
         },
         {
           title: "Spell The Words",
-          desc: "Red here, blue there - sort it all out before the timer runs out! A bright, satisfying activity that sharpens focus and gets little minds thinking in the most colourful way possible.",
+          desc: "Learn simple words by matching letters with pictures.",
           iconText: icon11,
           cover: bg11,
         },
         {
           title: "Match The Set",
-          desc: "3 minus 1? Easy, but can your child keep going? Watch numbers come alive as friendly characters cheer every single correct answer on.",
+          desc: "Match similar objects to build memory and visual recognition.",
           iconText: icon12,
           cover: bg12,
         },
@@ -186,25 +186,25 @@ const LearningApps = () => {
       [
         {
           title: "Two Player Activities",
-          desc: "Who came before you, and who came after, do you know your whole family story? Build your tree and discover where you come from in the most fun way possible.",
+          desc: "Learn together with exciting games for family and friends.",
           iconText: icon13,
           cover: bg13,
         },
         {
           title: "Symmetry",
-          desc: "Fold it, flip it, match it - symmetry is everywhere once you know how to spot it! A hands-on geometry adventure that turns shapes and patterns into a seriously satisfying puzzle.",
+          desc: "Complete patterns and discover the fun of symmetry.",
           iconText: icon14,
           cover: bg14,
         },
         {
           title: "Family Tree",
-          desc: "Speed, ramps, forces - this is real science and it's seriously fun! Experiment with how the world actually works and become the little scientist you were always meant to be.",
+          desc: "Explore family relationships through an interactive family tree activity.",
           iconText: icon15,
           cover: bg15,
         },
         {
           title: "Coding Basics",
-          desc: "Eyes, ears, heart and more, your body is the most amazing machine ever built! Explore every part up close with interactive lessons that make biology genuinely fascinating.",
+          desc: "Learn simple coding concepts through fun sequencing puzzles.",
           iconText: icon16,
           cover: bg16,
         },

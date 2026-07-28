@@ -154,7 +154,7 @@ const Navbar = ({
         <button
           type="button"
           onClick={() => navigate("/register")}
-          className="hidden lg:block poppins-font font-semibold px-7 py-3 text-white text-[15px] rounded-full shadow-[0_8px_20px_rgba(46,158,63,0.35)] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#5FC24B,#2E9E3F)]"
+          className="hidden lg:block poppins-font font-semibold px-7 py-3 text-white text-[15px] rounded-full shadow-[0_8px_20px_rgba(29,111,242,0.35)] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
         >
           Start Free Trial
         </button>
@@ -240,7 +240,7 @@ const Navbar = ({
                         setMobileMenuOpen(false);
                         navigate("/register");
                       }}
-                      className="poppins-font font-semibold w-full mt-4 py-3.5 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[linear-gradient(90deg,#5FC24B,#2E9E3F)]"
+                      className="poppins-font font-semibold w-full mt-4 py-3.5 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
                     >
                       Start Free Trial
                     </button>

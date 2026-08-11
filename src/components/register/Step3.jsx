@@ -1,8 +1,8 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import logo from "../../../public/playSchool-logo.png";
-import numberBanner from "../../assets/register/numberBanner.png";
-import step1cloud from "../../assets/register/step1cloud.png";
+import { Link } from "react-router-dom";
+import bg3 from "../../assets/register/bg-3.png";
+import mobBg3 from "../../assets/register/mobbg-3.png";
 import { useGetUserLocationQuery } from "../../services/geoApi";
 import { CountryList } from "../../utils/CountryList";
 import { useAddPhoneNumberMutation } from "../../services/registrationApi";
@@ -75,116 +75,97 @@ const Step3 = ({ setStep }) => {
   };
 
   return (
-    <div className="relative m-auto w-full mt-6 lg:mt-10  lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center lg:w-[80%] mx-auto">
+    <div className="fixed inset-0 z-20 bg-white flex flex-col lg:flex-row overflow-y-auto poppins-font">
+      {/* ---- left image panel ---- */}
+      <div className="relative h-auto lg:h-full shrink-0">
         <img
+          src={mobBg3}
           alt="TMKOC Playschool"
-          src={logo}
-          className="h-[60px] sm:h-[80px] lg:h-[84px] cursor-pointer"
-        />
-
-        <img
-          className="absolute top-0 left-0 w-[20%]"
-          src={step1cloud}
-          alt="cloud"
+          className="lg:hidden w-full h-full object-cover object-top"
         />
         <img
-          className="absolute top-0 right-0 w-[20%] -scale-x-100"
-          src={step1cloud}
-          alt="cloud"
+          src={bg3}
+          alt="TMKOC Playschool"
+          className="hidden lg:block w-full h-full object-cover object-top"
         />
-
-        <img
-          alt="step1 banner"
-          src={numberBanner}
-          className="lg:h-[260px] cursor-pointer"
-        />
-
-        <h1
-          className="mt-4 text-[22px] sm:text-[26px] lg:text-[36px] leading-[24px] sm:leading-[32px] lg:leading-[44px] fredoka-one-font
-          bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
-          bg-clip-text text-transparent"
+        <Link
+          to="/"
+          className="absolute top-4 left-4 lg:top-6 lg:left-6 poppins-font font-medium text-[13px] lg:text-[15px] text-[#0D1B4C] bg-white/70 backdrop-blur rounded-full px-3 py-1.5"
         >
-          Where Should We Send The Progress Reports?
-        </h1>
+          {"<"} Back to home
+        </Link>
+      </div>
 
-        {showErr ? (
-          <p className="text-red-500 text-sm mt-2">Number already exist.</p>
-        ) : (
-          <></>
-        )}
+      {/* ---- right content ---- */}
+      <div className="w-full lg:w-1/2 flex-1 flex flex-col justify-center items-center px-6 lg:px-16 py-4 lg:py-10">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[520px]">
+          <h1 className="poppins-font font-bold text-[#111111] text-[28px] leading-[36px] lg:text-[44px] lg:leading-[54px] text-center mb-8 lg:mb-12">
+            Where Should We Send The Progress Reports?
+          </h1>
 
-        {/* ===== PHONE INPUT ===== */}
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-5">
-          <div className="w-full  text-center">
-            <label className="block text-[14px] sm:text-[16px] font-semibold text-[#0B1B3A] text-left">
-              Phone Number
-            </label>
-
-            <div
-              className={`mt-2 flex items-center gap-3 px-4 py-3 rounded-[16px] border-2 bg-white
-                ${errors.phone ? "border-red-400" : "border-[#D8E6FF]"} 
-                focus-within:ring-2 focus-within:ring-[#019CFF]/30`}
-            >
-              <input
-                inputMode="numeric"
-                autoComplete="tel"
-                placeholder={`Enter ${requiredPhoneLength}-digit phone number`}
-                value={phoneValue}
-                onChange={handlePhoneChange}
-                className="w-full outline-none text-[#0B1B3A] placeholder:text-[#0B1B3A]/40"
-                aria-invalid={!!errors.phone}
-              />
-            </div>
-
-            {/* hidden field registered for RHF validation */}
-            <input
-              type="hidden"
-              {...register("phone", {
-                required: "Phone number is required.",
-                validate: (v) => {
-                  if (!v) return "Phone number is required.";
-                  if (!new RegExp(`^\\d{${requiredPhoneLength}}$`).test(v)) {
-                    return `Enter a valid ${requiredPhoneLength}-digit phone number.`;
-                  }
-                  return true;
-                },
-              })}
-            />
-
-            {errors.phone && (
-              <p className="mt-1 text-[12px] text-red-500">
-                {errors.phone.message}
-              </p>
-            )}
-
-            <p className="mt-4 text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
-              Get weekly reports showing exactly what your child learned,
-              mastered, and is working on next.
+          {showErr && (
+            <p className="text-red-500 text-sm text-center mb-3">
+              Number already exist.
             </p>
-            <p className="text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#0B1B3A]/80">
-              No spam — just your child's progress.
-            </p>
+          )}
 
-            <button
-              type="submit"
-              className={`w-full mt-6 py-4 fredoka-one-font flex justify-center items-center gap-2 text-white text-[18px] rounded-full shadow-lg transition-all
-                ${
-                  apiLoading
-                    ? "bg-gray-400 cursor-not-allowed opacity-50"
-                    : "cursor-pointer bg-[radial-gradient(circle,#00CAFF_2%,#0066FF_120%)] hover:opacity-90"
-                }`}
-              disabled={apiLoading}
-            >
-              Get My Free Trial
-            </button>
-            <p
-              onClick={() => setStep(4)}
-              className="mt-2 cursor-pointer underline text-center mx-auto text-[13px] sm:text-[15px] leading-[18px] sm:leading-[22px] text-[#8f8f8f]"
-            >
-              Skip For Now
+          {/* Phone input */}
+          <input
+            inputMode="numeric"
+            autoComplete="tel"
+            placeholder="Phone Number"
+            value={phoneValue}
+            onChange={handlePhoneChange}
+            aria-invalid={!!errors.phone}
+            className={`w-full px-6 py-4 lg:py-5 rounded-[16px] bg-[#CFE9FB] outline-none poppins-font font-semibold text-[18px] lg:text-[20px] text-[#0D1B4C] placeholder:text-[#0D1B4C] focus:ring-2 focus:ring-[#019CFF]/40
+              ${errors.phone ? "ring-2 ring-red-400" : ""}`}
+          />
+
+          {/* hidden field registered for RHF validation */}
+          <input
+            type="hidden"
+            {...register("phone", {
+              required: "Phone number is required.",
+              validate: (v) => {
+                if (!v) return "Phone number is required.";
+                if (!new RegExp(`^\\d{${requiredPhoneLength}}$`).test(v)) {
+                  return `Enter a valid ${requiredPhoneLength}-digit phone number.`;
+                }
+                return true;
+              },
+            })}
+          />
+
+          {errors.phone && (
+            <p className="mt-2 text-[12px] text-red-500">
+              {errors.phone.message}
             </p>
-          </div>
+          )}
+
+          <p className="mt-8 lg:mt-14 text-center poppins-font text-[14px] lg:text-[17px] leading-[22px] lg:leading-[26px] text-[#3A3A4A]">
+            Get weekly reports showing exactly what your child learned, mastered,
+            and is working on next. No spam — just your child's progress.
+          </p>
+
+          <button
+            type="submit"
+            disabled={apiLoading}
+            className={`w-full mt-6 mb-2 py-4 lg:py-5 rounded-full poppins-font font-bold text-white text-[18px] lg:text-[22px] transition-all
+              ${
+                apiLoading
+                  ? "bg-gray-400 cursor-not-allowed opacity-60 shadow-lg"
+                  : "cursor-pointer bg-[#3CB84E] shadow-[0_8px_0_0_#2C9440] hover:bg-[#37AD48] active:translate-y-[4px] active:shadow-[0_4px_0_0_#2C9440]"
+              }`}
+          >
+            {apiLoading ? "Saving..." : "Get My Free Trial"}
+          </button>
+
+          <p
+            onClick={() => setStep(4)}
+            className="mt-4 cursor-pointer underline text-center poppins-font text-[15px] lg:text-[17px] text-[#3A3A4A]"
+          >
+            Skip for Now
+          </p>
         </form>
       </div>
     </div>

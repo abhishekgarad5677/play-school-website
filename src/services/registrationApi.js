@@ -87,6 +87,13 @@ export const registrationApi = createApi({
         body,
       }),
     }),
+    addAddress: builder.mutation({
+      query: (body) => ({
+        url: "AuthUser/address",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -101,4 +108,5 @@ export const {
   useStudentAudioAndTextMutation,
   useGetCitiesMutation,
   useGetProfileMutation,
+  useAddAddressMutation,
 } = registrationApi;

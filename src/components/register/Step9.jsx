@@ -1,87 +1,85 @@
-import React, { useEffect } from "react";
-import logo from "../../../public/playSchool-logo.png";
-import step1banner from "../../assets/register/step1banner.png";
-import step1cloud from "../../assets/register/step1cloud.png";
-import step7banner from "../../assets/register/step7banner.png";
-import successAnim from "../../../public/register/register-success.json";
+import React from "react";
+import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
-import { useNavigate } from "react-router-dom";
+import successAnim from "../../../public/register/register-success.json";
 import playstorebtn from "../../assets/common/playstorebtn.png";
 import appstorebtn from "../../assets/common/appstorebtn.png";
+import bg1 from "../../assets/register/bg-1.png";
+import mobBg1 from "../../assets/register/mobbg-1.png";
+import { analytics, logEvent } from "../../utils/firebaseConfig";
 
 const Step9 = () => {
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   setTimeout(() => navigate("/"), 10000);
-  // }, []);
-
   return (
-    <div className="relative m-auto lg:h-screen w-full mt-6 lg:mt-10  sm:w-[92%] lg:w-[60%] p-4 sm:p-5 bg-white border-[3px] sm:border-4 rounded-[22px] sm:rounded-[32px] border-[#019CFF] scale-[0.90] sm:scale-100">
-      <div className="flex flex-col items-center text-center gap-3 lg:w-[70%] justify-center mx-auto">
+    <div className="fixed inset-0 z-20 bg-white flex flex-col lg:flex-row overflow-y-auto poppins-font">
+      {/* ---- left image panel ---- */}
+      <div className="relative h-auto lg:h-full shrink-0">
         <img
+          src={mobBg1}
           alt="TMKOC Playschool"
-          src={logo}
-          className="h-[100px] lg:h-[84px] cursor-pointer"
+          className="lg:hidden w-full h-full object-cover object-top"
         />
         <img
-          className="absolute top-0 left-0 w-[20%]"
-          src={step1cloud}
-          alt="cloud"
+          src={bg1}
+          alt="TMKOC Playschool"
+          className="hidden lg:block w-full h-full object-cover object-top"
         />
-        <img
-          className="absolute top-0 right-0 w-[20%] -scale-x-100"
-          src={step1cloud}
-          alt="cloud"
-        />
-        <Lottie
-          animationData={successAnim}
-          loop={true}
-          style={{ height: 300 }}
-        />
-        <h1
-          className="lg:mt-2 text-[28px] lg:text-[48px] leading-[32px] lg:leading-[54px] fredoka-one-font
-               bg-gradient-to-r from-[#00BDEF] to-[#0066FF]
-               bg-clip-text text-transparent"
+        <Link
+          to="/"
+          className="absolute top-4 left-4 lg:top-6 lg:left-6 poppins-font font-medium text-[13px] lg:text-[15px] text-[#0D1B4C] bg-white/70 backdrop-blur rounded-full px-3 py-1.5"
         >
-          Free trial started!
-        </h1>
-        <p className="text-[20px] font-medium text-[#484848]">
-          You have successfully started your 7 day free trial. Continue to TMKOC
-          Playschool app and start your child's learning journey!
-        </p>
-        <div className="flex justify-center items-center gap-2 lg:gap-5">
-          <a
-            className="flex justify-end"
-            href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              logEvent(analytics, "Web_Android_Click_Button");
-            }}
-          >
-            <img
-              className="w-[70%] lg:w-[66%] cursor-pointer"
-              src={playstorebtn}
-              alt="Get it on Google Play"
-            />
-          </a>
+          {"<"} Back to home
+        </Link>
+      </div>
 
-          <a
-            className="flex justify-start"
-            href="https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              logEvent(analytics, "Web_iOS_Click_Button");
-            }}
-          >
-            <img
-              className="w-[70%] lg:w-[66%] cursor-pointer"
-              src={appstorebtn}
-              alt="Download on the App Store"
-            />
-          </a>
+      {/* ---- right content ---- */}
+      <div className="w-full lg:w-1/2 flex-1 flex flex-col justify-center items-center px-6 lg:px-16 lg:py-10">
+        <div className="w-full max-w-[520px] flex flex-col items-center text-center">
+          <Lottie
+            animationData={successAnim}
+            loop={true}
+            style={{ height: 260 }}
+          />
+
+          <h1 className="poppins-font font-bold text-[#0D1B4C] text-[30px] leading-[38px] lg:text-[48px] lg:leading-[56px] mt-2 mb-4">
+            Free trial started!
+          </h1>
+
+          <p className="poppins-font text-[15px] lg:text-[18px] leading-[24px] lg:leading-[30px] text-[#3A3A4A] mb-8">
+            You have successfully started your 7 day free trial. Continue to
+            TMKOC Playschool app and start your child's learning journey!
+          </p>
+
+          <div className="flex items-center justify-center gap-3 lg:gap-4">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.neelamediatech.playschool"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                logEvent(analytics, "Web_Android_Click_Button");
+              }}
+            >
+              <img
+                className="w-[150px] lg:w-[180px] cursor-pointer"
+                src={playstorebtn}
+                alt="Get it on Google Play"
+              />
+            </a>
+
+            <a
+              href="https://apps.apple.com/us/app/tmkoc-playschool-play-learn/id6618147440"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                logEvent(analytics, "Web_iOS_Click_Button");
+              }}
+            >
+              <img
+                className="w-[150px] lg:w-[180px] cursor-pointer"
+                src={appstorebtn}
+                alt="Download on the App Store"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

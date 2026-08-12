@@ -309,7 +309,7 @@ const LearningApps = () => {
           <div className="hidden lg:grid w-full grid-cols-2 gap-7">
             {activities.map((item) => (
               <motion.div key={item.title} {...revealMotion}>
-                <ActivityCard item={item} onPlay={() => navigate("/register")} />
+                <ActivityCard item={item} onPlay={() => navigate("/signup")} />
               </motion.div>
             ))}
           </div>
@@ -328,7 +328,10 @@ const LearningApps = () => {
             >
               {activities.map((item) => (
                 <SwiperSlide key={item.title} className="!h-auto pb-1">
-                  <ActivityCard item={item} onPlay={() => navigate("/register")} />
+                  <ActivityCard
+                    item={item}
+                    onPlay={() => navigate("/signup")}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

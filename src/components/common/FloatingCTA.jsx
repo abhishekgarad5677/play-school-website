@@ -49,7 +49,7 @@ const FloatingCTA = () => {
         {/* CTA */}
         <button
           type="button"
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/signup")}
           className="poppins-font font-semibold shrink-0 flex items-center gap-2 text-white text-[13px] lg:text-[15px] rounded-full px-5 lg:px-7 py-2.5 lg:py-3 shadow-[0_8px_20px_rgba(29,111,242,0.35)] cursor-pointer transition-all hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)] whitespace-nowrap"
         >
           Start Free Trial

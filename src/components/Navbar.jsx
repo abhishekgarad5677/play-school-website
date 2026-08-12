@@ -70,7 +70,7 @@ const Navbar = ({ scrollToRef, refs }) => {
             </span>
           </button> */}
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/signup")}
             className="border-[3px] rounded-[10px] border-solid border-[#4087f3] bg-[#fff] px-[44px] py-[8px] cursor-pointer"
           >
             <span className="text-[16px] font-[500] bg-gradient-to-r from-[#0066FF] to-[#00CAFF] bg-clip-text text-transparent">

@@ -36,14 +36,14 @@ const Banner = () => {
           </div>
 
           <p className="text-[#00092D] poppins-font font-[500] text-[13px] leading-[18px] lg:text-[18px] lg:leading-[34px] w-full lg:w-[80%] mx-auto lg:mx-0">
-            A playful learning app that helps kids Learn, Play and Grow with Tapu
-            and Friends!
+            A playful learning app that helps kids Learn, Play and Grow with
+            Tapu and Friends!
           </p>
 
           <div className="space-y-3 flex flex-col items-center lg:items-start pt-1 lg:pt-0">
             <button
               type="button"
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/signup")}
               className="poppins-font font-semibold px-6 py-2.5 lg:px-8 lg:py-3.5 text-white text-[14px] lg:text-[18px] rounded-full shadow-lg transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
             >
               Start 7-Day Free Trial

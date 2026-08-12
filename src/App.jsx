@@ -51,7 +51,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* Protected Routes */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/signup" element={<Register />} />
             <Route path="/subscribe" element={<Subscribe />} />
             <Route path="/free-trial-extend" element={<ExtendFreeTrial />} />
             <Route path="/profile" element={<Profile />} />

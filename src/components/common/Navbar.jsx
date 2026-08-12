@@ -153,7 +153,7 @@ const Navbar = ({
         {/* ---- desktop CTA ---- */}
         <button
           type="button"
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/signup")}
           className="hidden lg:block poppins-font font-semibold px-7 py-3 text-white text-[15px] rounded-full shadow-[0_8px_20px_rgba(29,111,242,0.35)] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
         >
           Start Free Trial
@@ -238,7 +238,7 @@ const Navbar = ({
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        navigate("/register");
+                        navigate("/signup");
                       }}
                       className="poppins-font font-semibold w-full mt-4 py-3.5 text-white text-[16px] rounded-full shadow-lg transition-all cursor-pointer hover:opacity-90 bg-[linear-gradient(90deg,#3D8BFF,#1D6FF2)]"
                     >
